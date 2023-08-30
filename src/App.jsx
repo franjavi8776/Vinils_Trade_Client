@@ -1,14 +1,16 @@
 import "./App.css";
-import Search from "./components/Search/Search";
+
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Error from "./components/Error/Error";
 import Detail from "./components/Detail/Detail";
 
+import Navbar from "./components/Navbar/Navbar";
+
 function App() {
   return (
     <div className="App">
-      <Search />
+      <Navbar />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
