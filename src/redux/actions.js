@@ -47,7 +47,6 @@ export const getVinylsForName = (name) => {
   }
 };
 
-
 export const postVinyls = (dato)  => {
     return async () => {
       try {
