@@ -6,15 +6,20 @@ export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
 
 const endpoint = "http://localhost:3000/results";
 
-export const getAllVinyls = () => async () => {
-  try {
-    const data = response.data;
-    return dispatch({
-      type: GET_ALL_VINYLS,
-      payload: data,
-    });
-  } catch (error) {}
+export const getAllVinyls=()=>async(dispatch)=>{
+    try {
+        const endpoint="http://localhost:3000/results"
+        const response= await axios.get(endpoint);
+        const data=response.data;
+        return dispatch({
+            type:GET_ALL_VINYLS,
+            payload:data
+        });
+    } catch (error) {
+        console.log(error);
+    }
 };
+
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
@@ -38,16 +43,6 @@ export const getVinylsForName = (name) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 };
 
-export const postVinyls = (dato)  => {
-    return async () => {
-      try {
-        await axios.post(`http://localhost:3001/vinyls`, dato).then((response) => response.data)
-        
-      } catch (err) {
-        console.log(err)
-      }
-    }
-  }
