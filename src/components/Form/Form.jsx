@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { postVinyls } from "../redux/actions";
 
 const Form = () => {
-  const [vinyls, setVinyls] = useState({Name:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""});
+  const [vinyls, setVinyls] = useState({Title:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""});
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
 
@@ -25,13 +25,13 @@ const Form = () => {
   }
 
   const handlerSubmit = () => {
-    setErrors({Name:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""})
+    setErrors({Title:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""})
 
     dispatch(postVinyls(vinyls))
 
     alert("Vinilo creado correctamente")
 
-    setVinyls({Name:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""})
+    setVinyls({Title:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""})
   }
 
 
@@ -41,16 +41,17 @@ const Form = () => {
     <div className="p-4">
       <form onSubmit={handlerSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
-          <label className="block font-bold mb-1">Nombre:</label>
+          <label className="block font-bold mb-1">Titulo:</label>
           <input
             type="text"
-            name="Name"
-            value={vinyls.Name}
+            name="Title"
+            value={vinyls.Title}
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese el titulo..."
             required
           />
-          {errors.Name && <p className="text-red-500">{errors.Name}</p>}
+          {errors.Title && <p className="text-red-500">{errors.Title}</p>}
         </div>
         <div>
           <label className="block font-bold mb-1">Artista:</label>
@@ -60,6 +61,7 @@ const Form = () => {
             value={vinyls.Artist}
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese el artista..."
             required
           />
           {errors.Artist && <p className="text-red-500">{errors.Artist}</p>}
@@ -72,6 +74,7 @@ const Form = () => {
             value={vinyls.Gender}
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese el genero..."
             required
           />
           {errors.Gender && <p className="text-red-500">{errors.Gender}</p>}
@@ -83,6 +86,7 @@ const Form = () => {
             value={vinyls.Description}
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese la descripción..."
             required
           />
           {errors.Description && <p className="text-red-500">{errors.Description}</p>}
@@ -95,6 +99,7 @@ const Form = () => {
             value={vinyls.Year}
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese el año..."
             required
           />
           {errors.Year && <p className="text-red-500">{errors.Year}</p>}
@@ -107,6 +112,7 @@ const Form = () => {
             value={vinyls.Price}
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese el precio..."
             required
           />
           {errors.Price && <p className="text-red-500">{errors.Price}</p>}
@@ -119,6 +125,7 @@ const Form = () => {
             value={vinyls.Condition}
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese la condicion..."
             required
           />
           {errors.Condition && <p className="text-red-500">{errors.Condition}</p>}

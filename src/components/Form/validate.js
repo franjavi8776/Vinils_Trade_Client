@@ -2,10 +2,10 @@ export function validateVinylsForm(input) {
     let errors = {};
 
     // Validación del campo Nombre
-    if (!input.Name) {
-        errors.Name = "Debes ingresar un nombre";
-    } else if (input.Name.length >= 30) {
-        errors.Name = "El nombre no puede tener más de 30 caracteres";
+    if (!input.Title) {
+        errors.Title = "Debes ingresar un nombre";
+    } else if (input.Title.length >= 30) {
+        errors.Title = "El nombre no puede tener más de 30 caracteres";
     }
 
     // Validación del campo Artista
