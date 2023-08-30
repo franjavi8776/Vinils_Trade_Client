@@ -1,7 +1,7 @@
 import  React, {useState} from "react";
 import { validateVinylsForm } from "./validate";
 import { useDispatch } from "react-redux";
-import { postVinyls } from "../redux/actions";
+import { postVinyls } from "../../redux/actions";
 
 const Form = () => {
   const [vinyls, setVinyls] = useState({Title:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""});
