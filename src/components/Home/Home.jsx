@@ -6,6 +6,7 @@ import { getAllVinyls } from "../../redux/actions";
 const Home = () => {
   const dispatch=useDispatch();
   const allVinyls=useSelector((state)=>state.allVinyls); //trayendo info.
+  const [currentPage, setCurrentPage] = useState(1);
   
   const pageSize = 10;
   const totalVinyls =
@@ -15,8 +16,6 @@ const Home = () => {
   const renderVinyls = searchByName.length > 0 ? searchByName : allVinyls;
   const endIndex = startIndex + pageSize;
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
-
-
 
   useEffect(()=>{
     dispatch(getAllVinyls)
