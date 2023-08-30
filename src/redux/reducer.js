@@ -9,12 +9,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_ALL_VINYLS:
+      return{...state,allVinyls:action.payload,vinyls:action.payload};
     default:
-      case GET_ALL_VINYLS:
-        return{...state,allVinyls:action.payload,vinyls:action.payload};
       return {
         ...state,
-      };
+    };
   }
 };
 
