@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case GET_VINYLS_FOR_NAME:
       return {
         ...state,
-        search: action.payload,
+        allVinyls: action.payload,
       };
     case GET_DETAIL:
       return {

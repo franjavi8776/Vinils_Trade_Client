@@ -30,16 +30,18 @@ export const getVinylDetail = (id) => async (dispatch) => {
 export const getVinylsForName = (name) => {
   return async (dispatch) => {
     try {
-      const { data } = axios.get(endpoint + name);
-      return dispatch({
+      const response = await axios.get(`${endpoint}${name}`);
+      const results = response.data.results; 
+      dispatch({
         type: GET_VINYLS_FOR_NAME,
-        payload: data,
+        payload: results,
       });
     } catch (error) {
       console.log(error);
     }
   };
 };
+
 
 export const postVinyls = (dato)  => {
     return async () => {
