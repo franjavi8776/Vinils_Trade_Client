@@ -1,5 +1,8 @@
+import Search from "../Search/Search";
 const Navbar = () => {
-  return <div>Navbar</div>;
+  return(
+    <Search/>
+  )
 };
 
 export default Navbar;
