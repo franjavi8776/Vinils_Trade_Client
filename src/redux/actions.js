@@ -4,7 +4,6 @@ export const GET_ALL_VINYLS = "GET_ALL_VINYLS";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
 
-
 const endpoint = "http://localhost:3000/results";
 
 export const getAllVinyls=()=>async(dispatch)=>{
@@ -46,3 +45,5 @@ export const getVinylsForName = (name) => {
     }
   }
 };
+
+
