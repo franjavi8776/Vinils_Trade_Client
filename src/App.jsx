@@ -2,25 +2,22 @@ import "./App.css";
 import { Routes, Route } from "react-router";
 import Form from "./components/Form/Form";
 import Home from "./components/Home/Home";
-import Search from "./components/Search/Search";
+import Error from "./components/Error/Error";
+import Detail from "./components/Detail/Detail";
+import Navbar from "./components/Navbar/Navbar";
 
 
 function App() {
   return (
     <div className="App">
-      <Search/>
-      <h1 className="font-bold underline">Hello world!!</h1>
-      <div>
-    <div>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/Form" element={<Form></Form>}></Route>
+        <Route path="/home" element={<Home />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/form" element={<Form />}></Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
-    
-  </div>
-    </div>
-    
   );
 }
 
