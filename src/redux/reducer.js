@@ -15,7 +15,6 @@ const reducer = (state = initialState, action) => {
         allVinyls: action.payload,
         vinyls: action.payload,
       };
-
     case GET_VINYLS_FOR_NAME:
       return {
         ...state,
@@ -29,7 +28,7 @@ const reducer = (state = initialState, action) => {
     default:
       return {
         ...state,
-      };
+    };
   }
 };
 
