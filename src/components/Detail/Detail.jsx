@@ -16,10 +16,10 @@ const Detail = () => {
     <div>
       <div>
         <p>{detail.id}</p>
-        <h1>{detail.title}</h1>
-        <h2>{detail.country}</h2>
-        <img src={detail.cover_image} alt={detail.title} />
-        <h2>{detail.year}</h2>
+        <h1>{detail?.title}</h1>
+        <h2>{detail?.country}</h2>
+        <img src={detail?.cover_image} alt={detail?.title} />
+        <h2>{detail?.year}</h2>
       </div>
     </div>
   );
