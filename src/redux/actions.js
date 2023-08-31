@@ -61,27 +61,27 @@ export const orderByTitle = (order) => {
   };
 };
 
-export const postVinyls = (dato)  => {
-    return async () => {
-      try {
-        await axios.post(`http://localhost:3001/vinyls`, dato).then((response) => response.data)
-        
-      } catch (err) {
-        console.log(err)
-      }
+export const postVinyls = (dato) => {
+  return async () => {
+    try {
+      await axios.post(`http://localhost:3001/vinyls`, dato).then((response) => response.data)
+
+    } catch (err) {
+      console.log(err)
     }
   }
-
-export const reset = ()=>{
-return {
-  type:RESET
 }
-}
-export const orderForGenre = (name) =>{
 
-  return{
-    type:ORDER_FOR_GENRE,
-    payload:name
+export const reset = () => {
+  return {
+    type: RESET
+  }
+}
+export const orderForGenre = (name) => {
+
+  return {
+    type: ORDER_FOR_GENRE,
+    payload: name
   }
 }
 

@@ -1,4 +1,3 @@
-
 import {
   GET_ALL_VINYLS,
   GET_DETAIL,
@@ -33,18 +32,19 @@ const reducer = (state = initialState, action) => {
     case FILTER_BY_DECADE:
       const { startYear, endYear } = action.payload;
       const filteredVinyls = state.allVinyls.filter((vinyl) => {
-        const vinylYear = parseInt(vinyl.Year);
+        const vinylYear = parseInt(vinyl.year);
         return vinylYear >= startYear && vinylYear <= endYear;
       });
 
       return {
         ...state,
-        vinyls: filteredVinyls,
+        allVinyls: filteredVinyls,
       };
+
     case GET_DETAIL:
       return {
         ...state,
-        detail: action.payload,
+        allVinyls: action.payload,
       };
     case ORDER_FOR_GENRE:
       return {
@@ -61,12 +61,12 @@ const reducer = (state = initialState, action) => {
       };
     case ORDER_BY_TITLE: {
       const orderDirection = action.payload === "A" ? 1 : -1; //ordenamiento por nombre  si recibo a es verdadero 1 y -1 es falso
-        return {
-          ...state,
-          allVinyls: state.allVinyls.slice().sort((a, b) => {
-            return a.title.localeCompare(b.title) * orderDirection; //slice para cortar cuando haga el sort y lo compare con el nombre de a y nombre de b para ascendente o descendente 
-          }),
-        };
+      return {
+        ...state,
+        allVinyls: state.allVinyls.slice().sort((a, b) => {
+          return a.title.localeCompare(b.title) * orderDirection; //slice para cortar cuando haga el sort y lo compare con el nombre de a y nombre de b para ascendente o descendente 
+        }),
+      };
     }
 
     default:
