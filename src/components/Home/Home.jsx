@@ -13,21 +13,13 @@ import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-
 const Home = () => {
 
   const dispatch= useDispatch();
-  const allVinyls= useSelector((state)=>state.allVinyls); //trayendo info.
+  const vinyls= useSelector((state)=>state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedDecade, setSelectedDecade] = useState("");
+  const searchByName  = useSelector((state) => state.search)
   
   
   const pageSize = 10;
