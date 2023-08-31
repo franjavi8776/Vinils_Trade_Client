@@ -3,50 +3,53 @@ import axios from "axios";
 export const GET_ALL_VINYLS = "GET_ALL_VINYLS";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
+export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST"
+export const RESET = "RESET"
+const endpoint = "http://localhost:3001/results/";
 
-const endpoint = "http://localhost:3000/results";
+export const getAllVinyls = () => async (dispatch) => {
+  try {
+    const response = await axios.get(endpoint);
+    const data = response.data;
 
-export const getAllVinyls=()=>async(dispatch)=>{
-    try {
-        const endpoint="http://localhost:3000/results"
-        const response= await axios.get(endpoint);
-        const data=response.data;
-        return dispatch({
-            type:GET_ALL_VINYLS,
-            payload:data
-        });
-    } catch (error) {
-        console.log(error);
-    }
+    dispatch({
+      type: GET_ALL_VINYLS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
-
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const endpoint = `http://localhost:3000/results/${id}`;
-    const response = await axios.get(endpoint);
+    const response = await axios.get(endpoint + id);
     const data = response.data;
     dispatch({ type: GET_DETAIL, payload: data });
   } catch (error) {
     console.log(error);
   }
 };
-
-export const getVinylsForName = (name) => {
-  return async (dispatch) => {
+export const getVinylsForName = (title) => {
+  return async function (dispatch) {
     try {
-      const response = await axios.get(`${endpoint}${name}`);
-      const results = response.data.results; 
-      dispatch({
-        type: GET_VINYLS_FOR_NAME,
-        payload: results,
-      });
+      const response = await axios.get(endpoint);
+      if (response.status === 200 && response.data && Array.isArray(response.data)) {
+        const filteredData = response.data.filter(
+          (vinyl) => vinyl.title.toLowerCase().includes(title.toLowerCase())
+        );
+        dispatch({
+          type: GET_VINYLS_FOR_NAME,
+          payload: filteredData,
+        });
+      } else {
+        console.log("API response does not have the expected structure.");
+      }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 };
-
 export const postVinyls = (dato)  => {
     return async () => {
       try {
@@ -57,3 +60,16 @@ export const postVinyls = (dato)  => {
       }
     }
   }
+
+export const reset = ()=>{
+return {
+  type:RESET
+}
+}
+export const orderForGenre = (name) =>{
+
+  return{
+    type:ORDER_FOR_GENRE,
+    payload:name
+  }
+}

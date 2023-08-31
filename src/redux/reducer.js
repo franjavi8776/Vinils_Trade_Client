@@ -1,4 +1,10 @@
-import { GET_ALL_VINYLS, GET_DETAIL, GET_VINYLS_FOR_NAME } from "./actions";
+import {
+  GET_ALL_VINYLS,
+  GET_DETAIL,
+  GET_VINYLS_FOR_NAME,
+  ORDER_FOR_GENRE,
+  RESET,
+} from "./actions";
 
 const initialState = {
   allVinyls: [],
@@ -18,17 +24,31 @@ const reducer = (state = initialState, action) => {
     case GET_VINYLS_FOR_NAME:
       return {
         ...state,
-        allVinyls: action.payload,
+        search: action.payload,
       };
+
     case GET_DETAIL:
       return {
         ...state,
         detail: action.payload,
       };
+    case ORDER_FOR_GENRE:
+      return {
+        ...state,
+        vinyls: state.allVinyls.filter((vinyl) =>
+          vinyl.genre.some((genre) => genre === action.payload)
+        ),
+      };
+
+    case RESET:
+      return {
+        ...state,
+        vinyls: state.allVinyls,
+      };
     default:
       return {
         ...state,
-    };
+      };
   }
 };
 
