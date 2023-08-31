@@ -1,8 +1,13 @@
-
-import React,{ useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { getAllVinyls, orderForGenre,reset,filterVinylsByDecade,orderByTitle} from "../../redux/actions";
+import {
+  getAllVinyls,
+  orderForGenre,
+  reset,
+  filterVinylsByDecade,
+  orderByTitle,
+} from "../../redux/actions";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -11,12 +16,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 
 const Home = () => {
-
-  const dispatch= useDispatch();
-  const vinyls= useSelector((state)=>state.allVinyls); //trayendo info.
+  const dispatch = useDispatch();
+  const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedDecade, setSelectedDecade] = useState("");
-  const searchByName = useSelector((state) => state.search)
+  const searchByName = useSelector((state) => state.search);
 
   const pageSize = 10;
   const totalVinyls =
@@ -43,50 +46,48 @@ const Home = () => {
     }
   };
 
-  const handleReset = () =>{
-dispatch(reset())
-  }
-const handleGenre = (event) =>{
-dispatch(orderForGenre(event.target.value))
-}
+  const handleReset = () => {
+    dispatch(reset());
+  };
+  const handleGenre = (event) => {
+    dispatch(orderForGenre(event.target.value));
+  };
 
   const handleOrderByTitle = (e) => {
     dispatch(orderByTitle(e.target.value));
     setName(!title);
   };
 
-  const handleFilter = () => {
+  const handleFilter = (event) => {
+    const selectedDecades = event.target.value;
     let startYear, endYear;
-    if(selectedDecade === "2000") {
-      startYear= 2000;
+    if (selectedDecades === "2000") {
+      startYear = 2000;
       endYear = new Date().getFullYear();
     } else {
-      startYear = parseInt(selectedDecade);
+      startYear = parseInt(selectedDecades);
       endYear = startYear + 9;
     }
-    dispatch(filterVinylsByDecade(startYear, endYear))
-  }
+    dispatch(filterVinylsByDecade(startYear, endYear));
+  };
 
-  return <div>
-    <div>
-      <select
-        value={selectedDecade}
-        onChange={(e) => {
-          setSelectedDecade(e.target.value);
-          handleFilter(e.target.value);
-        }}
-        className="bg-black text-white p-2 rounded"
-      >
-        <option value="">Selecciona una década</option>
-        <option value="1940">1940s</option>
-        <option value="1950">1950s</option>
-        <option value="1960">1960s</option>
-        <option value="1970">1970s</option>
-        <option value="1980">1980s</option>
-        <option value="1990">1990s</option>
-        <option value="2000">2000s en adelante</option>
-      </select>
-    </div>
+  return (
+    <div className="w-[100%] h-[92vh]">
+      <div>
+        <select
+          onChange={handleFilter}
+          className="bg-black text-white p-2 rounded"
+        >
+          <option value="">Selecciona una década</option>
+          <option value="1940">1940s</option>
+          <option value="1950">1950s</option>
+          <option value="1960">1960s</option>
+          <option value="1970">1970s</option>
+          <option value="1980">1980s</option>
+          <option value="1990">1990s</option>
+          <option value="2000">2000s en adelante</option>
+        </select>
+      </div>
       <select onChange={handleOrderByTitle}>
         <option value="">Ordenar p/Titulo</option>
         <option value="A">Ascendente</option>
@@ -96,7 +97,7 @@ dispatch(orderForGenre(event.target.value))
         {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
       </div>
       <button onClick={handleReset}>Reset</button>
-      <select name="genre"  onChange={handleGenre}id="">
+      <select name="genre" onChange={handleGenre} id="">
         <option value="" disabled>
           Generos
         </option>
@@ -192,7 +193,7 @@ dispatch(orderForGenre(event.target.value))
           <div>
             {currentPage > 1 && <button onClick={handlePreviousPage}>P</button>}
           </div>
-      
+
           <div className="flex flex-wrap justify-center gap-4">
             {VinylsToRender.map((vinyls) => (
               <Card
@@ -202,7 +203,6 @@ dispatch(orderForGenre(event.target.value))
                 year={vinyls.year}
                 cover_image={vinyls.cover_image}
               />
-          
             ))}
           </div>
           <div>
@@ -213,6 +213,7 @@ dispatch(orderForGenre(event.target.value))
         </div>
       </div>
     </div>
+  )
 };
 
 export default Home;
