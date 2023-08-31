@@ -1,4 +1,4 @@
-import { GET_ALL_VINYLS, GET_DETAIL, GET_VINYLS_FOR_NAME } from "./actions";
+import { GET_ALL_VINYLS, GET_DETAIL, GET_VINYLS_FOR_NAME, FILTER_BY_DECADE } from "./actions";
 
 const initialState = {
   allVinyls: [],
@@ -19,6 +19,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.payload,
+      };
+    case FILTER_BY_DECADE:
+      const { startYear, endYear } = action.payload;
+      const filteredVinyls = state.allVinyls.filter((vinyl) => {
+        const vinylYear = parseInt(vinyl.Year);
+        return vinylYear >= startYear && vinylYear <= endYear;
+      });
+
+      return {
+        ...state,
+        vinyls: filteredVinyls,
       };
     case GET_DETAIL:
       return {

@@ -1,6 +1,8 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getVinylsForName } from "../../redux/actions";
+import React from 'react';
+import {useSelector, useDispatch } from 'react-redux';
+import { getVinylsForName } from '../../redux/actions';
+
+
 const Search = () => {
   const searchs = useSelector((state) => state.search);
   const dispatch = useDispatch();
