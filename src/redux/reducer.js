@@ -1,4 +1,4 @@
-import { GET_ALL_VINYLS, GET_DETAIL, GET_VINYLS_FOR_NAME, FILTER_BY_DECADE } from "./actions";
+import { GET_ALL_VINYLS, GET_DETAIL, GET_VINYLS_FOR_NAME,ORDER_BY_TITLE,FILTER_BY_DECADE} from "./actions";
 
 const initialState = {
   allVinyls: [],
@@ -36,6 +36,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
+    case ORDER_BY_TITLE: {
+      const orderDirection = action.payload === "A" ? 1 : -1; //ordenamiento por nombre  si recibo a es verdadero 1 y -1 es falso
+        return {
+          ...state,
+          allVinyls: state.allVinyls.slice().sort((a, b) => {
+            return a.title.localeCompare(b.title) * orderDirection; //slice para cortar cuando haga el sort y lo compare con el nombre de a y nombre de b para ascendente o descendente 
+          }),
+        };
+    }
     default:
       return {
         ...state,

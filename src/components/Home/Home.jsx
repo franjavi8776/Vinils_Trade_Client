@@ -2,7 +2,16 @@
 import React,{ useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { getAllVinyls, filterVinylsByDecade } from "../../redux/actions";
+import { getAllVinyls, orderByTitle,filterVinylsByDecade } from "../../redux/actions";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -49,6 +58,11 @@ const Home = () => {
   };
 
 
+  const handleOrderByTitle = (e) => {
+    dispatch(orderByTitle(e.target.value));
+    setName(!title);
+  };
+
   const handleFilter = () => {
     let startYear, endYear;
     if(selectedDecade === "2000") {
@@ -63,6 +77,30 @@ const Home = () => {
 
   return (
     <div className="w-[100%] h-[92vh]">
+          <div>
+      <select
+        value={selectedDecade}
+        onChange={(e) => {
+          setSelectedDecade(e.target.value);
+          handleFilter(e.target.value);
+        }}
+        className="bg-black text-white p-2 rounded"
+      >
+        <option value="">Selecciona una década</option>
+        <option value="1940">1940s</option>
+        <option value="1950">1950s</option>
+        <option value="1960">1960s</option>
+        <option value="1970">1970s</option>
+        <option value="1980">1980s</option>
+        <option value="1990">1990s</option>
+        <option value="2000">2000s en adelante</option>
+      </select>
+    </div>
+      <select onChange={handleOrderByTitle}>
+        <option value="">Ordenar p/Titulo</option>
+        <option value="A">Ascendente</option>
+        <option value="D">Descendente</option>
+      </select>
       <div>
         {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
       </div>
@@ -171,26 +209,6 @@ const Home = () => {
         </div>
       </div>
     </div>
-    <div>
-      <select
-        value={selectedDecade}
-        onChange={(e) => {
-          setSelectedDecade(e.target.value);
-          handleFilter(e.target.value);
-        }}
-        className="bg-black text-white p-2 rounded"
-      >
-        <option value="">Selecciona una década</option>
-        <option value="1940">1940s</option>
-        <option value="1950">1950s</option>
-        <option value="1960">1960s</option>
-        <option value="1970">1970s</option>
-        <option value="1980">1980s</option>
-        <option value="1990">1990s</option>
-        <option value="2000">2000s en adelante</option>
-      </select>
-    </div>
-  </div>;
   );
 };
 
