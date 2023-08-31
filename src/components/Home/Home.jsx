@@ -12,6 +12,15 @@ import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.vinyls); //trayendo info.
@@ -52,12 +61,11 @@ const Home = () => {
     setName(!title);
   };
 
- 
 
 
   return (
     <div className="w-[100%] h-[92vh]">
-       <select onChange={handleOrderByTitle}>
+      <select onChange={handleOrderByTitle}>
         <option value="">Ordenar p/Titulo</option>
         <option value="A">Ascendente</option>
         <option value="D">Descendente</option>
