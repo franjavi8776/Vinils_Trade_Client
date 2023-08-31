@@ -1,5 +1,13 @@
-import { GET_ALL_VINYLS, GET_DETAIL, GET_VINYLS_FOR_NAME,ORDER_BY_TITLE,FILTER_BY_DECADE} from "./actions";
 
+import {
+  GET_ALL_VINYLS,
+  GET_DETAIL,
+  GET_VINYLS_FOR_NAME,
+  ORDER_FOR_GENRE,
+  RESET,
+  FILTER_BY_DECADE,
+  ORDER_BY_TITLE
+} from "./actions";
 const initialState = {
   allVinyls: [],
   vinyls: [],
@@ -20,6 +28,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         search: action.payload,
       };
+
+
     case FILTER_BY_DECADE:
       const { startYear, endYear } = action.payload;
       const filteredVinyls = state.allVinyls.filter((vinyl) => {
@@ -36,6 +46,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
+    case ORDER_FOR_GENRE:
+      return {
+        ...state,
+        vinyls: state.allVinyls.filter((vinyl) =>
+          vinyl.genre.some((genre) => genre === action.payload)
+        ),
+      };
+
+    case RESET:
+      return {
+        ...state,
+        vinyls: state.allVinyls,
+      };
     case ORDER_BY_TITLE: {
       const orderDirection = action.payload === "A" ? 1 : -1; //ordenamiento por nombre  si recibo a es verdadero 1 y -1 es falso
         return {
@@ -45,10 +68,11 @@ const reducer = (state = initialState, action) => {
           }),
         };
     }
+
     default:
       return {
         ...state,
-    };
+      };
   }
 };
 

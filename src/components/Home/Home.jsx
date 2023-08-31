@@ -2,25 +2,12 @@
 import React,{ useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { getAllVinyls, orderByTitle,filterVinylsByDecade } from "../../redux/actions";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
+import { getAllVinyls, orderForGenre,reset,filterVinylsByDecade,orderByTitle} from "../../redux/actions";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Home = () => {
 
@@ -28,8 +15,7 @@ const Home = () => {
   const allVinyls= useSelector((state)=>state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedDecade, setSelectedDecade] = useState("");
-  
-  
+  const searchByName = useSelector((state) => state.search)
   const pageSize = 10;
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -38,8 +24,6 @@ const Home = () => {
   const renderVinyls = searchByName.length > 0 ? searchByName : vinyls;
   const endIndex = startIndex + pageSize;
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
-
-  //console.log(VinylsToRender);
 
   useEffect(() => {
     dispatch(getAllVinyls());
@@ -57,6 +41,12 @@ const Home = () => {
     }
   };
 
+  const handleReset = () =>{
+dispatch(reset())
+  }
+const handleGenre = (event) =>{
+dispatch(orderForGenre(event.target.value))
+}
 
   const handleOrderByTitle = (e) => {
     dispatch(orderByTitle(e.target.value));
@@ -74,7 +64,6 @@ const Home = () => {
     }
     dispatch(filterVinylsByDecade(startYear, endYear))
   }
-
   return (
     <div className="w-[100%] h-[92vh]">
           <div>
@@ -104,6 +93,17 @@ const Home = () => {
       <div>
         {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
       </div>
+      <button onClick={handleReset}>Reset</button>
+      <select name="genre"  onChange={handleGenre}id="">
+        <option value="" disabled>
+          Generos
+        </option>
+        <option value="Funk / Soul">Funk / Soul</option>
+        <option value="Rock">Rock</option>
+        <option value="Electronic">Electronic</option>
+        <option value="Hip Hop">Hip Hop</option>
+        <option value=""></option>
+      </select>
       <div className="w-[60%] h-[46vh] m-auto ">
         <Swiper
           spaceBetween={30}
@@ -190,6 +190,7 @@ const Home = () => {
           <div>
             {currentPage > 1 && <button onClick={handlePreviousPage}>P</button>}
           </div>
+      
           <div className="flex flex-wrap justify-center gap-4">
             {VinylsToRender.map((vinyls) => (
               <Card
@@ -199,6 +200,7 @@ const Home = () => {
                 year={vinyls.year}
                 cover_image={vinyls.cover_image}
               />
+          
             ))}
           </div>
           <div>
