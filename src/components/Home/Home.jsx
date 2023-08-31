@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const Home = () => {
 
   const dispatch= useDispatch();
-  const allVinyls= useSelector((state)=>state.allVinyls); //trayendo info.
+  const vinyls= useSelector((state)=>state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedDecade, setSelectedDecade] = useState("");
   const searchByName = useSelector((state) => state.search)
