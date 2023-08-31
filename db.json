@@ -1,14 +1,4 @@
 {
-  "pagination": {
-    "page": 1,
-    "pages": 200,
-    "per_page": 50,
-    "items": 8435830,
-    "urls": {
-      "last": "https://api.discogs.com/database/search?format=Vinyl&token=ccgnszOHRVmawzKRNLaNSLBFgpJEMJAnvdGFyyNL&page=200&per_page=50",
-      "next": "https://api.discogs.com/database/search?format=Vinyl&token=ccgnszOHRVmawzKRNLaNSLBFgpJEMJAnvdGFyyNL&page=2&per_page=50"
-    }
-  },
   "results": [
     {
       "country": "France",
