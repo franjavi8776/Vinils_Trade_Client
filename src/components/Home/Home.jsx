@@ -70,7 +70,6 @@ const Home = () => {
     }
     dispatch(filterVinylsByDecade(startYear, endYear));
   };
-
   return (
     <div className="w-[100%] h-[92vh]">
       <div>
