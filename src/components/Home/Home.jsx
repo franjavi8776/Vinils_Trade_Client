@@ -68,34 +68,6 @@ dispatch(orderForGenre(event.target.value))
   }
 
   return <div>
-     <div className="w-[100%] h-[92vh]">
-        {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
-     </div>
-     <div>
-      {currentPage > 1 && (
-       <button className={style.btnL} onClick={handlePreviousPage}>
-          P
-       </button>
-      )}
-    </div>
-    <div>
-      {currentVinyls.map((vinyls)=>(
-        <Card
-          key={vinyls.id}
-          id={vinyls.id}
-          title={vinyls.title}
-          year={vinyls.year}
-          cover_image={vinyls.cover_image}
-        />
-      ))}
-    </div>
-    <div>
-      {currentPage < totalPages && (
-        <button className={style.btnR} onClick={handleNextPage}>
-          N
-        </button>
-      )}
-    </div>
     <div>
       <select
         value={selectedDecade}
