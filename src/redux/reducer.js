@@ -12,6 +12,7 @@ const initialState = {
   vinyls: [],
   detail: {},
   search: [],
+  filteredVinyls: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -31,10 +32,13 @@ const reducer = (state = initialState, action) => {
 
     case FILTER_BY_DECADE:
       const { startYear, endYear } = action.payload;
+      console.log(startYear, endYear)
       const filteredVinyls = state.allVinyls.filter((vinyl) => {
         const vinylYear = parseInt(vinyl.year);
+        console.log(vinylYear)
         return vinylYear >= startYear && vinylYear <= endYear;
       });
+      console.log(filteredVinyls)
 
       return {
         ...state,

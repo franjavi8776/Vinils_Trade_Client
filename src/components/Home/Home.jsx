@@ -19,6 +19,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedDecade, setSelectedDecade] = useState('');
   const searchByName = useSelector((state) => state.search);
 
   const pageSize = 10;
@@ -59,21 +60,22 @@ const Home = () => {
   };
 
   const handleFilter = (event) => {
-    const selectedDecades = event.target.value;
-    let startYear, endYear;
-    if (selectedDecades === "2000") {
-      startYear = 2000;
-      endYear = new Date().getFullYear();
-    } else {
-      startYear = parseInt(selectedDecades);
-      endYear = startYear + 9;
-    }
-    dispatch(filterVinylsByDecade(startYear, endYear));
+    setSelectedDecade(event.target.value);
   };
+
+  const filteredVinyls = allVinyls.filter((vinyl) => {
+    if (selectedDecade === "2000") {
+      return parseInt(vinyl.year) >= 2000;
+    } else {
+      const startYear = parseInt(selectedDecade);
+      return parseInt(vinyl.year) >= startYear && parseInt(vinyl.year) <= startYear + 9;
+    }
+  });
   return (
     <div className="w-[100%] h-[92vh]">
       <div>
         <select
+        value={selectedDecade}
           onChange={handleFilter}
           className="bg-black text-white p-2 rounded"
         >
