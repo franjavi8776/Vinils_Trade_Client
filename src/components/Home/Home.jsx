@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react";
 import { useDispatch,useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { getAllVinyls } from "../../redux/actions";
+import { getAllVinyls, orderByTitle } from "../../redux/actions";
 
 const Home = () => {
   const dispatch=useDispatch();
@@ -33,7 +33,17 @@ const Home = () => {
     }
   };
 
+  const handleOrderByTitle = (e) => {
+    dispatch(orderByTitle(e.target.value));
+    setName(!title);
+  };//por nombre ordenador 
+
   return <div>
+     <select onChange={handleOrderByTitle}>
+        <option value="">Ordenar p/Titulo</option>
+        <option value="A">Ascendente</option>
+        <option value="D">Descendente</option>
+     </select>
      <div className={style.homeNumber}>
         {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
      </div>

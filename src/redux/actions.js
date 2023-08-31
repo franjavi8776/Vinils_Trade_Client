@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_ALL_VINYLS = "GET_ALL_VINYLS";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
+export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 
 const endpoint = "http://localhost:3000/results";
 
@@ -44,5 +45,12 @@ export const getVinylsForName = (name) => {
       console.log(error);
     }
   }
+};
+
+export const orderByTitle = (order) => {
+  return {
+    type: ORDER_BY_TITLE,
+    payload: order,
+  };
 };
 
