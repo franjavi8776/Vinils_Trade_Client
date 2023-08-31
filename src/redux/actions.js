@@ -5,6 +5,9 @@ export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
 export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST"
 export const RESET = "RESET"
+export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
+export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
+
 const endpoint = "http://localhost:3001/results/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -50,6 +53,14 @@ export const getVinylsForName = (title) => {
     }
   };
 };
+
+export const orderByTitle = (order) => {
+  return {
+    type: ORDER_BY_TITLE,
+    payload: order,
+  };
+};
+
 export const postVinyls = (dato)  => {
     return async () => {
       try {
@@ -73,3 +84,13 @@ export const orderForGenre = (name) =>{
     payload:name
   }
 }
+
+
+export const filterVinylsByDecade = (startYear, endYear) => {
+  return {
+    type: FILTER_BY_DECADE,
+    payload: { startYear, endYear },
+  };
+};
+
+
