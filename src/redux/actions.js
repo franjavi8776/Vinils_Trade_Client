@@ -5,27 +5,25 @@ export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 
-const endpoint = "http://localhost:3000/results";
+const endpoint = "http://localhost:3001/results/";
 
-export const getAllVinyls=()=>async(dispatch)=>{
-    try {
-        const endpoint="http://localhost:3000/results"
-        const response= await axios.get(endpoint);
-        const data=response.data;
-        return dispatch({
-            type:GET_ALL_VINYLS,
-            payload:data
-        });
-    } catch (error) {
-        console.log(error);
-    }
+export const getAllVinyls = () => async (dispatch) => {
+  try {
+    const response = await axios.get(endpoint);
+    const data = response.data;
+
+    dispatch({
+      type: GET_ALL_VINYLS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
-
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const endpoint = `http://localhost:3000/results/${id}`;
-    const response = await axios.get(endpoint);
+    const response = await axios.get(endpoint + id);
     const data = response.data;
     dispatch({ type: GET_DETAIL, payload: data });
   } catch (error) {
@@ -44,7 +42,7 @@ export const getVinylsForName = (name) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 };
 
 export const orderByTitle = (order) => {
@@ -53,4 +51,5 @@ export const orderByTitle = (order) => {
     payload: order,
   };
 };
+
 

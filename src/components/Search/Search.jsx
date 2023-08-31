@@ -1,15 +1,14 @@
-import React from 'react';
-import {useSelector, useDispatch } from 'react-redux/es/hooks/useSelector';
-import { getVinylsForName } from '../../redux/actions';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getVinylsForName } from "../../redux/actions";
 const Search = () => {
-  const searchs = useSelector((state)=> state.search)
-  const dispatch  = useDispatch()
-const handlerChange = (event)=>{
-dispatch(getVinylsForName(event.target.value))
-}
+  const searchs = useSelector((state) => state.search);
+  const dispatch = useDispatch();
+  const handlerChange = (event) => {
+    dispatch(getVinylsForName(event.target.value));
+  };
 
   return (
-
     <div className="flex items-center justify-center p-8 bg-gradient-to-r from-gray-700 to-gray-900">
       <input
         onChange={handlerChange}
@@ -25,4 +24,3 @@ dispatch(getVinylsForName(event.target.value))
 };
 
 export default Search;
-

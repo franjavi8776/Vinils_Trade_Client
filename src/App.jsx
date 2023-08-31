@@ -6,7 +6,6 @@ import Error from "./components/Error/Error";
 import Detail from "./components/Detail/Detail";
 import Navbar from "./components/Navbar/Navbar";
 
-
 function App() {
   return (
     <div className="App">
@@ -14,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/form" element={<Form />}></Route>
+        <Route path="/form" element={<Form />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
