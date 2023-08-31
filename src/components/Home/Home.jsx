@@ -48,7 +48,7 @@ const Home = () => {
   }
 
   return <div>
-     <div className={style.homeNumber}>
+     <div className="w-[100%] h-[92vh]">
         {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
      </div>
      <div>
