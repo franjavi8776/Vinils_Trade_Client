@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSelector, useDispatch } from 'react-redux/es/hooks/useSelector';
+import {useSelector, useDispatch } from 'react-redux';
 import { getVinylsForName } from '../../redux/actions';
 const Search = () => {
   const searchs = useSelector((state)=> state.search)

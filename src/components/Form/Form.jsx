@@ -1,10 +1,10 @@
 import  React, {useState} from "react";
 import { validateVinylsForm } from "./validate";
 import { useDispatch } from "react-redux";
-import { postVinyls } from "../redux/actions";
+import { postVinyls } from "../../redux/actions";
 
 const Form = () => {
-  const [vinyls, setVinyls] = useState({Title:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""});
+  const [vinyls, setVinyls] = useState({Title:"", Artist:"", Year:"",  Image:"", Country:""});
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
 
@@ -25,22 +25,22 @@ const Form = () => {
   }
 
   const handlerSubmit = () => {
-    setErrors({Title:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""})
+    setErrors({Title:"", Artist:"", Year:"",  Image:"", Country:""}) // Gender:"", Description:"", Price:"", Condition:"",
 
     dispatch(postVinyls(vinyls))
 
     alert("Vinilo creado correctamente")
 
-    setVinyls({Title:"", Artist:"", Gender:"", Description:"", Year:"", Price:"", Condition:"", Image:""})
+    setVinyls({Title:"", Artist:"", Year:"",  Image:"", Country:""})
   }
 
 
   
   
   return (
-    <div className="p-4">
+    <div className="border p-4">
       <form onSubmit={handlerSubmit} className="max-w-md mx-auto">
-        <div className="mb-4">
+        <div className="mb-4 ">
           <label className="block font-bold mb-1">Titulo:</label>
           <input
             type="text"
@@ -66,7 +66,20 @@ const Form = () => {
           />
           {errors.Artist && <p className="text-red-500">{errors.Artist}</p>}
         </div>
-        <div>
+        <div >
+          <label className="block font-bold mb-1">Pais:</label>
+          <input 
+          type="text"
+          name="Country"
+          value ={ vinyls.Country }
+          onChange={ handleChange }
+          className="border rounded w-full p-2 "
+          placeholder="Ingrese país..."
+          required
+          />
+          {errors.Country && <p className="text-red-500">{errors.Country}</p>}
+        </div>
+        {/* <div>
           <label className="block font-bold mb-1">Género:</label>
           <input
             type="text"
@@ -78,8 +91,8 @@ const Form = () => {
             required
           />
           {errors.Gender && <p className="text-red-500">{errors.Gender}</p>}
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <label className="block font-bold mb-1">Descripción:</label>
           <textarea
             name="Description"
@@ -90,7 +103,7 @@ const Form = () => {
             required
           />
           {errors.Description && <p className="text-red-500">{errors.Description}</p>}
-        </div>
+        </div> */}
         <div>
           <label className="block font-bold mb-1">Año:</label>
           <input
@@ -104,7 +117,7 @@ const Form = () => {
           />
           {errors.Year && <p className="text-red-500">{errors.Year}</p>}
         </div>
-        <div>
+        {/* <div>
           <label className="block font-bold mb-1">Precio:</label>
           <input
             type="number"
@@ -116,8 +129,8 @@ const Form = () => {
             required
           />
           {errors.Price && <p className="text-red-500">{errors.Price}</p>}
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <label className="block font-bold mb-1">Condición:</label>
           <input
             type="text"
@@ -129,7 +142,7 @@ const Form = () => {
             required
           />
           {errors.Condition && <p className="text-red-500">{errors.Condition}</p>}
-        </div>
+        </div> */}
         <div>
           <label className="block font-bold mb-1">Imagen:</label>
           <input

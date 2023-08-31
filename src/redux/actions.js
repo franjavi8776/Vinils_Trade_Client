@@ -3,6 +3,8 @@ import axios from "axios";
 export const GET_ALL_VINYLS = "GET_ALL_VINYLS";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
+export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
+
 
 const endpoint = "http://localhost:3000/results";
 
@@ -51,3 +53,10 @@ export const postVinyls = (dato)  => {
       }
     }
   }
+
+export const filterVinylsByDecade = (startYear, endYear) => {
+  return {
+    type: FILTER_BY_DECADE,
+    payload: { startYear, endYear },
+  };
+};
