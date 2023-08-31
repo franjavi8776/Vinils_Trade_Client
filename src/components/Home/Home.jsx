@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+
+import React,{ useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { getAllVinyls, orderByTitle } from "../../redux/actions";
+import { getAllVinyls, orderByTitle,filterVinylsByDecade } from "../../redux/actions";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -22,13 +23,13 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const vinyls = useSelector((state) => state.vinyls); //trayendo info.
-  const searchByName = useSelector((state) => state.search);
+
+  const dispatch= useDispatch();
+  const allVinyls= useSelector((state)=>state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
-
-  console.log(vinyls);
-
+  const [selectedDecade, setSelectedDecade] = useState("");
+  
+  
   const pageSize = 10;
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -56,15 +57,45 @@ const Home = () => {
     }
   };
 
+
   const handleOrderByTitle = (e) => {
     dispatch(orderByTitle(e.target.value));
     setName(!title);
   };
 
-
+  const handleFilter = () => {
+    let startYear, endYear;
+    if(selectedDecade === "2000") {
+      startYear= 2000;
+      endYear = new Date().getFullYear();
+    } else {
+      startYear = parseInt(selectedDecade);
+      endYear = startYear + 9;
+    }
+    dispatch(filterVinylsByDecade(startYear, endYear))
+  }
 
   return (
     <div className="w-[100%] h-[92vh]">
+          <div>
+      <select
+        value={selectedDecade}
+        onChange={(e) => {
+          setSelectedDecade(e.target.value);
+          handleFilter(e.target.value);
+        }}
+        className="bg-black text-white p-2 rounded"
+      >
+        <option value="">Selecciona una década</option>
+        <option value="1940">1940s</option>
+        <option value="1950">1950s</option>
+        <option value="1960">1960s</option>
+        <option value="1970">1970s</option>
+        <option value="1980">1980s</option>
+        <option value="1990">1990s</option>
+        <option value="2000">2000s en adelante</option>
+      </select>
+    </div>
       <select onChange={handleOrderByTitle}>
         <option value="">Ordenar p/Titulo</option>
         <option value="A">Ascendente</option>

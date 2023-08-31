@@ -16,18 +16,18 @@ export function validateVinylsForm(input) {
     }
 
     // Validación del campo Género
-    if (!input.Gender) {
-        errors.Gender = "Debes seleccionar un género";
-    } else if (input.Gender.length >= 20) {
-        errors.Gender = "El genero no puede tener más de 20 caracteres";
-    }
+    // if (!input.Gender) {
+    //     errors.Gender = "Debes seleccionar un género";
+    // } else if (input.Gender.length >= 20) {
+    //     errors.Gender = "El genero no puede tener más de 20 caracteres";
+    // }
 
     // Validación del campo Descripción
-    if (!input.Description) {
-        errors.Description = "Debes ingresar una descripción";
-    } else if (input.Description.length >= 120) {
-        errors.Description = "La descripción no puede tener más de 200 caracteres";
-    }
+    // if (!input.Description) {
+    //     errors.Description = "Debes ingresar una descripción";
+    // } else if (input.Description.length >= 120) {
+    //     errors.Description = "La descripción no puede tener más de 200 caracteres";
+    // }
 
     // Validación del campo Año
     if (!input.Year) {
@@ -36,17 +36,22 @@ export function validateVinylsForm(input) {
         errors.Year = "El año debe ser un número entre 1900 y el año actual";
     }
 
-    // Validación del campo Precio
-    if (!input.Price) {
-        errors.Price = "Debes ingresar un precio";
-    } else if (isNaN(input.Price) || input.Price <= 0) {
-        errors.Price = "El precio debe ser un número mayor que 0";
+    //Validacion del campo Pais
+    if(!input.Country){
+        errors.Country="Debe indicar un pais"
     }
 
+    // Validación del campo Precio
+    // if (!input.Price) {
+    //     errors.Price = "Debes ingresar un precio";
+    // } else if (isNaN(input.Price) || input.Price <= 0) {
+    //     errors.Price = "El precio debe ser un número mayor que 0";
+    // }
+
     // Validación del campo Condición
-    if (!input.Condition) {
-        errors.Condition = "Debes seleccionar una condición";
-    }
+    // if (!input.Condition) {
+    //     errors.Condition = "Debes seleccionar una condición";
+    // }
 
     // Validación del campo Imagen
     if (!input.Image) {
