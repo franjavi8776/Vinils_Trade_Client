@@ -24,12 +24,12 @@ const Navbar = () => {
   }, []);
 
   const navbarClass = isScrolled
-    ? "bg-black transparent transition-all duration-100"
-    : "bg-black transparent from-white to-red-700 transition-all duration-100";
+    ? "  transition-all duration-100"
+    : " transition-all duration-100";
 
   const navbarContentClass = isScrolled
-    ?"flex justify-between text-center items-center transition-all duration-100 h-30"
-    : "flex justify-center items-center  transition-all duration-100";
+    ?"flex bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg  justify-between text-center items-center transition-all duration-100 h-30"
+    : "flex bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg  justify-center items-center  transition-all duration-100";
 
   return (
         <><Search /><div className={`sticky top-0 ${navbarClass} text-white z-50 `}>
