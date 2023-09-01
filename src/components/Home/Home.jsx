@@ -14,7 +14,6 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
@@ -70,34 +69,14 @@ const Home = () => {
       endYear = startYear + 9;
     }
     dispatch(filterVinylsByDecade(startYear, endYear));
-    }
+  };
   return (
     <div className="w-[100%] h-[92vh]">
-      <div>
-        <select
-          onChange={handleFilter}
-          className="bg-black text-white p-2 rounded"
-        >
-          <option value="">Selecciona una década</option>
-          <option value="1940">1940s</option>
-          <option value="1950">1950s</option>
-          <option value="1960">1960s</option>
-          <option value="1970">1970s</option>
-          <option value="1980">1980s</option>
-          <option value="1990">1990s</option>
-          <option value="2000">2000s en adelante</option>
-        </select>
-      </div>
-      <select onChange={handleOrderByTitle}>
-        <option value="">Ordenar p/Titulo</option>
-        <option value="A">Ascendente</option>
-        <option value="D">Descendente</option>
-      </select>
-      <div>
+      {/* <div>
         {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
-      </div>
-      <button onClick={handleReset}>Reset</button>
-      <div className="w-[60%] h-[46vh] m-auto ">
+      </div> */}
+      {/* <button onClick={handleReset}>Reset</button> */}
+      <div className="w-[100%] h-[60vh]">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -193,12 +172,20 @@ const Home = () => {
               <option value="1990">1990s</option>
               <option value="2000">2000s en adelante</option>
             </select>
-            <select onChange={handleOrderByTitle} className="bg-black text-white p-2 rounded">
+            <select
+              onChange={handleOrderByTitle}
+              className="bg-black text-white p-2 rounded"
+            >
               <option value="">Ordenar p/Titulo</option>
               <option value="A">Ascendente</option>
               <option value="D">Descendente</option>
             </select>
-            <select name="genre" onChange={handleGenre} id="" className="bg-black text-white p-2 rounded">
+            <select
+              name="genre"
+              onChange={handleGenre}
+              id=""
+              className="bg-black text-white p-2 rounded"
+            >
               <option value="" disabled>
                 Generos
               </option>
@@ -234,7 +221,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Home;

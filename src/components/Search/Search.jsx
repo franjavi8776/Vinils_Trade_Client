@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVinylsForName } from "../../redux/actions";
-import Vinyls from "../../assets/Vinyls.png";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
@@ -26,8 +25,6 @@ const Search = () => {
       <button className="px-2 py-1 bg-red-500 text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
         Search
       </button>
-
-      <img src={Vinyls} alt="Vinyls-Trade" className="w-28 ml-8" />
     </div>
   );
 };
