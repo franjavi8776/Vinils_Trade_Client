@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,12 @@ const Home = () => {
   const startIndex = (currentPage - 1) * pageSize;
   const renderVinyls = searchByName.length > 0 ? searchByName : vinyls;
   const endIndex = startIndex + pageSize;
+  // let VinylsToRender = [];
+
+  // if (Array.isArray(renderVinyls)) {
+  //   VinylsToRender = renderVinyls.slice(startIndex, endIndex);
+  // }
+
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
 
   useEffect(() => {
@@ -76,89 +83,97 @@ const Home = () => {
         {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
       </div> */}
       {/* <button onClick={handleReset}>Reset</button> */}
-      <div className="w-[100%] h-[60vh]">
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 1500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh]"
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh] "
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh]"
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh]"
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh] "
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh]"
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh] "
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh] "
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              className="w-[100%] h-[40vh] "
-              src="/carrusel.jpg"
-              alt="image"
-            />
-          </SwiperSlide>
-        </Swiper>
+      <div className="w-[100%] h-[50vh] flex ">
+        <div className="w-[40%] h-[50vh] ">
+          {/* <video autoPlay>
+            <source src="/vinylVideo.mp4" type="video/mp4" />
+          </video> */}
+        </div>
+        <div className="w-[60%] h-[45vh]">
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh]"
+                src="/carrusel1.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh] "
+                src="/carrusel2.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh]"
+                src="/carrusel3.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh]"
+                src="/carrusel4.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh] "
+                src="/carrusel5.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh]"
+                src="/carrusel2.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh] "
+                src="/carrusel3.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh] "
+                src="/carrusel4.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[45vh] "
+                src="/carrusel5.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </div>
-      <div className="w-[100%] h-[56vh] flex flex-row">
-        <div className="w-[20%]">
-          <div className="w-[80%] m-auto flex flex-col gap-5">
+
+      <div className="w-[100%] h-[70vh] flex flex-row">
+        <div className="w-[20%] h-[56vh] flex items-center">
+          <div className="w-[80%] m-auto flex flex-col gap-20">
             <select
               onChange={handleFilter}
               className="bg-black text-white p-2 rounded"
@@ -197,9 +212,13 @@ const Home = () => {
             </select>
           </div>
         </div>
-        <div className="w-[80%] flex">
+        <div className="w-[80%] h-[60vh]  flex items-center">
           <div>
-            {currentPage > 1 && <button onClick={handlePreviousPage}>P</button>}
+            {currentPage > 1 && (
+              <button onClick={handlePreviousPage}>
+                <img className="w-16" src="/left.png" alt="" />
+              </button>
+            )}
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -215,10 +234,15 @@ const Home = () => {
           </div>
           <div>
             {currentPage < totalPages && (
-              <button onClick={handleNextPage}>N</button>
+              <button onClick={handleNextPage}>
+                <img className="w-16" src="/right.png" alt="" />
+              </button>
             )}
           </div>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
