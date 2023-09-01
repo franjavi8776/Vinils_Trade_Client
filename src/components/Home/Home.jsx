@@ -21,7 +21,6 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   // const [selectedDecade, setSelectedDecade] = useState("");
   const searchByName = useSelector((state) => state.search);
-
   const pageSize = 10;
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -36,7 +35,10 @@ const Home = () => {
   // }
 
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
-
+  const pagesArray = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pagesArray.push(i);
+  }
   useEffect(() => {
     dispatch(getAllVinyls());
   }, [dispatch]);
@@ -240,6 +242,17 @@ const Home = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className=" bg-red-800 flex justify-center items-center space-x-4">
+        {pagesArray.map((pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => setCurrentPage(pageNumber)}
+            className="bg-gray-800 rounded-lg hover:bg-gray-700 text-white font-bold py-2 px-4"
+          >
+            {pageNumber}
+          </button>
+        ))}
       </div>
       <div>
         <Footer />
