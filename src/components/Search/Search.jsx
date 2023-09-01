@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVinylsForName } from "../../redux/actions";
-import Vinyls from "../../assets/Vinyls.png";
+import Vinyls from "../../assets/Vinyls2.png";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
