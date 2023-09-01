@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVinylsForName } from "../../redux/actions";
-import Vinyls from "../../assets/Vinyls2.png";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
@@ -14,20 +13,18 @@ const Search = () => {
   };
 
   return (
-    <div className="flex items-center w-[100vh] justify-center h-32  ">
+    <div>
       <input
         onChange={handlerChange}
         type="search"
         value={inputValue}
-        className=" mr-2 p-0.5 w-96 bg-red-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 border border-red-400" // Agrega las clases de borde
+        className=" mr-2 p-0.5 w-96 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 " // Agrega las clases de borde
         placeholder="Buscar vinilos..."
       />
 
-      <button className="px-2 py-1 bg-red-500 text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+      <button className="px-2 py-1 bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 rounded-md">
         Search
       </button>
-
-      <img src={Vinyls} alt="Vinyls-Trade" className="w-28 ml-8" />
     </div>
   );
 };

@@ -9,7 +9,6 @@ const Form = () => {
     Artist: "",
     Year: "",
     Image: "",
-    Country: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -30,13 +29,13 @@ const Form = () => {
   };
 
   const handlerSubmit = () => {
-    setErrors({ Title: "", Artist: "", Year: "", Image: "", Country: "" }); // Gender:"", Description:"", Price:"", Condition:"",
+    setErrors({ Title: "", Artist: "", Year: "", Image: "" }); // Gender:"", Description:"", Price:"", Condition:"",
 
     dispatch(postVinyls(vinyls));
 
     alert("Vinilo creado correctamente");
 
-    setVinyls({ Title: "", Artist: "", Year: "", Image: "", Country: "" });
+    setVinyls({ Title: "", Artist: "", Year: "", Image: "" });
   };
 
   return (
@@ -68,7 +67,7 @@ const Form = () => {
           />
           {errors.Artist && <p className="text-red-500">{errors.Artist}</p>}
         </div>
-        <div>
+        {/* <div>
           <label className="block font-bold mb-1">Pais:</label>
           <input
             type="text"
@@ -80,7 +79,7 @@ const Form = () => {
             required
           />
           {errors.Country && <p className="text-red-500">{errors.Country}</p>}
-        </div>
+        </div> */}
         {/* <div>
           <label className="block font-bold mb-1">Género:</label>
           <input
