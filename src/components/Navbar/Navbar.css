@@ -1,18 +1,30 @@
-@keyframes move-gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    25% { /* Cambia a 25% */
-      background-position: 100% 50%;
-    }
-    50% { /* Cambia a 50% */
-      background-position: 0% 50%;
-    }
-  }
-  
-  .animate-gradient-bg {
-    background: linear-gradient(to right, #fca5a5, #f9d5e5);
-    background-size: 400% 400%;
-    animation: move-gradient 3s linear infinite; /* Cambia a 3s para hacerlo más rápido */
-  }
-   
+/* Navbar.css */
+.link-with-hover-line {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid transparent;
+  transition: transform 0.3s ease, border-bottom-color 0.3s ease; /* Agrega una transición a transform y border-bottom-color */
+}
+
+.link-with-hover-line:hover {
+  transform: scaleX(1); /* Escala normal (sin efecto de movimiento) al inicio del hover */
+  border-bottom-color: #8b94a3;
+}
+
+.link-with-hover-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #adb3bd;
+  transform-origin: bottom right;
+  transform: scaleX(0); /* Inicia con escala cero para ocultar la línea */
+  transition: transform 0.8s ease; /* Agrega una transición a transform */
+}
+
+.link-with-hover-line:hover::after {
+  transform: scaleX(1); /* Escala de vuelta a 1 para mostrar la línea al hacer hover */
+}

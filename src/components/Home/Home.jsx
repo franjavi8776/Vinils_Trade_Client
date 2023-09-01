@@ -14,7 +14,6 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
@@ -30,7 +29,13 @@ const Home = () => {
   const renderVinyls = searchByName.length > 0 ? searchByName : vinyls;
   const endIndex = startIndex + pageSize;
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
+  const pagesArray = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pagesArray.push(i);
+  }
+  console.log(pagesArray);
 
+  console.log(pagesArray);
   useEffect(() => {
     dispatch(getAllVinyls());
   }, [dispatch]);
@@ -70,7 +75,7 @@ const Home = () => {
       endYear = startYear + 9;
     }
     dispatch(filterVinylsByDecade(startYear, endYear));
-    }
+  };
   return (
     <div className="w-[100%] h-[92vh]">
       <div>
@@ -193,12 +198,20 @@ const Home = () => {
               <option value="1990">1990s</option>
               <option value="2000">2000s en adelante</option>
             </select>
-            <select onChange={handleOrderByTitle} className="bg-black text-white p-2 rounded">
+            <select
+              onChange={handleOrderByTitle}
+              className="bg-black text-white p-2 rounded"
+            >
               <option value="">Ordenar p/Titulo</option>
               <option value="A">Ascendente</option>
               <option value="D">Descendente</option>
             </select>
-            <select name="genre" onChange={handleGenre} id="" className="bg-black text-white p-2 rounded">
+            <select
+              name="genre"
+              onChange={handleGenre}
+              id=""
+              className="bg-black text-white p-2 rounded"
+            >
               <option value="" disabled>
                 Generos
               </option>
@@ -233,8 +246,19 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-center space-x-4">
+        {pagesArray.map((pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => setCurrentPage(pageNumber)}
+            className="bg-gray-800 rounded-lg hover:bg-gray-700 text-white font-bold py-2 px-4"
+          >
+            {pageNumber}
+          </button>
+        ))}
+      </div>
     </div>
-  )
+  );
 };
 
 export default Home;

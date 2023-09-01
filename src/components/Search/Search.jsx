@@ -14,22 +14,24 @@ const Search = () => {
   };
 
   return (
-    <div className="flex items-center w-[100vh] justify-center h-32  ">
-      <input
-        onChange={handlerChange}
-        type="search"
-        value={inputValue}
-        className=" mr-2 p-0.5 w-96 bg-red-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 border border-red-400" // Agrega las clases de borde
-        placeholder="Buscar vinilos..."
-      />
 
-      <button className="px-2 py-1 bg-red-500 text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
-        Search
-      </button>
+      <div className="bg-black bg-opacity-50 flex flex-col items-center w-full justify-center">
+      <img src={Vinyls} alt="Vinyls-Trade" className="w-48 ml-8" />
+      <div className="w-full h-0.5 bg-slate-400 bg-opacity-20 mt-2"></div>
+        {/* <input
+          onChange={handlerChange}
+          type="search"
+          value={inputValue}
+          className="p-2 w-96 bg-red-800 text-white m-4 focus:outline-none focus:ring-2 focus:ring-red-400 border border-red-400 placeholder-gray-400"
+          placeholder="Buscar vinilos..."
+        />
 
-      <img src={Vinyls} alt="Vinyls-Trade" className="w-28 ml-8" />
-    </div>
+        <button className="px-2 py-1 bg-red-500 text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+          Search
+        </button> */}
+      </div>
   );
 };
 
 export default Search;
+

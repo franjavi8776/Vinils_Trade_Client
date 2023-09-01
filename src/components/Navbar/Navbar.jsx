@@ -1,26 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Search from "../Search/Search";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 160) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navbarClass = isScrolled
+    ? "bg-black transparent transition-all duration-100"
+    : "bg-black transparent from-white to-red-700 transition-all duration-100";
+
+  const navbarContentClass = isScrolled
+    ?"flex justify-between text-center items-center transition-all duration-100 h-30"
+    : "flex justify-center items-center  transition-all duration-100";
+
   return (
-    <div className="sticky top-0 bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg  z-50">
-      <div className=" flex items-center justify-between max-w-screen-xl mx-auto">
-        <div className="  gap-6 flex flex-wrap w-2/3">
-          <Link to="/Login" className="text-white hover:text-blue-300">
-            Crear tu cuenta
-          </Link>
-          <Link to="/form" className="text-white hover:text-blue-300">
-            Publica tu vinilo
-          </Link>
-          <Link to="/" className="text-white hover:text-blue-300">
-            Home
-          </Link>
-        </div>
-        <Search />
+        <><Search /><div className={`sticky top-0 ${navbarClass} text-white z-50 `}>
+      <div className={navbarContentClass}>
+        <Link
+          to="/login"
+          className="m-4 text-white font-semibold link-with-hover-line"
+        >
+          Iniciar sesión
+        </Link>
+        <Link
+          to="/sing"
+          className="m-4 text-white font-semibold link-with-hover-line"
+        >
+          Regístrate
+        </Link>
+        <Link
+          to="/form"
+          className="m-4 text-white font-semibold link-with-hover-line"
+        >
+          Publicar
+        </Link>
+
       </div>
-    </div>
+    </div></>
   );
 };
 
 export default Navbar;
+
+
+
