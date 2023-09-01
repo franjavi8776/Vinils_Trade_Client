@@ -5,7 +5,7 @@ import {
   ORDER_FOR_GENRE,
   RESET,
   FILTER_BY_DECADE,
-  ORDER_BY_TITLE
+  ORDER_BY_TITLE,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -29,26 +29,27 @@ const reducer = (state = initialState, action) => {
         search: action.payload,
       };
 
+    case FILTER_BY_DECADE:
+      const { startYear, endYear } = action.payload;
+      const filteredVinyls = state.vinyls.filter((vinyl) => {
+        const vinylYear = parseInt(vinyl.year);
+        return vinylYear >= startYear && vinylYear <= endYear;
+      });
 
-
-      case FILTER_BY_DECADE:
-        const { startYear, endYear } = action.payload;
-        const filteredVinyls = state.vinyls.filter((vinyl) => {
-          const vinylYear = parseInt(vinyl.year);
-          return vinylYear >= startYear && vinylYear <= endYear;
-        });
-  
-        return {
-          ...state,
-          allVinyls: filteredVinyls,
-        };
+      return {
+        ...state,
+        allVinyls: filteredVinyls,
+      };
 
     case GET_DETAIL:
       return {
         ...state,
-        allVinyls: action.payload,
+        detail: action.payload,
       };
     case ORDER_FOR_GENRE:
+      const genre = state.vinyls.filter((vinyl) =>
+        vinyl.genre.some((genre) => genre === action.payload)
+      );
       return {
         ...state,
         allVinyls: state.vinyls.filter((vinyl) =>
@@ -66,7 +67,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allVinyls: state.allVinyls.slice().sort((a, b) => {
-          return a.title.localeCompare(b.title) * orderDirection; //slice para cortar cuando haga el sort y lo compare con el nombre de a y nombre de b para ascendente o descendente 
+          return a.title.localeCompare(b.title) * orderDirection; //slice para cortar cuando haga el sort y lo compare con el nombre de a y nombre de b para ascendente o descendente
         }),
       };
     }

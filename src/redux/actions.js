@@ -3,8 +3,8 @@ import axios from "axios";
 export const GET_ALL_VINYLS = "GET_ALL_VINYLS";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
-export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST"
-export const RESET = "RESET"
+export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST";
+export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
 
@@ -28,6 +28,7 @@ export const getVinylDetail = (id) => async (dispatch) => {
   try {
     const response = await axios.get(endpoint + id);
     const data = response.data;
+    console.log(data);
     dispatch({ type: GET_DETAIL, payload: data });
   } catch (error) {
     console.log(error);
@@ -37,9 +38,13 @@ export const getVinylsForName = (title) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(endpoint);
-      if (response.status === 200 && response.data && Array.isArray(response.data)) {
-        const filteredData = response.data.filter(
-          (vinyl) => vinyl.title.toLowerCase().includes(title.toLowerCase())
+      if (
+        response.status === 200 &&
+        response.data &&
+        Array.isArray(response.data)
+      ) {
+        const filteredData = response.data.filter((vinyl) =>
+          vinyl.title.toLowerCase().includes(title.toLowerCase())
         );
         dispatch({
           type: GET_VINYLS_FOR_NAME,
@@ -64,27 +69,26 @@ export const orderByTitle = (order) => {
 export const postVinyls = (dato) => {
   return async () => {
     try {
-      await axios.post(`http://localhost:3001/vinyls`, dato).then((response) => response.data)
-
+      await axios
+        .post(`http://localhost:3001/vinyls`, dato)
+        .then((response) => response.data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
-}
+  };
+};
 
 export const reset = () => {
   return {
-    type: RESET
-  }
-}
+    type: RESET,
+  };
+};
 export const orderForGenre = (name) => {
-
   return {
     type: ORDER_FOR_GENRE,
-    payload: name
-  }
-}
-
+    payload: name,
+  };
+};
 
 export const filterVinylsByDecade = (startYear, endYear) => {
   return {
@@ -92,5 +96,3 @@ export const filterVinylsByDecade = (startYear, endYear) => {
     payload: { startYear, endYear },
   };
 };
-
-

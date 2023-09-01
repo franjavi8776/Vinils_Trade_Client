@@ -3,6 +3,8 @@ import Search from "../Search/Search";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
+
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -33,24 +35,17 @@ const Navbar = () => {
         <><Search /><div className={`sticky top-0 ${navbarClass} text-white z-50 `}>
       <div className={navbarContentClass}>
         <Link
-          to="/login"
-          className="m-4 text-white font-semibold link-with-hover-line"
-        >
-          Iniciar sesión
-        </Link>
-        <Link
-          to="/sing"
-          className="m-4 text-white font-semibold link-with-hover-line"
-        >
-          Regístrate
-        </Link>
-        <Link
           to="/form"
           className="m-4 text-white font-semibold link-with-hover-line"
         >
           Publicar
         </Link>
-
+        <Link
+          to="/Home"
+          className="m-4 text-white font-semibold link-with-hover-line"
+        >
+          Home
+        </Link>
       </div>
     </div></>
   );
