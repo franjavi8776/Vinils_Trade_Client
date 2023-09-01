@@ -4,7 +4,13 @@ import { useDispatch } from "react-redux";
 import { postVinyls } from "../../redux/actions";
 
 const Form = () => {
-  const [vinyls, setVinyls] = useState({Title:"", Artist:"", Year:"",  Image:"", Country:""});
+  const [vinyls, setVinyls] = useState({
+    Title: "",
+    Artist: "",
+    Year: "",
+    Image: "",
+    Country: "",
+  });
 
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
@@ -24,14 +30,14 @@ const Form = () => {
   };
 
   const handlerSubmit = () => {
-    setErrors({Title:"", Artist:"", Year:"",  Image:"", Country:""}) // Gender:"", Description:"", Price:"", Condition:"",
+    setErrors({ Title: "", Artist: "", Year: "", Image: "", Country: "" }); // Gender:"", Description:"", Price:"", Condition:"",
 
     dispatch(postVinyls(vinyls));
 
     alert("Vinilo creado correctamente");
 
-    setVinyls({Title:"", Artist:"", Year:"",  Image:"", Country:""})
-  }
+    setVinyls({ Title: "", Artist: "", Year: "", Image: "", Country: "" });
+  };
 
   return (
     <div className="border p-4">
@@ -62,16 +68,16 @@ const Form = () => {
           />
           {errors.Artist && <p className="text-red-500">{errors.Artist}</p>}
         </div>
-        <div >
+        <div>
           <label className="block font-bold mb-1">Pais:</label>
-          <input 
-          type="text"
-          name="Country"
-          value ={ vinyls.Country }
-          onChange={ handleChange }
-          className="border rounded w-full p-2 "
-          placeholder="Ingrese país..."
-          required
+          <input
+            type="text"
+            name="Country"
+            value={vinyls.Country}
+            onChange={handleChange}
+            className="border rounded w-full p-2 "
+            placeholder="Ingrese país..."
+            required
           />
           {errors.Country && <p className="text-red-500">{errors.Country}</p>}
         </div>
