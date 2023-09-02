@@ -54,7 +54,7 @@ const Form = () => {
           />
           {errors.Title && <p className="text-red-500">{errors.Title}</p>}
         </div>
-        <div>
+        {/* <div>
           <label className="block font-bold mb-1">Artista:</label>
           <input
             type="text"
@@ -66,7 +66,7 @@ const Form = () => {
             required
           />
           {errors.Artist && <p className="text-red-500">{errors.Artist}</p>}
-        </div>
+        </div> */}
         {/* <div>
           <label className="block font-bold mb-1">Pais:</label>
           <input

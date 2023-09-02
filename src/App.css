@@ -1,5 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-style: Arial, Helvetica, sans-serif;
+}
 body {
-    background: linear-gradient(to right,
-            rgba(133, 133, 133, 0.95),
-            rgba(242, 243, 252, 0.95));
+  background: linear-gradient(
+    to right,
+    rgba(133, 133, 133, 0.95),
+    rgba(242, 243, 252, 0.95)
+  );
 }
