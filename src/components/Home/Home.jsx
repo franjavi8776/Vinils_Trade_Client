@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Footer from "../Footer/Footer";
+import "./Home.css"
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -87,9 +88,14 @@ const Home = () => {
       {/* <button onClick={handleReset}>Reset</button> */}
       <div className="w-[100%] h-[50vh] flex ">
         <div className="w-[40%] h-[50vh] ">
-          {/* <video autoPlay>
-            <source src="/vinylVideo.mp4" type="video/mp4" />
-          </video> */}
+          <iframe
+            src="https://www.youtube.com/embed/6iOd2iDkdn4"
+            frameborder="0"
+            title="Video"
+            width="100%"
+            height="419px"
+            allowFullScreen
+          ></iframe>
         </div>
         <div className="w-[60%] h-[45vh]">
           <Swiper
@@ -214,7 +220,7 @@ const Home = () => {
             </select>
           </div>
         </div>
-        <div className="w-[80%] h-[60vh]  flex items-center">
+        <div className="w-[80%] h-[70vh]  flex items-center">
           <div>
             {currentPage > 1 && (
               <button onClick={handlePreviousPage}>
@@ -243,18 +249,18 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className=" bg-red-800 flex justify-center items-center space-x-4">
+      <div className=" flex justify-center items-center space-x-4 mt-10">
         {pagesArray.map((pageNumber) => (
-          <button
+          <span
             key={pageNumber}
             onClick={() => setCurrentPage(pageNumber)}
-            className="bg-gray-800 rounded-lg hover:bg-gray-700 text-white font-bold py-2 px-4"
+            className="pagination-hover-line"
           >
             {pageNumber}
-          </button>
+          </span>
         ))}
       </div>
-      <div>
+      <div className="mt-20">
         <Footer />
       </div>
     </div>

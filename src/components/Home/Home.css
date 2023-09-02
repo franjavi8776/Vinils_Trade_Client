@@ -1,0 +1,34 @@
+.pagination-hover-line {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  border-bottom: 2px solid transparent;
+  transition: transform 0.3s ease, border-bottom-color 0.3s ease; /* Agrega una transición a transform y border-bottom-color */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.pagination-hover-line:hover {
+  transform: scaleX(1); /* Escala normal (sin efecto de movimiento) al inicio del hover */
+  border-bottom-color: #000000;
+}
+
+.pagination-hover-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #adb3bd;
+  transform-origin: bottom right;
+  transform: scaleX(0); /* Inicia con escala cero para ocultar la línea */
+  transition: transform 0.8s ease; /* Agrega una transición a transform */
+}
+
+.pagination-hover-line:hover::after {
+  transform: scaleX(1); /* Escala de vuelta a 1 para mostrar la línea al hacer hover */
+}
+
+/* text-black font-bold py-2 px-4 cursor-pointer */
