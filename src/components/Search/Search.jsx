@@ -13,7 +13,7 @@ const Search = () => {
   };
 
   return (
-    <div className=" flex flex-col items-center w-[50%] justify-center">
+    <div>
       <div>
         <input
           onChange={handlerChange}
