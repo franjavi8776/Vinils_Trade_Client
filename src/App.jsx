@@ -7,6 +7,7 @@ import Detail from "./components/Detail/Detail";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
+
   return (
     <div className="App">
       <Navbar />

@@ -8,7 +8,8 @@ const Detail = () => {
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.detail);
 
-  console.log(detail);
+  // const randomPrice = Math.floor(Math.random() * 41) + 20; // Entre 20 y 60 euros
+  // const randomStock = Math.floor(Math.random() * 20) + 1; // Entre 1 y 20 unidades
 
   useEffect(() => {
     dispatch(getVinylDetail(id));
@@ -40,6 +41,8 @@ const Detail = () => {
           <p className="text-gray-600">
             Año: {detail.year ? detail.year : "No especificado"}
           </p>
+          {/* <p className="text-gray-600">Precio: ${randomPrice}</p>
+          <p className="text-gray-600">Stock: {randomStock}</p> */}
         </div>
         <div className="p-4">
           <img
