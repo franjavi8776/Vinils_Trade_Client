@@ -196,12 +196,12 @@ const Home = () => {
           <div>
             {currentPage > 1 && (
               <button onClick={handlePreviousPage}>
-                <img className="w-16" src="/left.png" alt="" />
+                <img className="w-14" src="/left.png" alt="left" />
               </button>
             )}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-5">
             {VinylsToRender.map((vinyls) => (
               <Card
                 key={vinyls.id}
@@ -209,13 +209,15 @@ const Home = () => {
                 title={vinyls.title}
                 year={vinyls.year}
                 cover_image={vinyls.cover_image}
+                stock={vinyls.stock}
+                cost={vinyls.cost}
               />
             ))}
           </div>
           <div>
             {currentPage < totalPages && (
               <button onClick={handleNextPage}>
-                <img className="w-16" src="/right.png" alt="next" />
+                <img className="w-14" src="/right.png" alt="next" />
               </button>
             )}
           </div>
