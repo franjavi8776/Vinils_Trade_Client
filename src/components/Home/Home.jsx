@@ -14,7 +14,8 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Footer from "../Footer/Footer";
-import "./Home.css"
+import "./Home.css";
+import VideoPlayer from "./Video/VideoPlayer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -29,11 +30,6 @@ const Home = () => {
   const startIndex = (currentPage - 1) * pageSize;
   const renderVinyls = searchByName.length > 0 ? searchByName : vinyls;
   const endIndex = startIndex + pageSize;
-  // let VinylsToRender = [];
-
-  // if (Array.isArray(renderVinyls)) {
-  //   VinylsToRender = renderVinyls.slice(startIndex, endIndex);
-  // }
 
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
   const pagesArray = [];
@@ -57,9 +53,9 @@ const Home = () => {
     }
   };
 
-  const handleReset = () => {
-    dispatch(reset());
-  };
+  // const handleReset = () => {
+  //   dispatch(reset());
+  // };
   const handleGenre = (event) => {
     dispatch(orderForGenre(event.target.value));
   };
@@ -83,22 +79,12 @@ const Home = () => {
   };
   return (
     <div className="w-[100%] h-[92vh]">
-      {/* <div>
-        {VinylsToRender.length === pageSize && <p>Pag {currentPage}</p>}
-      </div> */}
       {/* <button onClick={handleReset}>Reset</button> */}
-      <div className="w-[100%] h-[50vh] flex ">
-        <div className="w-[40%] h-[50vh] ">
-          <iframe
-            src="https://www.youtube.com/embed/6iOd2iDkdn4"
-            frameborder="0"
-            title="Video"
-            width="100%"
-            height="419px"
-            allowFullScreen
-          ></iframe>
+      <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16">
+        <div className="w-[40%] h-[420px] ">
+          <VideoPlayer />
         </div>
-        <div className="w-[60%] h-[45vh]">
+        <div className="w-[60%] h-[420px]">
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
@@ -106,72 +92,58 @@ const Home = () => {
               delay: 2000,
               disableOnInteraction: false,
             }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
+            // pagination={{
+            //   clickable: true,
+            // }}
+            navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper"
           >
             <SwiperSlide>
               <img
-                className="w-[100%] h-[45vh]"
+                className="w-[100%] h-[420px] "
+                src="/carrusel2.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[420px]"
+                src="/carrusel3.jpg"
+                alt="image"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[100%] h-[420px]"
                 src="/carrusel1.jpg"
                 alt="image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[100%] h-[45vh] "
-                src="/carrusel2.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[45vh]"
-                src="/carrusel3.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[45vh]"
-                src="/carrusel4.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[45vh] "
+                className="w-[100%] h-[420px] "
                 src="/carrusel5.jpg"
                 alt="image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[100%] h-[45vh]"
+                className="w-[100%] h-[420px]"
                 src="/carrusel2.jpg"
                 alt="image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[100%] h-[45vh] "
+                className="w-[100%] h-[420px] "
                 src="/carrusel3.jpg"
                 alt="image"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[100%] h-[45vh] "
-                src="/carrusel4.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[45vh] "
+                className="w-[100%] h-[420px] "
                 src="/carrusel5.jpg"
                 alt="image"
               />
@@ -180,7 +152,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-[100%] h-[70vh] flex flex-row">
+      <div className="w-[100%] h-[70vh] flex flex-row ">
         <div className="w-[20%] h-[56vh] flex items-center">
           <div className="w-[80%] m-auto flex flex-col gap-20">
             <select
@@ -221,16 +193,16 @@ const Home = () => {
             </select>
           </div>
         </div>
-        <div className="w-[80%] h-[70vh]  flex items-center">
+        <div className="w-[78%] h-[70vh]  flex items-center">
           <div>
             {currentPage > 1 && (
               <button onClick={handlePreviousPage}>
-                <img className="w-16" src="/left.png" alt="" />
+                <img className="w-14" src="/left.png" alt="left" />
               </button>
             )}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-5">
             {VinylsToRender.map((vinyls) => (
               <Card
                 key={vinyls.id}
@@ -238,13 +210,15 @@ const Home = () => {
                 title={vinyls.title}
                 year={vinyls.year}
                 cover_image={vinyls.cover_image}
+                stock={vinyls.stock}
+                cost={vinyls.cost}
               />
             ))}
           </div>
           <div>
             {currentPage < totalPages && (
               <button onClick={handleNextPage}>
-                <img className="w-16" src="/right.png" alt="" />
+                <img className="w-14" src="/right.png" alt="next" />
               </button>
             )}
           </div>
@@ -255,7 +229,11 @@ const Home = () => {
           <span
             key={pageNumber}
             onClick={() => setCurrentPage(pageNumber)}
-            className="pagination-hover-line"
+            className={`pagination-hover-line ${
+              pageNumber === currentPage
+                ? "active-page"
+                : "font-bold cursor-pointer"
+            }`}
           >
             {pageNumber}
           </span>

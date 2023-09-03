@@ -1,6 +1,9 @@
 {
   "results": [
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 25,
       "country": "UK",
       "year": "1981",
       "format": ["Vinyl", "LP"],
@@ -36,6 +39,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 5,
+      "cost": 48,
       "country": "France",
       "year": "2013",
       "format": ["Vinyl", "LP"],
@@ -72,6 +78,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 15,
+      "cost": 48,
       "country": "Canada",
       "genre": ["Non-Music", "Children's"],
       "format": ["Vinyl", "LP"],
@@ -106,6 +115,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 1,
+      "cost": 55,
       "country": "US",
       "year": "1974",
       "format": ["Vinyl", "LP"],
@@ -147,6 +159,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 12,
+      "cost": 65,
       "country": "Europe",
       "year": "2012",
       "format": ["Vinyl", "LP"],
@@ -182,6 +197,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 12,
+      "cost": 35,
       "country": "UK",
       "year": "1991",
       "format": ["Vinyl", "12\""],
@@ -238,6 +256,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 17,
+      "cost": 68,
       "country": "Jamaica",
       "genre": ["Reggae"],
       "format": ["Vinyl", "7\""],
@@ -272,6 +293,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 14,
+      "cost": 43,
       "country": "US",
       "year": "2005",
       "format": ["Vinyl", "7\""],
@@ -307,6 +331,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 6,
+      "cost": 56,
       "country": "US",
       "year": "1982",
       "format": ["Vinyl", "LP"],
@@ -348,6 +375,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 8,
+      "cost": 59,
       "country": "US",
       "year": "1973",
       "format": ["Vinyl", "LP"],
@@ -383,6 +413,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 9,
+      "cost": 49,
       "country": "UK",
       "year": "1955",
       "format": ["Vinyl", "LP"],
@@ -418,6 +451,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 15,
+      "cost": 65,
       "country": "UK",
       "genre": ["Electronic"],
       "format": ["Vinyl", "12\""],
@@ -452,6 +488,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 13,
+      "cost": 53,
       "country": "Germany",
       "year": "1984",
       "format": ["Vinyl", "LP"],
@@ -487,6 +526,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 8,
+      "cost": 68,
       "country": "Poland",
       "year": "1973",
       "format": ["Vinyl", "LP"],
@@ -528,6 +570,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 1,
+      "cost": 45,
       "country": "US",
       "genre": ["Folk, World, & Country"],
       "format": ["Vinyl", "LP"],
@@ -566,6 +611,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 12,
+      "cost": 56,
       "country": "Netherlands",
       "year": "1988",
       "format": ["Vinyl", "LP"],
@@ -601,6 +649,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 13,
+      "cost": 56,
       "country": "Portugal",
       "year": "1977",
       "format": ["Vinyl", "LP"],
@@ -636,6 +687,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 20,
+      "cost": 69,
       "country": "Denmark",
       "genre": ["Jazz"],
       "format": ["Vinyl", "LP"],
@@ -670,6 +724,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 9,
+      "cost": 35,
       "country": "US",
       "genre": ["Folk, World, & Country"],
       "format": ["Vinyl", "LP"],
@@ -704,6 +761,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 5,
+      "cost": 43,
       "country": "France",
       "year": "1965",
       "format": ["Vinyl", "LP"],
@@ -744,6 +804,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 9,
+      "cost": 39,
       "country": "Spain",
       "year": "1986",
       "format": ["Vinyl", "LP"],
@@ -779,6 +842,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 14,
+      "cost": 47,
       "country": "Netherlands",
       "year": "1977",
       "format": ["Vinyl", "LP"],
@@ -823,6 +889,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 16,
+      "cost": 68,
       "country": "UK",
       "year": "1975",
       "format": ["Vinyl", "7\""],
@@ -858,6 +927,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 1,
+      "cost": 49,
       "country": "US",
       "year": "2005",
       "format": ["Vinyl", "7\""],
@@ -893,6 +965,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 5,
+      "cost": 54,
       "country": "UK",
       "year": "1997",
       "format": ["Vinyl", "12\""],
@@ -934,6 +1009,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 8,
+      "cost": 43,
       "country": "France",
       "year": "2010",
       "format": ["Vinyl", "12\""],
@@ -969,6 +1047,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 9,
+      "cost": 39,
       "country": "Netherlands",
       "year": "1983",
       "format": ["Vinyl", "7\""],
@@ -1004,6 +1085,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 16,
+      "cost": 41,
       "country": "Switzerland",
       "year": "2010",
       "format": ["Vinyl", "12\""],
@@ -1039,6 +1123,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 19,
+      "cost": 52,
       "country": "Spain",
       "year": "1991",
       "format": ["Vinyl", "12\""],
@@ -1074,6 +1161,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 9,
+      "cost": 46,
       "country": "Belgium",
       "year": "2003",
       "format": ["Vinyl", "12\""],
@@ -1117,6 +1207,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 1,
+      "cost": 63,
       "country": "Spain",
       "year": "1997",
       "format": ["Vinyl", "12\""],
@@ -1152,6 +1245,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 3,
+      "cost": 70,
       "country": "Germany",
       "year": "1998",
       "format": ["Vinyl", "12\""],
@@ -1187,6 +1283,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 12,
+      "cost": 63,
       "country": "UK",
       "year": "2005",
       "format": ["Vinyl", "12\""],
@@ -1222,6 +1321,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 4,
+      "cost": 53,
       "country": "UK",
       "year": "1991",
       "format": ["Vinyl", "12\""],
@@ -1257,6 +1359,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 9,
+      "cost": 29,
       "country": "UK",
       "year": "2002",
       "format": ["Vinyl", "12\""],
@@ -1292,6 +1397,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 12,
+      "cost": 32,
       "country": "Argentina",
       "year": "1997",
       "format": ["Vinyl", "7\""],
@@ -1328,6 +1436,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 15,
+      "cost": 45,
       "country": "US",
       "year": "2022",
       "format": ["Vinyl", "LP"],
@@ -1363,6 +1474,9 @@
       ]
     },
     {
+      "artist": "Paul MacCartney",
+      "stock": 6,
+      "cost": 36,
       "country": "UK",
       "genre": ["Reggae"],
       "format": ["Vinyl", "7\""],
@@ -1397,6 +1511,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 13,
+      "cost": 45,
       "country": "France",
       "year": "1985",
       "format": ["Vinyl", "LP"],
@@ -1432,6 +1549,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 1,
+      "cost": 48,
       "country": "US",
       "year": "1997",
       "format": ["Vinyl", "12\""],
@@ -1467,6 +1587,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 7,
+      "cost": 43,
       "country": "UK",
       "year": "1995",
       "format": ["Vinyl", "12\""],
@@ -1502,6 +1625,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 11,
+      "cost": 56,
       "country": "Netherlands",
       "year": "1996",
       "format": ["Vinyl", "12\""],
@@ -1537,6 +1663,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 6,
+      "cost": 58,
       "country": "Europe",
       "year": "1990",
       "format": ["Vinyl", "12\""],
@@ -1579,6 +1708,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 20,
+      "cost": 56,
       "country": "UK",
       "year": "2008",
       "format": ["Vinyl", "12\""],
@@ -1614,6 +1746,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 13,
+      "cost": 45,
       "country": "Italy",
       "year": "2009",
       "format": ["Vinyl", "10\""],
@@ -1649,6 +1784,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 6,
+      "cost": 56,
       "country": "France",
       "year": "2000",
       "format": ["Vinyl", "12\""],
@@ -1684,6 +1822,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 3,
+      "cost": 25,
       "country": "Netherlands",
       "year": "1999",
       "format": ["Vinyl", "12\""],
@@ -1719,6 +1860,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 16,
+      "cost": 26,
       "country": "US",
       "year": "2003",
       "format": ["Vinyl", "12\""],
@@ -1760,6 +1904,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 6,
+      "cost": 38,
       "country": "UK",
       "year": "2002",
       "format": ["Vinyl", "LP"],
@@ -1795,6 +1942,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 8,
+      "cost": 53,
       "country": "Spain",
       "year": "2004",
       "format": ["Vinyl", "12\""],
@@ -1830,6 +1980,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 2,
+      "cost": 49,
       "country": "US",
       "year": "2018",
       "format": ["Vinyl", "7\""],
@@ -1868,6 +2021,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 3,
+      "cost": 52,
       "country": "Jamaica",
       "genre": ["Reggae"],
       "format": ["Vinyl", "7\""],
@@ -1902,6 +2058,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 2,
+      "cost": 68,
       "country": "UK",
       "year": "2010",
       "format": ["Vinyl", "12\""],
@@ -1937,6 +2096,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 6,
+      "cost": 36,
       "country": "Italy",
       "year": "1995",
       "format": ["Vinyl", "12\""],
@@ -1978,6 +2140,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 6,
+      "cost": 46,
       "country": "US",
       "year": "1980",
       "format": ["Vinyl", "LP"],
@@ -2013,6 +2178,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 9,
+      "cost": 48,
       "country": "UK",
       "year": "2000",
       "format": ["Vinyl", "12\""],
@@ -2048,6 +2216,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 6,
+      "cost": 65,
       "country": "Australia",
       "year": "2007",
       "format": ["Vinyl", "12\""],
@@ -2083,6 +2254,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 9,
+      "cost": 56,
       "country": "UK",
       "year": "1997",
       "format": ["Vinyl", "12\""],
@@ -2118,6 +2292,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 8,
+      "cost": 56,
       "country": "Netherlands",
       "year": "1996",
       "format": ["Vinyl", "12\""],
@@ -2153,6 +2330,9 @@
       ]
     },
     {
+      "artist": "Ringo Starr",
+      "stock": 16,
+      "cost": 48,
       "country": "Sweden",
       "year": "2014",
       "format": ["Vinyl", "LP"],
@@ -2188,6 +2368,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 2,
+      "cost": 68,
       "country": "UK",
       "year": "2011",
       "format": ["Vinyl", "12\""],
@@ -2223,6 +2406,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 9,
+      "cost": 26,
       "country": "US",
       "year": "1996",
       "format": ["Vinyl", "12\""],
@@ -2258,6 +2444,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 16,
+      "cost": 45,
       "country": "UK",
       "year": "2005",
       "format": ["Vinyl", "12\""],
@@ -2293,6 +2482,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 18,
+      "cost": 36,
       "country": "France",
       "year": "2017",
       "format": ["Vinyl", "12\""],
@@ -2328,6 +2520,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 16,
+      "cost": 39,
       "country": "Belgium",
       "year": "1995",
       "format": ["Vinyl", "12\""],
@@ -2363,6 +2558,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 3,
+      "cost": 63,
       "country": "Italy",
       "year": "2021",
       "format": ["Vinyl", "12\""],
@@ -2398,6 +2596,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 6,
+      "cost": 66,
       "country": "US",
       "year": "2004",
       "format": ["Vinyl", "12\""],
@@ -2440,6 +2641,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 15,
+      "cost": 38,
       "country": "Germany",
       "year": "2004",
       "format": ["Vinyl", "12\""],
@@ -2475,6 +2679,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 4,
+      "cost": 70,
       "country": "Australia",
       "year": "2002",
       "format": ["Vinyl", "12\""],
@@ -2510,6 +2717,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 20,
+      "cost": 21,
       "country": "Italy",
       "year": "2013",
       "format": ["Vinyl", "LP"],
@@ -2549,6 +2759,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 5,
+      "cost": 38,
       "country": "Netherlands",
       "year": "1971",
       "format": ["Vinyl", "LP"],
@@ -2588,6 +2801,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 4,
+      "cost": 26,
       "country": "Spain",
       "year": "2003",
       "format": ["Vinyl", "12\""],
@@ -2623,6 +2839,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 9,
+      "cost": 69,
       "country": "UK",
       "year": "1996",
       "format": ["Vinyl", "12\""],
@@ -2658,6 +2877,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 3,
+      "cost": 35,
       "country": "UK",
       "year": "2021",
       "format": ["Vinyl", "12\""],
@@ -2693,6 +2915,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 12,
+      "cost": 48,
       "country": "UK",
       "year": "2000",
       "format": ["Vinyl", "12\""],
@@ -2728,6 +2953,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 7,
+      "cost": 49,
       "country": "Netherlands",
       "year": "2002",
       "format": ["Vinyl", "12\""],
@@ -2769,6 +2997,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 12,
+      "cost": 68,
       "country": "Spain",
       "year": "2006",
       "format": ["Vinyl", "12\""],
@@ -2804,6 +3035,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 3,
+      "cost": 48,
       "country": "Germany",
       "year": "2018",
       "format": ["Vinyl", "12\""],
@@ -2839,6 +3073,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 8,
+      "cost": 58,
       "country": "Canada",
       "year": "1989",
       "format": ["Vinyl", "LP"],
@@ -2874,6 +3111,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 12,
+      "cost": 56,
       "country": "Germany",
       "year": "2007",
       "format": ["Vinyl", "12\""],
@@ -2909,6 +3149,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 16,
+      "cost": 26,
       "country": "Spain",
       "year": "2006",
       "format": ["Vinyl", "12\""],
@@ -2944,6 +3187,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 20,
+      "cost": 42,
       "country": "Europe",
       "year": "2004",
       "format": ["Vinyl", "LP"],
@@ -2985,6 +3231,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 12,
+      "cost": 65,
       "country": "Germany",
       "year": "2002",
       "format": ["Vinyl", "12\""],
@@ -3004,7 +3253,7 @@
       "catno": "SW7-001",
       "title": "Chris Noise & DJ Drops - Ostblock",
       "thumb": "",
-      "cover_image": "https://st.discogs.com/16dbf9c83097871482ac925c53c610a91dd46604/images/spacer.gif",
+      "cover_image": "https://i.discogs.com/N7gOucXcRk0b55TJgmEGP2EO71LrncBS0a6chjMtq40/rs:fit/g:sm/q:90/h:599/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQwOTM0/ODYtMTM1NTAwOTM5/Ni0yNzE3LmpwZWc.jpeg",
       "resource_url": "https://api.discogs.com/releases/158460",
       "community": {
         "want": 29,
@@ -3020,6 +3269,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 6,
+      "cost": 62,
       "country": "UK",
       "year": "1998",
       "format": ["Vinyl", "12\""],
@@ -3055,6 +3307,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 18,
+      "cost": 58,
       "country": "UK",
       "year": "2005",
       "format": ["Vinyl", "12\""],
@@ -3090,6 +3345,9 @@
       ]
     },
     {
+      "artist": "George Harrison",
+      "stock": 2,
+      "cost": 48,
       "country": "US",
       "year": "2001",
       "format": ["Vinyl", "12\""],
@@ -3125,6 +3383,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 68,
       "country": "US",
       "year": "2010",
       "format": ["Vinyl", "12\""],
@@ -3160,6 +3421,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 68,
       "country": "UK",
       "year": "2005",
       "format": ["Vinyl", "12\""],
@@ -3195,6 +3459,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 68,
       "country": "US",
       "year": "1997",
       "format": ["Vinyl", "12\""],
@@ -3242,6 +3509,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 68,
       "country": "France",
       "year": "2007",
       "format": ["Vinyl", "12\""],
@@ -3277,6 +3547,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 16,
+      "cost": 38,
       "country": "Netherlands",
       "year": "1980",
       "format": ["Vinyl", "LP"],
@@ -3312,6 +3585,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 12,
+      "cost": 69,
       "country": "Switzerland",
       "year": "1983",
       "format": ["Vinyl", "LP"],
@@ -3354,6 +3630,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 6,
+      "cost": 61,
       "country": "UK",
       "genre": ["Reggae"],
       "format": ["Vinyl", "7\""],
@@ -3388,6 +3667,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 15,
+      "cost": 36,
       "country": "Germany",
       "year": "1999",
       "format": ["Vinyl", "12\""],
@@ -3428,6 +3710,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 68,
       "country": "Italy",
       "year": "1998",
       "format": ["Vinyl", "12\""],
@@ -3463,6 +3748,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 7,
+      "cost": 54,
       "country": "Australia & New Zealand",
       "year": "1984",
       "format": ["Vinyl", "LP"],
@@ -3498,6 +3786,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 20,
+      "cost": 48,
       "country": "Belgium",
       "year": "1977",
       "format": ["Vinyl", "LP"],
@@ -3533,6 +3824,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 12,
+      "cost": 58,
       "country": "UK",
       "year": "2002",
       "format": ["Vinyl", "7\""],
@@ -3568,6 +3862,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 45,
       "country": "Europe",
       "year": "2002",
       "format": ["Vinyl", "12\""],
@@ -3603,6 +3900,9 @@
       ]
     },
     {
+      "artist": "John Lennon",
+      "stock": 2,
+      "cost": 68,
       "country": "UK",
       "year": "2004",
       "format": ["Vinyl", "7\""],

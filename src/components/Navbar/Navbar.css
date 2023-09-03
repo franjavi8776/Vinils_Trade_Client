@@ -8,8 +8,9 @@
 }
 
 .link-with-hover-line:hover {
-  transform: scaleX(1); /* Escala normal (sin efecto de movimiento) al inicio del hover */
-  border-bottom-color: #8b94a3;
+  transform: scaleX(
+    1
+  ); /* Escala normal (sin efecto de movimiento) al inicio del hover */
 }
 
 .link-with-hover-line::after {
@@ -20,11 +21,13 @@
   width: 100%;
   height: 2px;
   background-color: #adb3bd;
-  transform-origin: bottom right;
+  transform-origin: bottom center;
   transform: scaleX(0); /* Inicia con escala cero para ocultar la línea */
   transition: transform 0.8s ease; /* Agrega una transición a transform */
 }
 
 .link-with-hover-line:hover::after {
-  transform: scaleX(1); /* Escala de vuelta a 1 para mostrar la línea al hacer hover */
+  transform: scaleX(
+    1
+  ); /* Escala de vuelta a 1 para mostrar la línea al hacer hover */
 }
