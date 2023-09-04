@@ -28,7 +28,7 @@ export const getVinylDetail = (id) => async (dispatch) => {
   try {
     const response = await axios.get(endpoint + id);
     const data = response.data;
-    console.log(data);
+    //console.log(data);
     dispatch({ type: GET_DETAIL, payload: data });
   } catch (error) {
     console.log(error);
@@ -81,6 +81,7 @@ export const reset = () => {
     type: RESET,
   };
 };
+
 export const orderForGenre = (name) => {
   return {
     type: ORDER_FOR_GENRE,

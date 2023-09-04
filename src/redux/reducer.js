@@ -47,9 +47,6 @@ const reducer = (state = initialState, action) => {
         detail: action.payload,
       };
     case ORDER_FOR_GENRE:
-      const genre = state.vinyls.filter((vinyl) =>
-        vinyl.genre.some((genre) => genre === action.payload)
-      );
       return {
         ...state,
         allVinyls: state.vinyls.filter((vinyl) =>
@@ -59,9 +56,9 @@ const reducer = (state = initialState, action) => {
 
     case RESET:
       return {
-        ...state,
-        allVinyls: state.vinyls,
+        ...initialState,
       };
+
     case ORDER_BY_TITLE: {
       const orderDirection = action.payload === "A" ? 1 : -1; //ordenamiento por nombre  si recibo a es verdadero 1 y -1 es falso
       return {

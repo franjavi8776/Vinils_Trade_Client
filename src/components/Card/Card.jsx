@@ -3,19 +3,17 @@ import { Link } from "react-router-dom";
 
 const Card = ({ id, title, cover_image, cost, stock }) => {
   return (
-    <div className="w-60 h-70 ">
+    <div className="w-60 h-70 text-md">
       <Link to={`/detail/${id}`}>
         <img className="w-60 h-60" src={cover_image} alt={title} />
       </Link>
-      <h2 className="text-md h-10 truncate text-center font-bold mb-[-20px]">
-        {title}
-      </h2>
-      <div className="w-full flex justify-between">
+      <h2 className=" h-10 truncate text-center mb-[-20px]">{title}</h2>
+      <div className="w-full flex justify-between text-md">
         <h2 className="text-red-900">
-          Stock: <b className="text-black">{stock}</b>
+          Stock: <span className="text-black">{stock}</span>
         </h2>
         <h2 className="text-red-900">
-          Precio: <b className="text-black">{cost}$us</b>
+          Precio: <span className="text-black">${cost}</span>
         </h2>
       </div>
 
