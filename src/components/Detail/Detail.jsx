@@ -34,10 +34,15 @@ const Detail = () => {
             <h2 className="text-gray-900">
               Año: {detail.year ? detail.year : "No especificado"}
             </h2>
-            <h2 className="text-gray-900">Pais: {detail.country}</h2>
             <h2 className="text-gray-900">
               Genero: {detail.genre ? detail.genre : "No especificado"}
             </h2>
+            <h2 className="text-gray-900">
+              Artista: {detail.artist}
+            </h2>
+          </div>
+          <div>
+            
           </div>
           <div>
             <img
@@ -51,7 +56,7 @@ const Detail = () => {
               Stock: <b className="text-black">{detail.stock}</b>
             </h2>
             <h2 className="text-red-900 font-bold text-lg">
-              Precio: <b className="text-black">{detail.cost}$us</b>
+              Precio: <b className="text-black">${detail.cost}us</b>
             </h2>
           </div>
           <Link to="/">
