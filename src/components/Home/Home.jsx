@@ -21,7 +21,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
-  // const [selectedDecade, setSelectedDecade] = useState("");
+
   const searchByName = useSelector((state) => state.search);
   const pageSize = 10;
   const totalVinyls =
@@ -36,7 +36,7 @@ const Home = () => {
   for (let i = 1; i <= totalPages; i++) {
     pagesArray.push(i);
   }
-  
+
   useEffect(() => {
     dispatch(getAllVinyls());
   }, [dispatch]);
@@ -57,15 +57,17 @@ const Home = () => {
   //   dispatch(reset());
   // };
   const handleGenre = (event) => {
+    setCurrentPage(1);
     dispatch(orderForGenre(event.target.value));
   };
 
   const handleOrderByTitle = (e) => {
+    setCurrentPage(1);
     dispatch(orderByTitle(e.target.value));
-    setName(!title);
   };
 
   const handleFilter = (event) => {
+    setCurrentPage(1);
     const selectedDecades = event.target.value;
     let startYear, endYear;
     if (selectedDecades === "2000") {
@@ -77,10 +79,17 @@ const Home = () => {
     }
     dispatch(filterVinylsByDecade(startYear, endYear));
   };
+
+  const resetAllButton = () => {
+    setCurrentPage(1);
+    dispatch(reset());
+    dispatch(getAllVinyls());
+  };
+
   return (
     <div className="w-[100%] h-[92vh]">
       {/* <button onClick={handleReset}>Reset</button> */}
-      <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16">
+      <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
         <div className="w-[40%] h-[420px] ">
           <VideoPlayer />
         </div>
@@ -153,8 +162,8 @@ const Home = () => {
       </div>
 
       <div className="w-[100%] h-[70vh] flex flex-row ">
-        <div className="w-[20%] h-[56vh] flex items-center">
-          <div className="w-[80%] m-auto flex flex-col gap-20">
+        <div className="w-[20%] h-[70vh] flex items-center">
+          <div className="w-[70%] m-auto flex flex-col gap-20">
             <select
               onChange={handleFilter}
               className="bg-black text-white p-2 rounded"
@@ -191,18 +200,24 @@ const Home = () => {
               <option value="Hip Hop">Hip Hop</option>
               <option value=""></option>
             </select>
+            <button
+              onClick={resetAllButton}
+              className="bg-black text-white p-2 rounded text-left"
+            >
+              Restablecer
+            </button>
           </div>
         </div>
-        <div className="w-[78%] h-[70vh]  flex items-center">
-          <div>
+        <div className="w-[78%] h-[70vh] flex items-center">
+          <div className="w-[5%]">
             {currentPage > 1 && (
               <button onClick={handlePreviousPage}>
-                <img className="w-14" src="/left.png" alt="left" />
+                <img className="w-[30px]" src="/left.png" alt="left" />
               </button>
             )}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-5">
+          <div className="w-[90%] flex flex-wrap justify-center gap-5">
             {VinylsToRender.map((vinyls) => (
               <Card
                 key={vinyls.id}
@@ -215,10 +230,10 @@ const Home = () => {
               />
             ))}
           </div>
-          <div>
+          <div className="w-[5%]">
             {currentPage < totalPages && (
               <button onClick={handleNextPage}>
-                <img className="w-14" src="/right.png" alt="next" />
+                <img className="w-[30px]" src="/right.png" alt="next" />
               </button>
             )}
           </div>
