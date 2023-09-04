@@ -36,6 +36,7 @@ const Home = () => {
   for (let i = 1; i <= totalPages; i++) {
     pagesArray.push(i);
   }
+  
   useEffect(() => {
     dispatch(getAllVinyls());
   }, [dispatch]);

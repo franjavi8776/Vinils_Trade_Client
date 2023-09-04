@@ -5,10 +5,13 @@ import { postVinyls } from "../../redux/actions";
 
 const Form = () => {
   const [vinyls, setVinyls] = useState({
-    Title: "",
-    Artist: "",
-    Year: "",
-    Image: "",
+    title: "",
+    artist: "",
+    year: "",
+    cover_image: "",
+    genre:"", 
+    cost:"", 
+    stock:""
   });
 
   const [errors, setErrors] = useState({});
@@ -29,13 +32,13 @@ const Form = () => {
   };
 
   const handlerSubmit = () => {
-    setErrors({ Title: "", Artist: "", Year: "", Image: "" }); // Gender:"", Description:"", Price:"", Condition:"",
+    setErrors({ title: "", artist: "", year: "", cover_image: "", genre:"", cost:"", stock:"", country:"" }); // , Description:"", , Condition:"",
 
     dispatch(postVinyls(vinyls));
 
     alert("Vinilo creado correctamente");
 
-    setVinyls({ Title: "", Artist: "", Year: "", Image: "" });
+    setVinyls({ title: "", artist: "", year: "", cover_image: "", genre:"", cost:"", stock:"", country:"" });
   };
 
   return (
@@ -45,54 +48,54 @@ const Form = () => {
           <label className="block font-bold mb-1">Titulo:</label>
           <input
             type="text"
-            name="Title"
-            value={vinyls.Title}
+            name="title"
+            value={vinyls.title}
             onChange={handleChange}
             className="border rounded w-full p-2"
             placeholder="Ingrese el titulo..."
             required
           />
-          {errors.Title && <p className="text-red-500">{errors.Title}</p>}
+          {errors.title && <p className="text-red-500">{errors.title}</p>}
         </div>
-        {/* <div>
+        <div>
           <label className="block font-bold mb-1">Artista:</label>
           <input
             type="text"
-            name="Artist"
-            value={vinyls.Artist}
+            name="artist"
+            value={vinyls.artist}
             onChange={handleChange}
             className="border rounded w-full p-2"
             placeholder="Ingrese el artista..."
             required
           />
-          {errors.Artist && <p className="text-red-500">{errors.Artist}</p>}
-        </div> */}
-        {/* <div>
+          {errors.artist && <p className="text-red-500">{errors.artist}</p>}
+        </div>
+        <div>
           <label className="block font-bold mb-1">Pais:</label>
           <input
             type="text"
-            name="Country"
-            value={vinyls.Country}
+            name="country"
+            value={vinyls.country}
             onChange={handleChange}
             className="border rounded w-full p-2 "
             placeholder="Ingrese país..."
             required
           />
-          {errors.Country && <p className="text-red-500">{errors.Country}</p>}
-        </div> */}
-        {/* <div>
+          {errors.country && <p className="text-red-500">{errors.country}</p>}
+        </div>
+        <div>
           <label className="block font-bold mb-1">Género:</label>
           <input
             type="text"
-            name="Gender"
-            value={vinyls.Gender}
+            name="genre"
+            value={vinyls.genre}
             onChange={handleChange}
             className="border rounded w-full p-2"
             placeholder="Ingrese el genero..."
             required
           />
-          {errors.Gender && <p className="text-red-500">{errors.Gender}</p>}
-        </div> */}
+          {errors.genre && <p className="text-red-500">{errors.genre}</p>}
+        </div>
         {/* <div>
           <label className="block font-bold mb-1">Descripción:</label>
           <textarea
@@ -110,28 +113,43 @@ const Form = () => {
           <label className="block font-bold mb-1">Año:</label>
           <input
             type="number"
-            name="Year"
-            value={vinyls.Year}
+            name="year"
+            value={vinyls.year}
             onChange={handleChange}
             className="border rounded w-full p-2"
             placeholder="Ingrese el año..."
             required
           />
-          {errors.Year && <p className="text-red-500">{errors.Year}</p>}
+          {errors.year && <p className="text-red-500">{errors.year}</p>}
         </div>
-        {/* <div>
+        <div>
           <label className="block font-bold mb-1">Precio:</label>
           <input
             type="number"
-            name="Price"
-            value={vinyls.Price}
+            name="cost"
+            value={vinyls.cost}
             onChange={handleChange}
             className="border rounded w-full p-2"
             placeholder="Ingrese el precio..."
             required
           />
-          {errors.Price && <p className="text-red-500">{errors.Price}</p>}
-        </div> */}
+          {errors.cost && <p className="text-red-500">{errors.cost}</p>}
+        </div>
+        <div>
+          <label className="block font-bold mb-1">Stock:</label>
+            <input
+              type="number"
+              name="stock"
+              value={vinyls.stock}
+              onChange={handleChange}
+              className="border rounded w-full p-2"
+              placeholder="Ingrese el stock..."
+              required
+              min="0"
+              max="20"
+            />
+            {errors.stock && <p className="text-red-500">{errors.stock}</p>}
+        </div>
         {/* <div>
           <label className="block font-bold mb-1">Condición:</label>
           <input
@@ -148,13 +166,14 @@ const Form = () => {
         <div>
           <label className="block font-bold mb-1">Imagen:</label>
           <input
-            type="file"
-            name="Image"
+            type="text"
+            name="cover_image"
             onChange={handleChange}
             className="border rounded w-full p-2"
+            placeholder="Ingrese una url..."
             required
           />
-          {errors.Image && <p className="text-red-500">{errors.Image}</p>}
+          {errors.cover_image && <p className="text-red-500">{errors.cover_image}</p>}
         </div>
         <div className="text-center">
           <button
@@ -170,3 +189,4 @@ const Form = () => {
 };
 
 export default Form;
+
