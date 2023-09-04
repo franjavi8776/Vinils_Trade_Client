@@ -6,18 +6,10 @@
       "cost": 25,
       "country": "UK",
       "year": "1981",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "BBC Records"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["BBC Records"],
       "type": "release",
-      "genre": [
-        "Funk / Soul",
-        "Blues"
-      ],
+      "genre": ["Funk / Soul", "Blues"],
       "style": [],
       "id": 5739376,
       "barcode": [],
@@ -42,9 +34,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -54,22 +44,11 @@
       "cost": 48,
       "country": "France",
       "year": "2013",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Jarring Effects"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Jarring Effects"],
       "type": "release",
-      "genre": [
-        "Electronic",
-        "Hip Hop"
-      ],
-      "style": [
-        "Bass Music",
-        "Dub"
-      ],
+      "genre": ["Electronic", "Hip Hop"],
+      "style": ["Bass Music", "Dub"],
       "id": 4977863,
       "barcode": [],
       "user_data": {
@@ -94,9 +73,7 @@
           "name": "Vinyl",
           "qty": "2",
           "text": "blue color",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -105,21 +82,11 @@
       "stock": 15,
       "cost": 48,
       "country": "Canada",
-      "genre": [
-        "Non-Music",
-        "Children's"
-      ],
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "genre": ["Non-Music", "Children's"],
+      "format": ["Vinyl", "LP"],
       "style": [],
       "id": 4431087,
-      "label": [
-        "Golden Records",
-        "Arc Sound Ltd.",
-        "A.A. Records, Inc."
-      ],
+      "label": ["Golden Records", "Arc Sound Ltd.", "A.A. Records, Inc."],
       "type": "release",
       "barcode": [],
       "user_data": {
@@ -143,9 +110,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -155,10 +120,7 @@
       "cost": 55,
       "country": "US",
       "year": "1974",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "format": ["Vinyl", "LP"],
       "label": [
         "Hickory Records",
         "MGM Records",
@@ -167,12 +129,8 @@
         "Hickory Records, Inc."
       ],
       "type": "release",
-      "genre": [
-        "Folk, World, & Country"
-      ],
-      "style": [
-        "Country"
-      ],
+      "genre": ["Folk, World, & Country"],
+      "style": ["Country"],
       "id": 4093486,
       "barcode": [],
       "user_data": {
@@ -196,9 +154,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -208,24 +164,13 @@
       "cost": 65,
       "country": "Europe",
       "year": "2012",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "DOL"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["DOL"],
       "type": "release",
-      "genre": [
-        "Jazz"
-      ],
-      "style": [
-        "Easy Listening"
-      ],
+      "genre": ["Jazz"],
+      "style": ["Easy Listening"],
       "id": 4028116,
-      "barcode": [
-        "889397273217"
-      ],
+      "barcode": ["889397273217"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -247,9 +192,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -259,10 +202,7 @@
       "cost": 35,
       "country": "UK",
       "year": "1991",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "Polydor",
         "Polydor",
@@ -277,12 +217,8 @@
         "EMI Records"
       ],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Alternative Rock"
-      ],
+      "genre": ["Rock"],
+      "style": ["Alternative Rock"],
       "id": 3339449,
       "barcode": [
         "0 42287 94351 9",
@@ -315,9 +251,7 @@
           "name": "Vinyl",
           "qty": "1",
           "text": "Special Edition",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -326,20 +260,11 @@
       "stock": 17,
       "cost": 68,
       "country": "Jamaica",
-      "genre": [
-        "Reggae"
-      ],
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "style": [
-        "Reggae"
-      ],
+      "genre": ["Reggae"],
+      "format": ["Vinyl", "7\""],
+      "style": ["Reggae"],
       "id": 2980627,
-      "label": [
-        "Jammy's Records"
-      ],
+      "label": ["Jammy's Records"],
       "type": "release",
       "barcode": [],
       "user_data": {
@@ -363,9 +288,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -375,20 +298,11 @@
       "cost": 43,
       "country": "US",
       "year": "2005",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "Grave Mistake Records"
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["Grave Mistake Records"],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Hardcore"
-      ],
+      "genre": ["Rock"],
+      "style": ["Hardcore"],
       "id": 2296224,
       "barcode": [],
       "user_data": {
@@ -412,9 +326,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -424,10 +336,7 @@
       "cost": 56,
       "country": "US",
       "year": "1982",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "format": ["Vinyl", "LP"],
       "label": [
         "Storyville",
         "Blues Roots",
@@ -436,17 +345,10 @@
         "Trutone Mastering Labs"
       ],
       "type": "release",
-      "genre": [
-        "Blues"
-      ],
-      "style": [
-        "Piano Blues"
-      ],
+      "genre": ["Blues"],
+      "style": ["Piano Blues"],
       "id": 2672449,
-      "barcode": [
-        "A-1 <-> SLP404A (TR)SR482",
-        "A-1 <-> SLP404B TRSR482"
-      ],
+      "barcode": ["A-1 <-> SLP404A (TR)SR482", "A-1 <-> SLP404B TRSR482"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -468,9 +370,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -480,22 +380,11 @@
       "cost": 59,
       "country": "US",
       "year": "1973",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Black Lion Records",
-        "Montreux Jazz Festival"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Black Lion Records", "Montreux Jazz Festival"],
       "type": "release",
-      "genre": [
-        "Jazz"
-      ],
-      "style": [
-        "Swing",
-        "Bop"
-      ],
+      "genre": ["Jazz"],
+      "style": ["Swing", "Bop"],
       "id": 3822285,
       "barcode": [],
       "user_data": {
@@ -519,9 +408,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -531,31 +418,13 @@
       "cost": 49,
       "country": "UK",
       "year": "1955",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Columbia",
-        "Columbia",
-        "Columbia Graphophone Company Ltd."
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Columbia", "Columbia", "Columbia Graphophone Company Ltd."],
       "type": "release",
-      "genre": [
-        "Classical"
-      ],
-      "style": [
-        "Choral",
-        "Romantic"
-      ],
+      "genre": ["Classical"],
+      "style": ["Choral", "Romantic"],
       "id": 2983751,
-      "barcode": [
-        "Mecolico",
-        "XAX658",
-        "XAX659",
-        "XAX660",
-        "XAX661"
-      ],
+      "barcode": ["Mecolico", "XAX658", "XAX659", "XAX660", "XAX661"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -577,9 +446,7 @@
         {
           "name": "Vinyl",
           "qty": "2",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -588,20 +455,11 @@
       "stock": 15,
       "cost": 65,
       "country": "UK",
-      "genre": [
-        "Electronic"
-      ],
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "style": [
-        "House"
-      ],
+      "genre": ["Electronic"],
+      "format": ["Vinyl", "12\""],
+      "style": ["House"],
       "id": 259808,
-      "label": [
-        "Not On Label"
-      ],
+      "label": ["Not On Label"],
       "type": "release",
       "barcode": [],
       "user_data": {
@@ -625,9 +483,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -637,27 +493,13 @@
       "cost": 53,
       "country": "Germany",
       "year": "1984",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "JA&RO records",
-        "JA&RO records",
-        "Schall & Rauch Studio"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["JA&RO records", "JA&RO records", "Schall & Rauch Studio"],
       "type": "release",
-      "genre": [
-        "Jazz",
-        "Latin",
-        "Folk, World, & Country"
-      ],
+      "genre": ["Jazz", "Latin", "Folk, World, & Country"],
       "style": [],
       "id": 3443496,
-      "barcode": [
-        "LC 8648",
-        "GEMA"
-      ],
+      "barcode": ["LC 8648", "GEMA"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -679,9 +521,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -691,10 +531,7 @@
       "cost": 68,
       "country": "Poland",
       "year": "1973",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "format": ["Vinyl", "LP"],
       "label": [
         "Polskie Nagrania Muza",
         "Polskie Nagrania Muza",
@@ -702,19 +539,10 @@
         "Łódzka Drukarnia Akcydensowa"
       ],
       "type": "release",
-      "genre": [
-        "Children's"
-      ],
-      "style": [
-        "Story"
-      ],
+      "genre": ["Children's"],
+      "style": ["Story"],
       "id": 2792384,
-      "barcode": [
-        "S3X 730 A-6 C",
-        "S3X 730 B-7 K",
-        "BIEM",
-        "Cena 65 zł"
-      ],
+      "barcode": ["S3X 730 A-6 C", "S3X 730 B-7 K", "BIEM", "Cena 65 zł"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -737,9 +565,7 @@
           "name": "Vinyl",
           "qty": "1",
           "text": "Cream Labels",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -748,16 +574,9 @@
       "stock": 1,
       "cost": 45,
       "country": "US",
-      "genre": [
-        "Folk, World, & Country"
-      ],
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "style": [
-        "Country"
-      ],
+      "genre": ["Folk, World, & Country"],
+      "format": ["Vinyl", "LP"],
+      "style": ["Country"],
       "id": 7339147,
       "label": [
         "Mountain Dew Records",
@@ -765,10 +584,7 @@
         "Synthetic Plastics Company"
       ],
       "type": "release",
-      "barcode": [
-        "S-7019-A",
-        "S-7019-B"
-      ],
+      "barcode": ["S-7019-A", "S-7019-B"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -790,9 +606,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -802,18 +616,10 @@
       "cost": 56,
       "country": "Netherlands",
       "year": "1988",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Not On Label"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Not On Label"],
       "type": "release",
-      "genre": [
-        "Rock",
-        "Pop"
-      ],
+      "genre": ["Rock", "Pop"],
       "style": [],
       "id": 2255563,
       "barcode": [],
@@ -838,9 +644,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -850,21 +654,11 @@
       "cost": 56,
       "country": "Portugal",
       "year": "1977",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Decca",
-        "Medinah Temple"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Decca", "Medinah Temple"],
       "type": "release",
-      "genre": [
-        "Classical"
-      ],
-      "style": [
-        "Classical"
-      ],
+      "genre": ["Classical"],
+      "style": ["Classical"],
       "id": 4478432,
       "barcode": [],
       "user_data": {
@@ -888,9 +682,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -899,22 +691,11 @@
       "stock": 20,
       "cost": 69,
       "country": "Denmark",
-      "genre": [
-        "Jazz"
-      ],
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "style": [
-        "Dixieland",
-        "Ragtime"
-      ],
+      "genre": ["Jazz"],
+      "format": ["Vinyl", "LP"],
+      "style": ["Dixieland", "Ragtime"],
       "id": 5809233,
-      "label": [
-        "Storyville",
-        "Storyville"
-      ],
+      "label": ["Storyville", "Storyville"],
       "type": "release",
       "barcode": [],
       "user_data": {
@@ -938,9 +719,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -949,25 +728,13 @@
       "stock": 9,
       "cost": 35,
       "country": "US",
-      "genre": [
-        "Folk, World, & Country"
-      ],
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "genre": ["Folk, World, & Country"],
+      "format": ["Vinyl", "LP"],
       "style": [],
       "id": 6036255,
-      "label": [
-        "Time Records",
-        "Time Records Inc.",
-        "Brent Music Corp."
-      ],
+      "label": ["Time Records", "Time Records Inc.", "Brent Music Corp."],
       "type": "release",
-      "barcode": [
-        "TRS-86",
-        "TRS-87"
-      ],
+      "barcode": ["TRS-86", "TRS-87"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -989,9 +756,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -1001,10 +766,7 @@
       "cost": 43,
       "country": "France",
       "year": "1965",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "format": ["Vinyl", "LP"],
       "label": [
         "Disques Mouloudji",
         "Disques Festival",
@@ -1012,16 +774,10 @@
         "Studio de la Comédie des Champs-Elysées"
       ],
       "type": "release",
-      "genre": [
-        "Jazz"
-      ],
-      "style": [
-        "Free Jazz"
-      ],
+      "genre": ["Jazz"],
+      "style": ["Free Jazz"],
       "id": 2033365,
-      "barcode": [
-        "BIEM"
-      ],
+      "barcode": ["BIEM"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -1043,9 +799,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -1055,22 +809,11 @@
       "cost": 39,
       "country": "Spain",
       "year": "1986",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Grabaciones Accidentales"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Grabaciones Accidentales"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Experimental",
-        "Industrial",
-        "Synth-pop"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Experimental", "Industrial", "Synth-pop"],
       "id": 1069661,
       "barcode": [],
       "user_data": {
@@ -1094,9 +837,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -1106,14 +847,8 @@
       "cost": 47,
       "country": "Netherlands",
       "year": "1977",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "EMI Holland",
-        "EMI"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["EMI Holland", "EMI"],
       "type": "release",
       "genre": [
         "Electronic",
@@ -1125,10 +860,7 @@
         "Classical",
         "Folk, World, & Country"
       ],
-      "style": [
-        "Education",
-        "Special Effects"
-      ],
+      "style": ["Education", "Special Effects"],
       "id": 2464464,
       "barcode": [],
       "user_data": {
@@ -1152,9 +884,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -1164,17 +894,10 @@
       "cost": 68,
       "country": "UK",
       "year": "1975",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "Pye International"
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["Pye International"],
       "type": "release",
-      "genre": [
-        "Funk / Soul"
-      ],
+      "genre": ["Funk / Soul"],
       "style": [],
       "id": 5637999,
       "barcode": [],
@@ -1199,9 +922,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -1211,17 +932,10 @@
       "cost": 49,
       "country": "US",
       "year": "2005",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "Sound In Color"
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["Sound In Color"],
       "type": "release",
-      "genre": [
-        "Hip Hop"
-      ],
+      "genre": ["Hip Hop"],
       "style": [],
       "id": 507486,
       "barcode": [],
@@ -1246,9 +960,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -1258,10 +970,7 @@
       "cost": 54,
       "country": "UK",
       "year": "1997",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "Bush",
         "Bush",
@@ -1270,14 +979,8 @@
         "Bush Music"
       ],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Abstract",
-        "Trip Hop",
-        "Dub"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Abstract", "Trip Hop", "Dub"],
       "id": 461635,
       "barcode": [],
       "user_data": {
@@ -1301,9 +1004,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1313,20 +1014,11 @@
       "cost": 43,
       "country": "France",
       "year": "2010",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Audiotrix"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Audiotrix"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Techno"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Techno"],
       "id": 3028001,
       "barcode": [],
       "user_data": {
@@ -1350,9 +1042,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1362,27 +1052,13 @@
       "cost": 39,
       "country": "Netherlands",
       "year": "1983",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "Island Records",
-        "Ariola Benelux B.V.",
-        "Island Records Ltd."
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["Island Records", "Ariola Benelux B.V.", "Island Records Ltd."],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Disco",
-        "Garage House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Disco", "Garage House"],
       "id": 1610838,
-      "barcode": [
-        "STEMRA"
-      ],
+      "barcode": ["STEMRA"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -1404,9 +1080,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -1416,23 +1090,11 @@
       "cost": 41,
       "country": "Switzerland",
       "year": "2010",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Codek Records Europe"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Codek Records Europe"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "House",
-        "Electro",
-        "Downtempo",
-        "Disco"
-      ],
+      "genre": ["Electronic"],
+      "style": ["House", "Electro", "Downtempo", "Disco"],
       "id": 2352416,
       "barcode": [],
       "user_data": {
@@ -1456,9 +1118,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1468,21 +1128,11 @@
       "cost": 52,
       "country": "Spain",
       "year": "1991",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Yas Fli. Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Yas Fli. Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "House",
-        "Techno"
-      ],
+      "genre": ["Electronic"],
+      "style": ["House", "Techno"],
       "id": 805277,
       "barcode": [],
       "user_data": {
@@ -1506,9 +1156,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1518,10 +1166,7 @@
       "cost": 46,
       "country": "Belgium",
       "year": "2003",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "Mostiko",
         "Ramaekers Publishing NV",
@@ -1532,17 +1177,10 @@
         "CNR Music Belgium NV"
       ],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance"],
       "id": 152561,
-      "barcode": [
-        "8 714221 014402",
-        "Sabam"
-      ],
+      "barcode": ["8 714221 014402", "Sabam"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -1564,9 +1202,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1576,21 +1212,11 @@
       "cost": 63,
       "country": "Spain",
       "year": "1997",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Vendetta Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Vendetta Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Acid House",
-        "House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Acid House", "House"],
       "id": 242245,
       "barcode": [],
       "user_data": {
@@ -1614,9 +1240,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1626,29 +1250,13 @@
       "cost": 70,
       "country": "Germany",
       "year": "1998",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Roca Records",
-        "DMD",
-        "Edition Fog Area"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Roca Records", "DMD", "Edition Fog Area"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance",
-        "House",
-        "Hard House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance", "House", "Hard House"],
       "id": 308644,
-      "barcode": [
-        "4 014235 237137",
-        "4014235237137"
-      ],
+      "barcode": ["4 014235 237137", "4014235237137"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -1670,9 +1278,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1682,21 +1288,11 @@
       "cost": 63,
       "country": "UK",
       "year": "2005",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "2tuf 4u Records",
-        "2tuf 4u Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["2tuf 4u Records", "2tuf 4u Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "UK Garage"
-      ],
+      "genre": ["Electronic"],
+      "style": ["UK Garage"],
       "id": 620725,
       "barcode": [],
       "user_data": {
@@ -1720,9 +1316,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1732,20 +1326,11 @@
       "cost": 53,
       "country": "UK",
       "year": "1991",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "MCA Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["MCA Records"],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Alternative Rock"
-      ],
+      "genre": ["Rock"],
+      "style": ["Alternative Rock"],
       "id": 3248499,
       "barcode": [],
       "user_data": {
@@ -1769,9 +1354,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1781,21 +1364,11 @@
       "cost": 29,
       "country": "UK",
       "year": "2002",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Infiltration"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Infiltration"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "UK Garage",
-        "Grime"
-      ],
+      "genre": ["Electronic"],
+      "style": ["UK Garage", "Grime"],
       "id": 1332579,
       "barcode": [],
       "user_data": {
@@ -1819,9 +1392,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -1831,24 +1402,11 @@
       "cost": 32,
       "country": "Argentina",
       "year": "1997",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "Ugly Records"
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["Ugly Records"],
       "type": "release",
-      "genre": [
-        "Rock",
-        "Non-Music"
-      ],
-      "style": [
-        "Punk",
-        "Garage Rock",
-        "Melodic Hardcore",
-        "Spoken Word"
-      ],
+      "genre": ["Rock", "Non-Music"],
+      "style": ["Punk", "Garage Rock", "Melodic Hardcore", "Spoken Word"],
       "id": 3434622,
       "barcode": [],
       "user_data": {
@@ -1873,9 +1431,7 @@
           "name": "Vinyl",
           "qty": "1",
           "text": "Red",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -1885,22 +1441,11 @@
       "cost": 45,
       "country": "US",
       "year": "2022",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Mathematics Recordings"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Mathematics Recordings"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Abstract",
-        "Techno",
-        "Ambient"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Abstract", "Techno", "Ambient"],
       "id": 25085113,
       "barcode": [],
       "user_data": {
@@ -1924,9 +1469,7 @@
         {
           "name": "Vinyl",
           "qty": "2",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -1935,18 +1478,11 @@
       "stock": 6,
       "cost": 36,
       "country": "UK",
-      "genre": [
-        "Reggae"
-      ],
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
+      "genre": ["Reggae"],
+      "format": ["Vinyl", "7\""],
       "style": [],
       "id": 1842838,
-      "label": [
-        "Tops Record"
-      ],
+      "label": ["Tops Record"],
       "type": "release",
       "barcode": [],
       "user_data": {
@@ -1970,9 +1506,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -1982,26 +1516,13 @@
       "cost": 45,
       "country": "France",
       "year": "1985",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Koka Media",
-        "Edition Cézame"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Koka Media", "Edition Cézame"],
       "type": "release",
-      "genre": [
-        "Electronic",
-        "Pop"
-      ],
-      "style": [
-        "Experimental"
-      ],
+      "genre": ["Electronic", "Pop"],
+      "style": ["Experimental"],
       "id": 3088342,
-      "barcode": [
-        "SACEM SDRM SACD SGDL "
-      ],
+      "barcode": ["SACEM SDRM SACD SGDL "],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -2023,9 +1544,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -2035,20 +1554,11 @@
       "cost": 48,
       "country": "US",
       "year": "1997",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "VP Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["VP Records"],
       "type": "release",
-      "genre": [
-        "Reggae"
-      ],
-      "style": [
-        "Dancehall"
-      ],
+      "genre": ["Reggae"],
+      "style": ["Dancehall"],
       "id": 2317792,
       "barcode": [],
       "user_data": {
@@ -2072,9 +1582,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2084,21 +1592,11 @@
       "cost": 43,
       "country": "UK",
       "year": "1995",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Celestial Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Celestial Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance",
-        "Goa Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance", "Goa Trance"],
       "id": 215366,
       "barcode": [],
       "user_data": {
@@ -2122,9 +1620,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2134,28 +1630,13 @@
       "cost": 56,
       "country": "Netherlands",
       "year": "1996",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Fusebox",
-        "Props Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Fusebox", "Props Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Breakbeat",
-        "Trip Hop"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Breakbeat", "Trip Hop"],
       "id": 861432,
-      "barcode": [
-        "310 10413 34210 9",
-        "31010413342109",
-        "BUMA / STEMRA"
-      ],
+      "barcode": ["310 10413 34210 9", "31010413342109", "BUMA / STEMRA"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -2177,9 +1658,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2189,24 +1668,11 @@
       "cost": 58,
       "country": "Europe",
       "year": "1990",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Food",
-        "EMI Records Ltd.",
-        "Food Ltd.",
-        "EMI Records Ltd."
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Food", "EMI Records Ltd.", "Food Ltd.", "EMI Records Ltd."],
       "type": "release",
-      "genre": [
-        "Electronic",
-        "Rock"
-      ],
-      "style": [
-        "Shoegaze"
-      ],
+      "genre": ["Electronic", "Rock"],
+      "style": ["Shoegaze"],
       "id": 1859336,
       "barcode": [
         "5 099920 405168",
@@ -2237,9 +1703,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2249,20 +1713,11 @@
       "cost": 56,
       "country": "UK",
       "year": "2008",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Fritto Morto"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Fritto Morto"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Disco"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Disco"],
       "id": 1577350,
       "barcode": [],
       "user_data": {
@@ -2286,9 +1741,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2298,22 +1751,11 @@
       "cost": 45,
       "country": "Italy",
       "year": "2009",
-      "format": [
-        "Vinyl",
-        "10\""
-      ],
-      "label": [
-        "Schema"
-      ],
+      "format": ["Vinyl", "10\""],
+      "label": ["Schema"],
       "type": "release",
-      "genre": [
-        "Jazz",
-        "Latin"
-      ],
-      "style": [
-        "Bossa Nova",
-        "Samba"
-      ],
+      "genre": ["Jazz", "Latin"],
+      "style": ["Bossa Nova", "Samba"],
       "id": 1848846,
       "barcode": [],
       "user_data": {
@@ -2337,9 +1779,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "10\""
-          ]
+          "descriptions": ["10\""]
         }
       ]
     },
@@ -2349,21 +1789,11 @@
       "cost": 56,
       "country": "France",
       "year": "2000",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Random Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Random Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Drum n Bass",
-        "Jungle"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Drum n Bass", "Jungle"],
       "id": 195349,
       "barcode": [],
       "user_data": {
@@ -2387,9 +1817,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2399,25 +1827,13 @@
       "cost": 25,
       "country": "Netherlands",
       "year": "1999",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Flammable"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Flammable"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance",
-        "Progressive Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance", "Progressive Trance"],
       "id": 49314,
-      "barcode": [
-        "8 713748 012618"
-      ],
+      "barcode": ["8 713748 012618"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -2439,9 +1855,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2451,10 +1865,7 @@
       "cost": 26,
       "country": "US",
       "year": "2003",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "Dis-Joint Records",
         "Re-Joint Records",
@@ -2463,13 +1874,8 @@
         "Bullwackies"
       ],
       "type": "release",
-      "genre": [
-        "Hip Hop",
-        "Reggae"
-      ],
-      "style": [
-        "Dub"
-      ],
+      "genre": ["Hip Hop", "Reggae"],
+      "style": ["Dub"],
       "id": 2583248,
       "barcode": [],
       "user_data": {
@@ -2493,9 +1899,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2505,26 +1909,13 @@
       "cost": 38,
       "country": "UK",
       "year": "2002",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Paper Recordings"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Paper Recordings"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "House",
-        "Deep House",
-        "Tech House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["House", "Deep House", "Tech House"],
       "id": 103120,
-      "barcode": [
-        "5016554491312"
-      ],
+      "barcode": ["5016554491312"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -2546,9 +1937,7 @@
         {
           "name": "Vinyl",
           "qty": "2",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -2558,20 +1947,11 @@
       "cost": 53,
       "country": "Spain",
       "year": "2004",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "X-plosive Division"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["X-plosive Division"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance"],
       "id": 401229,
       "barcode": [],
       "user_data": {
@@ -2595,9 +1975,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2607,24 +1985,11 @@
       "cost": 49,
       "country": "US",
       "year": "2018",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "Tankcrimes",
-        "Uncle Howie Records"
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["Tankcrimes", "Uncle Howie Records"],
       "type": "release",
-      "genre": [
-        "Hip Hop",
-        "Rock"
-      ],
-      "style": [
-        "Death Metal",
-        "Thrash",
-        "Grindcore"
-      ],
+      "genre": ["Hip Hop", "Rock"],
+      "style": ["Death Metal", "Thrash", "Grindcore"],
       "id": 12011087,
       "barcode": [
         "made in CZ pirates press circle logo on the bottom right hand corner.. no barcode"
@@ -2651,9 +2016,7 @@
           "name": "Vinyl",
           "qty": "1",
           "text": " half blue, half silver  .",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -2662,18 +2025,11 @@
       "stock": 3,
       "cost": 52,
       "country": "Jamaica",
-      "genre": [
-        "Reggae"
-      ],
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
+      "genre": ["Reggae"],
+      "format": ["Vinyl", "7\""],
       "style": [],
       "id": 6097506,
-      "label": [
-        "Volcano"
-      ],
+      "label": ["Volcano"],
       "type": "release",
       "barcode": [],
       "user_data": {
@@ -2697,9 +2053,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -2709,22 +2063,11 @@
       "cost": 68,
       "country": "UK",
       "year": "2010",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "City Slang"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["City Slang"],
       "type": "release",
-      "genre": [
-        "Electronic",
-        "Rock"
-      ],
-      "style": [
-        "Experimental",
-        "Indie Rock"
-      ],
+      "genre": ["Electronic", "Rock"],
+      "style": ["Experimental", "Indie Rock"],
       "id": 2230345,
       "barcode": [],
       "user_data": {
@@ -2748,9 +2091,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2760,20 +2101,11 @@
       "cost": 36,
       "country": "Italy",
       "year": "1995",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Deep Blaze Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Deep Blaze Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Euro House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Euro House"],
       "id": 470456,
       "barcode": [
         "8 014082 1000222",
@@ -2803,9 +2135,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2815,23 +2145,11 @@
       "cost": 46,
       "country": "US",
       "year": "1980",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "MCA Records"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["MCA Records"],
       "type": "release",
-      "genre": [
-        "Pop",
-        "Children's",
-        "Folk, World, & Country"
-      ],
-      "style": [
-        "Folk",
-        "Vocal"
-      ],
+      "genre": ["Pop", "Children's", "Folk, World, & Country"],
+      "style": ["Folk", "Vocal"],
       "id": 4979381,
       "barcode": [],
       "user_data": {
@@ -2855,9 +2173,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -2867,21 +2183,11 @@
       "cost": 48,
       "country": "UK",
       "year": "2000",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Hellpass Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Hellpass Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "House",
-        "Progressive House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["House", "Progressive House"],
       "id": 64288,
       "barcode": [],
       "user_data": {
@@ -2905,9 +2211,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2917,17 +2221,10 @@
       "cost": 65,
       "country": "Australia",
       "year": "2007",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Karsniogenics"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Karsniogenics"],
       "type": "release",
-      "genre": [
-        "Hip Hop"
-      ],
+      "genre": ["Hip Hop"],
       "style": [],
       "id": 1817224,
       "barcode": [],
@@ -2952,9 +2249,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -2964,21 +2259,11 @@
       "cost": 56,
       "country": "UK",
       "year": "1997",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Slack Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Slack Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Breakbeat",
-        "House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Breakbeat", "House"],
       "id": 18578,
       "barcode": [],
       "user_data": {
@@ -3002,9 +2287,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3014,20 +2297,11 @@
       "cost": 56,
       "country": "Netherlands",
       "year": "1996",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Flipped Fantasia"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Flipped Fantasia"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Hard House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Hard House"],
       "id": 113395,
       "barcode": [],
       "user_data": {
@@ -3051,9 +2325,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3063,25 +2335,13 @@
       "cost": 48,
       "country": "Sweden",
       "year": "2014",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "A Tenderversion Recording"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["A Tenderversion Recording"],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Indie Rock",
-        "Post Rock"
-      ],
+      "genre": ["Rock"],
+      "style": ["Indie Rock", "Post Rock"],
       "id": 5909338,
-      "barcode": [
-        "4042564151633"
-      ],
+      "barcode": ["4042564151633"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -3103,9 +2363,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -3115,23 +2373,11 @@
       "cost": 68,
       "country": "UK",
       "year": "2011",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Diner City Sound"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Diner City Sound"],
       "type": "release",
-      "genre": [
-        "Electronic",
-        "Funk / Soul"
-      ],
-      "style": [
-        "Rhythm & Blues",
-        "Deep House",
-        "Neo Soul"
-      ],
+      "genre": ["Electronic", "Funk / Soul"],
+      "style": ["Rhythm & Blues", "Deep House", "Neo Soul"],
       "id": 2814978,
       "barcode": [],
       "user_data": {
@@ -3155,9 +2401,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3167,22 +2411,13 @@
       "cost": 26,
       "country": "US",
       "year": "1996",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "LaFace Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["LaFace Records"],
       "type": "release",
-      "genre": [
-        "Hip Hop"
-      ],
+      "genre": ["Hip Hop"],
       "style": [],
       "id": 2798759,
-      "barcode": [
-        "730082412810"
-      ],
+      "barcode": ["730082412810"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -3204,9 +2439,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3216,22 +2449,11 @@
       "cost": 45,
       "country": "UK",
       "year": "2005",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "S12"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["S12"],
       "type": "release",
-      "genre": [
-        "Jazz",
-        "Funk / Soul"
-      ],
-      "style": [
-        "Jazz-Funk",
-        "Disco"
-      ],
+      "genre": ["Jazz", "Funk / Soul"],
+      "style": ["Jazz-Funk", "Disco"],
       "id": 580364,
       "barcode": [],
       "user_data": {
@@ -3255,9 +2477,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3267,20 +2487,11 @@
       "cost": 36,
       "country": "France",
       "year": "2017",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "A Fistful Of Wax"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["A Fistful Of Wax"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["House"],
       "id": 10509142,
       "barcode": [],
       "user_data": {
@@ -3304,9 +2515,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3316,20 +2525,11 @@
       "cost": 39,
       "country": "Belgium",
       "year": "1995",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Tark Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Tark Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Progressive Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Progressive Trance"],
       "id": 88195,
       "barcode": [],
       "user_data": {
@@ -3353,9 +2553,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3365,20 +2563,11 @@
       "cost": 63,
       "country": "Italy",
       "year": "2021",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Arts White"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Arts White"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Techno"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Techno"],
       "id": 20847385,
       "barcode": [],
       "user_data": {
@@ -3402,9 +2591,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3414,10 +2601,7 @@
       "cost": 66,
       "country": "US",
       "year": "2004",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "i! Records",
         "Cal Vent Music",
@@ -3427,13 +2611,8 @@
         "i! Recordings"
       ],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "UK Garage",
-        "Garage House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["UK Garage", "Garage House"],
       "id": 238310,
       "barcode": [],
       "user_data": {
@@ -3457,9 +2636,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3469,24 +2646,13 @@
       "cost": 38,
       "country": "Germany",
       "year": "2004",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Active Sense Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Active Sense Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance"],
       "id": 354345,
-      "barcode": [
-        "4 014235 434925"
-      ],
+      "barcode": ["4 014235 434925"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -3508,9 +2674,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3520,21 +2684,11 @@
       "cost": 70,
       "country": "Australia",
       "year": "2002",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Vicious Vinyl"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Vicious Vinyl"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Progressive House",
-        "Progressive Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Progressive House", "Progressive Trance"],
       "id": 350395,
       "barcode": [],
       "user_data": {
@@ -3558,9 +2712,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3570,22 +2722,15 @@
       "cost": 21,
       "country": "Italy",
       "year": "2013",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "format": ["Vinyl", "LP"],
       "label": [
         "Rave Up Records",
         "Rave Up Records",
         "American Lost Punk Rock Nuggets"
       ],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Punk"
-      ],
+      "genre": ["Rock"],
+      "style": ["Punk"],
       "id": 5084639,
       "barcode": [],
       "user_data": {
@@ -3609,9 +2754,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -3621,21 +2764,11 @@
       "cost": 38,
       "country": "Netherlands",
       "year": "1971",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Calcutta Records",
-        "Phonodisc B.V."
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Calcutta Records", "Phonodisc B.V."],
       "type": "release",
-      "genre": [
-        "Stage & Screen"
-      ],
-      "style": [
-        "Musical"
-      ],
+      "genre": ["Stage & Screen"],
+      "style": ["Musical"],
       "id": 4281422,
       "barcode": [
         "STEMRA",
@@ -3663,9 +2796,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -3675,21 +2806,11 @@
       "cost": 26,
       "country": "Spain",
       "year": "2003",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Limite Records",
-        "Bit Music"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Limite Records", "Bit Music"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Euro House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Euro House"],
       "id": 662555,
       "barcode": [],
       "user_data": {
@@ -3713,9 +2834,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3725,21 +2844,11 @@
       "cost": 69,
       "country": "UK",
       "year": "1996",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "MCA Records",
-        "Universal Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["MCA Records", "Universal Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["House"],
       "id": 490821,
       "barcode": [],
       "user_data": {
@@ -3763,9 +2872,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3775,20 +2882,11 @@
       "cost": 35,
       "country": "UK",
       "year": "2021",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Podgorze"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Podgorze"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Minimal"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Minimal"],
       "id": 19596304,
       "barcode": [],
       "user_data": {
@@ -3812,9 +2910,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3824,25 +2920,13 @@
       "cost": 48,
       "country": "UK",
       "year": "2000",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "[PIAS] Recordings",
-        "S2S Recordings"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["[PIAS] Recordings", "S2S Recordings"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "UK Garage"
-      ],
+      "genre": ["Electronic"],
+      "style": ["UK Garage"],
       "id": 183491,
-      "barcode": [
-        "5413356560435"
-      ],
+      "barcode": ["5413356560435"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -3864,9 +2948,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3876,10 +2958,7 @@
       "cost": 49,
       "country": "Netherlands",
       "year": "2002",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "4 Fingers",
         "Purple Eye Publishing",
@@ -3888,16 +2967,10 @@
         "Purple Eye Entertainment BV"
       ],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance"],
       "id": 52909,
-      "barcode": [
-        "8713843040196"
-      ],
+      "barcode": ["8713843040196"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -3919,9 +2992,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3931,21 +3002,11 @@
       "cost": 68,
       "country": "Spain",
       "year": "2006",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Red Vinyl"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Red Vinyl"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Hardcore",
-        "Hardstyle"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Hardcore", "Hardstyle"],
       "id": 857116,
       "barcode": [],
       "user_data": {
@@ -3969,9 +3030,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -3981,20 +3040,11 @@
       "cost": 48,
       "country": "Germany",
       "year": "2018",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Terminal M"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Terminal M"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Tech House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Tech House"],
       "id": 12433145,
       "barcode": [],
       "user_data": {
@@ -4018,9 +3068,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4030,25 +3078,13 @@
       "cost": 58,
       "country": "Canada",
       "year": "1989",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "A&M Records"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["A&M Records"],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Glam",
-        "Hard Rock"
-      ],
+      "genre": ["Rock"],
+      "style": ["Glam", "Hard Rock"],
       "id": 5020097,
-      "barcode": [
-        "0 7502-19156-1 9"
-      ],
+      "barcode": ["0 7502-19156-1 9"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -4070,9 +3106,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -4082,25 +3116,13 @@
       "cost": 56,
       "country": "Germany",
       "year": "2007",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Drizzly",
-        "Multiforce"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Drizzly", "Multiforce"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance"],
       "id": 1044956,
-      "barcode": [
-        "4 260112 040806"
-      ],
+      "barcode": ["4 260112 040806"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -4122,9 +3144,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4134,20 +3154,11 @@
       "cost": 26,
       "country": "Spain",
       "year": "2006",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Addicted Music"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Addicted Music"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Hard House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Hard House"],
       "id": 675021,
       "barcode": [],
       "user_data": {
@@ -4171,9 +3182,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4183,10 +3192,7 @@
       "cost": 42,
       "country": "Europe",
       "year": "2004",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "format": ["Vinyl", "LP"],
       "label": [
         "Alerta Antifascista",
         "Les Nains Aussi",
@@ -4195,18 +3201,10 @@
         "MPO"
       ],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Hardcore",
-        "Punk"
-      ],
+      "genre": ["Rock"],
+      "style": ["Hardcore", "Punk"],
       "id": 2448565,
-      "barcode": [
-        "Actis. LNA 007 A MPO",
-        "Actis. LNA 007 B MPO"
-      ],
+      "barcode": ["Actis. LNA 007 A MPO", "Actis. LNA 007 B MPO"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -4228,9 +3226,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -4240,20 +3236,11 @@
       "cost": 65,
       "country": "Germany",
       "year": "2002",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "SW7 Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["SW7 Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Techno"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Techno"],
       "id": 158460,
       "barcode": [],
       "user_data": {
@@ -4277,9 +3264,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4289,22 +3274,11 @@
       "cost": 62,
       "country": "UK",
       "year": "1998",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Trebleate Recordings"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Trebleate Recordings"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Hard House",
-        "Acid",
-        "Hard Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Hard House", "Acid", "Hard Trance"],
       "id": 435662,
       "barcode": [],
       "user_data": {
@@ -4328,9 +3302,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4340,20 +3312,11 @@
       "cost": 58,
       "country": "UK",
       "year": "2005",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Urban Takeover"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Urban Takeover"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Drum n Bass"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Drum n Bass"],
       "id": 564678,
       "barcode": [],
       "user_data": {
@@ -4377,9 +3340,7 @@
         {
           "name": "Vinyl",
           "qty": "2",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4389,21 +3350,11 @@
       "cost": 48,
       "country": "US",
       "year": "2001",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Avex USA"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Avex USA"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Techno",
-        "House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Techno", "House"],
       "id": 746360,
       "barcode": [],
       "user_data": {
@@ -4427,9 +3378,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4439,22 +3388,11 @@
       "cost": 68,
       "country": "US",
       "year": "2010",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Nuclear War Now! Productions"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Nuclear War Now! Productions"],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Death Metal",
-        "Black Metal",
-        "Thrash"
-      ],
+      "genre": ["Rock"],
+      "style": ["Death Metal", "Black Metal", "Thrash"],
       "id": 4367171,
       "barcode": [],
       "user_data": {
@@ -4478,9 +3416,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4490,20 +3426,11 @@
       "cost": 68,
       "country": "UK",
       "year": "2005",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Riot! Recordings"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Riot! Recordings"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Hard House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Hard House"],
       "id": 562265,
       "barcode": [],
       "user_data": {
@@ -4527,9 +3454,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4539,10 +3464,7 @@
       "cost": 68,
       "country": "US",
       "year": "1997",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "Angels Of Love Records",
         "Strictly Rhythm Records, Inc.",
@@ -4552,12 +3474,8 @@
         "Flying Recording Studio"
       ],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["House"],
       "id": 352748,
       "barcode": [
         "732183220110",
@@ -4586,9 +3504,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4598,24 +3514,13 @@
       "cost": 68,
       "country": "France",
       "year": "2007",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Darkness"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Darkness"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Tech House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Tech House"],
       "id": 1009285,
-      "barcode": [
-        "3539932117984"
-      ],
+      "barcode": ["3539932117984"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -4637,9 +3542,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4649,26 +3552,11 @@
       "cost": 38,
       "country": "Netherlands",
       "year": "1980",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Dureco Benelux",
-        "DDM - Deejay Special"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Dureco Benelux", "DDM - Deejay Special"],
       "type": "release",
-      "genre": [
-        "Electronic",
-        "Funk / Soul",
-        "Non-Music"
-      ],
-      "style": [
-        "Special Effects",
-        "Spoken Word",
-        "Funk",
-        "Disco"
-      ],
+      "genre": ["Electronic", "Funk / Soul", "Non-Music"],
+      "style": ["Special Effects", "Spoken Word", "Funk", "Disco"],
       "id": 876511,
       "barcode": [],
       "user_data": {
@@ -4692,9 +3580,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -4704,10 +3590,7 @@
       "cost": 69,
       "country": "Switzerland",
       "year": "1983",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
+      "format": ["Vinyl", "LP"],
       "label": [
         "Vertigo",
         "PolyGram Records AG",
@@ -4717,16 +3600,10 @@
         "MSM Studios"
       ],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Punk"
-      ],
+      "genre": ["Rock"],
+      "style": ["Punk"],
       "id": 2833354,
-      "barcode": [
-        "+SUISA+"
-      ],
+      "barcode": ["+SUISA+"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -4748,9 +3625,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -4759,20 +3634,11 @@
       "stock": 6,
       "cost": 61,
       "country": "UK",
-      "genre": [
-        "Reggae"
-      ],
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "style": [
-        "Reggae"
-      ],
+      "genre": ["Reggae"],
+      "format": ["Vinyl", "7\""],
+      "style": ["Reggae"],
       "id": 2438724,
-      "label": [
-        "Negusa Nagast"
-      ],
+      "label": ["Negusa Nagast"],
       "type": "release",
       "barcode": [],
       "user_data": {
@@ -4796,9 +3662,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -4808,10 +3672,7 @@
       "cost": 36,
       "country": "Germany",
       "year": "1999",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
+      "format": ["Vinyl", "12\""],
       "label": [
         "Sunnyside Up",
         "Shift Music Publishing",
@@ -4819,19 +3680,10 @@
         "ZYX Music"
       ],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance"],
       "id": 353344,
-      "barcode": [
-        "0 90204 78261 1",
-        "090204782611",
-        "LC 6437",
-        "GEMA"
-      ],
+      "barcode": ["0 90204 78261 1", "090204782611", "LC 6437", "GEMA"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -4853,9 +3705,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4865,21 +3715,11 @@
       "cost": 68,
       "country": "Italy",
       "year": "1998",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Worldbus Records"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Worldbus Records"],
       "type": "release",
-      "genre": [
-        "Electronic"
-      ],
-      "style": [
-        "Trance",
-        "Italo House"
-      ],
+      "genre": ["Electronic"],
+      "style": ["Trance", "Italo House"],
       "id": 264082,
       "barcode": [],
       "user_data": {
@@ -4903,9 +3743,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -4915,25 +3753,13 @@
       "cost": 54,
       "country": "Australia & New Zealand",
       "year": "1984",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "EMI"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["EMI"],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Pop Rock"
-      ],
+      "genre": ["Rock"],
+      "style": ["Pop Rock"],
       "id": 5374978,
-      "barcode": [
-        "EMC-2401371 A",
-        "EMC-2401371 B"
-      ],
+      "barcode": ["EMC-2401371 A", "EMC-2401371 B"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -4955,9 +3781,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -4967,27 +3791,13 @@
       "cost": 48,
       "country": "Belgium",
       "year": "1977",
-      "format": [
-        "Vinyl",
-        "LP"
-      ],
-      "label": [
-        "Surprise",
-        "Surprise"
-      ],
+      "format": ["Vinyl", "LP"],
+      "label": ["Surprise", "Surprise"],
       "type": "release",
-      "genre": [
-        "Rock"
-      ],
-      "style": [
-        "Rock & Roll",
-        "Romantic",
-        "Easy Listening"
-      ],
+      "genre": ["Rock"],
+      "style": ["Rock & Roll", "Romantic", "Easy Listening"],
       "id": 1685002,
-      "barcode": [
-        "SABAM"
-      ],
+      "barcode": ["SABAM"],
       "user_data": {
         "in_wantlist": false,
         "in_collection": false
@@ -5009,9 +3819,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "LP"
-          ]
+          "descriptions": ["LP"]
         }
       ]
     },
@@ -5021,23 +3829,11 @@
       "cost": 58,
       "country": "UK",
       "year": "2002",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "Wah Wah 45s"
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["Wah Wah 45s"],
       "type": "release",
-      "genre": [
-        "Electronic",
-        "Funk / Soul"
-      ],
-      "style": [
-        "Soul",
-        "Experimental",
-        "Funk"
-      ],
+      "genre": ["Electronic", "Funk / Soul"],
+      "style": ["Soul", "Experimental", "Funk"],
       "id": 1357888,
       "barcode": [],
       "user_data": {
@@ -5061,9 +3857,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     },
@@ -5073,20 +3867,11 @@
       "cost": 45,
       "country": "Europe",
       "year": "2002",
-      "format": [
-        "Vinyl",
-        "12\""
-      ],
-      "label": [
-        "Def Jam Recordings"
-      ],
+      "format": ["Vinyl", "12\""],
+      "label": ["Def Jam Recordings"],
       "type": "release",
-      "genre": [
-        "Hip Hop"
-      ],
-      "style": [
-        "RnB/Swing"
-      ],
+      "genre": ["Hip Hop"],
+      "style": ["RnB/Swing"],
       "id": 491561,
       "barcode": [],
       "user_data": {
@@ -5110,9 +3895,7 @@
         {
           "name": "Vinyl",
           "qty": "1",
-          "descriptions": [
-            "12\""
-          ]
+          "descriptions": ["12\""]
         }
       ]
     },
@@ -5122,17 +3905,10 @@
       "cost": 68,
       "country": "UK",
       "year": "2004",
-      "format": [
-        "Vinyl",
-        "7\""
-      ],
-      "label": [
-        "KarmaLion Records"
-      ],
+      "format": ["Vinyl", "7\""],
+      "label": ["KarmaLion Records"],
       "type": "release",
-      "genre": [
-        "Pop"
-      ],
+      "genre": ["Pop"],
       "style": [],
       "id": 1251743,
       "barcode": [],
@@ -5158,9 +3934,7 @@
           "name": "Vinyl",
           "qty": "1",
           "text": "Hand stamped label",
-          "descriptions": [
-            "7\""
-          ]
+          "descriptions": ["7\""]
         }
       ]
     }
