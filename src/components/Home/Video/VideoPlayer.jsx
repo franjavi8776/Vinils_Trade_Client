@@ -12,7 +12,6 @@ const VideoPlayer = () => {
       playlist: videoId,
     },
   };
-  console.log(opts);
 
   return (
     <div>

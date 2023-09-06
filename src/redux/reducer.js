@@ -6,6 +6,7 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
+  POST_VINYL,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -27,6 +28,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.payload,
+      };
+    case POST_VINYL:
+      return {
+        ...state,
+        allVinyls: [...state.allVinyls, action.payload],
       };
 
     case FILTER_BY_DECADE:
