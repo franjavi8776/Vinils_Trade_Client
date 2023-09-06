@@ -7,8 +7,9 @@ export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST";
 export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
+export const POST_VINYL = "POST_VINYL";
 
-const endpoint = "http://localhost:3001/results/";
+const endpoint = "http://localhost:3001/";
 
 export const getAllVinyls = () => async (dispatch) => {
   try {
@@ -26,9 +27,9 @@ export const getAllVinyls = () => async (dispatch) => {
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(endpoint + id);
+    const response = await axios.get(`endpoint${id}`);
     const data = response.data;
-    //console.log(data);
+    console.log(data);
     dispatch({ type: GET_DETAIL, payload: data });
   } catch (error) {
     console.log(error);
@@ -66,14 +67,17 @@ export const orderByTitle = (order) => {
   };
 };
 
-export const postVinyls = (dato) => {
-  return async () => {
-    try {
-      await axios.post(endpoint, dato).then((response) => response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+export const postVinyls = (dato) => async (dispatch) => {
+  try {
+    const response = await axios.post(endpoint, dato);
+    const data = response.data;
+    dispatch({
+      type: POST_VINYL,
+      payload: data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const reset = () => {

@@ -32,7 +32,7 @@ const Detail = () => {
             <h1 className="text-3xl font-semibold mb-2">{detail?.title}</h1>
             <div className="flex justify-between">
               <h2 className="text-black font-semibold">
-                Pais: <span className="text-slate-100">{detail?.country}</span>
+                Pais: <span className="text-slate-100">{detail?.style}</span>
               </h2>
               <h2 className="text-black font-semibold">
                 Año:{" "}
@@ -43,7 +43,7 @@ const Detail = () => {
             </div>
 
             <h2 className="text-black font-semibold">
-              Artista: <span className="text-slate-100">{detail.artist}</span>
+              Artista: <span className="text-slate-100">{detail.artists}</span>
             </h2>
             <h2 className="text-black font-semibold">
               Genero:{" "}
@@ -64,7 +64,7 @@ const Detail = () => {
               Stock: <span className="text-slate-100"> {detail.stock}</span>
             </h2>
             <h2 className="text-black font-bold text-lg">
-              Precio: <span className="text-slate-100">${detail.cost}</span>
+              Precio: <span className="text-slate-100">${detail.price}</span>
             </h2>
           </div>
           <Link to="/">
