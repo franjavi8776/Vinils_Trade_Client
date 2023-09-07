@@ -2,13 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { addToCartInLocalStorage } from "./LocalStor"; // Importa la función de agregar al carrito
 
-
-const Card = ({ id, title, cover_image, cost, stock }) => {
+const Card = ({ id, title, cover_image, price, stock }) => {
   const handleAddToCart = () => {
     // Llama a la función para agregar al carrito con los datos correctos
-    addToCartInLocalStorage({ id, title, cover_image, cost, stock });
+    addToCartInLocalStorage({ id, title, cover_image, price, stock });
   };
-
 
   return (
     <div className="w-60 h-70 text-md">
