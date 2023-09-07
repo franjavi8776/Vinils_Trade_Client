@@ -17,6 +17,10 @@ import Footer from "../Footer/Footer";
 import "./Home.css";
 import VideoPlayer from "./Video/VideoPlayer";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import {
+  addToCartInLocalStorage,
+  useLocalStorage
+} from "../Card/LocalStor";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -52,6 +56,10 @@ const Home = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+  };
+
+  const handleAddToCart = (id, title, cover_image, cost, stock) => {
+    addToCartInLocalStorage({ id, title, cover_image, cost, stock }); // Agrega el producto al carrito
   };
 
   // const handleReset = () => {
@@ -228,6 +236,7 @@ const Home = () => {
                   cover_image={vinyls.cover_image}
                   stock={vinyls.stock}
                   cost={vinyls.cost}
+                  addToCart={handleAddToCart}
                 />
               ))}
             </div>

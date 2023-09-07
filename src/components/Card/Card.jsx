@@ -1,19 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getVinylCart } from "../../redux/actions";
-import { useLocalStorage, saveCartToLocalStorage } from "./LocalStor";
+import { addToCartInLocalStorage } from "./LocalStor"; // Importa la función de agregar al carrito
 
 const Card = ({ id, title, cover_image, cost, stock }) => {
-  const dispatch = useDispatch()
-
   const handleAddToCart = () => {
-    const cart = useLocalStorage();
-    cart.push({ id, title, cover_image, cost, stock });
-    saveCartToLocalStorage(cart);
-    console.log(cart)
+    // Llama a la función para agregar al carrito con los datos correctos
+    addToCartInLocalStorage({ id, title, cover_image, cost, stock });
   };
-  
 
   return (
     <div className="w-60 h-70 text-md">
@@ -29,17 +22,17 @@ const Card = ({ id, title, cover_image, cost, stock }) => {
           Precio: <span className="text-black">${cost}</span>
         </h2>
       </div>
-
-      <Link to={"/"}>
-        <div onClick={handleAddToCart} className=" bg-black flex justify-center items-center h-8 text-white rounded-md mb-4">
-          <span className="mr-2 hover:text-red-600 transition-colors">
-            Agregar al carrito
-          </span>
-          <button>
-            <img src="/carrito.png" alt="carrito" className="w-5" />
-          </button>
-        </div>
-      </Link>
+      <div
+        onClick={handleAddToCart}
+        className=" bg-black flex justify-center items-center h-8 text-white rounded-md mb-4 cursor-pointer"
+      >
+        <span className="mr-2 hover:text-red-600 transition-colors">
+          Agregar al carrito
+        </span>
+        <button>
+          <img src="/carrito.png" alt="carrito" className="w-5" />
+        </button>
+      </div>
     </div>
   );
 };
