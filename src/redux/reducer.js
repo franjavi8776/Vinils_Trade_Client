@@ -56,7 +56,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.some((genre) => genre === action.payload)
+          vinyl.genre.includes(action.payload)
         ),
       };
 

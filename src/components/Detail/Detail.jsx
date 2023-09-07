@@ -10,6 +10,8 @@ const Detail = () => {
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.detail);
 
+  console.log(detail);
+
   useEffect(() => {
     dispatch(getVinylDetail(id));
   }, [dispatch, id]);
@@ -32,7 +34,10 @@ const Detail = () => {
             <h1 className="text-3xl font-semibold mb-2">{detail?.title}</h1>
             <div className="flex justify-between">
               <h2 className="text-black font-semibold">
-                Pais: <span className="text-slate-100">{detail?.style}</span>
+                Estilo:{" "}
+                <span className="text-slate-100">
+                  {detail.style ? detail.style : "No especificado"}
+                </span>
               </h2>
               <h2 className="text-black font-semibold">
                 Año:{" "}
@@ -43,7 +48,13 @@ const Detail = () => {
             </div>
 
             <h2 className="text-black font-semibold">
-              Artista: <span className="text-slate-100">{detail.artists}</span>
+              Artista:{" "}
+              <span className="text-slate-100">
+                {" "}
+                {detail.artists && detail.artists.length > 0
+                  ? detail.artists[0].name
+                  : "No especificado"}
+              </span>
             </h2>
             <h2 className="text-black font-semibold">
               Genero:{" "}
