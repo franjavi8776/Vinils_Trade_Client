@@ -26,7 +26,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [selectedArtist, setSelectedArtist] = useState("")
   const searchByName = useSelector((state) => state.search);
   const pageSize = 10;
   const totalVinyls =
@@ -69,6 +69,10 @@ const Home = () => {
     setCurrentPage(1);
     dispatch(orderForGenre(event.target.value));
   };
+  const handleArtist = (event) => {
+    setCurrentPage(1);
+    dispatch(orderForArtist(event.target.value));
+  };
 
   const handleOrderByTitle = (e) => {
     setCurrentPage(1);
@@ -96,7 +100,7 @@ const Home = () => {
   };
 
   return (
-    <div className="">
+    <div >
       <div className="w-[100%] h-[92vh] relative z-0">
         <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
           <div className="w-[40%] h-[420px] ">
@@ -169,53 +173,61 @@ const Home = () => {
             </Swiper>
           </div>
         </div>
+      <div className="w-[100%] h-[70vh] flex flex-row ">
+        <div className="w-[20%] h-[70vh] flex items-center">
+          <div className="w-[70%] m-auto flex flex-col gap-20">
+            <select
+              onChange={handleFilter}
+              className="bg-black text-white p-2 rounded"
+            >
+              <option value="">Selecciona una década</option>
+              <option value="1940">1940s</option>
+              <option value="1950">1950s</option>
+              <option value="1960">1960s</option>
+              <option value="1970">1970s</option>
+              <option value="1980">1980s</option>
+              <option value="1990">1990s</option>
+              <option value="2000">2000s en adelante</option>
+            </select>
+            <select
+              onChange={handleOrderByTitle}
+              className="bg-black text-white p-2 rounded"
+            >
+              <option value="">Ordenar p/Titulo</option>
+              <option value="A">Ascendente</option>
+              <option value="D">Descendente</option>
+            </select>
+            <select
+              name="genre"
+              onChange={handleGenre}
+              id=""
+              className="bg-black text-white p-2 rounded"
+            >
 
-        <div className="w-[100%] h-[70vh] flex flex-row ">
-          <div className="w-[20%] h-[70vh] flex items-center">
-            <div className="w-[70%] m-auto flex flex-col gap-20">
-              <select
-                onChange={handleFilter}
-                className="bg-black text-white p-2 rounded"
-              >
-                <option value="">Selecciona una década</option>
-                <option value="1940">1940s</option>
-                <option value="1950">1950s</option>
-                <option value="1960">1960s</option>
-                <option value="1970">1970s</option>
-                <option value="1980">1980s</option>
-                <option value="1990">1990s</option>
-                <option value="2000">2000s en adelante</option>
-              </select>
-              <select
-                onChange={handleOrderByTitle}
-                className="bg-black text-white p-2 rounded"
-              >
-                <option value="">Ordenar p/Titulo</option>
-                <option value="A">Ascendente</option>
-                <option value="D">Descendente</option>
-              </select>
-              <select
-                name="genre"
-                onChange={handleGenre}
-                id=""
-                className="bg-black text-white p-2 rounded"
-              >
-                <option value="" disabled>
-                  Generos
-                </option>
-                <option value="Funk / Soul">Funk / Soul</option>
-                <option value="Rock">Rock</option>
-                <option value="Electronic">Electronic</option>
-                <option value="Hip Hop">Hip Hop</option>
-                <option value=""></option>
-              </select>
-              <button
-                onClick={resetAllButton}
-                className="bg-black text-white p-2 rounded text-left"
-              >
-                Restablecer
+              <option value="">Generos</option>
+
+              <option value="">Filtrar por genero</option>
+              <option value="Funk / Soul">Funk / Soul</option>
+              <option value="Rock">Rock</option>
+              <option value="Electronic">Electronic</option>
+              <option value="Hip Hop">Hip Hop</option>
+          
+            </select>
+            <button
+              onClick={resetAllButton}
+              className="bg-black text-white p-2 rounded text-left"
+            >
+              Restablecer
+            </button>
+          </div>
+        </div>
+        <div className="w-[78%] h-[70vh] flex items-center">
+          <div className="w-[5%] flex justify-center">
+            {currentPage > 1 && (
+              <button onClick={handlePreviousPage}>
+                <img className="w-[30px]" src="/left.png" alt="left" />
               </button>
-            </div>
+            )}</div>
           </div>
           <div className="w-[78%] h-[70vh] flex items-center">
             <div className="w-[5%]">
@@ -226,27 +238,26 @@ const Home = () => {
               )}
             </div>
 
-            <div className="w-[90%] flex flex-wrap justify-center gap-5">
-              {VinylsToRender.map((vinyls) => (
-                <Card
-                  key={vinyls.id}
-                  id={vinyls.id}
-                  title={vinyls.title}
-                  year={vinyls.year}
-                  cover_image={vinyls.cover_image}
-                  stock={vinyls.stock}
-                  cost={vinyls.cost}
-                  addToCart={handleAddToCart}
-                />
-              ))}
-            </div>
-            <div className="w-[5%]">
-              {currentPage < totalPages && (
-                <button onClick={handleNextPage}>
-                  <img className="w-[30px]" src="/right.png" alt="next" />
-                </button>
-              )}
-            </div>
+          <div className="w-[90%] flex flex-wrap justify-center gap-5">
+            {VinylsToRender.map((vinyls) => (
+              <Card
+                key={vinyls.id}
+                id={vinyls.id}
+                title={vinyls.title}
+                year={vinyls.year}
+                cover_image={vinyls.cover_image}
+                stock={vinyls.stock}
+                price={vinyls.price}
+                addToCart={handleAddToCart}
+              />
+            ))}
+          </div>
+          <div className="w-[5%] flex justify-center">
+            {currentPage < totalPages && (
+              <button onClick={handleNextPage}>
+                <img className="w-[30px]" src="/right.png" alt="next" />
+              </button>
+            )}
           </div>
         </div>
         <div className=" flex justify-center items-center space-x-4 mt-10">
@@ -272,7 +283,9 @@ const Home = () => {
         <ShoppingCart className=" " />  
       </div>
     </div>
+    </div>
   );
 };
+
 
 export default Home;

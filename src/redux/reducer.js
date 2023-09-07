@@ -7,6 +7,10 @@ import {
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
   ADD_TO_CART,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT,
+  POST_VINYL,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -14,7 +18,8 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
-  ShoppingCart: []
+  ShoppingCart: [],
+  cartItems: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +34,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.payload,
+      };
+    case POST_VINYL:
+      return {
+        ...state,
+        allVinyls: [...state.allVinyls, action.payload],
       };
 
     case FILTER_BY_DECADE:
@@ -76,6 +86,39 @@ const reducer = (state = initialState, action) => {
       };
     }
 
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+      };
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        token: action.payload,
+        error: null,
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        error: action.payload,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        error: null,
+      };
     default:
       return {
         ...state,

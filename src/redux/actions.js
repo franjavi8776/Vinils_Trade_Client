@@ -8,7 +8,9 @@ export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
 export const ADD_TO_CART = "ADD_TO_CART"
-
+export const ORDER_FOR_ARTIST = "ORDER_FOR_ARTIST"
+export const POST_REGISTER_USER = "POST_REGISTER_USER"
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
 const endpoint = "http://localhost:3001/results/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -27,14 +29,38 @@ export const getAllVinyls = () => async (dispatch) => {
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(endpoint + id);
+
+    const response = await axios.get(`${endpoint}${id}`);
     const data = response.data;
-    //console.log(data);
-    dispatch({ type: GET_DETAIL, payload: data });
+    if (Array.isArray(data) && data.length > 0) {
+      // Verificamos si data es un array y si contiene al menos un elemento
+      const vinylDetail = data[0];
+      console.log(vinylDetail);
+      dispatch({ type: GET_DETAIL, payload: vinylDetail });
+    }
+
   } catch (error) {
     console.log(error);
   }
 };
+
+export const postRegisterUser = (x)=>{
+  return async function (dispatch) {
+    try {
+      const {data} = await axios.post(endpoint + x)
+      return dispatch({
+        type: POST_REGISTER_USER,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: FAIL_REGISTER_USER,
+        payload: error.message
+      })
+      
+    }
+  }
+}
 export const getVinylsForName = (title) => {
   return async function (dispatch) {
     try {
@@ -83,14 +109,17 @@ export const orderByTitle = (order) => {
   };
 };
 
-export const postVinyls = (dato) => {
-  return async () => {
-    try {
-      await axios.post(endpoint, dato).then((response) => response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+export const postVinyls = (dato) => async (dispatch) => {
+  try {
+    const response = await axios.post(endpoint, dato);
+    const data = response.data;
+    dispatch({
+      type: POST_VINYL,
+      payload: data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const reset = () => {
@@ -111,4 +140,43 @@ export const filterVinylsByDecade = (startYear, endYear) => {
     type: FILTER_BY_DECADE,
     payload: { startYear, endYear },
   };
+};
+
+export const addToCart = (product) => ({
+  type: ADD_TO_CART,
+  payload: product,
+});
+
+export const removeFromCart = (product) => ({
+  type: REMOVE_FROM_CART,
+  payload: product,
+});
+
+export const loginUserWithEmail = (email, password) => async (dispatch) => {
+  try {
+    // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
+    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
+    const response = await axios.post('/api/login', { email, password });
+    const token = response.data.token;
+    dispatch({ type: 'LOGIN_SUCCESS', payload: token });
+  } catch (error) {
+    dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
+  }
+};
+
+export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
+  try {
+    // Hacer una solicitud al servidor para autenticar al usuario con Google
+    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
+    const response = await axios.post('/api/google-login', { googleToken });
+    const token = response.data.token;
+    dispatch({ type: 'LOGIN_SUCCESS', payload: token });
+  } catch (error) {
+    dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
+  }
+};
+
+export const logoutUser = () => {
+  // Eliminar el token de autenticación del estado de Redux al cerrar sesión
+  return { type:'LOGOUT'};
 };
