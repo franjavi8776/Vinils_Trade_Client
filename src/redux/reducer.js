@@ -6,6 +6,7 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
+  ADD_TO_CART,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -13,6 +14,7 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
+  ShoppingCart: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -46,6 +48,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
+    case ADD_TO_CART:
+      return{
+        ...state,
+        ShoppingCart: [...ShoppingCart, action.payload]
+      }
     case ORDER_FOR_GENRE:
       return {
         ...state,

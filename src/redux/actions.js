@@ -7,6 +7,7 @@ export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST";
 export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
+export const ADD_TO_CART = "ADD_TO_CART"
 
 const endpoint = "http://localhost:3001/results/";
 
@@ -58,6 +59,22 @@ export const getVinylsForName = (title) => {
     }
   };
 };
+
+export const getVinylCart = (id) => {
+  return async function  (dispatch) {
+    console.log(id)
+    try {
+      const {data} = await axios.get(endpoint + id);
+      dispatch ({
+        type : ADD_TO_CART ,
+        payload: data
+      })
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+}
 
 export const orderByTitle = (order) => {
   return {
