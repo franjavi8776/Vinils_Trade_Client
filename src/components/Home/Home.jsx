@@ -16,6 +16,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Footer from "../Footer/Footer";
 import "./Home.css";
 import VideoPlayer from "./Video/VideoPlayer";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import {
+  addToCartInLocalStorage,
+  useLocalStorage
+} from "../Card/LocalStor";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -51,6 +56,10 @@ const Home = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+  };
+
+  const handleAddToCart = (id, title, cover_image, cost, stock) => {
+    addToCartInLocalStorage({ id, title, cover_image, cost, stock }); // Agrega el producto al carrito
   };
 
   // const handleReset = () => {
@@ -91,80 +100,79 @@ const Home = () => {
   };
 
   return (
-    <div className="w-[100%] h-[92vh]">
-      {/* <button onClick={handleReset}>Reset</button> */}
-      <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
-        <div className="w-[40%] h-[420px] ">
-          <VideoPlayer />
+    <div >
+      <div className="w-[100%] h-[92vh] relative z-0">
+        <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
+          <div className="w-[40%] h-[420px] ">
+            <VideoPlayer />
+          </div>
+          <div className="w-[60%] h-[420px]">
+            <Swiper
+              spaceBetween={30}
+              centeredSlides={true}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
+              // pagination={{
+              //   clickable: true,
+              // }}
+              navigation={false}
+              modules={[Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <img
+                  className="w-[100%] h-[420px] "
+                  src="/carrusel2.jpg"
+                  alt="image"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  className="w-[100%] h-[420px]"
+                  src="/carrusel3.jpg"
+                  alt="image"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  className="w-[100%] h-[420px]"
+                  src="/carrusel1.jpg"
+                  alt="image"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  className="w-[100%] h-[420px] "
+                  src="/carrusel5.jpg"
+                  alt="image"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  className="w-[100%] h-[420px]"
+                  src="/carrusel2.jpg"
+                  alt="image"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  className="w-[100%] h-[420px] "
+                  src="/carrusel3.jpg"
+                  alt="image"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  className="w-[100%] h-[420px] "
+                  src="/carrusel5.jpg"
+                  alt="image"
+                />
+              </SwiperSlide>
+            </Swiper>
+          </div>
         </div>
-        <div className="w-[60%] h-[420px]">
-          <Swiper
-            spaceBetween={30}
-            centeredSlides={true}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            // pagination={{
-            //   clickable: true,
-            // }}
-            navigation={false}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[420px] "
-                src="/carrusel2.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[420px]"
-                src="/carrusel3.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[420px]"
-                src="/carrusel1.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[420px] "
-                src="/carrusel5.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[420px]"
-                src="/carrusel2.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[420px] "
-                src="/carrusel3.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                className="w-[100%] h-[420px] "
-                src="/carrusel5.jpg"
-                alt="image"
-              />
-            </SwiperSlide>
-          </Swiper>
-        </div>
-      </div>
-
       <div className="w-[100%] h-[70vh] flex flex-row ">
         <div className="w-[20%] h-[70vh] flex items-center">
           <div className="w-[70%] m-auto flex flex-col gap-20">
@@ -219,8 +227,16 @@ const Home = () => {
               <button onClick={handlePreviousPage}>
                 <img className="w-[30px]" src="/left.png" alt="left" />
               </button>
-            )}
+            )}</div>
           </div>
+          <div className="w-[78%] h-[70vh] flex items-center">
+            <div className="w-[5%]">
+              {currentPage > 1 && (
+                <button onClick={handlePreviousPage}>
+                  <img className="w-[30px]" src="/left.png" alt="left" />
+                </button>
+              )}
+            </div>
 
           <div className="w-[90%] flex flex-wrap justify-center gap-5">
             {VinylsToRender.map((vinyls) => (
@@ -232,6 +248,7 @@ const Home = () => {
                 cover_image={vinyls.cover_image}
                 stock={vinyls.stock}
                 price={vinyls.price}
+                addToCart={handleAddToCart}
               />
             ))}
           </div>
@@ -243,27 +260,32 @@ const Home = () => {
             )}
           </div>
         </div>
+        <div className=" flex justify-center items-center space-x-4 mt-10">
+          {pagesArray.map((pageNumber) => (
+            <span
+              key={pageNumber}
+              onClick={() => setCurrentPage(pageNumber)}
+              className={`pagination-hover-line ${
+                pageNumber === currentPage
+                  ? "active-page"
+                  : "font-bold cursor-pointer"
+              }`}
+            >
+              {pageNumber}
+            </span>
+          ))}
+        </div>
+        <div className="mt-20">
+          <Footer />
+        </div>
       </div>
-      <div className=" flex justify-center items-center space-x-4 mt-10">
-        {pagesArray.map((pageNumber) => (
-          <span
-            key={pageNumber}
-            onClick={() => setCurrentPage(pageNumber)}
-            className={`pagination-hover-line ${
-              pageNumber === currentPage
-                ? "active-page"
-                : "font-bold cursor-pointer"
-            }`}
-          >
-            {pageNumber}
-          </span>
-        ))}
+      <div id="cart" className="top-0 left-0 z-50  fixed inset-0 hidden" >
+        <ShoppingCart className=" " />  
       </div>
-      <div className="mt-20">
-        <Footer />
-      </div>
+    </div>
     </div>
   );
 };
+
 
 export default Home;

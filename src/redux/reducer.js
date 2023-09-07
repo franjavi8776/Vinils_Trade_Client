@@ -6,6 +6,7 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
+  ADD_TO_CART,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
@@ -17,6 +18,7 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
+  ShoppingCart: [],
   cartItems: [],
 };
 
@@ -56,6 +58,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
+    case ADD_TO_CART:
+      return{
+        ...state,
+        ShoppingCart: [...ShoppingCart, action.payload]
+      }
     case ORDER_FOR_GENRE:
       return {
         ...state,
