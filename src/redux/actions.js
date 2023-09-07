@@ -7,10 +7,12 @@ export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST";
 export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
+
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT="LOGOUT";
 export const POST_VINYL = "POST_VINYL";
+
 
 
 const endpoint = "http://localhost:3001/";
@@ -31,10 +33,16 @@ export const getAllVinyls = () => async (dispatch) => {
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`endpoint${id}`);
+
+    const response = await axios.get(`${endpoint}${id}`);
     const data = response.data;
-    console.log(data);
-    dispatch({ type: GET_DETAIL, payload: data });
+    if (Array.isArray(data) && data.length > 0) {
+      // Verificamos si data es un array y si contiene al menos un elemento
+      const vinylDetail = data[0];
+      console.log(vinylDetail);
+      dispatch({ type: GET_DETAIL, payload: vinylDetail });
+    }
+
   } catch (error) {
     console.log(error);
   }

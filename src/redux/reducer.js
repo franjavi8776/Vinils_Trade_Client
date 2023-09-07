@@ -6,9 +6,11 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
+
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
+
   POST_VINYL,
 } from "./actions";
 const initialState = {
@@ -60,7 +62,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.some((genre) => genre === action.payload)
+          vinyl.genre.includes(action.payload)
         ),
       };
 
