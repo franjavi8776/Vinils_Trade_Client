@@ -9,17 +9,18 @@ export function validateVinylsForm(input) {
   }
 
   // Validación del campo Artista
-  if (!input.artist) {
-    errors.artist = "Debes ingresar un artista";
-  } else if (input.artist.length >= 20) {
-    errors.artist = "El nombre del artista no puede tener más de 20 caracteres";
+  if (!input.artists) {
+    errors.artists = "Debes ingresar un artista";
+  } else if (input.artists.length >= 20) {
+    errors.artists =
+      "El nombre del artista no puede tener más de 20 caracteres";
   }
 
   // Validación del campo Género
   if (!input.gender) {
-      errors.gender = "Debes seleccionar un género";
+    errors.gender = "Debes seleccionar un género";
   } else if (input.gender.length >= 20) {
-      errors.gender = "El genero no puede tener más de 20 caracteres";
+    errors.gender = "El genero no puede tener más de 20 caracteres";
   }
 
   // Validación del campo Descripción
@@ -41,20 +42,20 @@ export function validateVinylsForm(input) {
   }
 
   // Validación del campo Stock
-  if(!input.stock) {
-    errors.stock= 'Debe ingresar stock';
+  if (!input.stock) {
+    errors.stock = "Debe ingresar stock";
   }
 
   // Validacion del campo Pais
-  if(!input.country){
-    errors.country="Debe indicar un pais"
+  if (!input.style) {
+    errors.style = "Debe indicar un estilo";
   }
 
   // Validación del campo Precio
-  if (!input.cost) {
-      errors.cost = "Debes ingresar un precio";
-  } else if (isNaN(input.cost) || input.cost <= 0) {
-      errors.cost = "El precio debe ser un número mayor que 0";
+  if (!input.price) {
+    errors.price = "Debes ingresar un precio";
+  } else if (isNaN(input.price) || input.price <= 0) {
+    errors.price = "El precio debe ser un número mayor que 0";
   }
 
   // Validación del campo Condición

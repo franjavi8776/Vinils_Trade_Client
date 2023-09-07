@@ -6,12 +6,13 @@ import { postVinyls } from "../../redux/actions";
 const Form = () => {
   const [vinyls, setVinyls] = useState({
     title: "",
-    artist: "",
+    artists: "",
     year: "",
     cover_image: "",
     genre: "",
-    cost: "",
+    price: "",
     stock: "",
+    style: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -19,6 +20,12 @@ const Form = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    // let newValue = value;
+
+    // if (name === "genre") {
+    //   newValue = value.split(",");
+    // }
+
     const newVinyls = { ...vinyls, [name]: value };
 
     setVinyls(newVinyls);
@@ -31,16 +38,17 @@ const Form = () => {
     }));
   };
 
-  const handlerSubmit = () => {
+  const handlerSubmit = (e) => {
+    e.preventDefault();
     setErrors({
       title: "",
-      artist: "",
+      artists: "",
       year: "",
       cover_image: "",
       genre: "",
-      cost: "",
+      price: "",
       stock: "",
-      country: "",
+      style: "",
     }); // , Description:"", , Condition:"",
 
     dispatch(postVinyls(vinyls));
@@ -49,13 +57,13 @@ const Form = () => {
 
     setVinyls({
       title: "",
-      artist: "",
+      artists: "",
       year: "",
       cover_image: "",
       genre: "",
-      cost: "",
+      price: "",
       stock: "",
-      country: "",
+      style: "",
     });
   };
 
@@ -80,27 +88,27 @@ const Form = () => {
             <label className="block mb-1">Artista:</label>
             <input
               type="text"
-              name="artist"
-              value={vinyls.artist}
+              name="artists"
+              value={vinyls.artists}
               onChange={handleChange}
               className="border rounded w-full p-2 text-black"
               placeholder="Ingrese el artista..."
               required
             />
-            {errors.artist && <p className="text-black">{errors.artist}</p>}
+            {errors.artists && <p className="text-black">{errors.artists}</p>}
           </div>
           <div>
-            <label className="block mb-1">Pais:</label>
+            <label className="block mb-1">Estilo:</label>
             <input
               type="text"
-              name="country"
-              value={vinyls.country}
+              name="style"
+              value={vinyls.style}
               onChange={handleChange}
               className="border rounded w-full p-2 text-black"
-              placeholder="Ingrese país..."
+              placeholder="Ingrese estilo..."
               required
             />
-            {errors.country && <p className="text-black">{errors.country}</p>}
+            {errors.style && <p className="text-black">{errors.style}</p>}
           </div>
           <div>
             <label className="block mb-1">Género:</label>
@@ -145,14 +153,14 @@ const Form = () => {
             <label className="block mb-1">Precio:</label>
             <input
               type="number"
-              name="cost"
-              value={vinyls.cost}
+              name="price"
+              value={vinyls.price}
               onChange={handleChange}
               className="border rounded w-full p-2 text-black"
               placeholder="Ingrese el precio..."
               required
             />
-            {errors.cost && <p className="text-black">{errors.cost}</p>}
+            {errors.price && <p className="text-black">{errors.price}</p>}
           </div>
           <div>
             <label className="block mb-1">Stock:</label>
