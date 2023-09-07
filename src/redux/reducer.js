@@ -6,11 +6,9 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
-
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
-
   POST_VINYL,
 } from "./actions";
 const initialState = {
@@ -19,7 +17,7 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
-  isAuthenticated:false,
+  cartItems: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -62,7 +60,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.includes(action.payload)
+          vinyl.genre.some((genre) => genre === action.payload)
         ),
       };
 
@@ -80,6 +78,19 @@ const reducer = (state = initialState, action) => {
         }),
       };
     }
+
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+      };
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,
@@ -101,7 +112,6 @@ const reducer = (state = initialState, action) => {
         token: null,
         error: null,
       };
-
     default:
       return {
         ...state,

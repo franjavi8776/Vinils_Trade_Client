@@ -7,15 +7,11 @@ export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST";
 export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
-
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAILURE = "LOGIN_FAILURE";
-export const LOGOUT="LOGOUT";
-export const POST_VINYL = "POST_VINYL";
-
-
-
-const endpoint = "http://localhost:3001/";
+export const ORDER_FOR_ARTIST = "ORDER_FOR_ARTIST"
+export const POST_REGISTER_USER = "POST_REGISTER_USER"
+export const ADD_TO_CART = "ADD_TO_CART"
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
+const endpoint = "http://localhost:3001/results/";
 
 export const getAllVinyls = () => async (dispatch) => {
   try {
@@ -47,6 +43,24 @@ export const getVinylDetail = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const postRegisterUser = (x)=>{
+  return async function (dispatch) {
+    try {
+      const {data} = await axios.post(endpoint + x)
+      return dispatch({
+        type: POST_REGISTER_USER,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: FAIL_REGISTER_USER,
+        payload: error.message
+      })
+      
+    }
+  }
+}
 export const getVinylsForName = (title) => {
   return async function (dispatch) {
     try {
@@ -112,6 +126,16 @@ export const filterVinylsByDecade = (startYear, endYear) => {
   };
 };
 
+export const addToCart = (product) => ({
+  type: ADD_TO_CART,
+  payload: product,
+});
+
+export const removeFromCart = (product) => ({
+  type: REMOVE_FROM_CART,
+  payload: product,
+});
+
 export const loginUserWithEmail = (email, password) => async (dispatch) => {
   try {
     // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
@@ -140,4 +164,3 @@ export const logoutUser = () => {
   // Eliminar el token de autenticación del estado de Redux al cerrar sesión
   return { type:'LOGOUT'};
 };
-
