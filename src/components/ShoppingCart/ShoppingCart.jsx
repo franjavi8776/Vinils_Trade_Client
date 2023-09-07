@@ -12,7 +12,7 @@ const ShoppingCart = () => {
   // Utiliza React.useEffect para actualizar el estado local cuando cambie el carrito
   useEffect(() => {
     setCart(useLocalStorage());
-  }, []);
+  }, [cart]);
 
   const handleRemoveFromCart = (vinylId) => {
     const updatedCart = [...cart];
@@ -66,15 +66,18 @@ const ShoppingCart = () => {
 
   // Calcular el total del valor de los productos en el carrito
   const totalValue = cart.reduce(
-    (total, item) => total + item.cost * item.quantity,
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
   const cartWithoutEmptyItems = cart.filter((item) => item);
 
   return (
-    <div className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center">
-      <div className="w-[700px] bg-white relative">
+    <div
+      className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center"
+      style={{ zIndex: 2 }}
+    >
+      <div className="w-[700px] bg-white relative z-50">
         <button
           onClick={handlerButtom}
           className="text-red-600 text-2xl fixed top-4 right-4 font-bold"
@@ -96,10 +99,8 @@ const ShoppingCart = () => {
                 />
                 <div className="flex flex-col flex-grow">
                   <span>{item.title}</span>
-                  <span>
-                    Cantidad: {item.quantity} (Stock: {item.stock})
-                  </span>
-                  <span>Precio Total: ${item.cost * item.quantity}</span>
+                  <span>Stock: {item.stock}</span>
+                  <span>Precio total: ${item.price * item.quantity}</span>
                 </div>
                 <div className="flex gap-2">
                   <button
@@ -108,6 +109,7 @@ const ShoppingCart = () => {
                   >
                     -
                   </button>
+                  <span>{item.quantity}</span>
                   <button
                     onClick={() => handleAddToCart(item)}
                     className="bg-green-500 text-white px-2 rounded"

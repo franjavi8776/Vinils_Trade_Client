@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg">
+      <div className="flex items-center justify-center bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg z-0">
         <img
           src="/Vinyls_Trade.png"
           alt="Vinyls-Trade"
@@ -35,7 +35,7 @@ const Navbar = () => {
         />
       </div>
       <div
-        className={`sticky top-0 ${navbarClass} text-white z-50 w-[100%] flex`}
+        className={`sticky top-0 ${navbarClass} text-white w-[100%] flex z-10`}
       >
         <div className={` w-[50%] flex justify-center gap-28`}>
           <Link
@@ -53,11 +53,11 @@ const Navbar = () => {
         </div>
         <div className="w-[50%] flex justify-center items-center">
           <Search />
-           <Link
+          <Link
             to="/login"
             className="m-4 text-white font-semibold link-with-hover-line"
           >
-           Crea tu cuenta
+            Crea tu cuenta
           </Link>
         </div>
         {/* <div className=" w-[50%] flex justify-center items-center ">
