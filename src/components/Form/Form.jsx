@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { validateVinylsForm } from "./validate";
 import { useDispatch } from "react-redux";
 import { postVinyls } from "../../redux/actions";
+import { useLocalStorage } from "../LocalStorage/useLocalStorage";
 
 const Form = () => {
-  const [vinyls, setVinyls] = useState({
+  const localStorageKey = "vinylsFormData"
+
+  const [vinyls, setVinyls] = useLocalStorage(localStorageKey, {
     title: "",
+
     artists: [],
+
     year: "",
     cover_image: "",
     genre: "",
@@ -18,20 +23,19 @@ const Form = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
 
+  const clearFormData = () => {
+    localStorage.removeItem(localStorageKey);
+  };  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // let newValue = value;
-
-    // if (name === "genre") {
-    //   newValue = value.split(",");
-    // }
-
-    //const newVinyls = { ...vinyls, [name]: value };
 
     const newVinyls =
       name === "artists"
         ? { ...vinyls, artists: [{ name: value }] }
         : { ...vinyls, [name]: value };
+
+
 
     setVinyls(newVinyls);
 
@@ -62,7 +66,9 @@ const Form = () => {
 
     setVinyls({
       title: "",
+
       artists: [],
+
       year: "",
       cover_image: "",
       genre: "",
@@ -70,7 +76,13 @@ const Form = () => {
       stock: "",
       style: "",
     });
+
+    clearFormData();
   };
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(vinyls));
+  }, [vinyls]);
 
   return (
     <div className="w-[100%] h-auto flex justify-center items-center">
@@ -205,9 +217,9 @@ const Form = () => {
               placeholder="Ingrese una url..."
               required
             />
-            {errors.cover_image && (
+            {/* {errors.cover_image && (
               <p className="text-black">{errors.cover_image}</p>
-            )}
+            )} */}
           </div>
           <div className="text-center">
             <button

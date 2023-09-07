@@ -2,10 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVinylsForName } from "../../redux/actions";
+import {AiOutlineShoppingCart} from "react-icons/ai"
 import { Link } from "react-router-dom";
+
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
+
   const dispatch = useDispatch();
 
   const handlerChange = (event) => {
@@ -13,9 +16,15 @@ const Search = () => {
     setInputValue(event.target.value);
   };
 
+  function handlerButton() {
+    const shoppCart = document.getElementById("cart")
+    shoppCart.classList.remove("hidden")
+  }
+    
   return (
     <div className="flex">
       <div>
+      <div className="flex">
         <input
           onChange={handlerChange}
           type="search"
@@ -24,9 +33,13 @@ const Search = () => {
           placeholder="Buscar vinilos..."
         />
 
-        {/* <button className="px-2 py-1 bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 rounded-md">
-          Search
-        </button> */}
+        <div className="relative">
+          <AiOutlineShoppingCart className="w-7 h-7 cursor-pointer z-0" onClick={handlerButton} />
+          <span className="w-4 h-4 absolute top-[-6px] right-[-6px] z-10 flex justify-center items-center bg-red-600 rounded-full ">0</span>
+        </div>
+      </div>
+      {/* <div className="flex" >
+      </div> */}
       </div>
        <div>
           <Link 

@@ -34,10 +34,14 @@ const Detail = () => {
             <h1 className="text-3xl font-semibold mb-2">{detail?.title}</h1>
             <div className="flex justify-between">
               <h2 className="text-black font-semibold">
+
                 Estilo:{" "}
                 <span className="text-slate-100">
                   {detail.style ? detail.style : "No especificado"}
                 </span>
+
+              
+
               </h2>
               <h2 className="text-black font-semibold">
                 Año:{" "}
@@ -48,6 +52,7 @@ const Detail = () => {
             </div>
 
             <h2 className="text-black font-semibold">
+
               Artista:{" "}
               <span className="text-slate-100">
                 {" "}
@@ -55,6 +60,9 @@ const Detail = () => {
                   ? detail.artists[0].name
                   : "No especificado"}
               </span>
+
+            
+
             </h2>
             <h2 className="text-black font-semibold">
               Genero:{" "}
