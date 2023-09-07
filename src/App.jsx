@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Error from "./components/Error/Error";
 import Detail from "./components/Detail/Detail";
 import Navbar from "./components/Navbar/Navbar";
+import Login from "./components/Login/Login";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/form" element={<Form />}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

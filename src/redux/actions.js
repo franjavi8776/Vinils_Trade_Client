@@ -7,7 +7,13 @@ export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST";
 export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
+
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const LOGOUT="LOGOUT";
 export const POST_VINYL = "POST_VINYL";
+
+
 
 const endpoint = "http://localhost:3001/";
 
@@ -27,6 +33,7 @@ export const getAllVinyls = () => async (dispatch) => {
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
+
     const response = await axios.get(`${endpoint}${id}`);
     const data = response.data;
     if (Array.isArray(data) && data.length > 0) {
@@ -35,6 +42,7 @@ export const getVinylDetail = (id) => async (dispatch) => {
       console.log(vinylDetail);
       dispatch({ type: GET_DETAIL, payload: vinylDetail });
     }
+
   } catch (error) {
     console.log(error);
   }
@@ -103,3 +111,33 @@ export const filterVinylsByDecade = (startYear, endYear) => {
     payload: { startYear, endYear },
   };
 };
+
+export const loginUserWithEmail = (email, password) => async (dispatch) => {
+  try {
+    // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
+    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
+    const response = await axios.post('/api/login', { email, password });
+    const token = response.data.token;
+    dispatch({ type: 'LOGIN_SUCCESS', payload: token });
+  } catch (error) {
+    dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
+  }
+};
+
+export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
+  try {
+    // Hacer una solicitud al servidor para autenticar al usuario con Google
+    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
+    const response = await axios.post('/api/google-login', { googleToken });
+    const token = response.data.token;
+    dispatch({ type: 'LOGIN_SUCCESS', payload: token });
+  } catch (error) {
+    dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
+  }
+};
+
+export const logoutUser = () => {
+  // Eliminar el token de autenticación del estado de Redux al cerrar sesión
+  return { type:'LOGOUT'};
+};
+

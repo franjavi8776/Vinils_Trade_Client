@@ -6,7 +6,9 @@ import { postVinyls } from "../../redux/actions";
 const Form = () => {
   const [vinyls, setVinyls] = useState({
     title: "",
+
     artists: [],
+
     year: "",
     cover_image: "",
     genre: "",
@@ -26,12 +28,14 @@ const Form = () => {
     //   newValue = value.split(",");
     // }
 
+
     //const newVinyls = { ...vinyls, [name]: value };
 
     const newVinyls =
       name === "artists"
         ? { ...vinyls, artists: [{ name: value }] }
         : { ...vinyls, [name]: value };
+
 
     setVinyls(newVinyls);
 
@@ -62,7 +66,9 @@ const Form = () => {
 
     setVinyls({
       title: "",
+
       artists: [],
+
       year: "",
       cover_image: "",
       genre: "",
