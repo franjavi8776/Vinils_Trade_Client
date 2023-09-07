@@ -195,12 +195,15 @@ const Home = () => {
               id=""
               className="bg-black text-white p-2 rounded"
             >
+
               <option value="">Generos</option>
+
+              <option value="">Filtrar por genero</option>
               <option value="Funk / Soul">Funk / Soul</option>
               <option value="Rock">Rock</option>
               <option value="Electronic">Electronic</option>
               <option value="Hip Hop">Hip Hop</option>
-             
+          
             </select>
             <button
               onClick={resetAllButton}

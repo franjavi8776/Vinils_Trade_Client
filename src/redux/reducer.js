@@ -6,8 +6,10 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
- REMOVE_FROM_CART,
- ADD_TO_CART
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT,
+  POST_VINYL,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -54,13 +56,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
-      case ORDER_FOR_GENRE:
-        return {
-          ...state,
-          allVinyls: state.vinyls.filter((vinyl) =>
+    case ORDER_FOR_GENRE:
+      return {
+        ...state,
+        allVinyls: state.vinyls.filter((vinyl) =>
           vinyl.genre.some((genre) => genre === action.payload)
-          ),
-        };
+        ),
+      };
 
     case RESET:
       return {

@@ -29,10 +29,16 @@ export const getAllVinyls = () => async (dispatch) => {
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`endpoint${id}`);
+
+    const response = await axios.get(`${endpoint}${id}`);
     const data = response.data;
-    console.log(data);
-    dispatch({ type: GET_DETAIL, payload: data });
+    if (Array.isArray(data) && data.length > 0) {
+      // Verificamos si data es un array y si contiene al menos un elemento
+      const vinylDetail = data[0];
+      console.log(vinylDetail);
+      dispatch({ type: GET_DETAIL, payload: vinylDetail });
+    }
+
   } catch (error) {
     console.log(error);
   }
