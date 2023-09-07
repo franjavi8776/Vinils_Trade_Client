@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVinylsForName } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
@@ -13,7 +14,7 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className="flex">
       <div>
         <input
           onChange={handlerChange}
@@ -23,10 +24,18 @@ const Search = () => {
           placeholder="Buscar vinilos..."
         />
 
-        <button className="px-2 py-1 bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 rounded-md">
+        {/* <button className="px-2 py-1 bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 rounded-md">
           Search
-        </button>
+        </button> */}
       </div>
+       <div>
+          <Link 
+           to="/login"
+           className="m-4 text-red-700 font-semibold link-with-hover-line "
+          >
+            Ingresa
+          </Link>
+        </div>
     </div>
   );
 };

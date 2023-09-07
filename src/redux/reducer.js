@@ -6,6 +6,9 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -13,6 +16,7 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
+  isAuthenticated:false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -68,6 +72,27 @@ const reducer = (state = initialState, action) => {
         }),
       };
     }
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        token: action.payload,
+        error: null,
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        error: action.payload,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        error: null,
+      };
 
     default:
       return {
