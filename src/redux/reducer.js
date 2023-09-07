@@ -11,6 +11,7 @@ import {
   LOGIN_FAILURE,
   LOGOUT,
   POST_VINYL,
+  REMOVE_FROM_CART,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -20,6 +21,7 @@ const initialState = {
   filteredVinyls: [],
   ShoppingCart: [],
   cartItems: [],
+  isAuthenticated: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -59,15 +61,15 @@ const reducer = (state = initialState, action) => {
         detail: action.payload,
       };
     case ADD_TO_CART:
-      return{
+      return {
         ...state,
-        ShoppingCart: [...ShoppingCart, action.payload]
-      }
+        ShoppingCart: [...ShoppingCart, action.payload],
+      };
     case ORDER_FOR_GENRE:
       return {
         ...state,
         allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.some((genre) => genre === action.payload)
+          vinyl.genre.includes(action.payload)
         ),
       };
 
