@@ -21,7 +21,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [selectedArtist, setSelectedArtist] = useState("")
   const searchByName = useSelector((state) => state.search);
   const pageSize = 10;
   const totalVinyls =
@@ -59,6 +59,10 @@ const Home = () => {
   const handleGenre = (event) => {
     setCurrentPage(1);
     dispatch(orderForGenre(event.target.value));
+  };
+  const handleArtist = (event) => {
+    setCurrentPage(1);
+    dispatch(orderForArtist(event.target.value));
   };
 
   const handleOrderByTitle = (e) => {
@@ -191,14 +195,12 @@ const Home = () => {
               id=""
               className="bg-black text-white p-2 rounded"
             >
-              <option value="" disabled>
-                Generos
-              </option>
+              <option value="">Generos</option>
               <option value="Funk / Soul">Funk / Soul</option>
               <option value="Rock">Rock</option>
               <option value="Electronic">Electronic</option>
               <option value="Hip Hop">Hip Hop</option>
-              <option value=""></option>
+             
             </select>
             <button
               onClick={resetAllButton}

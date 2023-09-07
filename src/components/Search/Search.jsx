@@ -22,10 +22,6 @@ const Search = () => {
           className="mr-2 p-0.5 w-96 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 " // Agrega las clases de borde
           placeholder="Buscar vinilos..."
         />
-
-        <button className="px-2 py-1 bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg text-white rounded-3g hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 rounded-md">
-          Search
-        </button>
       </div>
     </div>
   );

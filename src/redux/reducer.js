@@ -6,6 +6,8 @@ import {
   RESET,
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
+ REMOVE_FROM_CART,
+ ADD_TO_CART
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -13,6 +15,7 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
+  cartItems: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -46,13 +49,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
-    case ORDER_FOR_GENRE:
-      return {
-        ...state,
-        allVinyls: state.vinyls.filter((vinyl) =>
+      case ORDER_FOR_GENRE:
+        return {
+          ...state,
+          allVinyls: state.vinyls.filter((vinyl) =>
           vinyl.genre.some((genre) => genre === action.payload)
-        ),
-      };
+          ),
+        };
 
     case RESET:
       return {
@@ -68,7 +71,18 @@ const reducer = (state = initialState, action) => {
         }),
       };
     }
-
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+      };
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
     default:
       return {
         ...state,
