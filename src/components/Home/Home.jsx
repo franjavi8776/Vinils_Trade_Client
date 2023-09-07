@@ -191,14 +191,12 @@ const Home = () => {
               id=""
               className="bg-black text-white p-2 rounded"
             >
-              <option value="" disabled>
-                Generos
-              </option>
+              <option value="">Filtrar por genero</option>
               <option value="Funk / Soul">Funk / Soul</option>
               <option value="Rock">Rock</option>
               <option value="Electronic">Electronic</option>
               <option value="Hip Hop">Hip Hop</option>
-              <option value=""></option>
+              <option value="Pop">Pop</option>
             </select>
             <button
               onClick={resetAllButton}
