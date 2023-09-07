@@ -11,7 +11,7 @@ export const ADD_TO_CART = "ADD_TO_CART"
 export const ORDER_FOR_ARTIST = "ORDER_FOR_ARTIST"
 export const POST_REGISTER_USER = "POST_REGISTER_USER"
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
-const endpoint = "http://localhost:3001/results/";
+const endpoint = "http://localhost:3001/";
 
 export const getAllVinyls = () => async (dispatch) => {
   try {
