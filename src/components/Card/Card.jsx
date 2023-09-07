@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ id, title, cover_image, cost, stock }) => {
+const Card = ({ id, title, cover_image, price, stock }) => {
   return (
     <div className="w-60 h-70 text-md">
       <Link to={`/detail/${id}`}>
@@ -13,7 +13,7 @@ const Card = ({ id, title, cover_image, cost, stock }) => {
           Stock: <span className="text-black">{stock}</span>
         </h2>
         <h2 className="text-red-900">
-          Precio: <span className="text-black">${cost}</span>
+          Precio: <span className="text-black">${price}</span>
         </h2>
       </div>
 

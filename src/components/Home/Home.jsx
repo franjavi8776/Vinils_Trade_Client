@@ -211,7 +211,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-[78%] h-[70vh] flex items-center">
-          <div className="w-[5%]">
+          <div className="w-[5%] flex justify-center">
             {currentPage > 1 && (
               <button onClick={handlePreviousPage}>
                 <img className="w-[30px]" src="/left.png" alt="left" />
@@ -228,11 +228,11 @@ const Home = () => {
                 year={vinyls.year}
                 cover_image={vinyls.cover_image}
                 stock={vinyls.stock}
-                cost={vinyls.cost}
+                price={vinyls.price}
               />
             ))}
           </div>
-          <div className="w-[5%]">
+          <div className="w-[5%] flex justify-center">
             {currentPage < totalPages && (
               <button onClick={handleNextPage}>
                 <img className="w-[30px]" src="/right.png" alt="next" />
