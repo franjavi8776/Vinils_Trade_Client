@@ -17,7 +17,6 @@ export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
 export const INCREASE_ITEM = "INCREASE_ITEM";
 export const DECREASE_ITEM = "DECREASE_ITEM";
-
 const endpoint = "http://localhost:3001/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -158,13 +157,22 @@ export const removeFromCart = (vinylId) => ({
 
 export const loginUserWithEmail = (email, password) => async (dispatch) => {
   try {
-    // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
-    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
-    const response = await axios.post("/api/login", { email, password });
-    const token = response.data.token;
-    dispatch({ type: "LOGIN_SUCCESS", payload: token });
+    const response = await axios.post("http://localhost:3001/login", { email, password });
+    
+    if (response.status === 200) {
+      // Si la solicitud es exitosa y el servidor devuelve un código 200,
+      // entonces consideramos que la autenticación fue exitosa.
+      const token = response.data.token;
+      dispatch({ type: "LOGIN_SUCCESS", payload: token });
+    } else {
+      // Aquí puedes manejar diferentes casos de error según el código de respuesta del servidor.
+      // Por ejemplo, si el servidor devuelve 401 (No autorizado) para credenciales incorrectas,
+      // podrías manejarlo de manera diferente.
+      dispatch({ type: "LOGIN_FAILURE", payload: "Credenciales incorrectas" });
+    }
   } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
+    // Manejar errores de red u otros errores que puedan ocurrir en la solicitud.
+    dispatch({ type: "LOGIN_FAILURE", payload: "Error de red" });
   }
 };
 
