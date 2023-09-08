@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUserWithEmail,loginUserWithGoogle } from "../../redux/actions";
 import { validateLoginForm } from "./validatelogin.js";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -10,7 +13,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.token !== null);
   const error = useSelector((state) => state.error); 
-
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -24,7 +27,6 @@ const Login = () => {
       try {
         // Utiliza la acción loginUserWithEmail con el correo y la contraseña
         await dispatch(loginUserWithEmail(user.email, user.password));
-
         // Obtiene el token JWT del estado de Redux
         const token = response.payload.token;
 
@@ -33,23 +35,39 @@ const Login = () => {
         
         // Continúa con las solicitudes protegidas o redirecciona a otra página
         // Ejemplo: history.push('/dashboard');
+        navigate("/")
       } catch (error) {
-        console.error("Error de inicio de sesión:", error);
+        console.error("Error de inicio de sesión:");
       }
     }
+    
   };
-  const handleGoogleLogin = async () => {
-    try {
-      // Realiza la autenticación con Google y obtén un token de acceso de Google
-      const googleResponse = await authenticateWithGoogle(); // Implementa esta función para obtener el token de Google
-      if (googleResponse && googleResponse.token) {
-        // Utiliza la acción loginUserWithGoogle para autenticar al usuario con el token de Google
-        dispatch(loginUserWithGoogle(googleResponse.token));
-      }
-    } catch (error) {
-      console.error('Error al iniciar sesión con Google:', error);
-    }
-  };
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     // Realiza la autenticación con Google y obtén un token de acceso de Google
+  //     const googleResponse = await authenticateWithGoogle(); // Implementa esta función para obtener el token de Google
+  //     if (googleResponse && googleResponse.token) {
+  //       // Utiliza la acción loginUserWithGoogle para autenticar al usuario con el token de Google
+  //       await dispatch(loginUserWithGoogle(googleResponse.token));
+  //     }
+  //   } catch (error) {
+  //     console.error('Error al iniciar sesión con Google:', error);
+  //   }
+  // };
+
+  // const authenticateWithGoogle = async () => {
+  //   // Realiza la autenticación con Google y obtén el token de acceso
+  //   try {
+  //     const authResult = await window.gapi.auth2.getAuthInstance().signIn();
+  //     const googleToken = authResult.getAuthResponse().id_token;
+  
+  //     // Devuelve el token de acceso de Google
+  //     return { token: googleToken };
+  //   } catch (error) {
+  //     console.error('Error en la autenticación con Google:', error);
+  //     throw error;
+  //   }
+  // };
 
 
   const renderError = (fieldName) => {
@@ -108,10 +126,11 @@ const Login = () => {
               {isAuthenticated ? "Ya estás autenticado" : "Iniciar Sesión con tu Correo"}
             </button>
           </div>
-          <div className="text-center mt-[-20px]">
+          {/* <div className="text-center mt-[-20px]">
             <button onClick={handleGoogleLogin} className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black">Iniciar Sesión con Google</button>
-          </div>
+          </div> */}
         </form>
+        <span className="text-white">¿No tienes tu cuenta?<Link className="text-blue-600 font-bold ml-3" to="/register">{" "}  Registrate aqui!!!</Link></span>
       </div>
     </div>
   );

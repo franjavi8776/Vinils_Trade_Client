@@ -17,7 +17,7 @@ export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
 export const INCREASE_ITEM = "INCREASE_ITEM";
 export const DECREASE_ITEM = "DECREASE_ITEM";
-const endpoint = "http://localhost:3001/";
+const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
   try {
@@ -49,7 +49,7 @@ export const getVinylDetail = (id) => async (dispatch) => {
 };
 
 export const postRegisterUser = (x) => {
-  const newEndpoint = "http://localhost:3001/createUser"
+  const newEndpoint = "https://vinyls-trade-back-production.up.railway.app/createUser"
   return async function (dispatch) {
     try {
       const { data } = await axios.post(newEndpoint, x);
@@ -162,12 +162,7 @@ export const loginUserWithEmail = (email, password) => async (dispatch) => {
 
     // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
     // Si la autenticación es exitosa, almacenar el token en el estado de Redux
-    const response = await axios.post("/api/login", { email, password });
-    const token = response.data.token;
-    dispatch({ type: LOGIN_SUCCESS, payload: token });
-  } catch (error) {
-    dispatch({ type: LOGIN_FAILURE, payload: error.message });
-    const response = await axios.post("http://localhost:3001/login", { email, password });
+    const response = await axios.post("https://vinyls-trade-back-production.up.railway.app/login", { email, password });
     
     if (response.status === 200) {
       // Si la solicitud es exitosa y el servidor devuelve un código 200,
@@ -181,17 +176,17 @@ export const loginUserWithEmail = (email, password) => async (dispatch) => {
       dispatch({ type: "LOGIN_FAILURE", payload: "Credenciales incorrectas" });
     }
   } catch (error) {
-    // Manejar errores de red u otros errores que puedan ocurrir en la solicitud.
-    dispatch({ type: "LOGIN_FAILURE", payload: "Error de red" });
-
-  }
+    dispatch({ type: LOGIN_FAILURE, payload: error.message });
+    
+  } 
 };
 
 export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
   try {
     // Hacer una solicitud al servidor para autenticar al usuario con Google
     // Si la autenticación es exitosa, almacenar el token en el estado de Redux
-    const response = await axios.post("/api/google-login", { googleToken });
+    const response = await axios.post("https://vinyls-trade-back-production.up.railway.app/auth/google", googleToken);
+    console.log(response)
     const token = response.data.token;
     dispatch({ type: LOGIN_SUCCESS, payload: token });
   } catch (error) {

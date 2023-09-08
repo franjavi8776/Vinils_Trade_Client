@@ -21,14 +21,24 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
-  token:null,
-  error:null,
+  token: null,
+  error: null,
   cartState: false,
   cartItems: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
   cartTotalAmount: 0,
   cartTotalQuantity: 0,
+  stock: {},
+};
+
+const reduceStock = (state, id, quantity) => {
+  const updatedStock = { ...state.stock };
+  if (updatedStock[id] >= quantity) {
+    updatedStock[id] -= quantity;
+    return updatedStock;
+  }
+  return null; // Devuelve null si no hay suficiente stock
 };
 
 const reducer = (state = initialState, action) => {

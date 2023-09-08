@@ -53,12 +53,6 @@ const Navbar = () => {
         </div>
         <div className="w-[50%] flex justify-center items-center">
           <Search />
-           <Link
-            to="/register"
-            className="m-4 text-red-700 font-semibold link-with-hover-line"
-          >
-            Crea tu cuenta
-          </Link>
         </div>
         {/* <div className=" w-[50%] flex justify-center items-center ">
       </div> */}

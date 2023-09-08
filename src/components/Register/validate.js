@@ -1,6 +1,5 @@
 const validate = (input) => {
   const errors = {};
-
   if (!input.name) {
     errors.name = "Requerido";
   } else if (input.name.length >= 35) {
@@ -8,6 +7,9 @@ const validate = (input) => {
   }
   if (input.confirmarContraseña !== input.password) {
       errors.confirmarContraseña = "Debe coincidir con la contraseña";
+    } 
+    if (input.password.length < 6) {
+      errors.password = "Debe tener mas de 6 caracteres"
     }
     if(input.phoneNumber.length > 10){
       errors.phoneNumber =  "El teléfono no debe exceder los 10 dígitos"
@@ -32,6 +34,13 @@ const validate = (input) => {
     errors.email = "Campo obligatorio";
   } else if (!isValidEmail(input.email)) {
     errors.email= "Correo inválido";
+  }
+
+  if (!input.country) {
+    errors.country = "Debes ingresar un pais";
+  } else if (input.country.length >= 35) {
+    errors.country =
+      "El nombre del pais no puede tener más de 35 caracteres";
   }
   return errors;
 };

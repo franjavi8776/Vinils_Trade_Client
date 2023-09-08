@@ -9,9 +9,7 @@ const Form = () => {
 
   const [vinyls, setVinyls] = useLocalStorage(localStorageKey, {
     title: "",
-
-    artists: [],
-
+    artists: [{name:""}],
     year: "",
     cover_image: "",
     genre: "",
@@ -30,16 +28,37 @@ const Form = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    const newVinyls =
-      name === "artists"
-        ? { ...vinyls, artists: [{ name: value }] }
-        : { ...vinyls, [name]: value };
+    // const newVinyls =
+    //   name === "artists"
+    //     ? { ...vinyls, artists: [{ name: value }] }
+    //     : { ...vinyls, [name]: value };
 
 
 
-    setVinyls(newVinyls);
+    // setVinyls(newVinyls);
 
-    const ErrorDetect = validateVinylsForm({ ...vinyls, [name]: value });
+    // const ErrorDetect = validateVinylsForm({ ...vinyls, [name]: value });
+
+    if (name === "artists") {
+      // Si el campo es "artists", clonamos el arreglo y actualizamos el valor "name"
+      const updatedArtists = [...vinyls.artists];
+      updatedArtists[0].name = value;
+  
+      setVinyls({
+        ...vinyls,
+        artists: updatedArtists,
+      });
+    } else {
+      setVinyls({
+        ...vinyls,
+        [name]: value.trim(),
+      });
+    }
+
+    const ErrorDetect = validateVinylsForm({
+      ...vinyls,
+      [name]: name === "artists" ? value : value.trim(), // Aplica trim() aquí también si es necesario
+    });
 
     setErrors((err) => ({
       ...err,
@@ -66,9 +85,7 @@ const Form = () => {
 
     setVinyls({
       title: "",
-
-      artists: [],
-
+      artists: [{name:""}],
       year: "",
       cover_image: "",
       genre: "",
@@ -106,7 +123,7 @@ const Form = () => {
             <input
               type="text"
               name="artists"
-              value={vinyls.artists}
+              value={vinyls.artists[0].name}
               onChange={handleChange}
               className="border rounded w-full p-2 text-black"
               placeholder="Ingrese el artista..."
@@ -189,8 +206,6 @@ const Form = () => {
               className="border rounded w-full p-2 text-black"
               placeholder="Ingrese el stock..."
               required
-              min="0"
-              max="20"
             />
             {errors.stock && <p className="text-black">{errors.stock}</p>}
           </div>
