@@ -49,9 +49,10 @@ export const getVinylDetail = (id) => async (dispatch) => {
 };
 
 export const postRegisterUser = (x) => {
+  const newEndpoint = "http://localhost:3001/createUser"
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(endpoint + x);
+      const { data } = await axios.post(newEndpoint, x);
       return dispatch({
         type: POST_REGISTER_USER,
         payload: data,
@@ -72,6 +73,7 @@ export const getVinylsForName = (title) => {
         response.status === 200 &&
         response.data &&
         Array.isArray(response.data)
+        
       ) {
         const filteredData = response.data.filter((vinyl) =>
           vinyl.title.toLowerCase().includes(title.toLowerCase())
@@ -157,6 +159,14 @@ export const removeFromCart = (vinylId) => ({
 
 export const loginUserWithEmail = (email, password) => async (dispatch) => {
   try {
+
+    // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
+    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
+    const response = await axios.post("/api/login", { email, password });
+    const token = response.data.token;
+    dispatch({ type: LOGIN_SUCCESS, payload: token });
+  } catch (error) {
+    dispatch({ type: LOGIN_FAILURE, payload: error.message });
     const response = await axios.post("http://localhost:3001/login", { email, password });
     
     if (response.status === 200) {
@@ -173,6 +183,7 @@ export const loginUserWithEmail = (email, password) => async (dispatch) => {
   } catch (error) {
     // Manejar errores de red u otros errores que puedan ocurrir en la solicitud.
     dispatch({ type: "LOGIN_FAILURE", payload: "Error de red" });
+
   }
 };
 
@@ -182,15 +193,15 @@ export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
     // Si la autenticación es exitosa, almacenar el token en el estado de Redux
     const response = await axios.post("/api/google-login", { googleToken });
     const token = response.data.token;
-    dispatch({ type: "LOGIN_SUCCESS", payload: token });
+    dispatch({ type: LOGIN_SUCCESS, payload: token });
   } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
+    dispatch({ type: LOGIN_FAILURE, payload: error.message });
   }
 };
 
 export const logoutUser = () => {
   // Eliminar el token de autenticación del estado de Redux al cerrar sesión
-  return { type: "LOGOUT" };
+  return { type:LOGOUT };
 };
 
 export const increaseItem = (vinyl) => ({
