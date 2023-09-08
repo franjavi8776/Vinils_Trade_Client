@@ -1,19 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getVinylsForName } from "../../redux/actions";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
-
+  const cart = useSelector((state) => state.cartItems)
   const dispatch = useDispatch();
 
   const handlerChange = (event) => {
     dispatch(getVinylsForName(event.target.value));
     setInputValue(event.target.value);
   };
+  
+  const contador = cart.length
 
   function handlerButton() {
     const shoppCart = document.getElementById("card");
@@ -37,8 +39,8 @@ const Search = () => {
               className="w-7 h-7 cursor-pointer z-0"
               onClick={handlerButton}
             />
-            <span className="w-4 h-4 absolute top-[-6px] right-[-6px] z-10 flex justify-center items-center bg-red-600 rounded-full ">
-              0
+            <span className="w-4 h-4 absolute top-[-6px] right-[-6px] p-[10px] z-10 flex justify-center items-center bg-red-600 rounded-full ">
+              {contador}
             </span>
           </div>
         </div>
@@ -52,6 +54,12 @@ const Search = () => {
         >
           Ingresa
         </Link>
+        <Link
+            to="/register"
+            className="m-4 text-white font-semibold link-with-hover-line"
+          >
+            Crea tu cuenta
+          </Link>
       </div>
     </div>
   );

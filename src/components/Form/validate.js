@@ -44,6 +44,12 @@ export function validateVinylsForm(input) {
   // Validación del campo Stock
   if (!input.stock) {
     errors.stock = "Debe ingresar stock";
+  } 
+  if (input.stock >= 20) {
+    errors.stock = "Debe ser menor a 20"
+  }
+  if (input.stock < 0) {
+    errors.stock = "Debe ser mayor que 0"
   }
 
   // Validacion del campo Pais
@@ -56,7 +62,10 @@ export function validateVinylsForm(input) {
     errors.price = "Debes ingresar un precio";
   } else if (isNaN(input.price) || input.price <= 0) {
     errors.price = "El precio debe ser un número mayor que 0";
+  } else if (input.price.length >= 3) {
+    errors.price = "El precio no puede ser mayor a 100"
   }
+
 
   // Validación del campo Condición
   // if (!input.Condition) {

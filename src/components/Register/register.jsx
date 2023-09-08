@@ -1,32 +1,39 @@
 import React, { useState } from "react";
 import { postRegisterUser } from "../../redux/actions";
 import validate from "./validate";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 function RegistroUsuario() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setErrors] = useState({});
+  const dispatch = useDispatch();
   const [usuario, setUsuario] = useState({
-    nombre: "",
-    correo: "",
-    telefono: "",
-    contraseña: "",
-    pais: "",
-    ciudad: "",
+    name: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    country: "",
+    city: "",
     confirmarContraseña: "",
+    codArea: "",
   });
-
-  const password = () => {
+  console.log(usuario);
+  const passwordd = () => {
     setShowPassword(!showPassword);
   };
+  const navigate = useNavigate();
 
   const cleanForm = () => {
     setUsuario({
-      nombre: "",
-      correo: "",
-      telefono: "",
-      contraseña: "",
-      pais: "",
-      ciudad: "",
+      name: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      country: "",
+      city: "",
       confirmarContraseña: "",
+      codArea: "",
     });
   };
   const handleChange = (e) => {
@@ -40,15 +47,16 @@ function RegistroUsuario() {
     console.log(error);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(validate === 0)) {
-      postRegisterUser(usuario);
-      alert("Joya");
+      await dispatch(postRegisterUser(usuario));
       cleanForm();
+      alert("Usario creado");
     } else {
       console.log("ERROR");
     }
+    navigate("/login")
   };
 
   return (
@@ -57,59 +65,58 @@ function RegistroUsuario() {
         <h2 className="text-3xl font-extrabold text-white mb-8">
           ¡Regístrate Ahora!
         </h2>
-
         <form onSubmit={handleSubmit}>
           <div className="flex flex-wrap -mx-4 mb-4">
             <div className="w-1/2 px-4 mb-4">
-              <label htmlFor="nombre" className="text-white text-sm mb-2">
+              <label htmlFor="name" className="text-white text-sm mb-2 font-bold">
                 Nombre
               </label>
               <input
                 autoComplete="off"
                 type="text"
-                id="nombre"
-                name="nombre"
-                value={usuario.nombre}
+                id="name"
+                name="name"
+                value={usuario.name}
                 onChange={handleChange}
                 className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
                 required
               />
-              <span>{error.nombre}</span>
+              <span>{error.name}</span>
             </div>
             <div className="w-1/2 px-4 mb-4">
-              <label htmlFor="correo" className="text-white text-sm mb-2">
+              <label htmlFor="email" className="text-white text-sm mb-2 font-bold">
                 Correo Electrónico
               </label>
               <input
                 type="email"
-                id="correo"
-                name="correo"
-                value={usuario.correo}
+                id="email"
+                name="email"
+                value={usuario.email}
                 onChange={handleChange}
                 className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
                 required
               />
-              <span>{error.correo}</span>
+              <span>{error.email}</span>
             </div>
           </div>
 
           <div className="mb-4">
-            <label htmlFor="contraseña" className="text-white text-sm mb-2">
+            <label htmlFor="password" className="text-white text-sm mb-2 font-bold">
               Contraseña
             </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                id="contraseña"
-                name="contraseña"
-                value={usuario.contraseña}
+                id="password"
+                name="password"
+                value={usuario.password}
                 onChange={handleChange}
                 className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
                 required
               />
               <button
                 type="button"
-                onClick={password}
+                onClick={passwordd}
                 className=" absolute right-0 top-1/2 transform -translate-y-1/2 w-5 h-5 mr-2 text-gray-500 focus:outline-none"
               >
                 {showPassword ? (
@@ -120,11 +127,11 @@ function RegistroUsuario() {
               </button>
             </div>
           </div>
-          <span>{error.contraseña}</span>
+          <span>{error.password}</span>
           <div className=" mb-4 relative">
             <label
               htmlFor="confirmar-contraseña"
-              className="text-white text-sm mb-2"
+              className="text-white text-sm mb-2 font-bold"
             >
               Confirmar Contraseña
             </label>
@@ -140,7 +147,7 @@ function RegistroUsuario() {
             />
             <button
               type="button"
-              onClick={password}
+              onClick={passwordd}
               className=" absolute right-0 top-11 transform -translate-y-1/2 w-5 h-5 mr-2 text-gray-500 focus:outline-none"
             >
               {showPassword ? (
@@ -152,53 +159,71 @@ function RegistroUsuario() {
           </div>
           <span className="">{error.confirmarContraseña}</span>
           <div className="mb-4">
-            <label htmlFor="telefono" className="text-white text-sm mb-2">
+            <label htmlFor="phoneNumber" className="text-white text-sm mb-2 font-bold">
               Teléfono
             </label>
             <input
-            autoComplete="off"
+              autoComplete="off"
               type="text"
-              id="telefono"
-              name="telefono"
-              value={usuario.telefono}
+              id="phoneNumber"
+              name="phoneNumber"
+              value={usuario.phoneNumber}
               onChange={handleChange}
               className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
               required
             />
           </div>
-          <span>{error.telefono}</span>
+          <span>{error.phoneNumber}</span>
           <div className="mb-4">
-            <label htmlFor="pais" className="text-white text-sm mb-2">
-              País
+            <label htmlFor="codArea" className="text-white text-sm mb-2 font-bold">
+              Codigo Postal
             </label>
             <input
-            autoComplete="off"
+              autoComplete="off"
               type="text"
-              id="pais"
-              name="pais"
-              value={usuario.pais}
+              id="codArea"
+              name="codArea"
+              value={usuario.codArea}
               onChange={handleChange}
               className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
-              required
             />
+            <span>{error.codArea}</span>
           </div>
-          <span>{error.pais}</span>
-          <div className="mb-4 relative">
-            <label htmlFor="ciudad" className="text-white text-sm mb-2">
-              Ciudad
-            </label>
-            <input
-            autoComplete="off"
-              type="text"
-              id="ciudad"
-              name="ciudad"
-              value={usuario.ciudad}
-              onChange={handleChange}
-              className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
-              required
-            />
+          <div className="flex flex-wrap -mx-4 mb-4">
+            <div className="w-1/2 px-4 mb-4">
+              <label htmlFor="country" className="text-white text-sm mb-2 font-bold">
+                País
+              </label>
+              <input
+                autoComplete="off"
+                type="text"
+                id="country"
+                name="country"
+                value={usuario.country}
+                onChange={handleChange}
+                className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
+                required
+              />
+            </div>
+            <div className="w-1/2 px-4 mb-4">
+              <label htmlFor="city" className="text-white text-sm mb-2 font-bold">
+                Ciudad
+              </label>
+              <input
+                autoComplete="off"
+                type="text"
+                id="city"
+                name="city"
+                value={usuario.city}
+                onChange={handleChange}
+                className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
+                required
+              />
+            </div>
           </div>
-          <span>{error.ciudad}</span>
+          <span className="">{error.country}</span>
+          <span className="">{error.city}</span>
+
           <div className="flex justify-center">
             <button
               type="submit"
@@ -212,5 +237,4 @@ function RegistroUsuario() {
     </div>
   );
 }
-
 export default RegistroUsuario;

@@ -21,13 +21,24 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
-  isAuthenticated: false,
+  token: null,
+  error: null,
   cartState: false,
   cartItems: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
   cartTotalAmount: 0,
   cartTotalQuantity: 0,
+  stock: {},
+};
+
+const reduceStock = (state, id, quantity) => {
+  const updatedStock = { ...state.stock };
+  if (updatedStock[id] >= quantity) {
+    updatedStock[id] -= quantity;
+    return updatedStock;
+  }
+  return null; // Devuelve null si no hay suficiente stock
 };
 
 const reducer = (state = initialState, action) => {
@@ -165,23 +176,20 @@ const reducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        isAuthenticated: true,
-        token: action.payload,
-        error: null,
+        token: action.payload, // Almacenar el token cuando la autenticación sea exitosa
+        error: null, // Restablecer cualquier mensaje de error anterior
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        isAuthenticated: false,
-        token: null,
-        error: action.payload,
+        token: null, // Borrar el token en caso de error de autenticación
+        error: action.payload, // Almacenar el mensaje de error
       };
     case LOGOUT:
       return {
         ...state,
-        isAuthenticated: false,
-        token: null,
-        error: null,
+        token: null, // Borrar el token cuando se cierre sesión
+        error: null, // Restablecer cualquier mensaje de error anterior
       };
     default:
       return {
