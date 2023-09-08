@@ -48,7 +48,7 @@ const Search = () => {
       <div>
         <Link
           to="/login"
-          className="m-4 text-red-700 font-semibold link-with-hover-line "
+          className="m-4 text-white font-semibold link-with-hover-line"
         >
           Ingresa
         </Link>
