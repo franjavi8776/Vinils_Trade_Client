@@ -23,7 +23,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedArtist, setSelectedArtist] = useState("");
   const searchByName = useSelector((state) => state.search);
   const pageSize = 10;
   const totalVinyls =
@@ -34,7 +33,9 @@ const Home = () => {
   const endIndex = startIndex + pageSize;
 
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
+
   const pagesArray = [];
+
   for (let i = 1; i <= totalPages; i++) {
     pagesArray.push(i);
   }
@@ -268,7 +269,7 @@ const Home = () => {
           <Footer />
         </div>
 
-        <div id="cart" className="top-0 left-0 fixed inset-0 hidden z-50">
+        <div id="card" className="top-0 left-0 fixed inset-0 hidden z-50">
           <ShoppingCart className="z-50" />
         </div>
       </div>

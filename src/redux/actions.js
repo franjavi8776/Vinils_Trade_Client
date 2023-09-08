@@ -7,7 +7,7 @@ export const ORDER_FOR_GENRE = "ORDER_FOR_ARTIST";
 export const RESET = "RESET";
 export const ORDER_BY_TITLE = "ORDER_BY_TITLE";
 export const FILTER_BY_DECADE = "FILTER_BY_DECADE";
-export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_TO_CART = "SET_ADD_ITEM_TO_CART";
 export const ORDER_FOR_ARTIST = "ORDER_FOR_ARTIST";
 export const POST_REGISTER_USER = "POST_REGISTER_USER";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
@@ -15,6 +15,9 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
+export const INCREASE_ITEM = "INCREASE_ITEM";
+export const DECREASE_ITEM = "DECREASE_ITEM";
+
 const endpoint = "http://localhost:3001/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -87,21 +90,21 @@ export const getVinylsForName = (title) => {
   };
 };
 
-export const getVinylCart = (id) => {
-  return async function (dispatch) {
-    console.log(id);
-    try {
-      const { data } = await axios.get(endpoint + id);
-      dispatch({
-        type: ADD_TO_CART,
-        payload: data,
-      });
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+// export const getVinylCart = (id) => {
+//   return async function (dispatch) {
+//     console.log(id);
+//     try {
+//       const { data } = await axios.get(endpoint + id);
+//       dispatch({
+//         type: ADD_TO_CART,
+//         payload: data,
+//       });
+//       console.log(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 
 export const orderByTitle = (order) => {
   return {
@@ -143,14 +146,14 @@ export const filterVinylsByDecade = (startYear, endYear) => {
   };
 };
 
-export const addToCart = (product) => ({
+export const addToCart = (vinyl) => ({
   type: ADD_TO_CART,
-  payload: product,
+  payload: vinyl,
 });
 
-export const removeFromCart = (product) => ({
+export const removeFromCart = (vinylId) => ({
   type: REMOVE_FROM_CART,
-  payload: product,
+  payload: vinylId,
 });
 
 export const loginUserWithEmail = (email, password) => async (dispatch) => {
@@ -181,3 +184,13 @@ export const logoutUser = () => {
   // Eliminar el token de autenticación del estado de Redux al cerrar sesión
   return { type: "LOGOUT" };
 };
+
+export const increaseItem = (vinyl) => ({
+  type: "INCREASE_ITEM",
+  payload: vinyl,
+});
+
+export const decreaseItem = (vinyl) => ({
+  type: "DECREASE_ITEM",
+  payload: vinyl,
+});
