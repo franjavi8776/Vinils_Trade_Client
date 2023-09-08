@@ -54,8 +54,8 @@ const Navbar = () => {
         <div className="w-[50%] flex justify-center items-center">
           <Search />
            <Link
-            to="/login"
-            className="m-4 text-white font-semibold link-with-hover-line"
+            to="/register"
+            className="m-4 text-red-700 font-semibold link-with-hover-line"
           >
            Crea tu cuenta
           </Link>
