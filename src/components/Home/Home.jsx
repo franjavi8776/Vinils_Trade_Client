@@ -23,7 +23,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedArtist, setSelectedArtist] = useState("");
   const searchByName = useSelector((state) => state.search);
   const pageSize = 10;
   const totalVinyls =
@@ -34,7 +33,9 @@ const Home = () => {
   const endIndex = startIndex + pageSize;
 
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
+
   const pagesArray = [];
+
   for (let i = 1; i <= totalPages; i++) {
     pagesArray.push(i);
   }
@@ -55,8 +56,8 @@ const Home = () => {
     }
   };
 
-  const handleAddToCart = (id, title, cover_image, cost, stock) => {
-    addToCartInLocalStorage({ id, title, cover_image, cost, stock }); // Agrega el producto al carrito
+  const handleAddToCart = (id, title, cover_image, price, stock) => {
+    addToCartInLocalStorage({ id, title, cover_image, price, stock }); // Agrega el producto al carrito
   };
 
   // const handleReset = () => {
@@ -98,7 +99,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-[100%] h-[92vh] relative z-0">
+      <div className="w-[100%] h-[92vh] relative">
         <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
           <div className="w-[40%] h-[420px] ">
             <VideoPlayer />
@@ -268,8 +269,8 @@ const Home = () => {
           <Footer />
         </div>
 
-        <div id="cart" className="top-0 left-0 z-50  fixed inset-0 hidden">
-          <ShoppingCart className=" " />
+        <div id="card" className="top-0 left-0 fixed inset-0 hidden z-50">
+          <ShoppingCart className="z-50" />
         </div>
       </div>
     </div>

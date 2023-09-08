@@ -7,11 +7,13 @@ import {
   FILTER_BY_DECADE,
   ORDER_BY_TITLE,
   ADD_TO_CART,
+  REMOVE_FROM_CART,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
   POST_VINYL,
-  REMOVE_FROM_CART,
+  INCREASE_ITEM,
+  DECREASE_ITEM,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -19,9 +21,14 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
-  ShoppingCart: [],
-  cartItems: [],
-  isAuthenticated: false,
+  token:null,
+  error:null,
+  cartState: false,
+  cartItems: localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [],
+  cartTotalAmount: 0,
+  cartTotalQuantity: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,11 +67,79 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
+
     case ADD_TO_CART:
+      const itemIndex = state.cartItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (itemIndex >= 0) {
+        const updatedCartItems = [...state.cartItems];
+        updatedCartItems[itemIndex] = {
+          ...updatedCartItems[itemIndex],
+          cartQuantity: updatedCartItems[itemIndex].cartQuantity + 1,
+        };
+
+        localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+
+        return { ...state, cartItems: updatedCartItems };
+      } else {
+        const temp = { ...action.payload, cartQuantity: 1 };
+        const updatedCartItems = [...state.cartItems, temp];
+
+        localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+
+        return { ...state, cartItems: updatedCartItems };
+      }
+
+    case REMOVE_FROM_CART:
+      const removeItemId = action.payload; // action.payload debe ser solo el ID
+      const updateCartItems = state.cartItems.filter(
+        (item) => item.id !== removeItemId
+      );
+      localStorage.setItem("cart", JSON.stringify(updateCartItems));
       return {
         ...state,
-        ShoppingCart: [...ShoppingCart, action.payload],
+        cartItems: updateCartItems,
       };
+
+    case INCREASE_ITEM:
+      const updatedCartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          // Verifica que el stock no sea menor que la cantidad en el carrito
+          item.cartQuantity += 1;
+          item.stock -= 1; // Reduce el stock
+        }
+        return item;
+      });
+
+      localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+
+      return {
+        ...state,
+        cartItems: updatedCartItems,
+      };
+
+    case DECREASE_ITEM: {
+      const updatedCartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          // Verifica que la cantidad en el carrito sea mayor que 1 antes de disminuir
+          if (item.cartQuantity > 1) {
+            item.cartQuantity -= 1;
+            item.stock += 1; // Aumenta el stock
+          }
+        }
+        return item;
+      });
+
+      localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+
+      return {
+        ...state,
+        cartItems: updatedCartItems,
+      };
+    }
+
     case ORDER_FOR_GENRE:
       return {
         ...state,
@@ -88,38 +163,23 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    case ADD_TO_CART:
-      return {
-        ...state,
-        cartItems: [...state.cartItems, action.payload],
-      };
-    case REMOVE_FROM_CART:
-      return {
-        ...state,
-        cartItems: state.cartItems.filter(
-          (item) => item.id !== action.payload.id
-        ),
-      };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        isAuthenticated: true,
-        token: action.payload,
-        error: null,
+        token: action.payload, // Almacenar el token cuando la autenticación sea exitosa
+        error: null, // Restablecer cualquier mensaje de error anterior
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        isAuthenticated: false,
-        token: null,
-        error: action.payload,
+        token: null, // Borrar el token en caso de error de autenticación
+        error: action.payload, // Almacenar el mensaje de error
       };
     case LOGOUT:
       return {
         ...state,
-        isAuthenticated: false,
-        token: null,
-        error: null,
+        token: null, // Borrar el token cuando se cierre sesión
+        error: null, // Restablecer cualquier mensaje de error anterior
       };
     default:
       return {

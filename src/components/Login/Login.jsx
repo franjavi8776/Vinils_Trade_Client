@@ -8,7 +8,8 @@ const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.token !== null);
+  const error = useSelector((state) => state.error); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +26,7 @@ const Login = () => {
         await dispatch(loginUserWithEmail(user.email, user.password));
 
         // Obtiene el token JWT del estado de Redux
-        const token = useSelector((state) => state.auth.token);
+        const token = response.payload.token;
 
         // Configura axios para enviar el token en el encabezado 'Authorization'
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -52,7 +53,7 @@ const Login = () => {
 
 
   const renderError = (fieldName) => {
-    const errorText = errors[fieldName];
+    const errorText = errors[fieldName] || error;
 
     if (errorText) {
       return <span style={{ color: "black" }}>{errorText}</span>;
