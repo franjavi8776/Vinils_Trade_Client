@@ -14,6 +14,10 @@ import {
   POST_VINYL,
   INCREASE_ITEM,
   DECREASE_ITEM,
+  CREATE_ORDER,
+  SUCCESS_MP,
+  PENDIGN_MP,
+  FAILURE_MP,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -30,6 +34,12 @@ const initialState = {
   cartTotalAmount: 0,
   cartTotalQuantity: 0,
   stock: {},
+  dataMP: {},
+  stateMP: {
+    success: null,
+    failure: null,
+    pending: null,
+  },
 };
 
 const reduceStock = (state, id, quantity) => {
@@ -100,6 +110,28 @@ const reducer = (state = initialState, action) => {
         localStorage.setItem("cart", JSON.stringify(updatedCartItems));
 
         return { ...state, cartItems: updatedCartItems };
+      }
+
+    case CREATE_ORDER:
+      return {
+        ...state,
+        dataMP: action.payload,
+      }
+
+    case SUCCESS_MP:
+      return {
+        ...state,
+        stateMP: {...state.stateMP, success: action.payload}
+      }
+    case PENDIGN_MP:
+      return {
+        ...state,
+        stateMP: {...state.stateMP, pending: action.payload}
+      }
+    case FAILURE_MP:
+      return {
+        ...state,
+        stateMP: {...state.stateMP, failure: action.payload}
       }
 
     case REMOVE_FROM_CART:

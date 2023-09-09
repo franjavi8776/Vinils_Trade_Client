@@ -3,17 +3,26 @@ import {
   removeFromCart,
   increaseItem,
   decreaseItem,
+  postMP, 
+  succesMP,
+  pendingMP,
+  failureMP,
 } from "../../redux/actions";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md"
+import { useEffect } from "react";
+
+
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
-
+  const MP = useSelector((state) => state.dataMP)
+  const stateMP = useSelector((state) => state.stateMP)
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
   };
-
+  console.log(MP)
+  console.log(stateMP)
   const handleIncreaseQty = (vinyl) => {
     dispatch(increaseItem(vinyl));
   };
@@ -31,6 +40,27 @@ const ShoppingCart = () => {
     (total, item) => total + item.price * item.cartQuantity,
     0
   );
+
+
+  const units = cart.length
+  const datos = {
+    title: "Vinyls-Trade",
+    price: totalValue,
+    units: units
+  }
+
+  
+  console.log(datos)
+  
+  
+    const handleMP = () => {
+      dispatch(postMP(datos))
+      window.location.href = MP
+    }
+
+  
+
+
 
   return (
     <div
@@ -96,7 +126,7 @@ const ShoppingCart = () => {
             <button onClick={handlerButtom} className="bg-red-800 text-white px-4 py-2 rounded mt-4">
               Seguir Comprando
             </button>
-            <button className="bg-green-500 text-white px-4 py-2 rounded mt-4">
+            <button className="bg-green-500 text-white px-4 py-2 rounded mt-4" onClick={handleMP}>
               Finalizar Compra
             </button>
           </div>
