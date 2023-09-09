@@ -17,6 +17,7 @@ export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
 export const INCREASE_ITEM = "INCREASE_ITEM";
 export const DECREASE_ITEM = "DECREASE_ITEM";
+export const CREATE_ORDER = "CREATE_ORDER"
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -126,6 +127,15 @@ export const postVinyls = (dato) => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const postMP =  (dato) => async (dispatch) => {
+  const {data} = await axios.post("http://localhost3001/create_order", dato)
+  console.log(data)
+  dispatch({
+    type : CREATE_ORDER ,
+    payload : data
+  })
+}
 
 export const reset = () => {
   return {

@@ -4,6 +4,7 @@ import {
   increaseItem,
   decreaseItem,
 } from "../../redux/actions";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md"
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const ShoppingCart = () => {
           X
         </button>
         <ul className="w-[700px] h-[630px] overflow-y-auto">
-          {cart.map((item) => (
+          {cart.length ? (cart.map((item) => (
             <div
               key={item.id}
               className="flex justify-between items-center p-2 border-b"
@@ -83,12 +84,16 @@ const ShoppingCart = () => {
                 </button>
               </div>
             </div>
-          ))}
+          ))) : (<div className=" flex flex-col justify-center items-center w-[700px] h-[630px]">
+            <MdOutlineRemoveShoppingCart className="w-[150px] h-[150px] text-red-800"/>
+            <div className="font-bold text-xl">Carrito vacio</div>
+            </div>)
+          }
         </ul>
         <div className="p-4 text-right w-full h-[130px] absolute bottom-0 border-[1px] border-black">
           <div>Total: ${totalValue}</div>
           <div className=" flex justify-between">
-            <button onClick={handlerButtom} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+            <button onClick={handlerButtom} className="bg-red-800 text-white px-4 py-2 rounded mt-4">
               Seguir Comprando
             </button>
             <button className="bg-green-500 text-white px-4 py-2 rounded mt-4">
