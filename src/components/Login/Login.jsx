@@ -13,7 +13,7 @@ const Login = () => {
   const isAuthenticated = useSelector((state) => state.token !== null);
   const error = useSelector((state) => state.error);
   const navigate = useNavigate();
-
+  const token = useSelector((state) => state.token);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -28,7 +28,7 @@ const Login = () => {
         // Utiliza la acción loginUserWithEmail con el correo y la contraseña
         await dispatch(loginUserWithEmail(user.email, user.password));
         // Obtiene el token JWT del estado de Redux
-        const token = response.payload.token;
+        
 
         // Configura axios para enviar el token en el encabezado 'Authorization'
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -56,28 +56,28 @@ const Login = () => {
   //   }
   // };
 
-  const handleGoogleSuccess = async (response) => {
-    try {
-      // response contiene la información de autenticación exitosa con Google
-      // Puedes acceder al token de Google con response.tokenId
-      await dispatch(loginUserWithGoogle(response.tokenId));
-    } catch (error) {
-      console.error("Error en la autenticación con Google:", error);
-    }
-  };
+  // const handleGoogleSuccess = async (response) => {
+  //   try {
+  //     // response contiene la información de autenticación exitosa con Google
+  //     // Puedes acceder al token de Google con response.tokenId
+  //     await dispatch(loginUserWithGoogle(response.tokenId));
+  //   } catch (error) {
+  //     console.error("Error en la autenticación con Google:", error);
+  //   }
+  // };
 
-  const handleGoogleFailure = (error) => {
-    if (error.error === "popup_closed_by_user") {
-      // Maneja el caso en el que el usuario cerró la ventana emergente
-      alert("El usuario cerró la ventana emergente de Google.");
-    } else {
-      // Muestra un mensaje de error amigable para otros errores de Google
-      alert(
-        "Hubo un error al iniciar sesión con Google. Por favor, inténtalo de nuevo más tarde."
-      );
-      console.error("Error en la autenticación con Google:", error);
-    }
-  };
+  // const handleGoogleFailure = (error) => {
+  //   if (error.error === "popup_closed_by_user") {
+  //     // Maneja el caso en el que el usuario cerró la ventana emergente
+  //     alert("El usuario cerró la ventana emergente de Google.");
+  //   } else {
+  //     // Muestra un mensaje de error amigable para otros errores de Google
+  //     alert(
+  //       "Hubo un error al iniciar sesión con Google. Por favor, inténtalo de nuevo más tarde."
+  //     );
+  //     console.error("Error en la autenticación con Google:", error);
+  //   }
+  // };
 
   const renderError = (fieldName) => {
     const errorText = errors[fieldName] || error;
@@ -151,7 +151,6 @@ const Login = () => {
         <span className="text-white">
           ¿No tienes tu cuenta?
           <Link className="text-blue-600 font-bold ml-3" to="/register">
-            {" "}
             Registrate aqui!!!
           </Link>
         </span>

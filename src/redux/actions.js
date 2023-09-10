@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const GET_ALL_VINYLS = "GET_ALL_VINYLS";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
@@ -23,6 +22,7 @@ export const FAILURE_MP = "FAILURE_MP";
 export const PENDIGN_MP = "PENDIGN_MP";
 export const CLEAR_CART = "CLEAR_CART"
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
+export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER"
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -41,7 +41,7 @@ export const getAllVinyls = () => async (dispatch) => {
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`${endpoint}${id}`);
+    const response = await axios.get(`https://vinyls-trade-back-production.up.railway.app/${id}`);
     const data = response.data;
     if (Array.isArray(data) && data.length > 0) {
       // Verificamos si data es un array y si contiene al menos un elemento
@@ -55,7 +55,7 @@ export const getVinylDetail = (id) => async (dispatch) => {
 };
 
 export const postRegisterUser = (x) => {
-  const newEndpoint = "http://localhost:3001/createUser";
+  const newEndpoint = "https://vinyls-trade-back-production.up.railway.app/createUser";
   return async function (dispatch) {
     try {
       const { data } = await axios.post(newEndpoint, x);
@@ -203,7 +203,7 @@ export const loginUserWithEmail = (email, password) => async (dispatch) => {
   try {
     // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
     // Si la autenticación es exitosa, almacenar el token en el estado de Redux
-    const response = await axios.post("http://localhost:3001/login", {
+    const response = await axios.post("https://vinyls-trade-back-production.up.railway.app/login", {
       email,
       password,
     });

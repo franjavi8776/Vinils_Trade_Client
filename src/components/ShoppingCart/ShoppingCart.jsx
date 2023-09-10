@@ -54,14 +54,22 @@ const ShoppingCart = () => {
   console.log(datos)
   
   
-    const handleMP = () => {
-      dispatch(postMP(datos))
-      if (MP.length > 0 ) {
-        window.location.href = MP
-      }
+  const handleMP = () => {
+    dispatch(postMP(datos))
+    if (MP.length > 0 ) {
+      window.location.href = MP
     }
+  }
 
-  
+  // if(succesMP) {
+  //   dispatch(clearCart())
+  // }
+  // if(pendingMP) {
+  //   return "pendign"
+  // }
+  // if(failureMP) {
+  //   return "fallo"
+  // }
 
 
 
@@ -70,7 +78,7 @@ const ShoppingCart = () => {
       className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center"
       style={{ zIndex: 2 }}
     >
-      <div className="w-[700px] h-[800px] bg-white  relative z-50 ">
+      <div className="w-[700px] h-[800px] bg-white  relative z-50 dark:bg-black ">
         <h1 className="text-center mt-4 font-bold">CARRITO DE COMPRAS</h1>
         <button
           onClick={handlerButtom}
@@ -123,7 +131,7 @@ const ShoppingCart = () => {
             </div>)
           }
         </ul>
-        <div className="p-4 text-right w-full h-[130px] absolute bottom-0 border-[1px] border-black">
+        <div className="p-4 text-right w-full h-[130px] absolute bottom-0 border-[1px] border-black dark:border-white">
           <div>Total: ${totalValue}</div>
           <div className=" flex justify-between">
             <button onClick={handlerButtom} className="bg-red-800 text-white px-4 py-2 rounded mt-4">
