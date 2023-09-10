@@ -194,8 +194,27 @@ export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
     console.log(response);
     const token = response.data.token;
     dispatch({ type: LOGIN_SUCCESS, payload: token });
+
+    // Realiza la solicitud al servidor para autenticar al usuario con Google
+
+    // Verifica si la respuesta contiene el token y tiene el formato esperado
+    if (response.data && response.data.token) {
+      const token = response.data.token;
+      // Almacena el token en el estado de Redux si la autenticación es exitosa
+      dispatch({ type: LOGIN_SUCCESS, payload: token });
+    } else {
+      // Maneja el caso en el que la respuesta no contenga el token esperado
+      dispatch({
+        type: LOGIN_FAILURE,
+        payload: "Respuesta de autenticación no válida",
+      });
+    }
   } catch (error) {
-    dispatch({ type: LOGIN_FAILURE, payload: error.message });
+    // Maneja errores específicos, por ejemplo, errores de red o errores de autenticación
+    dispatch({
+      type: LOGIN_FAILURE,
+      payload: `Error de autenticación con Google: ${error.message}`,
+    });
   }
 };
 

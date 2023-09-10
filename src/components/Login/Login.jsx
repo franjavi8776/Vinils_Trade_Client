@@ -5,6 +5,8 @@ import { validateLoginForm } from "./validatelogin.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+import { GoogleLogin } from "react-google-login";
+
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -12,6 +14,7 @@ const Login = () => {
   const isAuthenticated = useSelector((state) => state.token !== null);
   const error = useSelector((state) => state.error);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -35,22 +38,10 @@ const Login = () => {
         // Ejemplo: history.push('/dashboard');
         navigate("/");
       } catch (error) {
-        console.error("Error de inicio de sesión:");
+        console.error("Error de inicio de sesión:", error);
       }
     }
   };
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     // Realiza la autenticación con Google y obtén un token de acceso de Google
-  //     const googleResponse = await authenticateWithGoogle(); // Implementa esta función para obtener el token de Google
-  //     if (googleResponse && googleResponse.token) {
-  //       // Utiliza la acción loginUserWithGoogle para autenticar al usuario con el token de Google
-  //       await dispatch(loginUserWithGoogle(googleResponse.token));
-  //     }
-  //   } catch (error) {
-  //     console.error('Error al iniciar sesión con Google:', error);
-  //   }
-  // };
 
   // const authenticateWithGoogle = async () => {
   //   // Realiza la autenticación con Google y obtén el token de acceso
@@ -65,6 +56,29 @@ const Login = () => {
   //     throw error;
   //   }
   // };
+
+  const handleGoogleSuccess = async (response) => {
+    try {
+      // response contiene la información de autenticación exitosa con Google
+      // Puedes acceder al token de Google con response.tokenId
+      await dispatch(loginUserWithGoogle(response.tokenId));
+    } catch (error) {
+      console.error("Error en la autenticación con Google:", error);
+    }
+  };
+
+  const handleGoogleFailure = (error) => {
+    if (error.error === "popup_closed_by_user") {
+      // Maneja el caso en el que el usuario cerró la ventana emergente
+      alert("El usuario cerró la ventana emergente de Google.");
+    } else {
+      // Muestra un mensaje de error amigable para otros errores de Google
+      alert(
+        "Hubo un error al iniciar sesión con Google. Por favor, inténtalo de nuevo más tarde."
+      );
+      console.error("Error en la autenticación con Google:", error);
+    }
+  };
 
   const renderError = (fieldName) => {
     const errorText = errors[fieldName] || error;
@@ -124,9 +138,16 @@ const Login = () => {
                 : "Iniciar Sesión con tu Correo"}
             </button>
           </div>
-          {/* <div className="text-center mt-[-20px]">
-            <button onClick={handleGoogleLogin} className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black">Iniciar Sesión con Google</button>
-          </div> */}
+          <div className="text-center mt-[-20px]">
+            <GoogleLogin
+              className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
+              clientId="835894997451-mr7pkglem96giuit73t74t2as60pgggr.apps.googleusercontent.com"
+              buttonText="Iniciar Sesión con Google"
+              onSuccess={handleGoogleSuccess}
+              onFailure={handleGoogleFailure}
+              cookiePolicy={"single_host_origin"}
+            />
+          </div>
         </form>
         <span className="text-white">
           ¿No tienes tu cuenta?
