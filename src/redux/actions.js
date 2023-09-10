@@ -17,9 +17,13 @@ export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
 export const INCREASE_ITEM = "INCREASE_ITEM";
 export const DECREASE_ITEM = "DECREASE_ITEM";
+export const CREATE_ORDER = "CREATE_ORDER";
+export const SUCCESS_MP = "SUCCESS_MP";
+export const FAILURE_MP = "FAILURE_MP";
+export const PENDIGN_MP = "PENDIGN_MP";
+export const CLEAR_CART = "CLEAR_CART"
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
-
-const endpoint = "http://localhost:3001/";
+const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
   try {
@@ -128,6 +132,39 @@ export const postVinyls = (dato) => async (dispatch) => {
   }
 };
 
+export const postMP =  (dato) => async (dispatch) => {
+  const {data} = await axios.post("http://localhost:3001/create_order", dato)
+  console.log(data)
+  dispatch({
+    type : CREATE_ORDER ,
+    payload : data
+  })
+}
+
+export const succesMP = () => async (dispatch) => {
+  const {data} = await axios("http://localhost:3001/success")
+  dispatch({
+    type: SUCCESS_MP,
+    payload: data
+  })
+}
+
+export const pendingMP = () => async (dispatch) => {
+  const {data} = await axios("http://localhost:3001/pending")
+  dispatch({
+    type: PENDIGN_MP,
+    payload: data
+  })
+}
+
+export const failureMP = () => async (dispatch) => {
+  const {data} = await axios("http://localhost:3001/failure")
+  dispatch({
+    type: FAILURE_MP,
+    payload: data
+  })
+}
+
 export const reset = () => {
   return {
     type: RESET,
@@ -157,6 +194,10 @@ export const removeFromCart = (vinylId) => ({
   type: REMOVE_FROM_CART,
   payload: vinylId,
 });
+
+export const clearCart = () => ({
+  type: CLEAR_CART
+})
 
 export const loginUserWithEmail = (email, password) => async (dispatch) => {
   try {
