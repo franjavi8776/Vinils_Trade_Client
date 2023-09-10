@@ -17,7 +17,7 @@ import Footer from "../Footer/Footer";
 import "./Home.css";
 import VideoPlayer from "./Video/VideoPlayer";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import { addToCartInLocalStorage, useLocalStorage } from "../Card/LocalStor";
+import { addToCartInLocalStorage } from "../Card/LocalStor";
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
@@ -51,7 +51,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllVinyls());
-
     // Verificar el tamaño de la pantalla y actualizar cardsPerPage en consecuencia
     const handleResize = () => {
       if (window.innerWidth >= 1624) {

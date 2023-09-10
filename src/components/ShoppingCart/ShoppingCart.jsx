@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-
 import {
   removeFromCart,
   increaseItem,
@@ -20,8 +19,8 @@ const ShoppingCart = () => {
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
   };
-  // console.log(MP);
-  // console.log(stateMP);
+  console.log(MP);
+  console.log(stateMP);
   const handleIncreaseQty = (vinyl) => {
     dispatch(increaseItem(vinyl));
   };
@@ -47,7 +46,7 @@ const ShoppingCart = () => {
     units: units,
   };
 
-  //console.log(datos);
+  console.log(datos);
 
   const handleMP = () => {
     dispatch(postMP(datos));
@@ -55,13 +54,12 @@ const ShoppingCart = () => {
       window.location.href = MP;
     }
   };
-
   return (
     <div
-      className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center dark:bg-slate-700 dark:bg-opacity-90"
+      className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center"
       style={{ zIndex: 2 }}
     >
-      <div className="w-[700px] h-[800px] bg-white  relative z-50 dark:bg-black  duration-100">
+      <div className="w-[700px] h-[800px] bg-white  relative z-50 dark:bg-black ">
         <h1 className="text-center mt-4 font-bold">CARRITO DE COMPRAS</h1>
         <button
           onClick={handlerButtom}
@@ -117,7 +115,7 @@ const ShoppingCart = () => {
             </div>
           )}
         </ul>
-        <div className="p-4 text-right w-full h-[130px] absolute bottom-0 border-[1px] border-black">
+        <div className="p-4 text-right w-full h-[130px] absolute bottom-0 border-[1px] border-black dark:border-white">
           <div>Total: ${totalValue}</div>
           <div className=" flex justify-between">
             <button
@@ -138,5 +136,4 @@ const ShoppingCart = () => {
     </div>
   );
 };
-
 export default ShoppingCart;

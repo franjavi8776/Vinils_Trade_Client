@@ -104,6 +104,36 @@ const reducer = (state = initialState, action) => {
 
         return { ...state, cartItems: updatedCartItems };
       }
+    
+      case CLEAR_CART: 
+      localStorage.removeItem('cart');
+      return {
+        ...state,
+        cartItems : [],
+      }
+    
+
+    case CREATE_ORDER:
+      return {
+        ...state,
+        dataMP: action.payload,
+      }
+
+    case SUCCESS_MP:
+      return {
+        ...state,
+        stateMP: {...state.stateMP, success: action.payload}
+      }
+    case PENDIGN_MP:
+      return {
+        ...state,
+        stateMP: {...state.stateMP, pending: action.payload}
+      }
+    case FAILURE_MP:
+      return {
+        ...state,
+        stateMP: {...state.stateMP, failure: action.payload}
+      }
 
     case CLEAR_CART:
       localStorage.removeItem("cart");
