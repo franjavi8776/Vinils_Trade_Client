@@ -17,7 +17,7 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <div className="w-[100%] h-[80vh] flex justify-center items-center">
+    <div className="w-[100%] h-[85vh] flex justify-center items-center">
       <div className="mr-[-90px] z-0">
         <img
           className={`rounded-full w-[400px] h-[400px] mt-[35%] ${style["animate-spin"]}`}
@@ -34,14 +34,10 @@ const Detail = () => {
             <h1 className="text-3xl font-semibold mb-2">{detail?.title}</h1>
             <div className="flex justify-between">
               <h2 className="text-black font-semibold">
-
                 Estilo:{" "}
                 <span className="text-slate-100">
                   {detail.style ? detail.style : "No especificado"}
                 </span>
-
-              
-
               </h2>
               <h2 className="text-black font-semibold">
                 Año:{" "}
@@ -52,7 +48,6 @@ const Detail = () => {
             </div>
 
             <h2 className="text-black font-semibold">
-
               Artista:{" "}
               <span className="text-slate-100">
                 {" "}
@@ -60,9 +55,6 @@ const Detail = () => {
                   ? detail.artists[0].name
                   : "No especificado"}
               </span>
-
-            
-
             </h2>
             <h2 className="text-black font-semibold">
               Genero:{" "}

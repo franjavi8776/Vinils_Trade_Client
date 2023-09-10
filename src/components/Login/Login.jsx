@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserWithEmail,loginUserWithGoogle } from "../../redux/actions";
+import { loginUserWithEmail, loginUserWithGoogle } from "../../redux/actions";
 import { validateLoginForm } from "./validatelogin.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
-
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.token !== null);
-  const error = useSelector((state) => state.error); 
-  const navigate = useNavigate(); 
+  const error = useSelector((state) => state.error);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -32,15 +30,14 @@ const Login = () => {
 
         // Configura axios para enviar el token en el encabezado 'Authorization'
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        
+
         // Continúa con las solicitudes protegidas o redirecciona a otra página
         // Ejemplo: history.push('/dashboard');
-        navigate("/")
+        navigate("/");
       } catch (error) {
         console.error("Error de inicio de sesión:");
       }
     }
-    
   };
   // const handleGoogleLogin = async () => {
   //   try {
@@ -60,7 +57,7 @@ const Login = () => {
   //   try {
   //     const authResult = await window.gapi.auth2.getAuthInstance().signIn();
   //     const googleToken = authResult.getAuthResponse().id_token;
-  
+
   //     // Devuelve el token de acceso de Google
   //     return { token: googleToken };
   //   } catch (error) {
@@ -68,7 +65,6 @@ const Login = () => {
   //     throw error;
   //   }
   // };
-
 
   const renderError = (fieldName) => {
     const errorText = errors[fieldName] || error;
@@ -81,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[80vh] flex items-center justify-center">
+    <div className="h-[81vh] flex items-center justify-center">
       <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-96 shadow-lg shadow-black">
         <h2 className="text-2xl font-bold mb-4 text-white">
           ¡Hola! Para seguir, ingresa tu e-mail, Sino tienes una cuenta creala!
@@ -123,14 +119,22 @@ const Login = () => {
               className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
               disabled={isAuthenticated}
             >
-              {isAuthenticated ? "Ya estás autenticado" : "Iniciar Sesión con tu Correo"}
+              {isAuthenticated
+                ? "Ya estás autenticado"
+                : "Iniciar Sesión con tu Correo"}
             </button>
           </div>
           {/* <div className="text-center mt-[-20px]">
             <button onClick={handleGoogleLogin} className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black">Iniciar Sesión con Google</button>
           </div> */}
         </form>
-        <span className="text-white">¿No tienes tu cuenta?<Link className="text-blue-600 font-bold ml-3" to="/register">{" "}  Registrate aqui!!!</Link></span>
+        <span className="text-white">
+          ¿No tienes tu cuenta?
+          <Link className="text-blue-600 font-bold ml-3" to="/register">
+            {" "}
+            Registrate aqui!!!
+          </Link>
+        </span>
       </div>
     </div>
   );

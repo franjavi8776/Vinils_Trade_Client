@@ -23,8 +23,36 @@ const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
   const searchByName = useSelector((state) => state.search);
-  const pageSize = 10;
+
+  useEffect(() => {
+    // Verificar el tamaño de la pantalla y actualizar cardsPerPage en consecuencia
+    const handleResize = () => {
+      if (window.innerWidth >= 1624) {
+        setPageSize(10);
+      } else if (window.innerWidth >= 1424) {
+        setPageSize(8);
+      } else if (window.innerWidth >= 1224) {
+        setPageSize(6);
+      } else {
+        setPageSize(4);
+      }
+    };
+
+    handleResize();
+
+    // Escuchar eventos de cambio de tamaño de ventana
+    window.addEventListener("resize", handleResize);
+
+    // Limpieza de eventos al desmontar el componente
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  //const pageSize = window.innerWidth >= 1324 ? 10 : 6;
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
   const totalPages = Math.ceil(totalVinyls / pageSize);
@@ -99,7 +127,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-[100%] h-[92vh] relative">
+      <div className="w-[100%] h-auto relative">
         <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
           <div className="w-[40%] h-[420px] ">
             <VideoPlayer />

@@ -9,9 +9,17 @@ import Login from "./components/Login/Login";
 import RegistroUsuario from "./components/Register/register";
 
 function App() {
+  const updateHtmlClass = (darkMode) => {
+    const htmlElement = document.documentElement;
+    if (darkMode) {
+      htmlElement.classList.add("dark");
+    } else {
+      htmlElement.classList.remove("dark");
+    }
+  };
   return (
-    <div className="App">
-      <Navbar />
+    <div className=" dark:text-white dark:bg-black dark:bg-opacity-80 duration-100">
+      <Navbar updateHtmlClass={updateHtmlClass} />
       <Routes>
         <Route path="/register" element={<RegistroUsuario />} />
         <Route path="/" element={<Home />} />

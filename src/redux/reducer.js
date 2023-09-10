@@ -14,6 +14,7 @@ import {
   POST_VINYL,
   INCREASE_ITEM,
   DECREASE_ITEM,
+  TOGGLE_DARK_MODE,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -191,6 +192,7 @@ const reducer = (state = initialState, action) => {
         token: null, // Borrar el token cuando se cierre sesión
         error: null, // Restablecer cualquier mensaje de error anterior
       };
+
     default:
       return {
         ...state,

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   removeFromCart,
   increaseItem,
@@ -88,7 +89,10 @@ const ShoppingCart = () => {
         <div className="p-4 text-right w-full h-[130px] absolute bottom-0 border-[1px] border-black">
           <div>Total: ${totalValue}</div>
           <div className=" flex justify-between">
-            <button onClick={handlerButtom} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+            <button
+              onClick={handlerButtom}
+              className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+            >
               Seguir Comprando
             </button>
             <button className="bg-green-500 text-white px-4 py-2 rounded mt-4">

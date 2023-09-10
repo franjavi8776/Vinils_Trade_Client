@@ -13,7 +13,6 @@ const Card = ({ id, title, cover_image, price, stock }) => {
   const isAuthenticated = useSelector((state) => state.token !== null);
   // Verifica si el producto ya está en el carrito
   const itemInCart = cartItems.find((item) => item.id === id);
-  
 
   useEffect(() => {
     // Verifica si el producto ya está en el carrito
@@ -21,14 +20,14 @@ const Card = ({ id, title, cover_image, price, stock }) => {
 
     // Establece isGreen en función de si itemInCart existe
     setIsGreen(!!itemInCart);
-    setIsButtonDisabled(!!itemInCart)
+    setIsButtonDisabled(!!itemInCart);
   }, [cartItems, id]);
 
   const handleAddToCart = () => {
-    if(isAuthenticated) {
+    if (isAuthenticated) {
       if (!isButtonDisabled) {
         setIsButtonDisabled(true);
-        
+
         // Si el producto ya está en el carrito, aumenta la cantidad en lugar de agregar uno nuevo
         if (itemInCart) {
           if (itemInCart.cartQuantity < stock) {
@@ -50,7 +49,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
                 title,
                 cover_image,
                 price,
-                stock: stock -1,
+                stock: stock - 1,
                 cartQuantity: 1,
               })
             );
@@ -60,15 +59,14 @@ const Card = ({ id, title, cover_image, price, stock }) => {
         }
 
         setIsGreen(true);
-        
       }
     } else {
-      alert("Para añadir al carrito debe iniciar sesion")
+      alert("Para añadir al carrito debe iniciar sesion");
     }
   };
 
   return (
-    <div className="w-60 h-70 text-md">
+    <div className="w-60 h-[315px] text-md dark:bg-white dark:text-black rounded-md">
       <Link to={`/detail/${id}`}>
         <img className="w-60 h-60" src={cover_image} alt={title} />
       </Link>

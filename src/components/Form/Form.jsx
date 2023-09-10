@@ -5,11 +5,11 @@ import { postVinyls } from "../../redux/actions";
 import { useLocalStorage } from "../LocalStorage/useLocalStorage";
 
 const Form = () => {
-  const localStorageKey = "vinylsFormData"
+  const localStorageKey = "vinylsFormData";
 
   const [vinyls, setVinyls] = useLocalStorage(localStorageKey, {
     title: "",
-    artists: [{name:""}],
+    artists: [{ name: "" }],
     year: "",
     cover_image: "",
     genre: "",
@@ -23,7 +23,7 @@ const Form = () => {
 
   const clearFormData = () => {
     localStorage.removeItem(localStorageKey);
-  };  
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,8 +33,6 @@ const Form = () => {
     //     ? { ...vinyls, artists: [{ name: value }] }
     //     : { ...vinyls, [name]: value };
 
-
-
     // setVinyls(newVinyls);
 
     // const ErrorDetect = validateVinylsForm({ ...vinyls, [name]: value });
@@ -43,7 +41,7 @@ const Form = () => {
       // Si el campo es "artists", clonamos el arreglo y actualizamos el valor "name"
       const updatedArtists = [...vinyls.artists];
       updatedArtists[0].name = value;
-  
+
       setVinyls({
         ...vinyls,
         artists: updatedArtists,
@@ -85,7 +83,7 @@ const Form = () => {
 
     setVinyls({
       title: "",
-      artists: [{name:""}],
+      artists: [{ name: "" }],
       year: "",
       cover_image: "",
       genre: "",
@@ -102,7 +100,7 @@ const Form = () => {
   }, [vinyls]);
 
   return (
-    <div className="w-[100%] h-auto flex justify-center items-center">
+    <div className="w-[100%] min-h-screen flex justify-center items-center">
       <div className="w-[500px] h-auto bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg text-white rounded-lg shadow-lg shadow-black overflow-hidden mt-8">
         <form onSubmit={handlerSubmit} className="max-w-md mx-auto mt-4">
           <div className="mb-4 ">
