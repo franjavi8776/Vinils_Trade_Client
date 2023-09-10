@@ -5,7 +5,7 @@ import { validateLoginForm } from "./validatelogin.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-import { GoogleLogin } from "react-google-login";
+//import { GoogleLogin } from "react-google-login";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -57,28 +57,28 @@ const Login = () => {
   //   }
   // };
 
-  const handleGoogleSuccess = async (response) => {
-    try {
-      // response contiene la información de autenticación exitosa con Google
-      // Puedes acceder al token de Google con response.tokenId
-      await dispatch(loginUserWithGoogle(response.tokenId));
-    } catch (error) {
-      console.error("Error en la autenticación con Google:", error);
-    }
-  };
+  // const handleGoogleSuccess = async (response) => {
+  //   try {
+  //     // response contiene la información de autenticación exitosa con Google
+  //     // Puedes acceder al token de Google con response.tokenId
+  //     await dispatch(loginUserWithGoogle(response.tokenId));
+  //   } catch (error) {
+  //     console.error("Error en la autenticación con Google:", error);
+  //   }
+  // };
 
-  const handleGoogleFailure = (error) => {
-    if (error.error === "popup_closed_by_user") {
-      // Maneja el caso en el que el usuario cerró la ventana emergente
-      alert("El usuario cerró la ventana emergente de Google.");
-    } else {
-      // Muestra un mensaje de error amigable para otros errores de Google
-      alert(
-        "Hubo un error al iniciar sesión con Google. Por favor, inténtalo de nuevo más tarde."
-      );
-      console.error("Error en la autenticación con Google:", error);
-    }
-  };
+  // const handleGoogleFailure = (error) => {
+  //   if (error.error === "popup_closed_by_user") {
+  //     // Maneja el caso en el que el usuario cerró la ventana emergente
+  //     alert("El usuario cerró la ventana emergente de Google.");
+  //   } else {
+  //     // Muestra un mensaje de error amigable para otros errores de Google
+  //     alert(
+  //       "Hubo un error al iniciar sesión con Google. Por favor, inténtalo de nuevo más tarde."
+  //     );
+  //     console.error("Error en la autenticación con Google:", error);
+  //   }
+  // };
 
   const renderError = (fieldName) => {
     const errorText = errors[fieldName] || error;
@@ -139,14 +139,14 @@ const Login = () => {
             </button>
           </div>
           <div className="text-center mt-[-20px]">
-            <GoogleLogin
+            {/* <GoogleLogin
               className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
               clientId="835894997451-mr7pkglem96giuit73t74t2as60pgggr.apps.googleusercontent.com"
               buttonText="Iniciar Sesión con Google"
               onSuccess={handleGoogleSuccess}
               onFailure={handleGoogleFailure}
               cookiePolicy={"single_host_origin"}
-            />
+            /> */}
           </div>
         </form>
         <span className="text-white">

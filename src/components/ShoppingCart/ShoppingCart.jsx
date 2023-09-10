@@ -37,7 +37,7 @@ const ShoppingCart = () => {
       className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center"
       style={{ zIndex: 2 }}
     >
-      <div className="w-[700px] h-[800px] bg-white  relative z-50 ">
+      <div className="w-[700px] h-[800px] bg-white  relative z-50 dark:bg-black  duration-100">
         <h1 className="text-center mt-4 font-bold">CARRITO DE COMPRAS</h1>
         <button
           onClick={handlerButtom}
