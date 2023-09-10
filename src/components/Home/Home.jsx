@@ -28,17 +28,15 @@ const Home = () => {
   const [filterGener, setFilterGener] = useState("");
   const [filterDecad, setFilterDecad] = useState("");
   const [filterAlf, setFilterAlf] = useState("");
+  const [pageSize, setPageSize] = useState(10);
   const searchByName = useSelector((state) => state.search);
-  const pageSize = 10;
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
   const totalPages = Math.ceil(totalVinyls / pageSize);
   const startIndex = (currentPage - 1) * pageSize;
   const renderVinyls = searchByName.length > 0 ? searchByName : vinyls;
   const endIndex = startIndex + pageSize;
-
   const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
-
   const pagesArray = [];
 
   for (let i = 1; i <= totalPages; i++) {
@@ -47,6 +45,27 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllVinyls());
+    // Verificar el tamaño de la pantalla y actualizar cardsPerPage en consecuencia
+    const handleResize = () => {
+      if (window.innerWidth >= 1624) {
+        setPageSize(10);
+      } else if (window.innerWidth >= 1424) {
+        setPageSize(8);
+      } else if (window.innerWidth >= 1224) {
+        setPageSize(6);
+      } else {
+        setPageSize(4);
+      }
+    };
+
+    handleResize();
+    // Escuchar eventos de cambio de tamaño de ventana
+    window.addEventListener("resize", handleResize);
+
+    // Limpieza de eventos al desmontar el componente
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [dispatch]);
 
   const handlePreviousPage = () => {
@@ -100,6 +119,7 @@ const Home = () => {
     dispatch(reset());
     dispatch(getAllVinyls());
   };
+
 
   return (
     <div>

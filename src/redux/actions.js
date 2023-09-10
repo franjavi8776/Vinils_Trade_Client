@@ -21,6 +21,7 @@ export const CREATE_ORDER = "CREATE_ORDER";
 export const SUCCESS_MP = "SUCCESS_MP";
 export const FAILURE_MP = "FAILURE_MP";
 export const PENDIGN_MP = "PENDIGN_MP";
+export const CLEAR_CART = "CLEAR_CART"
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -193,6 +194,10 @@ export const removeFromCart = (vinylId) => ({
   type: REMOVE_FROM_CART,
   payload: vinylId,
 });
+
+export const clearCart = () => ({
+  type: CLEAR_CART
+})
 
 export const loginUserWithEmail = (email, password) => async (dispatch) => {
   try {

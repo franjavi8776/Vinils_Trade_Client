@@ -18,6 +18,7 @@ import {
   SUCCESS_MP,
   PENDIGN_MP,
   FAILURE_MP,
+  CLEAR_CART,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -40,15 +41,6 @@ const initialState = {
     failure: null,
     pending: null,
   },
-};
-
-const reduceStock = (state, id, quantity) => {
-  const updatedStock = { ...state.stock };
-  if (updatedStock[id] >= quantity) {
-    updatedStock[id] -= quantity;
-    return updatedStock;
-  }
-  return null; // Devuelve null si no hay suficiente stock
 };
 
 const reducer = (state = initialState, action) => {
@@ -111,6 +103,14 @@ const reducer = (state = initialState, action) => {
 
         return { ...state, cartItems: updatedCartItems };
       }
+    
+      case CLEAR_CART: 
+      localStorage.removeItem('cart');
+      return {
+        ...state,
+        cartItems : [],
+      }
+    
 
     case CREATE_ORDER:
       return {

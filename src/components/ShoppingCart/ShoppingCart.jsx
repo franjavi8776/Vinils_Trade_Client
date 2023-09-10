@@ -7,9 +7,9 @@ import {
   succesMP,
   pendingMP,
   failureMP,
+  clearCart,
 } from "../../redux/actions";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md"
-import { useEffect } from "react";
 
 
 
@@ -55,7 +55,9 @@ const ShoppingCart = () => {
   
     const handleMP = () => {
       dispatch(postMP(datos))
-      window.location.href = MP
+      if (MP.length > 0 ) {
+        window.location.href = MP
+      }
     }
 
   
