@@ -17,9 +17,12 @@ import Footer from "../Footer/Footer";
 import "./Home.css";
 import VideoPlayer from "./Video/VideoPlayer";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import { addToCartInLocalStorage, useLocalStorage } from "../Card/LocalStor";
-import {MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight} from "react-icons/md"
-
+import { addToCartInLocalStorage } from "../Card/LocalStor";
+import {
+  MdKeyboardDoubleArrowLeft,
+  MdKeyboardDoubleArrowRight,
+} from "react-icons/md";
+import seedrandom from "seedrandom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,9 @@ const Home = () => {
   const [filterDecad, setFilterDecad] = useState("");
   const [filterAlf, setFilterAlf] = useState("");
   const [pageSize, setPageSize] = useState(10);
+  const [randomVinyls, setRandomVinyls] = useState([]);
+  const [seed, setSeed] = useState("");
+
   const searchByName = useSelector((state) => state.search);
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -66,7 +72,7 @@ const Home = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [dispatch]);
+  }, [dispatch, vinyls]);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -92,13 +98,13 @@ const Home = () => {
 
   const handleOrderByTitle = (e) => {
     setCurrentPage(1);
-    setFilterAlf(e.target.value)
+    setFilterAlf(e.target.value);
     dispatch(orderByTitle(e.target.value));
   };
 
   const handleFilter = (event) => {
     setCurrentPage(1);
-    setFilterDecad(event.target.value)
+    setFilterDecad(event.target.value);
     const selectedDecades = event.target.value;
     let startYear, endYear;
     if (selectedDecades === "2000") {
@@ -120,11 +126,42 @@ const Home = () => {
     dispatch(getAllVinyls());
   };
 
+  useEffect(() => {
+    // Obtener la fecha de inicio (puedes ajustarla según tus necesidades)
+    const startDate = new Date("2023-09-10");
+    // Obtener la fecha actual
+    const currentDate = new Date();
+    // Calcular el número de semanas transcurridas desde la fecha de inicio
+    const weeksElapsed = Math.floor(
+      (currentDate - startDate) / (7 * 24 * 60 * 60 * 1000)
+    );
+    // Usar la semana actual para generar números aleatorios consistentes
+    const newSeed = `seed-${weeksElapsed}`;
+    setSeed(newSeed);
+
+    // Función para obtener vinilos aleatorios basados en una semilla
+    function getRandomVinyls(vinyls, num, seed) {
+      const rng = seedrandom(seed);
+      const shuffledVinyls = [...vinyls];
+
+      function randomSort() {
+        return rng() - 0.5;
+      }
+
+      shuffledVinyls.sort(randomSort);
+
+      return shuffledVinyls.slice(0, num);
+    }
+
+    // Obtener 5 vinilos aleatorios basados en la semilla actual
+    const randomSelection = getRandomVinyls(vinyls, 5, newSeed);
+    setRandomVinyls(randomSelection);
+  }, [vinyls]);
 
   return (
     <div>
       <div className="w-[100%] h-auto relative">
-        <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
+        <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-8 mt-[-3px]">
           <div className="w-[40%] h-[420px] ">
             <VideoPlayer />
           </div>
@@ -195,12 +232,17 @@ const Home = () => {
             </Swiper>
           </div>
         </div>
+        <div className="w-full h-[15vh] flex justify-center items-center">
+          <h1 className="w-[450px] h-[50px] flex justify-center items-center bg-black text-slate-200 text-3xl font-bold dark:bg-slate-200 dark:text-black ">
+            LISTA DE VINILOS
+          </h1>
+        </div>
         <div className="w-[100%] h-[70vh] flex flex-row ">
           <div className="w-[20%] h-[70vh] flex items-center ">
             <div className="w-[70%] m-auto flex flex-col gap-20">
               <select
                 onChange={handleFilter}
-                className="bg-black text-white p-2 rounded"
+                className="bg-black text-white p-2 rounded  dark:bg-slate-200 dark:text-black"
                 value={filterDecad}
               >
                 <option value="">Selecciona una década</option>
@@ -214,7 +256,7 @@ const Home = () => {
               <select
                 onChange={handleOrderByTitle}
                 value={filterAlf}
-                className="bg-black text-white p-2 rounded"
+                className="bg-black text-white p-2 rounded  dark:bg-slate-200 dark:text-black"
               >
                 <option value="">Ordenar p/Titulo</option>
                 <option value="A">Ascendente</option>
@@ -225,7 +267,7 @@ const Home = () => {
                 value={filterGener}
                 onChange={handleGenre}
                 id=""
-                className="bg-black text-white p-2 rounded"
+                className="bg-black text-white p-2 rounded dark:bg-slate-200 dark:text-black"
               >
                 <option value="">Filtrar por genero</option>
                 <option value="Funk / Soul">Funk / Soul</option>
@@ -236,7 +278,7 @@ const Home = () => {
               </select>
               <button
                 onClick={resetAllButton}
-                className="bg-black text-white p-2 rounded text-left"
+                className="bg-black text-white p-2 rounded text-left  dark:bg-slate-200 dark:text-black"
               >
                 Restablecer
               </button>
@@ -247,7 +289,7 @@ const Home = () => {
               <div className="w-[5%]">
                 {currentPage > 1 && (
                   <button onClick={handlePreviousPage}>
-                    <MdKeyboardDoubleArrowLeft className="text-[50px]"/>
+                    <MdKeyboardDoubleArrowLeft className="text-[50px]" />
                   </button>
                 )}
               </div>
@@ -269,14 +311,14 @@ const Home = () => {
               <div className="w-[5%] flex justify-center">
                 {currentPage < totalPages && (
                   <button onClick={handleNextPage}>
-                    <MdKeyboardDoubleArrowRight className="text-[50px]"/>
+                    <MdKeyboardDoubleArrowRight className="text-[50px]" />
                   </button>
                 )}
               </div>
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center space-x-4 mt-10">
+        <div className="flex justify-center items-center space-x-4 mt-6">
           {pagesArray.map((pageNumber) => (
             <span
               key={pageNumber}
@@ -291,6 +333,34 @@ const Home = () => {
             </span>
           ))}
         </div>
+        <div className="w-full h-[15vh] flex justify-center items-center mt-5">
+          <h1 className="w-[450px] h-[50px] flex justify-center items-center bg-black text-slate-200 text-3xl font-bold dark:bg-slate-200 dark:text-black ">
+            OFERTAS DE LA SEMANA
+          </h1>
+        </div>
+        <div className="w-[100%] h-auto flex items-center">
+          <div className="w-[15%] h-auto flex justify-center items-center text-red-700 text-4xl font-bold transform -rotate-45">
+            50% OFF
+          </div>
+          <div className="w-[70%] h-auto flex flex-wrap justify-center items-center gap-5">
+            {randomVinyls.map((vinyls) => (
+              <Card
+                key={vinyls.id}
+                id={vinyls.id}
+                title={vinyls.title}
+                year={vinyls.year}
+                cover_image={vinyls.cover_image}
+                stock={vinyls.stock}
+                price={vinyls.price * 0.5}
+                addToCart={handleAddToCart}
+              />
+            ))}
+          </div>
+          <div className="w-[15%] h-auto flex justify-center items-center text-red-700 text-4xl font-bold transform -rotate-45">
+            50% OFF
+          </div>
+        </div>
+
         <div className="mt-20">
           <Footer />
         </div>

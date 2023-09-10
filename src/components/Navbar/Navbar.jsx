@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Search from "../Search/Search";
 import { Link } from "react-router-dom";
-import { MdDarkMode } from "react-icons/md";
-import { BsFillSunFill } from "react-icons/bs";
+import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 import "./Navbar.css";
 
 const Navbar = ({ updateHtmlClass }) => {
@@ -45,11 +44,15 @@ const Navbar = ({ updateHtmlClass }) => {
         />
       </div>
       <div
-        className={`sticky top-0 ${navbarClass} text-white w-[100%] flex z-10`}
+        className={`sticky top-0 ${navbarClass} text-white w-[100%] flex z-10 `}
       >
         <div className={` w-[50%] flex justify-center gap-28`}>
           <button onClick={toggleDarkMode}>
-            {darkMode ? <BsFillSunFill /> : <MdDarkMode />}
+            {darkMode ? (
+              <BsFillSunFill className="text-2xl text-yellow-500" />
+            ) : (
+              <BsFillMoonStarsFill className="text-xl text-blue-500" />
+            )}
           </button>
           <Link
             to="/form"
