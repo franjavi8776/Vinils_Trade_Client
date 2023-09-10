@@ -26,6 +26,7 @@ const initialState = {
   detail: {},
   search: [],
   filteredVinyls: [],
+  isAuthenticated: false,
   token: null,
   error: null,
   cartState: false,
@@ -134,6 +135,35 @@ const reducer = (state = initialState, action) => {
         stateMP: {...state.stateMP, failure: action.payload}
       }
 
+    case CLEAR_CART:
+      localStorage.removeItem("cart");
+      return {
+        ...state,
+        cartItems: [],
+      };
+
+    case CREATE_ORDER:
+      return {
+        ...state,
+        dataMP: action.payload,
+      };
+
+    case SUCCESS_MP:
+      return {
+        ...state,
+        stateMP: { ...state.stateMP, success: action.payload },
+      };
+    case PENDIGN_MP:
+      return {
+        ...state,
+        stateMP: { ...state.stateMP, pending: action.payload },
+      };
+    case FAILURE_MP:
+      return {
+        ...state,
+        stateMP: { ...state.stateMP, failure: action.payload },
+      };
+
     case REMOVE_FROM_CART:
       const removeItemId = action.payload; // action.payload debe ser solo el ID
       const updateCartItems = state.cartItems.filter(
@@ -208,12 +238,14 @@ const reducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        token: action.payload, // Almacenar el token cuando la autenticación sea exitosa
+        isAuthenticated: true,
+        token: action.payload.user, // Almacenar el token cuando la autenticación sea exitosa
         error: null, // Restablecer cualquier mensaje de error anterior
       };
     case LOGIN_FAILURE:
       return {
         ...state,
+        isAuthenticated: false,
         token: null, // Borrar el token en caso de error de autenticación
         error: action.payload, // Almacenar el mensaje de error
       };

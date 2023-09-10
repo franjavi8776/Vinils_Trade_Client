@@ -66,7 +66,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
   };
 
   return (
-    <div className="w-60 h-[315px] text-md dark:bg-white dark:text-black rounded-md">
+    <div className="w-60 h-[315px] text-md dark:bg-slate-200 dark:text-black rounded-md">
       <Link to={`/detail/${id}`}>
         <img className="w-60 h-60" src={cover_image} alt={title} />
       </Link>
