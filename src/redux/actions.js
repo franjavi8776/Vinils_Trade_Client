@@ -22,6 +22,7 @@ export const SUCCESS_MP = "SUCCESS_MP";
 export const FAILURE_MP = "FAILURE_MP";
 export const PENDIGN_MP = "PENDIGN_MP";
 export const CLEAR_CART = "CLEAR_CART"
+export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -54,7 +55,7 @@ export const getVinylDetail = (id) => async (dispatch) => {
 };
 
 export const postRegisterUser = (x) => {
-  const newEndpoint = "https://vinyls-trade-back-production.up.railway.app/createUser"
+  const newEndpoint = "http://localhost:3001/createUser";
   return async function (dispatch) {
     try {
       const { data } = await axios.post(newEndpoint, x);
@@ -78,7 +79,6 @@ export const getVinylsForName = (title) => {
         response.status === 200 &&
         response.data &&
         Array.isArray(response.data)
-        
       ) {
         const filteredData = response.data.filter((vinyl) =>
           vinyl.title.toLowerCase().includes(title.toLowerCase())
@@ -201,11 +201,13 @@ export const clearCart = () => ({
 
 export const loginUserWithEmail = (email, password) => async (dispatch) => {
   try {
-
     // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
     // Si la autenticación es exitosa, almacenar el token en el estado de Redux
-    const response = await axios.post("https://vinyls-trade-back-production.up.railway.app/login", { email, password });
-    
+    const response = await axios.post("http://localhost:3001/login", {
+      email,
+      password,
+    });
+
     if (response.status === 200) {
       // Si la solicitud es exitosa y el servidor devuelve un código 200,
       // entonces consideramos que la autenticación fue exitosa.
@@ -219,17 +221,22 @@ export const loginUserWithEmail = (email, password) => async (dispatch) => {
     }
   } catch (error) {
     dispatch({ type: LOGIN_FAILURE, payload: error.message });
-    
-  } 
+  }
 };
 
 export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
   try {
-    // Realiza la solicitud al servidor para autenticar al usuario con Google
+    // Hacer una solicitud al servidor para autenticar al usuario con Google
+    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
     const response = await axios.post(
-      "https://vinyls-trade-back-production.up.railway.app/auth/google",
-      { googleToken }
+      "http://localhost:3001/auth/google",
+      googleToken
     );
+    console.log(response);
+    const token = response.data.token;
+    dispatch({ type: LOGIN_SUCCESS, payload: token });
+
+    // Realiza la solicitud al servidor para autenticar al usuario con Google
 
     // Verifica si la respuesta contiene el token y tiene el formato esperado
     if (response.data && response.data.token) {
@@ -238,17 +245,23 @@ export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
       dispatch({ type: LOGIN_SUCCESS, payload: token });
     } else {
       // Maneja el caso en el que la respuesta no contenga el token esperado
-      dispatch({ type: LOGIN_FAILURE, payload: "Respuesta de autenticación no válida" });
+      dispatch({
+        type: LOGIN_FAILURE,
+        payload: "Respuesta de autenticación no válida",
+      });
     }
   } catch (error) {
     // Maneja errores específicos, por ejemplo, errores de red o errores de autenticación
-    dispatch({ type: LOGIN_FAILURE, payload: `Error de autenticación con Google: ${error.message}` });
+    dispatch({
+      type: LOGIN_FAILURE,
+      payload: `Error de autenticación con Google: ${error.message}`,
+    });
   }
 };
 
 export const logoutUser = () => {
   // Eliminar el token de autenticación del estado de Redux al cerrar sesión
-  return { type:LOGOUT };
+  return { type: LOGOUT };
 };
 
 export const increaseItem = (vinyl) => ({

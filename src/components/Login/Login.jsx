@@ -42,6 +42,20 @@ const Login = () => {
     }
   };
 
+  // const authenticateWithGoogle = async () => {
+  //   // Realiza la autenticación con Google y obtén el token de acceso
+  //   try {
+  //     const authResult = await window.gapi.auth2.getAuthInstance().signIn();
+  //     const googleToken = authResult.getAuthResponse().id_token;
+
+  //     // Devuelve el token de acceso de Google
+  //     return { token: googleToken };
+  //   } catch (error) {
+  //     console.error('Error en la autenticación con Google:', error);
+  //     throw error;
+  //   }
+  // };
+
   const handleGoogleSuccess = async (response) => {
     try {
       // response contiene la información de autenticación exitosa con Google
@@ -58,7 +72,9 @@ const Login = () => {
       alert("El usuario cerró la ventana emergente de Google.");
     } else {
       // Muestra un mensaje de error amigable para otros errores de Google
-      alert("Hubo un error al iniciar sesión con Google. Por favor, inténtalo de nuevo más tarde.");
+      alert(
+        "Hubo un error al iniciar sesión con Google. Por favor, inténtalo de nuevo más tarde."
+      );
       console.error("Error en la autenticación con Google:", error);
     }
   };
@@ -74,7 +90,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[80vh] flex items-center justify-center">
+    <div className="h-[81vh] flex items-center justify-center">
       <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-96 shadow-lg shadow-black">
         <h2 className="text-2xl font-bold mb-4 text-white">
           ¡Hola! Para seguir, ingresa tu e-mail, Sino tienes una cuenta creala!
@@ -116,7 +132,9 @@ const Login = () => {
               className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
               disabled={isAuthenticated}
             >
-              {isAuthenticated ? "Ya estás autenticado" : "Iniciar Sesión con tu Correo"}
+              {isAuthenticated
+                ? "Ya estás autenticado"
+                : "Iniciar Sesión con tu Correo"}
             </button>
           </div>
           <div className="text-center mt-[-20px]">
@@ -130,7 +148,13 @@ const Login = () => {
             /> */}
           </div>
         </form>
-        <span className="text-white">¿No tienes tu cuenta?<Link className="text-blue-600 font-bold ml-3" to="/register">{" "}  Registrate aqui!!!</Link></span>
+        <span className="text-white">
+          ¿No tienes tu cuenta?
+          <Link className="text-blue-600 font-bold ml-3" to="/register">
+            {" "}
+            Registrate aqui!!!
+          </Link>
+        </span>
       </div>
     </div>
   );

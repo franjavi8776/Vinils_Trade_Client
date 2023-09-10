@@ -123,7 +123,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-[100%] h-[92vh] relative">
+      <div className="w-[100%] h-auto relative">
         <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-16 mt-[-3px]">
           <div className="w-[40%] h-[420px] ">
             <VideoPlayer />

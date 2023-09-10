@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Search from "../Search/Search";
 import { Link } from "react-router-dom";
+import { MdDarkMode } from "react-icons/md";
+import { BsFillSunFill } from "react-icons/bs";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ updateHtmlClass }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,13 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    updateHtmlClass(!darkMode);
+    // Aquí puedes aplicar lógica para cambiar el tema de tu aplicación
+    // Por ejemplo, puedes cambiar las clases de Tailwind CSS según el estado darkMode
+  };
 
   const navbarClass = isScrolled
     ? "transition-all duration-100 bg-black bg-opacity-70"
@@ -38,6 +48,9 @@ const Navbar = () => {
         className={`sticky top-0 ${navbarClass} text-white w-[100%] flex z-10`}
       >
         <div className={` w-[50%] flex justify-center gap-28`}>
+          <button onClick={toggleDarkMode}>
+            {darkMode ? <BsFillSunFill /> : <MdDarkMode />}
+          </button>
           <Link
             to="/form"
             className="m-4 text-white font-semibold link-with-hover-line"
