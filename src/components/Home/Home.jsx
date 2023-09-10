@@ -18,16 +18,33 @@ import "./Home.css";
 import VideoPlayer from "./Video/VideoPlayer";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { addToCartInLocalStorage, useLocalStorage } from "../Card/LocalStor";
+import {MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight} from "react-icons/md"
+
 
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
+  const [filterGener, setFilterGener] = useState("");
+  const [filterDecad, setFilterDecad] = useState("");
+  const [filterAlf, setFilterAlf] = useState("");
   const [pageSize, setPageSize] = useState(10);
-
   const searchByName = useSelector((state) => state.search);
+  const totalVinyls =
+    searchByName.length > 0 ? searchByName.length : vinyls.length;
+  const totalPages = Math.ceil(totalVinyls / pageSize);
+  const startIndex = (currentPage - 1) * pageSize;
+  const renderVinyls = searchByName.length > 0 ? searchByName : vinyls;
+  const endIndex = startIndex + pageSize;
+  const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
+  const pagesArray = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    pagesArray.push(i);
+  }
 
   useEffect(() => {
+    dispatch(getAllVinyls());
     // Verificar el tamaño de la pantalla y actualizar cardsPerPage en consecuencia
     const handleResize = () => {
       if (window.innerWidth >= 1624) {
@@ -42,7 +59,6 @@ const Home = () => {
     };
 
     handleResize();
-
     // Escuchar eventos de cambio de tamaño de ventana
     window.addEventListener("resize", handleResize);
 
@@ -50,26 +66,6 @@ const Home = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
-
-  //const pageSize = window.innerWidth >= 1324 ? 10 : 6;
-  const totalVinyls =
-    searchByName.length > 0 ? searchByName.length : vinyls.length;
-  const totalPages = Math.ceil(totalVinyls / pageSize);
-  const startIndex = (currentPage - 1) * pageSize;
-  const renderVinyls = searchByName.length > 0 ? searchByName : vinyls;
-  const endIndex = startIndex + pageSize;
-
-  const VinylsToRender = renderVinyls.slice(startIndex, endIndex);
-
-  const pagesArray = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    pagesArray.push(i);
-  }
-
-  useEffect(() => {
-    dispatch(getAllVinyls());
   }, [dispatch]);
 
   const handlePreviousPage = () => {
@@ -88,25 +84,21 @@ const Home = () => {
     addToCartInLocalStorage({ id, title, cover_image, price, stock }); // Agrega el producto al carrito
   };
 
-  // const handleReset = () => {
-  //   dispatch(reset());
-  // };
   const handleGenre = (event) => {
     setCurrentPage(1);
+    setFilterGener(event.target.value);
     dispatch(orderForGenre(event.target.value));
-  };
-  const handleArtist = (event) => {
-    setCurrentPage(1);
-    dispatch(orderForArtist(event.target.value));
   };
 
   const handleOrderByTitle = (e) => {
     setCurrentPage(1);
+    setFilterAlf(e.target.value)
     dispatch(orderByTitle(e.target.value));
   };
 
   const handleFilter = (event) => {
     setCurrentPage(1);
+    setFilterDecad(event.target.value)
     const selectedDecades = event.target.value;
     let startYear, endYear;
     if (selectedDecades === "2000") {
@@ -121,9 +113,13 @@ const Home = () => {
 
   const resetAllButton = () => {
     setCurrentPage(1);
+    setFilterGener("");
+    setFilterAlf("");
+    setFilterDecad("");
     dispatch(reset());
     dispatch(getAllVinyls());
   };
+
 
   return (
     <div>
@@ -205,9 +201,9 @@ const Home = () => {
               <select
                 onChange={handleFilter}
                 className="bg-black text-white p-2 rounded"
+                value={filterDecad}
               >
                 <option value="">Selecciona una década</option>
-                <option value="1940">1940s</option>
                 <option value="1950">1950s</option>
                 <option value="1960">1960s</option>
                 <option value="1970">1970s</option>
@@ -217,6 +213,7 @@ const Home = () => {
               </select>
               <select
                 onChange={handleOrderByTitle}
+                value={filterAlf}
                 className="bg-black text-white p-2 rounded"
               >
                 <option value="">Ordenar p/Titulo</option>
@@ -225,6 +222,7 @@ const Home = () => {
               </select>
               <select
                 name="genre"
+                value={filterGener}
                 onChange={handleGenre}
                 id=""
                 className="bg-black text-white p-2 rounded"
@@ -249,7 +247,7 @@ const Home = () => {
               <div className="w-[5%]">
                 {currentPage > 1 && (
                   <button onClick={handlePreviousPage}>
-                    <img className="w-[30px]" src="/left.png" alt="left" />
+                    <MdKeyboardDoubleArrowLeft className="text-[50px]"/>
                   </button>
                 )}
               </div>
@@ -271,7 +269,7 @@ const Home = () => {
               <div className="w-[5%] flex justify-center">
                 {currentPage < totalPages && (
                   <button onClick={handleNextPage}>
-                    <img className="w-[30px]" src="/right.png" alt="next" />
+                    <MdKeyboardDoubleArrowRight className="text-[50px]"/>
                   </button>
                 )}
               </div>

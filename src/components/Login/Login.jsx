@@ -4,8 +4,7 @@ import { loginUserWithEmail, loginUserWithGoogle } from "../../redux/actions";
 import { validateLoginForm } from "./validatelogin.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -139,14 +138,14 @@ const Login = () => {
             </button>
           </div>
           <div className="text-center mt-[-20px]">
-            <GoogleLogin
+            {/* <GoogleLogin
               className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
               clientId="835894997451-mr7pkglem96giuit73t74t2as60pgggr.apps.googleusercontent.com"
               buttonText="Iniciar Sesión con Google"
               onSuccess={handleGoogleSuccess}
               onFailure={handleGoogleFailure}
-              cookiePolicy={"single_host_origin"}
-            />
+              cookiePolicy={'single_host_origin'}
+            /> */}
           </div>
         </form>
         <span className="text-white">
