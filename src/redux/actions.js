@@ -17,9 +17,14 @@ export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
 export const INCREASE_ITEM = "INCREASE_ITEM";
 export const DECREASE_ITEM = "DECREASE_ITEM";
+export const CREATE_ORDER = "CREATE_ORDER";
+export const SUCCESS_MP = "SUCCESS_MP";
+export const FAILURE_MP = "FAILURE_MP";
+export const PENDIGN_MP = "PENDIGN_MP";
+export const CLEAR_CART = "CLEAR_CART";
+export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
-
-const endpoint = "http://localhost:3001/";
+const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
   try {
@@ -128,6 +133,39 @@ export const postVinyls = (dato) => async (dispatch) => {
   }
 };
 
+export const postMP = (dato) => async (dispatch) => {
+  const { data } = await axios.post("http://localhost:3001/create_order", dato);
+  console.log(data);
+  dispatch({
+    type: CREATE_ORDER,
+    payload: data,
+  });
+};
+
+export const succesMP = () => async (dispatch) => {
+  const { data } = await axios("http://localhost:3001/success");
+  dispatch({
+    type: SUCCESS_MP,
+    payload: data,
+  });
+};
+
+export const pendingMP = () => async (dispatch) => {
+  const { data } = await axios("http://localhost:3001/pending");
+  dispatch({
+    type: PENDIGN_MP,
+    payload: data,
+  });
+};
+
+export const failureMP = () => async (dispatch) => {
+  const { data } = await axios("http://localhost:3001/failure");
+  dispatch({
+    type: FAILURE_MP,
+    payload: data,
+  });
+};
+
 export const reset = () => {
   return {
     type: RESET,
@@ -158,62 +196,94 @@ export const removeFromCart = (vinylId) => ({
   payload: vinylId,
 });
 
-export const loginUserWithEmail = (email, password) => async (dispatch) => {
-  try {
-    // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
-    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
-    const response = await axios.post("http://localhost:3001/login", {
-      email,
-      password,
-    });
+export const clearCart = () => ({
+  type: CLEAR_CART,
+});
 
-    if (response.status === 200) {
-      // Si la solicitud es exitosa y el servidor devuelve un código 200,
-      // entonces consideramos que la autenticación fue exitosa.
-      const token = response.data.token;
-      dispatch({ type: "LOGIN_SUCCESS", payload: token });
-    } else {
-      // Aquí puedes manejar diferentes casos de error según el código de respuesta del servidor.
-      // Por ejemplo, si el servidor devuelve 401 (No autorizado) para credenciales incorrectas,
-      // podrías manejarlo de manera diferente.
-      dispatch({ type: "LOGIN_FAILURE", payload: "Credenciales incorrectas" });
-    }
+// export const loginUserWithEmail = (email, password) => async (dispatch) => {
+//   try {
+//     // Hacer una solicitud al servidor para autenticar al usuario con correo y contraseña
+//     // Si la autenticación es exitosa, almacenar el token en el estado de Redux
+//     const response = await axios.post("http://localhost:3001/login", {
+//       email,
+//       password,
+//     });
+
+//     if (response.status === 200) {
+//       // Si la solicitud es exitosa y el servidor devuelve un código 200,
+//       // entonces consideramos que la autenticación fue exitosa.
+//       const token = response.data.token;
+//       dispatch({ type: "LOGIN_SUCCESS", payload: token });
+//     } else {
+//       // Aquí puedes manejar diferentes casos de error según el código de respuesta del servidor.
+//       // Por ejemplo, si el servidor devuelve 401 (No autorizado) para credenciales incorrectas,
+//       // podrías manejarlo de manera diferente.
+//       dispatch({ type: "LOGIN_FAILURE", payload: "Credenciales incorrectas" });
+//     }
+//   } catch (error) {
+//     dispatch({ type: LOGIN_FAILURE, payload: error.message });
+//   }
+// };
+export const loginUserByEmail = (loginData) => async (dispatch) => {
+  try {
+    const response = await axios.post("http://localhost:3001/login", loginData);
+    dispatch({
+      type: "LOGIN_SUCCESS",
+      payload: response.data,
+    });
   } catch (error) {
-    dispatch({ type: LOGIN_FAILURE, payload: error.message });
+    dispatch({
+      type: "LOGIN_FAILURE",
+      payload: response.data,
+    });
   }
 };
 
-export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
+// export const loginUserWithGoogle = (googleToken) => async (dispatch) => {
+//   try {
+//     // Hacer una solicitud al servidor para autenticar al usuario con Google
+//     // Si la autenticación es exitosa, almacenar el token en el estado de Redux
+//     const response = await axios.post(
+//       "http://localhost:3001/auth/google",
+//       googleToken
+//     );
+//     console.log(response);
+//     const token = response.data.token;
+//     dispatch({ type: LOGIN_SUCCESS, payload: token });
+
+//     // Realiza la solicitud al servidor para autenticar al usuario con Google
+
+//     // Verifica si la respuesta contiene el token y tiene el formato esperado
+//     if (response.data && response.data.token) {
+//       const token = response.data.token;
+//       // Almacena el token en el estado de Redux si la autenticación es exitosa
+//       dispatch({ type: LOGIN_SUCCESS, payload: token });
+//     } else {
+//       // Maneja el caso en el que la respuesta no contenga el token esperado
+//       dispatch({
+//         type: LOGIN_FAILURE,
+//         payload: "Respuesta de autenticación no válida",
+//       });
+//     }
+//   } catch (error) {
+//     // Maneja errores específicos, por ejemplo, errores de red o errores de autenticación
+//     dispatch({
+//       type: LOGIN_FAILURE,
+//       payload: `Error de autenticación con Google: ${error.message}`,
+//     });
+//   }
+// };
+export const loginUserWithGoogle = () => async (dispatch) => {
   try {
-    // Hacer una solicitud al servidor para autenticar al usuario con Google
-    // Si la autenticación es exitosa, almacenar el token en el estado de Redux
-    const response = await axios.post(
-      "http://localhost:3001/auth/google",
-      googleToken
-    );
-    console.log(response);
-    const token = response.data.token;
-    dispatch({ type: LOGIN_SUCCESS, payload: token });
-
-    // Realiza la solicitud al servidor para autenticar al usuario con Google
-
-    // Verifica si la respuesta contiene el token y tiene el formato esperado
-    if (response.data && response.data.token) {
-      const token = response.data.token;
-      // Almacena el token en el estado de Redux si la autenticación es exitosa
-      dispatch({ type: LOGIN_SUCCESS, payload: token });
-    } else {
-      // Maneja el caso en el que la respuesta no contenga el token esperado
-      dispatch({
-        type: LOGIN_FAILURE,
-        payload: "Respuesta de autenticación no válida",
-      });
-    }
-  } catch (error) {
-    // Maneja errores específicos, por ejemplo, errores de red o errores de autenticación
+    const response = await axios.get("http://localhost:3001/auth/google"); // Asegúrate de que esta sea la ruta correcta
     dispatch({
-      type: LOGIN_FAILURE,
-      payload: `Error de autenticación con Google: ${error.message}`,
+      type: "LOGIN_SUCCESS",
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "LOGIN_FAILURE",
+      payload: error.response,
     });
   }
 };
