@@ -26,6 +26,7 @@ import seedrandom from "seedrandom";
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
+  const vinyl = useSelector((state) => state.vinyls)
   const [currentPage, setCurrentPage] = useState(1);
   const [filterGener, setFilterGener] = useState("");
   const [filterDecad, setFilterDecad] = useState("");
@@ -114,7 +115,7 @@ const Home = () => {
 
     function getRandomVinyls(vinyls, num, seed) {
       const rng = seedrandom(seed);
-      const shuffledVinyls = [...vinyls];
+      const shuffledVinyls = [...vinyl];
 
       function randomSort() {
         return rng() - 0.5;
