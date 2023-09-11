@@ -17,7 +17,7 @@ import Footer from "../Footer/Footer";
 import "./Home.css";
 import VideoPlayer from "./Video/VideoPlayer";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import { addToCartInLocalStorage } from "../Card/LocalStor";
+// import { addToCartInLocalStorage } from "../Card/LocalStor";
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
@@ -31,10 +31,9 @@ const Home = () => {
   const [filterGener, setFilterGener] = useState("");
   const [filterDecad, setFilterDecad] = useState("");
   const [filterAlf, setFilterAlf] = useState("");
-  const [pageSize, setPageSize] = useState(10);
   const [randomVinyls, setRandomVinyls] = useState([]);
   const [seed, setSeed] = useState("");
-
+  const pageSize = 10
   const searchByName = useSelector((state) => state.search);
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -52,27 +51,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllVinyls());
     // Verificar el tamaño de la pantalla y actualizar cardsPerPage en consecuencia
-    const handleResize = () => {
-      if (window.innerWidth >= 1624) {
-        setPageSize(10);
-      } else if (window.innerWidth >= 1424) {
-        setPageSize(8);
-      } else if (window.innerWidth >= 1224) {
-        setPageSize(6);
-      } else {
-        setPageSize(4);
-      }
-    };
-
-    handleResize();
-    // Escuchar eventos de cambio de tamaño de ventana
-    window.addEventListener("resize", handleResize);
-
-    // Limpieza de eventos al desmontar el componente
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [dispatch, vinyls]);
+  }, [dispatch]);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -86,9 +65,9 @@ const Home = () => {
     }
   };
 
-  const handleAddToCart = (id, title, cover_image, price, stock) => {
-    addToCartInLocalStorage({ id, title, cover_image, price, stock }); // Agrega el producto al carrito
-  };
+  // const handleAddToCart = (id, title, cover_image, price, stock) => {
+  //   addToCartInLocalStorage({ id, title, cover_image, price, stock }); // Agrega el producto al carrito
+  // };
 
   const handleGenre = (event) => {
     setCurrentPage(1);
@@ -304,7 +283,6 @@ const Home = () => {
                     cover_image={vinyls.cover_image}
                     stock={vinyls.stock}
                     price={vinyls.price}
-                    addToCart={handleAddToCart}
                   />
                 ))}
               </div>
@@ -352,7 +330,6 @@ const Home = () => {
                 cover_image={vinyls.cover_image}
                 stock={vinyls.stock}
                 price={vinyls.price * 0.5}
-                addToCart={handleAddToCart}
               />
             ))}
           </div>
