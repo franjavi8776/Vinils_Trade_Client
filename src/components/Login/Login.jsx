@@ -34,7 +34,7 @@ function Login() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-gray-300 rounded p-2"
+              className="w-full text-black border border-gray-300 rounded p-2"
             />
           </div>
           <div className="mb-4">
@@ -46,7 +46,7 @@ function Login() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-gray-300 rounded p-2"
+              className="w-full text-black border border-gray-300 rounded p-2"
             />
           </div>
         </form>
