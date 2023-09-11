@@ -17,12 +17,12 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP)
-  const stateMP = useSelector((state) => state.stateMP)
+  // const stateMP = useSelector((state) => state.stateMP)
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
   };
-  console.log(MP)
-  console.log(stateMP)
+  //console.log(MP);
+  //console.log(stateMP);
   const handleIncreaseQty = (vinyl) => {
     dispatch(increaseItem(vinyl));
   };
@@ -41,22 +41,26 @@ const ShoppingCart = () => {
     0
   );
 
+  // const units = cart.length;
 
-  const units = cart.length
-  const datos = {
-    title: "Vinyls-Trade",
-    price: totalValue,
-    units: units
-  }
+  //console.log(datos);
 
   
   console.log(datos)
   
   
   const handleMP = () => {
-    dispatch(postMP(datos))
-    if (MP.length > 0 ) {
-      window.location.href = MP
+    if (cart.length > 0) {
+      const datos = {
+        title: "Vinyls-Trade",
+        price: totalValue,
+        units: cart.length,
+      };
+      console.log(datos);
+      dispatch(postMP(datos));
+      if (MP.length > 0) {
+        window.location.href = MP;
+      }
     }
   }
 

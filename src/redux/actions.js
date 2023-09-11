@@ -23,6 +23,7 @@ export const PENDIGN_MP = "PENDIGN_MP";
 export const CLEAR_CART = "CLEAR_CART";
 export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
+
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -219,10 +220,11 @@ export const loginUserByEmail = (loginData) => async (dispatch) => {
       payload: response.data,
     });
   } catch (error) {
-    dispatch({
-      type: "LOGIN_FAILURE",
-      payload: response.data,
-    });
+    console.error(error);
+    // dispatch({
+    //   type: "LOGIN_FAILURE",
+    //   payload: response.data,
+    // });
   }
 };
 

@@ -17,7 +17,6 @@ import Footer from "../Footer/Footer";
 import "./Home.css";
 import VideoPlayer from "./Video/VideoPlayer";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-// import { addToCartInLocalStorage } from "../Card/LocalStor";
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
@@ -50,7 +49,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllVinyls());
-    // Verificar el tamaño de la pantalla y actualizar cardsPerPage en consecuencia
   }, [dispatch]);
 
   const handlePreviousPage = () => {
@@ -64,10 +62,6 @@ const Home = () => {
       setCurrentPage(currentPage + 1);
     }
   };
-
-  // const handleAddToCart = (id, title, cover_image, price, stock) => {
-  //   addToCartInLocalStorage({ id, title, cover_image, price, stock }); // Agrega el producto al carrito
-  // };
 
   const handleGenre = (event) => {
     setCurrentPage(1);
@@ -106,19 +100,18 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // Obtener la fecha de inicio (puedes ajustarla según tus necesidades)
-    const startDate = new Date("2023-09-10");
-    // Obtener la fecha actual
+    const startDate = new Date("2023-09-11");
+
     const currentDate = new Date();
-    // Calcular el número de semanas transcurridas desde la fecha de inicio
+
     const weeksElapsed = Math.floor(
-      (currentDate - startDate) / (7 * 24 * 60 * 60 * 1000)
+      (currentDate - startDate) / (7 * 24 * 60 * 60 * 10000)
     );
-    // Usar la semana actual para generar números aleatorios consistentes
-    const newSeed = `seed-${weeksElapsed}`;
+    // const weeksElapsed = Math.floor((currentDate - startDate) / 5000);
+
+    const newSeed = `$seed-${weeksElapsed}`;
     setSeed(newSeed);
 
-    // Función para obtener vinilos aleatorios basados en una semilla
     function getRandomVinyls(vinyls, num, seed) {
       const rng = seedrandom(seed);
       const shuffledVinyls = [...vinyls];
@@ -132,7 +125,7 @@ const Home = () => {
       return shuffledVinyls.slice(0, num);
     }
 
-    // Obtener 5 vinilos aleatorios basados en la semilla actual
+    //Obtener 5 vinilos aleatorios basados en la semilla actual
     const randomSelection = getRandomVinyls(vinyls, 5, newSeed);
     setRandomVinyls(randomSelection);
   }, [vinyls]);
@@ -152,9 +145,6 @@ const Home = () => {
                 delay: 2000,
                 disableOnInteraction: false,
               }}
-              // pagination={{
-              //   clickable: true,
-              // }}
               navigation={false}
               modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
