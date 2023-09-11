@@ -53,6 +53,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
                 cartQuantity: 1,
               })
             );
+           
           } else {
             alert("No hay stock disponible para este producto.");
           }

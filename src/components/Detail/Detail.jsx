@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { getVinylDetail } from "../../redux/actions";
+import { useParams } from "react-router-dom";
+import { getVinylDetail, addToCart } from "../../redux/actions";
+import { FaShoppingCart } from "react-icons/fa";
 
 import style from "./Detail.module.css";
 
@@ -9,8 +10,68 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.detail);
-
   console.log(detail);
+  // codigo nuevo
+  const cartItems = useSelector((state) => state.cartItems);
+
+  const { title, cover_image, price, stock } = detail;
+  const [isGreen, setIsGreen] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const isAuthenticated = useSelector((state) => state.token !== null);
+  // Verifica si el producto ya está en el carrito
+  const itemInCart = cartItems.find((item) => item.id === id);
+
+  useEffect(() => {
+    // Verifica si el producto ya está en el carrito
+    const itemInCart = cartItems.find((item) => item.id === id);
+
+    // Establece isGreen en función de si itemInCart existe
+    setIsGreen(!!itemInCart);
+    setIsButtonDisabled(!!itemInCart);
+  }, [cartItems, id]);
+
+  const handleAddToCart = () => {
+    if (isAuthenticated) {
+      if (!isButtonDisabled) {
+        setIsButtonDisabled(true);
+
+        // Si el producto ya está en el carrito, aumenta la cantidad en lugar de agregar uno nuevo
+        if (itemInCart) {
+          if (itemInCart.cartQuantity < detail.stock) {
+            dispatch(
+              addToCart({
+                ...itemInCart,
+                cartQuantity: itemInCart.cartQuantity + 1,
+              })
+            );
+          } else {
+            alert("No hay suficiente stock disponible para este producto.");
+          }
+        } else {
+          // Agrega el producto al carrito
+          if (detail.stock > 0) {
+            dispatch(
+              addToCart({
+                id,
+                title,
+                cover_image,
+                price,
+                stock: stock - 1,
+                cartQuantity: 1,
+              })
+            );
+          } else {
+            alert("No hay stock disponible para este producto.");
+          }
+        }
+
+        setIsGreen(true);
+      }
+    } else {
+      alert("Para añadir al carrito debe iniciar sesion");
+    }
+  };
+  //codigo nuevo
 
   useEffect(() => {
     dispatch(getVinylDetail(id));
@@ -78,16 +139,21 @@ const Detail = () => {
               Precio: <span className="text-slate-100">${detail.price}</span>
             </h2>
           </div>
-          <Link to="/">
-            <div className=" bg-black flex justify-center items-center h-10 text-white cursor-pointer">
-              <span className="mr-2 hover:text-red-600 transition-colors">
-                Agregar al carrito
-              </span>
-              <button>
-                <img src="/carrito.png" alt="carrito" className="w-5" />
-              </button>
-            </div>
-          </Link>
+
+          <div
+            onClick={handleAddToCart}
+            disabled={isButtonDisabled || detail.stock === 0}
+            className={` bg-black flex justify-center items-center h-10 text-white rounded-md mb-4 cursor-pointer ${
+              isGreen ? "pointer-events-none" : ""
+            }`}
+          >
+            <span className="mr-2 hover:text-red-800 transition-colors">
+              Agregar al carrito
+            </span>
+            <button>
+              <FaShoppingCart className={isGreen ? "text-green-800 " : ""} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
