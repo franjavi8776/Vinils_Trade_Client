@@ -18,9 +18,10 @@ function Login() {
     dispatch(loginUserWithGoogle());
   };
 
+
   return (
     <div className="h-[81vh] flex items-center justify-center">
-      <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-96 shadow-lg shadow-black">
+      <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-96 shadow-lg shadow-black dark:text-black">
         <h2 className="text-2xl font-bold mb-4 text-white">
           ¡Hola! Para seguir, ingresa tu e-mail y password
         </h2>
@@ -52,13 +53,13 @@ function Login() {
         </form>
         <button
           onClick={handleEmailLogin}
-          className={`w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black `}
+          className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
         >
           {auth ? "¡Ya estás logueado!" : "Ingresa con email"}
         </button>
         <button
           onClick={handleGoogleLogin}
-          className={`w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black `}
+          className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
         >
           Ingresa con Google
         </button>

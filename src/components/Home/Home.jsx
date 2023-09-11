@@ -32,8 +32,7 @@ const Home = () => {
   const [filterAlf, setFilterAlf] = useState("");
   const [randomVinyls, setRandomVinyls] = useState([]);
   const [seed, setSeed] = useState("");
-
-  const pageSize = 10;
+  const pageSize = 10
   const searchByName = useSelector((state) => state.search);
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;

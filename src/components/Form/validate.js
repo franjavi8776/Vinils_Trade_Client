@@ -60,10 +60,12 @@ export function validateVinylsForm(input) {
   // Validación del campo Precio
   if (!input.price) {
     errors.price = "Debes ingresar un precio";
-  } else if (isNaN(input.price) || input.price <= 0) {
-    errors.price = "El precio debe ser un número mayor que 0";
-  } else if (input.price.length >= 3) {
-    errors.price = "El precio no puede ser mayor a 100"
+  }
+  if (isNaN(input.price) || input.price <= 19) {
+    errors.price = "El precio debe ser un número mayor o igual a 20";
+  }
+  if (input.price >= 70) {
+    errors.price = "El precio no puede ser mayor a 70"
   }
 
 
