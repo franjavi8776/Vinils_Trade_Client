@@ -23,6 +23,7 @@ import {
 const initialState = {
   allVinyls: [],
   vinyls: [],
+  vinilos: [],
   detail: {},
   search: [],
   filteredVinyls: [],
@@ -51,6 +52,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         allVinyls: action.payload,
         vinyls: action.payload,
+        vinilos: action.payload,
       };
     case GET_VINYLS_FOR_NAME:
       return {

@@ -18,7 +18,6 @@ function Login() {
     dispatch(loginUserWithGoogle());
   };
 
-
   return (
     <div className="h-[81vh] flex items-center justify-center">
       <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-96 shadow-lg shadow-black dark:text-black">
