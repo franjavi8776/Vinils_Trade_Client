@@ -31,7 +31,7 @@ const Search = () => {
   return (
     <div className="flex">
       <div>
-        <div className="flex ml-20">
+        <div className="flex">
           <input
             onChange={handlerChange}
             type="search"

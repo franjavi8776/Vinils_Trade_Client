@@ -26,8 +26,6 @@ const Navbar = ({ updateHtmlClass }) => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     updateHtmlClass(!darkMode);
-    // Aquí puedes aplicar lógica para cambiar el tema de tu aplicación
-    // Por ejemplo, puedes cambiar las clases de Tailwind CSS según el estado darkMode
   };
 
   const navbarClass = isScrolled
