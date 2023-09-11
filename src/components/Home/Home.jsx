@@ -25,14 +25,15 @@ import seedrandom from "seedrandom";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
+  const vinyls = useSelector((state) => state.allVinyls);
+  const vinyl = useSelector((state) => state.vinyls); //trayendo info.
   const [currentPage, setCurrentPage] = useState(1);
   const [filterGener, setFilterGener] = useState("");
   const [filterDecad, setFilterDecad] = useState("");
   const [filterAlf, setFilterAlf] = useState("");
   const [randomVinyls, setRandomVinyls] = useState([]);
   const [seed, setSeed] = useState("");
-  const pageSize = 10
+  const pageSize = 10;
   const searchByName = useSelector((state) => state.search);
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -114,7 +115,7 @@ const Home = () => {
 
     function getRandomVinyls(vinyls, num, seed) {
       const rng = seedrandom(seed);
-      const shuffledVinyls = [...vinyls];
+      const shuffledVinyls = [...vinyl];
 
       function randomSort() {
         return rng() - 0.5;
