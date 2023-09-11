@@ -46,7 +46,6 @@ const ShoppingCart = () => {
   //console.log(datos);
 
   
-  console.log(datos)
   
   
   const handleMP = () => {
