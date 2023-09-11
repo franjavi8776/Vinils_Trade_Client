@@ -30,10 +30,10 @@ const Home = () => {
   const [filterGener, setFilterGener] = useState("");
   const [filterDecad, setFilterDecad] = useState("");
   const [filterAlf, setFilterAlf] = useState("");
-  const [pageSize, setPageSize] = useState(10);
   const [randomVinyls, setRandomVinyls] = useState([]);
   const [seed, setSeed] = useState("");
 
+  const pageSize = 10;
   const searchByName = useSelector((state) => state.search);
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -50,28 +50,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllVinyls());
-    // Verificar el tamaño de la pantalla y actualizar cardsPerPage en consecuencia
-    const handleResize = () => {
-      if (window.innerWidth >= 1624) {
-        setPageSize(10);
-      } else if (window.innerWidth >= 1424) {
-        setPageSize(8);
-      } else if (window.innerWidth >= 1224) {
-        setPageSize(6);
-      } else {
-        setPageSize(4);
-      }
-    };
-
-    handleResize();
-    // Escuchar eventos de cambio de tamaño de ventana
-    window.addEventListener("resize", handleResize);
-
-    // Limpieza de eventos al desmontar el componente
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [dispatch, vinyls]);
+  }, [dispatch]);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -122,16 +101,16 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const startDate = new Date("2023-09-10");
+    const startDate = new Date("2023-09-11");
 
     const currentDate = new Date();
 
-    // const weeksElapsed = Math.floor(
-    //   (currentDate - startDate) / (7 * 24 * 60 * 60 * 10000)
-    // );
-    const weeksElapsed = Math.floor((currentDate - startDate) / 5000);
+    const weeksElapsed = Math.floor(
+      (currentDate - startDate) / (7 * 24 * 60 * 60 * 10000)
+    );
+    // const weeksElapsed = Math.floor((currentDate - startDate) / 5000);
 
-    const newSeed = `seed-${weeksElapsed}`;
+    const newSeed = `$seed-${weeksElapsed}`;
     setSeed(newSeed);
 
     function getRandomVinyls(vinyls, num, seed) {
