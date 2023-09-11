@@ -1,40 +1,46 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVinylsForName } from "../../redux/actions";
+import { getVinylsForName, logoutUser } from "../../redux/actions";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
-  const cart = useSelector((state) => state.cartItems)
+  const cart = useSelector((state) => state.cartItems);
+  const token = useSelector((state) => state.token);
+
   const dispatch = useDispatch();
 
   const handlerChange = (event) => {
     dispatch(getVinylsForName(event.target.value));
     setInputValue(event.target.value);
   };
-  
-  const contador = cart.length
+
+  const contador = cart.length;
 
   function handlerButton() {
     const shoppCart = document.getElementById("card");
     shoppCart.classList.remove("hidden");
   }
 
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
   return (
     <div className="flex">
       <div>
-        <div className="flex">
+        <div className="flex ml-20">
           <input
             onChange={handlerChange}
             type="search"
             value={inputValue}
-            className="mr-2 p-0.5 w-96 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 " // Agrega las clases de borde
+            className="mr-2 p-0.5 w-96 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 ml-14 " // Agrega las clases de borde
             placeholder="Buscar vinilos..."
           />
 
-          <div className="relative">
+          <div className="relative ml-5">
             <AiOutlineShoppingCart
               className="w-7 h-7 cursor-pointer z-0"
               onClick={handlerButton}
@@ -44,22 +50,31 @@ const Search = () => {
             </span>
           </div>
         </div>
-        {/* <div className="flex" >
-      </div> */}
       </div>
       <div>
-        <Link
-          to="/login"
-          className="m-4 text-white font-semibold link-with-hover-line"
-        >
-          Ingresa
-        </Link>
-        <Link
-            to="/register"
-            className="m-4 text-white font-semibold link-with-hover-line"
+        {token ? (
+          <button
+            onClick={handleLogout}
+            className="text-white font-semibold link-with-hover-line ml-5"
           >
-            Crea tu cuenta
-          </Link>
+            Cerrar sesion
+          </button>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className="m-4 text-white font-semibold link-with-hover-line ml-7"
+            >
+              Ingresa
+            </Link>
+            <Link
+              to="/register"
+              className="m-4 text-white font-semibold link-with-hover-line ml-5"
+            >
+              Crea tu cuenta
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

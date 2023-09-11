@@ -27,7 +27,7 @@ const initialState = {
   search: [],
   filteredVinyls: [],
   isAuthenticated: false,
-  token: null,
+  token: localStorage.getItem("token") || null,
   error: null,
   cartState: false,
   cartItems: localStorage.getItem("cart")
@@ -104,36 +104,35 @@ const reducer = (state = initialState, action) => {
 
         return { ...state, cartItems: updatedCartItems };
       }
-    
-      case CLEAR_CART: 
-      localStorage.removeItem('cart');
+
+    case CLEAR_CART:
+      localStorage.removeItem("cart");
       return {
         ...state,
-        cartItems : [],
-      }
-    
+        cartItems: [],
+      };
 
     case CREATE_ORDER:
       return {
         ...state,
         dataMP: action.payload,
-      }
+      };
 
     case SUCCESS_MP:
       return {
         ...state,
-        stateMP: {...state.stateMP, success: action.payload}
-      }
+        stateMP: { ...state.stateMP, success: action.payload },
+      };
     case PENDIGN_MP:
       return {
         ...state,
-        stateMP: {...state.stateMP, pending: action.payload}
-      }
+        stateMP: { ...state.stateMP, pending: action.payload },
+      };
     case FAILURE_MP:
       return {
         ...state,
-        stateMP: {...state.stateMP, failure: action.payload}
-      }
+        stateMP: { ...state.stateMP, failure: action.payload },
+      };
 
     case CLEAR_CART:
       localStorage.removeItem("cart");
@@ -236,10 +235,11 @@ const reducer = (state = initialState, action) => {
     }
 
     case LOGIN_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         isAuthenticated: true,
-        token: action.payload.user, // Almacenar el token cuando la autenticación sea exitosa
+        token: action.payload.token, // Almacenar el token cuando la autenticación sea exitosa
         error: null, // Restablecer cualquier mensaje de error anterior
       };
     case LOGIN_FAILURE:
@@ -250,8 +250,10 @@ const reducer = (state = initialState, action) => {
         error: action.payload, // Almacenar el mensaje de error
       };
     case LOGOUT:
+      localStorage.removeItem("token");
       return {
         ...state,
+        isAuthenticated: false,
         token: null, // Borrar el token cuando se cierre sesión
         error: null, // Restablecer cualquier mensaje de error anterior
       };

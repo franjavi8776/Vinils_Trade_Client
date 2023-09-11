@@ -46,7 +46,7 @@ const Navbar = ({ updateHtmlClass }) => {
       <div
         className={`sticky top-0 ${navbarClass} text-white w-[100%] flex z-10 `}
       >
-        <div className={` w-[50%] flex justify-center gap-28`}>
+        <div className={` w-[40%] flex justify-center gap-28`}>
           <button onClick={toggleDarkMode}>
             {darkMode ? (
               <BsFillSunFill className="text-2xl text-yellow-500" />
@@ -67,7 +67,7 @@ const Navbar = ({ updateHtmlClass }) => {
             Home
           </Link>
         </div>
-        <div className="w-[50%] flex justify-center items-center">
+        <div className="w-[60%] flex justify-center items-center">
           <Search />
         </div>
         {/* <div className=" w-[50%] flex justify-center items-center ">
