@@ -44,7 +44,7 @@ const Navbar = ({ updateHtmlClass }) => {
       <div
         className={`sticky top-0 ${navbarClass} text-white w-[100%] flex z-10 `}
       >
-        <div className={` w-[40%] flex justify-center gap-28`}>
+        <div className="w-[40%] flex justify-center items-center xl:gap-20 lg:gap-10 ">
           <button onClick={toggleDarkMode}>
             {darkMode ? (
               <BsFillSunFill className="text-2xl text-yellow-500" />
