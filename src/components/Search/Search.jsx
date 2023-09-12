@@ -36,7 +36,7 @@ const Search = () => {
             onChange={handlerChange}
             type="search"
             value={inputValue}
-            className="mr-2 p-0.5 w-96 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 ml-14 " // Agrega las clases de borde
+            className="mr-2 p-0.5 xl:w-80 lg:w-50 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 ml-14 " // Agrega las clases de borde
             placeholder="Buscar vinilos..."
           />
 

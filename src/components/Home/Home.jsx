@@ -66,6 +66,11 @@ const Home = () => {
       if (window.innerWidth < 1472) {
         setPageSize(6);
       }
+
+      if (window.innerWidth < 862) {
+        setPageSize(4);
+      }
+
     };
 
     // Escuchar cambios en el tamaño de la pantalla
@@ -162,11 +167,11 @@ const Home = () => {
   return (
     <div>
       <div className="w-[100%] h-auto relative">
-        <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-8 mt-[-3px]">
-          <div className="w-[40%] h-[420px] ">
+        <div className="lg:w-[100%] lg:h-[423px] lg:flex lg:border-b-8 lg:border-black lg:mb-8 lg:mt-[-3px]">
+          <div className="lg:w-[40%] lg:h-[420px]">
             <VideoPlayer />
           </div>
-          <div className="w-[60%] h-[420px]">
+          <div className="lg:w-[60%] lg:h-[420px]">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -236,8 +241,11 @@ const Home = () => {
           </h1>
         </div>
         <div className="xl:w-[100%] xl:h-[70vh] xl:flex xl:flex-row lg:w-[100%] lg:flex-col">
-          <div className="xl:w-[20%] h-[70vh] flex items-center lg:w-[100%] lg:h-[10vh]">
-            <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 lg:w-[80%] lg:m-auto lg:flex lg:flex-row lg:justify-between lg:mb-20 lg:mt-[-10px]">
+
+          <div className="xl:w-[20%] xl:h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:h-[10vh]">
+            <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row md:justify-between md:mb-20 md:mt-[-10px]">
+
+
               <select
                 onChange={handleFilter}
                 className="bg-black text-white p-2 rounded  dark:bg-slate-200 dark:text-black"
