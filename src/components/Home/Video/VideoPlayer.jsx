@@ -5,7 +5,7 @@ const VideoPlayer = () => {
 
   const opts = {
     height: "420",
-    width: "101%",
+    width: "100%",
     playerVars: {
       autoplay: 1,
       loop: 1,

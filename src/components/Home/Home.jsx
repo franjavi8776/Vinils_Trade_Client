@@ -31,9 +31,10 @@ const Home = () => {
   const [filterGener, setFilterGener] = useState("");
   const [filterDecad, setFilterDecad] = useState("");
   const [filterAlf, setFilterAlf] = useState("");
+  const [pageSize, setPageSize] = useState(10);
   const [randomVinyls, setRandomVinyls] = useState([]);
   const [seed, setSeed] = useState("");
-  const pageSize = 10
+
   const searchByName = useSelector((state) => state.search);
   const totalVinyls =
     searchByName.length > 0 ? searchByName.length : vinyls.length;
@@ -51,6 +52,37 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllVinyls());
   }, [dispatch]);
+
+  useEffect(() => {
+    // Función para actualizar el estado de pageSize
+    const updatePageSize = () => {
+      if (window.innerWidth < 1700) {
+        setPageSize(8);
+      } else {
+        setPageSize(10);
+      }
+
+      if (window.innerWidth < 1472) {
+        setPageSize(6);
+      }
+
+      if (window.innerWidth < 862) {
+        setPageSize(4);
+      }
+
+    };
+
+    // Escuchar cambios en el tamaño de la pantalla
+    window.addEventListener("resize", updatePageSize);
+
+    // Llamamos a la función una vez para configurar el valor inicial
+    updatePageSize();
+
+    // Limpieza del event listener cuando el componente se desmonta
+    return () => {
+      window.removeEventListener("resize", updatePageSize);
+    };
+  }, []);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -113,7 +145,7 @@ const Home = () => {
     const newSeed = `$seed-${weeksElapsed}`;
     setSeed(newSeed);
 
-    function getRandomVinyls(vinyls, num, seed) {
+    function getRandomVinyls(vinyl, num, seed) {
       const rng = seedrandom(seed);
       const shuffledVinyls = [...vinyl];
 
@@ -127,18 +159,18 @@ const Home = () => {
     }
 
     //Obtener 5 vinilos aleatorios basados en la semilla actual
-    const randomSelection = getRandomVinyls(vinyls, 5, newSeed);
+    const randomSelection = getRandomVinyls(vinyl, 5, newSeed);
     setRandomVinyls(randomSelection);
-  }, [vinyls]);
+  }, [vinyl]);
 
   return (
     <div>
       <div className="w-[100%] h-auto relative">
-        <div className="w-[100%] h-[423px] flex border-b-8 border-black mb-8 mt-[-3px]">
-          <div className="w-[40%] h-[420px] ">
+        <div className="lg:w-[100%] lg:h-[423px] lg:flex lg:border-b-8 lg:border-black lg:mb-8 lg:mt-[-3px]">
+          <div className="lg:w-[40%] lg:h-[420px]">
             <VideoPlayer />
           </div>
-          <div className="w-[60%] h-[420px]">
+          <div className="lg:w-[60%] lg:h-[420px]">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -207,15 +239,18 @@ const Home = () => {
             LISTA DE VINILOS
           </h1>
         </div>
-        <div className="w-[100%] h-[70vh] flex flex-row ">
-          <div className="w-[20%] h-[70vh] flex items-center ">
-            <div className="w-[70%] m-auto flex flex-col gap-20">
+        <div className="xl:w-[100%] xl:h-[70vh] xl:flex xl:flex-row lg:w-[100%] lg:flex-col">
+
+          <div className="xl:w-[20%] xl:h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:h-[10vh]">
+            <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row md:justify-between md:mb-20 md:mt-[-10px]">
+
+
               <select
                 onChange={handleFilter}
                 className="bg-black text-white p-2 rounded  dark:bg-slate-200 dark:text-black"
                 value={filterDecad}
               >
-                <option value="">Selecciona una década</option>
+                <option value="">Filtro p/década</option>
                 <option value="1950">1950s</option>
                 <option value="1960">1960s</option>
                 <option value="1970">1970s</option>
@@ -228,7 +263,7 @@ const Home = () => {
                 value={filterAlf}
                 className="bg-black text-white p-2 rounded  dark:bg-slate-200 dark:text-black"
               >
-                <option value="">Ordenar p/Titulo</option>
+                <option value="">Orden p/Titulo</option>
                 <option value="A">Ascendente</option>
                 <option value="D">Descendente</option>
               </select>
@@ -239,7 +274,7 @@ const Home = () => {
                 id=""
                 className="bg-black text-white p-2 rounded dark:bg-slate-200 dark:text-black"
               >
-                <option value="">Filtrar por genero</option>
+                <option value="">Filtro p/genero</option>
                 <option value="Funk / Soul">Funk / Soul</option>
                 <option value="Rock">Rock</option>
                 <option value="Electronic">Electronic</option>
@@ -254,7 +289,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <div className="w-[78%] h-[70vh] flex items-center">
+          <div className="xl:w-[78%] xl:h-[70vh] xl:flex items-center lg:w-[90%] lg:m-auto">
             <div className="w-[100%] h-[70vh] flex items-center">
               <div className="w-[5%]">
                 {currentPage > 1 && (

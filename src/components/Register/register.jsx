@@ -56,19 +56,22 @@ function RegistroUsuario() {
     } else {
       console.log("ERROR");
     }
-    navigate("/login")
+    navigate("/login");
   };
 
   return (
     <div className="h-[100vh] flex items-center justify-center">
-      <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-[35%] shadow-lg shadow-black">
+      <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-[650px] shadow-lg shadow-black">
         <h2 className="text-3xl font-extrabold text-white mb-8">
           ¡Regístrate Ahora!
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-wrap -mx-4 mb-4">
             <div className="w-1/2 px-4 mb-4">
-              <label htmlFor="name" className="text-white text-sm mb-2 font-bold">
+              <label
+                htmlFor="name"
+                className="text-white text-sm mb-2 font-bold"
+              >
                 Nombre
               </label>
               <input
@@ -84,7 +87,10 @@ function RegistroUsuario() {
               <span>{error.name}</span>
             </div>
             <div className="w-1/2 px-4 mb-4">
-              <label htmlFor="email" className="text-white text-sm mb-2 font-bold">
+              <label
+                htmlFor="email"
+                className="text-white text-sm mb-2 font-bold"
+              >
                 Correo Electrónico
               </label>
               <input
@@ -101,7 +107,10 @@ function RegistroUsuario() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="password" className="text-white text-sm mb-2 font-bold">
+            <label
+              htmlFor="password"
+              className="text-white text-sm mb-2 font-bold"
+            >
               Contraseña
             </label>
             <div className="relative">
@@ -159,7 +168,10 @@ function RegistroUsuario() {
           </div>
           <span className="">{error.confirmarContraseña}</span>
           <div className="mb-4">
-            <label htmlFor="phoneNumber" className="text-white text-sm mb-2 font-bold">
+            <label
+              htmlFor="phoneNumber"
+              className="text-white text-sm mb-2 font-bold"
+            >
               Teléfono
             </label>
             <input
@@ -175,7 +187,10 @@ function RegistroUsuario() {
           </div>
           <span>{error.phoneNumber}</span>
           <div className="mb-4">
-            <label htmlFor="codArea" className="text-white text-sm mb-2 font-bold">
+            <label
+              htmlFor="codArea"
+              className="text-white text-sm mb-2 font-bold"
+            >
               Codigo Postal
             </label>
             <input
@@ -191,7 +206,10 @@ function RegistroUsuario() {
           </div>
           <div className="flex flex-wrap -mx-4 mb-4">
             <div className="w-1/2 px-4 mb-4">
-              <label htmlFor="country" className="text-white text-sm mb-2 font-bold">
+              <label
+                htmlFor="country"
+                className="text-white text-sm mb-2 font-bold"
+              >
                 País
               </label>
               <input
@@ -206,7 +224,10 @@ function RegistroUsuario() {
               />
             </div>
             <div className="w-1/2 px-4 mb-4">
-              <label htmlFor="city" className="text-white text-sm mb-2 font-bold">
+              <label
+                htmlFor="city"
+                className="text-white text-sm mb-2 font-bold"
+              >
                 Ciudad
               </label>
               <input
