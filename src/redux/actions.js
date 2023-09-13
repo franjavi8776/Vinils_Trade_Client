@@ -23,7 +23,7 @@ export const PENDIGN_MP = "PENDIGN_MP";
 export const CLEAR_CART = "CLEAR_CART";
 export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
-
+// export const UPDATE_VINYLS = "UPDATE_VINYLS"
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -259,3 +259,18 @@ export const decreaseItem = (vinyl) => ({
   type: "DECREASE_ITEM",
   payload: vinyl,
 });
+
+
+// export const updateVinyls = () => async (dispatch) => {
+//   try {
+//     const response = await axios.get(endpoint);
+//     const data = response.data;
+
+//     dispatch({
+//       type: UPDATE_VINYLS,
+//       payload: data,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

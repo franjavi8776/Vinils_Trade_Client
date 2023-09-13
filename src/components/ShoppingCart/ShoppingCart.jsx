@@ -18,6 +18,7 @@ const ShoppingCart = () => {
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP)
   // const stateMP = useSelector((state) => state.stateMP)
+  console.log(MP)
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
   };

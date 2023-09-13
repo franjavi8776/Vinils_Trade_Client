@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions"; // Asegúrate de importar la acción correcta
 import { FaShoppingCart } from "react-icons/fa";
-
+import toast, { Toaster } from 'react-hot-toast';
 const Card = ({ id, title, cover_image, price, stock }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartItems);
-
+  const notify = () => toast.error("Debes iniciar sesion");
+  const notify2 = () => toast.error("No hay stock disponible");
   const [isGreen, setIsGreen] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const isAuthenticated = useSelector((state) => state.token !== null);
@@ -55,14 +56,14 @@ const Card = ({ id, title, cover_image, price, stock }) => {
             );
            
           } else {
-            alert("No hay stock disponible para este producto.");
+           notify2()
           }
         }
 
         setIsGreen(true);
       }
     } else {
-      alert("Para añadir al carrito debe iniciar sesion");
+      notify();
     }
   };
 
@@ -94,6 +95,11 @@ const Card = ({ id, title, cover_image, price, stock }) => {
           <FaShoppingCart className={isGreen ? "text-green-800 " : ""} />
         </button>
       </div>
+      <Toaster
+   position="top-center"
+  reverseOrder={false}
+  width="500px" 
+/>
     </div>
   );
 };

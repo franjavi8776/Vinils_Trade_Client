@@ -3,7 +3,7 @@ import { postRegisterUser } from "../../redux/actions";
 import validate from "./validate";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import toast, { Toaster } from 'react-hot-toast';
 function RegistroUsuario() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setErrors] = useState({});
@@ -18,7 +18,7 @@ function RegistroUsuario() {
     confirmarContraseña: "",
     codArea: "",
   });
-  console.log(usuario);
+  const notify2 = () => toast.error('Ingrese bien los datos')
   const passwordd = () => {
     setShowPassword(!showPassword);
   };
@@ -52,9 +52,8 @@ function RegistroUsuario() {
     if (Object.keys(validate === 0)) {
       await dispatch(postRegisterUser(usuario));
       cleanForm();
-      alert("Usario creado");
     } else {
-      console.log("ERROR");
+     notify2()
     }
     navigate("/login");
   };
@@ -253,6 +252,10 @@ function RegistroUsuario() {
               ¡Registrarme!
             </button>
           </div>
+          <Toaster
+          position="bottom-center"
+          reverseOrder={false}
+        />
         </form>
       </div>
     </div>
