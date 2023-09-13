@@ -66,6 +66,7 @@ const Home = () => {
       if (window.innerWidth < 1472) {
         setPageSize(6);
       }
+
       if (window.innerWidth < 862) {
         setPageSize(4);
       }
@@ -238,6 +239,7 @@ const Home = () => {
             LISTA DE VINILOS
           </h1>
         </div>
+
         <div className="md:w-[100%] xl:h-[70vh] xl:flex xl:flex-row  md:flex-col md:h-[80vh]">
           <div className="xl:w-[20%] xl:h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:h-[10vh]">
             <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row md:justify-between md:mb-20 md:mt-[-10px]">
