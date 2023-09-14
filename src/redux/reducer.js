@@ -11,6 +11,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
+  LOGIN_USER_WITH_GOOGLE_SUCCESS,
+  LOGIN_USER_WITH_GOOGLE_FAILURE,
   POST_VINYL,
   INCREASE_ITEM,
   DECREASE_ITEM,
@@ -30,6 +32,7 @@ const initialState = {
   isAuthenticated: false,
   token: localStorage.getItem("token") || null,
   error: null,
+  user:null,
   cartState: false,
   cartItems: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
@@ -260,7 +263,20 @@ const reducer = (state = initialState, action) => {
         token: null, // Borrar el token cuando se cierre sesión
         error: null, // Restablecer cualquier mensaje de error anterior
       };
-
+    // case LOGIN_USER_WITH_GOOGLE_SUCCESS:
+    //     return {
+    //       ...state,
+    //       user: action.payload,
+    //       token: action.payload.token,
+    //       error: null,
+    //   };
+    // case LOGIN_USER_WITH_GOOGLE_FAILURE:
+    //     return {
+    //       ...state,
+    //       user:null,
+    //       token: null,
+    //       error: action.payload,
+    //   };
     default:
       return {
         ...state,

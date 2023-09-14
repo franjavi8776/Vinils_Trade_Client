@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 import "./Navbar.css";
 
+
 const Navbar = ({ updateHtmlClass }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -37,7 +38,7 @@ const Navbar = ({ updateHtmlClass }) => {
     <>
       <div className="flex items-center justify-center bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg z-0">
         <img
-          src="/Vinyls_Trade.png"
+          src="https://res.cloudinary.com/duclhjrri/image/upload/v1694658155/Vinyls_Trade_rup9pc.png"
           alt="Vinyls-Trade"
           className="w-48 ml-8 "
         />
