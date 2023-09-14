@@ -26,7 +26,7 @@ export const PENDIGN_MP = "PENDIGN_MP";
 export const CLEAR_CART = "CLEAR_CART";
 export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
-
+export const UPDATE_VINYLS = "UPDATE_VINYLS"
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -45,7 +45,9 @@ export const getAllVinyls = () => async (dispatch) => {
 
 export const getVinylDetail = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`https://vinyls-trade-back-production.up.railway.app/${id}`);
+    const response = await axios.get(
+      `https://vinyls-trade-back-production.up.railway.app/${id}`
+    );
     const data = response.data;
     if (Array.isArray(data) && data.length > 0) {
       // Verificamos si data es un array y si contiene al menos un elemento
@@ -59,10 +61,13 @@ export const getVinylDetail = (id) => async (dispatch) => {
 };
 
 export const postRegisterUser = (x) => {
-  const newEndpoint = "https://vinyls-trade-back-production.up.railway.app/createUser";
+  const newEndpoint =
+    "https://vinyls-trade-back-production.up.railway.app/createUser";
+  console.log(x);
   return async function (dispatch) {
     try {
       const { data } = await axios.post(newEndpoint, x);
+
       return dispatch({
         type: POST_REGISTER_USER,
         payload: data,
@@ -219,7 +224,7 @@ export const loginUserByEmail = (loginData) => async (dispatch) => {
       loginData
     );
     dispatch({
-      type: "LOGIN_SUCCESS",
+      type: LOGIN_SUCCESS,
       payload: response.data,
     });
   } catch (error) {
@@ -270,3 +275,21 @@ export const decreaseItem = (vinyl) => ({
   type: "DECREASE_ITEM",
   payload: vinyl,
 });
+
+export const updateVinyls = (id, stockReduction) => async (dispatch) => {
+  const newEndpoint = `https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`;
+  const requestData = {
+    stockReduction: stockReduction, 
+  };
+  try {
+    const response = await axios.put(newEndpoint, requestData);
+    const data = response.data;
+
+    dispatch({
+      type: UPDATE_VINYLS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
