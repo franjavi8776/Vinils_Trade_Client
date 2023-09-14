@@ -10,7 +10,8 @@ import {
   failureMP,
   clearCart,
 } from "../../redux/actions";
-import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md"
+import toast, { Toaster } from "react-hot-toast";
 
 const ShoppingCart = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -18,8 +19,10 @@ const ShoppingCart = () => {
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
   // const stateMP = useSelector((state) => state.stateMP)
+  console.log(MP)
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
+    toast.success("Vinilo eliminado correctamente")
   };
   //console.log(MP);
   //console.log(stateMP);
@@ -56,7 +59,11 @@ const ShoppingCart = () => {
         price: totalValue,
         units: cart.length,
       };
-      console.log(datos);
+      // cart.forEach((item) => {
+      //   const vinylId = item.id; // ID del vinilo
+      //   const stockReduction = item.cartQuantity; // Cantidad a reducir del stock
+      //   dispatch(updateVinyls(vinylId, stockReduction));
+      // });
       dispatch(postMP(datos));
       if (MP.length > 0) {
         // Redirigir al usuario a Mercado Pago
@@ -156,6 +163,7 @@ const ShoppingCart = () => {
             </button>
           </div>
         </div>
+        <Toaster/>
         {showConfirmation && (
           <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 h-[100px] w-[530px] -translate-y-1/2 flex flex-col items-center text-black from-red-700 to-red-950 p-4 border border-gray-300 shadow-lg z-50 dark:text-white">
             <p className="mb-4">
