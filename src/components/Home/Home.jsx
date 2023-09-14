@@ -170,7 +170,7 @@ const Home = () => {
           <div className="lg:w-[40%] lg:h-[420px]">
             <VideoPlayer />
           </div>
-          <div className="lg:w-[60%] lg:h-[420px]">
+          <div className="lg:w-[60%] lg:h-[420px] lg:block sm:hidden">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -199,7 +199,7 @@ const Home = () => {
             LISTA DE VINILOS
           </h1>
         </div>
-        <div className="xl:w-[100%] xl:h-[70vh] xl:flex xl:flex-row lg:w-[100%] lg:flex-col">
+        <div className="md:w-[100%] xl:h-[70vh] xl:flex xl:flex-row  md:flex-col md:h-[80vh]">
           <div className="xl:w-[20%] xl:h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:h-[10vh]">
             <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row md:justify-between md:mb-20 md:mt-[-10px]">
               <select
@@ -256,7 +256,7 @@ const Home = () => {
                 )}
               </div>
 
-              <div className="w-[90%] flex flex-wrap justify-center gap-5">
+              <div className="w-[90%] h-[70vh] flex flex-wrap justify-center gap-5">
                 {VinylsToRender.map((vinyls) => (
                   <Card
                     key={vinyls.id}
@@ -279,7 +279,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center space-x-4 mt-6">
+        <div className="w-[100%] h-[10vh] flex justify-center items-center space-x-4">
           {pagesArray.map((pageNumber) => (
             <span
               key={pageNumber}
