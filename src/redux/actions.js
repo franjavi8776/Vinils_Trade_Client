@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 export const GET_ALL_VINYLS = "GET_ALL_VINYLS";
 export const GET_DETAIL = "GET_DETAIL";
 export const GET_VINYLS_FOR_NAME = "GET_VINYLS_FOR_NAME";
@@ -12,6 +13,8 @@ export const POST_REGISTER_USER = "POST_REGISTER_USER";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const LOGIN_USER_WITH_GOOGLE_SUCCESS = "LOGIN_USER_WITH_GOOGLE_SUCCESS";
+export const LOGIN_USER_WITH_GOOGLE_FAILURE = "LOGIN_USER_WITH_GOOGLE_FAILURE";
 export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
 export const INCREASE_ITEM = "INCREASE_ITEM";
@@ -228,22 +231,30 @@ export const loginUserByEmail = (loginData) => async (dispatch) => {
   }
 };
 
-export const loginUserWithGoogle = () => async (dispatch) => {
-  try {
-    const response = await axios.get(
-      "https://vinyls-trade-back-production.up.railway.app/auth/google"
-    ); // Asegúrate de que esta sea la ruta correcta
-    dispatch({
-      type: "LOGIN_SUCCESS",
-      payload: response.data,
-    });
-  } catch (error) {
-    dispatch({
-      type: "LOGIN_FAILURE",
-      payload: error.response,
-    });
-  }
-};
+// export const loginUserWithGoogle = (token) => async (dispatch) => {
+//   // const auth = getAuth(); // Obtiene la instancia de autenticación de Firebase
+//   // const provider = new GoogleAuthProvider();
+
+//   try {
+//     // const result = await signInWithPopup(auth, provider);
+//     // const user = result.user;
+
+//     // const token = await user.getIdToken();
+//     response=await axios.post('http://localhost:3001/google', token);
+
+//     // Acción exitosa
+//     dispatch({
+//       type: LOGIN_USER_WITH_GOOGLE_SUCCESS,
+//       payload: response,
+//     });
+//   } catch (error) {
+//     // Acción con error
+//     dispatch({
+//       type: LOGIN_USER_WITH_GOOGLE_FAILURE,
+//       payload: error,
+//     });
+//   }
+// };
 
 export const logoutUser = () => {
   // Eliminar el token de autenticación del estado de Redux al cerrar sesión
