@@ -1,28 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserByEmail, loginUserWithGoogle } from "../../redux/actions.js";
-import { Link } from "react-router-dom";
+import { loginUserByEmail } from "../../redux/actions.js";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.isAuthenticated);
-  console.log(auth);
+  const authe = useSelector((state) => state.isAuthenticated);
+  const navigate = useNavigate(); // Utilizamos useNavigate para la navegación
+
+  const notify1 = (message, type) => {
+    toast.custom((t) => (
+      <div
+        className={`${
+          type === 'success'
+            ? 'bg-green-500 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light'
+            : type === 'error'
+            ? 'bg-red-700 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light'
+            : 'bg-blue-500 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light'
+        } p-2 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light`}
+      >
+        <div className="text-center justify-center text-lg">{message}</div>
+      </div>
+    ), {
+      duration: 1000,
+    });
+  };
+
   const handleEmailLogin = async () => {
-    await dispatch(loginUserByEmail({ email, password }));
-    if (auth) {
-      toast.error("Datos incorrectos");
-    } else {
-      toast.success("Inicio de sesión exitoso");
+    dispatch(loginUserByEmail({ email, password }));
+    if (authe === false) {
+      notify1("Complete el formulario", "error"); // Utilizamos notify1 en lugar de toast.error
     }
   };
+  useEffect(() => {
+    if (authe === true) {
+      toast.success("Inicio de sesión exitoso", {
+        duration: 2000, // Duración en milisegundos (2 segundos)
+      });
+  
+      // Redirige a la página de inicio después del inicio de sesión exitoso
+      setTimeout(() => {
+        navigate("/");
+      }, 2000); // Redirige después de 2 segundos (igual que la duración de la notificación)
+    }
+  }, [authe, navigate]);
+  
+
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyC1-NuZIpLvp1OQvuEx2NJe5uYkbPzg_rk",
+  //   authDomain: "helpful-rope-398503.firebaseapp.com",
+  //   projectId: "helpful-rope-398503",
+  //   storageBucket: "helpful-rope-398503.appspot.com",
+  //   messagingSenderId: "230827125634",
+  //   appId: "1:230827125634:web:ba8db6cb77ee75f4727d9b",
+  //   measurementId: "G-VRFCJHFX5Y"
+  // };
+  
+  // // Initialize Firebase
+  // const app = initializeApp(firebaseConfig);
+  // const auth = getAuth(app); 
   
 
   const handleGoogleLogin = () => {
-    dispatch(loginUserWithGoogle());
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(authe, provider)
+      .then((result) =>  {
+        // Inicio de sesión exitoso
+        const user = result.user;
+        console.log("Usuario autenticado:", user);
+        if(user){
+          setAuthy(true);
+          setToken(user.accessToken)
+        }
+        // Realiza cualquier acción adicional que necesites aquí
+        // dispatch(loginUserWithGoogle(user));
+      })
+      .catch((error) => {
+        // Manejo de errores
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Error al iniciar sesión con Google:", errorMessage);
+        // Puedes mostrar un mensaje de error al usuario aquí
+      });
   };
+  // ListOfTodo(token);
+  
 
   return (
     <div className="h-[81vh] flex items-center justify-center">
@@ -60,9 +125,9 @@ function Login() {
         <button
           onClick={handleEmailLogin}
           className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
-          disabled={auth}
+        
         >
-          {auth ? "Estás logueado" : "Ingresar"}
+          {authe ? "Estás logueado" : "Ingresar"}
         </button>
 
         <button
@@ -71,6 +136,14 @@ function Login() {
         >
           Ingresa con Google
         </button>
+        {authe ? (<h1 className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black">Autentificado</h1>) : (
+           <button
+           onClick={handleGoogleLogin}
+           className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black"
+         >
+           Ingresa con Google
+         </button>
+        )}
         <span className="text-white">
           ¿No tienes tu cuenta?{" "}
           <Link className="text-blue-600 font-bold ml-3" to="/register">
@@ -79,7 +152,10 @@ function Login() {
         </span>
 
       </div>
-        <Toaster />
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
     </div>
   );
 }

@@ -20,6 +20,24 @@ const Search = () => {
 
   const contador = cart.length;
 
+  const notify1 = (message, type, duration = 1000) => {
+    toast.custom((t) => (
+      <div
+        className={`${
+          type === 'success'
+            ? 'bg-green-400'
+            : type === 'error'
+            ? 'bg-white'
+            : 'bg-green-400 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light'
+        } p-2 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light`}
+      >
+        <div className={`text-center justify-center text-lg ${type === 'success' ? 'text-white' : ''}`}>{message}</div>
+      </div>
+    ), {
+      duration: duration,
+    });
+  };
+  
   function handlerButton() {
     const shoppCart = document.getElementById("card");
     shoppCart.classList.remove("hidden");
@@ -37,7 +55,7 @@ const Search = () => {
     dispatch(logoutUser());
 
     // Muestra un Toast de éxito después de cerrar sesión
-    toast.success("¡Sesión cerrada exitosamente!");
+    notify1("Cerro sesion exitosamente")
   };
 
   return (
