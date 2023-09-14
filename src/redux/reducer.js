@@ -66,6 +66,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allVinyls: [...state.allVinyls, action.payload],
+        vinyls: [...state.allVinyls, action.payload],
       };
 
     case FILTER_BY_DECADE:

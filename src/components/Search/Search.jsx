@@ -29,14 +29,14 @@ const Search = () => {
   };
 
   return (
-    <div className="flex">
-      <div>
+    <div className="w-[100%] flex  flex-row-reverse justify-between lg:flex lg:flex-row lg:justify-center">
+      <div className="flex ">
         <div className="flex">
           <input
             onChange={handlerChange}
             type="search"
             value={inputValue}
-            className="mr-2 p-0.5 xl:w-80 lg:w-50 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 ml-14 " // Agrega las clases de borde
+            className="mr-2 p-0.5 xl:w-80 w-50 bg-white text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 lg:ml-14 hidden sm:flex" // Agrega las clases de borde
             placeholder="Buscar vinilos..."
           />
 
