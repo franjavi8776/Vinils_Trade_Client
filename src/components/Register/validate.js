@@ -1,4 +1,6 @@
+import { isValidNumber, parsePhoneNumberFromString } from "libphonenumber-js";
 const validate = (input) => {
+
   const errors = {};
   if (!input.name) {
     errors.name = "Requerido";
@@ -11,11 +13,20 @@ const validate = (input) => {
     if (input.password.length < 6) {
       errors.password = "Debe tener mas de 6 caracteres"
     }
-    if(input.phoneNumber.length > 10){
-      errors.phoneNumber =  "El teléfono no debe exceder los 10 dígitos"
-    }
+    const countryCode = "US";
+
     if (!input.phoneNumber) {
       errors.phoneNumber = "Campo obligatorio";
+    } else {
+      // Intenta validar el número de teléfono
+      const parsedPhoneNumber = parsePhoneNumberFromString(
+        input.phoneNumber,
+        countryCode
+      );
+    
+      if (!parsedPhoneNumber || !isValidNumber(parsedPhoneNumber)) {
+        errors.phoneNumber = "Número de teléfono inválido";
+      }
     }
     const ciudadRegex = /^[a-zA-Z\s]+$/; // Permite letras y espacios
     if (!input.ciudad) {

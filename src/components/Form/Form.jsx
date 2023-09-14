@@ -3,6 +3,7 @@ import { validateVinylsForm } from "./validate";
 import { useDispatch } from "react-redux";
 import { postVinyls } from "../../redux/actions";
 import { useLocalStorage } from "../LocalStorage/useLocalStorage";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Form = () => {
   const localStorageKey = "vinylsFormData";
@@ -79,8 +80,17 @@ const Form = () => {
 
     dispatch(postVinyls(vinyls));
 
-    alert("Vinilo creado correctamente");
-
+    toast('Se creo exitosamente',
+    {
+      icon: '👏',
+      style: {
+        borderRadius: '10px',
+        background: 'white',
+        color: 'red',
+      },
+    }
+  );
+    
     setVinyls({
       title: "",
       artists: [{ name: "" }],
@@ -242,6 +252,7 @@ const Form = () => {
               Guardar Vinilo
             </button>
           </div>
+          <Toaster/>
         </form>
       </div>
     </div>

@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const Card = ({ id, title, cover_image, price, stock }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartItems);
-  const notify = () => toast.error("Debes iniciar sesion");
+  const notify1 = () => toast.error("Debes iniciar sesion");
   const notify2 = () => toast.error("No hay stock disponible");
   const [isGreen, setIsGreen] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -39,7 +39,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
               })
             );
           } else {
-            alert("No hay suficiente stock disponible para este producto.");
+            notify2(); // Notificación de falta de stock
           }
         } else {
           // Agrega el producto al carrito
@@ -54,16 +54,15 @@ const Card = ({ id, title, cover_image, price, stock }) => {
                 cartQuantity: 1,
               })
             );
-           
           } else {
-           notify2()
+            notify2(); // Notificación de falta de stock
           }
         }
 
         setIsGreen(true);
       }
     } else {
-      notify();
+      notify1(); // Notificación de "Debes iniciar sesión"
     }
   };
 
@@ -95,11 +94,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
           <FaShoppingCart className={isGreen ? "text-green-800 " : ""} />
         </button>
       </div>
-      <Toaster
-   position="top-center"
-  reverseOrder={false}
-  width="500px" 
-/>
+      <Toaster/>
     </div>
   );
 };

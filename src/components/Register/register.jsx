@@ -3,7 +3,9 @@ import { postRegisterUser } from "../../redux/actions";
 import validate from "./validate";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css"; // Añade los estilos CSS
+
 function RegistroUsuario() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setErrors] = useState({});
@@ -18,7 +20,7 @@ function RegistroUsuario() {
     confirmarContraseña: "",
     codArea: "",
   });
-  const notify2 = () => toast.error('Ingrese bien los datos')
+  console.log(usuario);
   const passwordd = () => {
     setShowPassword(!showPassword);
   };
@@ -52,8 +54,9 @@ function RegistroUsuario() {
     if (Object.keys(validate === 0)) {
       await dispatch(postRegisterUser(usuario));
       cleanForm();
+      alert("Usario creado");
     } else {
-     notify2()
+      console.log("ERROR");
     }
     navigate("/login");
   };
@@ -173,18 +176,43 @@ function RegistroUsuario() {
             >
               Teléfono
             </label>
-            <input
-              autoComplete="off"
-              type="text"
-              id="phoneNumber"
-              name="phoneNumber"
-              value={usuario.phoneNumber}
-              onChange={handleChange}
-              className="bg-transparent border-b-2 border-white rounded-none px-3 py-2 w-full text-white focus:outline-none focus:border-black-300"
-              required
+            <PhoneInput
+             country={"ar"} // Establece el país predeterminado (puedes cambiarlo según tus necesidades)
+             value={usuario.phoneNumber} // Asigna el valor del teléfono desde el estado
+             onChange={(phoneNumber) => setUsuario({ ...usuario, phoneNumber })} // Actualiza el estado del teléfono cuando cambie
+             inputClass="bg-transparent  border-white rounded-none text-white focus:outline-none focus:border-black-300"
+             inputProps={{
+               name: "phoneNumber",
+               id: "phoneNumber",
+             }}
+              dropdownStyle={{
+                marginTop: "1rem",
+                border: "1px solid #ccc", // Borde de la lista de países
+                borderRadius: "0.25rem", 
+                backgroundColor: "black", 
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", 
+                zIndex: "9999", 
+              }}
+              inputStyle={{
+                width: "100%",
+                height: "2.5rem",
+                border: "2px solid #ffffff",
+                borderRadius: "0.25rem",
+                padding: "0.5rem",
+                fontSize: "1rem",
+                outline: "none",
+                backgroundColor: "transparent",
+                color: "#ffffff",
+                marginBottom: "1rem", // Espacio inferior
+                paddingLeft: "3rem", // Espacio izquierdo
+                paddingRight: "1rem", // Espacio derecho
+              }}
+              containerStyle={{
+                marginBottom: "1.5rem", // Mayor espacio inferior para el contenedor
+              }}    
             />
           </div>
-          <span>{error.phoneNumber}</span>
+
           <div className="mb-4">
             <label
               htmlFor="codArea"
@@ -252,10 +280,6 @@ function RegistroUsuario() {
               ¡Registrarme!
             </button>
           </div>
-          <Toaster
-          position="bottom-center"
-          reverseOrder={false}
-        />
         </form>
       </div>
     </div>

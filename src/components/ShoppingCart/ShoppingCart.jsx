@@ -10,6 +10,7 @@ import {
   clearCart,
 } from "../../redux/actions";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md"
+import toast, { Toaster } from "react-hot-toast";
 
 
 
@@ -21,6 +22,7 @@ const ShoppingCart = () => {
   console.log(MP)
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
+    toast.success("Vinilo eliminado correctamente")
   };
   //console.log(MP);
   //console.log(stateMP);
@@ -56,7 +58,11 @@ const ShoppingCart = () => {
         price: totalValue,
         units: cart.length,
       };
-      console.log(datos);
+      // cart.forEach((item) => {
+      //   const vinylId = item.id; // ID del vinilo
+      //   const stockReduction = item.cartQuantity; // Cantidad a reducir del stock
+      //   dispatch(updateVinyls(vinylId, stockReduction));
+      // });
       dispatch(postMP(datos));
       if (MP.length > 0) {
         window.location.href = MP;
@@ -145,6 +151,7 @@ const ShoppingCart = () => {
             </button>
           </div>
         </div>
+        <Toaster/>
       </div>
     </div>
   );
