@@ -22,12 +22,12 @@ import {
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
 import seedrandom from "seedrandom";
+import {carImage} from "../cloudinary/carouselImages"
 
 const Home = () => {
   const dispatch = useDispatch();
-  const vinyls = useSelector((state) => state.allVinyls);
-  const vinyl = useSelector((state) => state.vinilos);
-  //trayendo info.
+  const vinyls = useSelector((state) => state.allVinyls); //trayendo info.
+  const vinyl = useSelector((state) => state.vinyls)
   const [currentPage, setCurrentPage] = useState(1);
   const [filterGener, setFilterGener] = useState("");
   const [filterDecad, setFilterDecad] = useState("");
@@ -182,55 +182,15 @@ const Home = () => {
               modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel2.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px]"
-                  src="/carrusel3.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px]"
-                  src="/carrusel1.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel5.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px]"
-                  src="/carrusel2.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel3.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel5.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
+              {carImage.map((image) => (
+                <SwiperSlide key={image.id}>
+                  <img
+                    className="w-[100%] h-[420px]"
+                    src={`https://res.cloudinary.com/duclhjrri/image/upload/${image.cloudinaryName}.jpg`}
+                    alt={image.alt}
+                  />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
@@ -239,7 +199,6 @@ const Home = () => {
             LISTA DE VINILOS
           </h1>
         </div>
-
         <div className="md:w-[100%] xl:h-[70vh] xl:flex xl:flex-row  md:flex-col md:h-[80vh]">
           <div className="xl:w-[20%] xl:h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:h-[10vh]">
             <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row md:justify-between md:mb-20 md:mt-[-10px]">
