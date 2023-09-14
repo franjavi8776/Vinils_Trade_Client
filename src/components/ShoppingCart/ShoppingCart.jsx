@@ -157,20 +157,24 @@ const ShoppingCart = () => {
           </div>
         </div>
         {showConfirmation && (
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 h-[100px] w-[530px] -translate-y-1/2 flex items-center text-black from-red-700 to-red-950 p-4 border border-gray-300 shadow-lg z-50 dark:text-white">
-            <p>¿Estás seguro de que deseas finalizar la compra?</p>
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white  font-bold py-2 px-4 rounded mr-2"
-              onClick={handleMP}
-            >
-              Sí
-            </button>
-            <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => setShowConfirmation(false)}
-            >
-              No
-            </button>
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 h-[100px] w-[530px] -translate-y-1/2 flex flex-col items-center text-black from-red-700 to-red-950 p-4 border border-gray-300 shadow-lg z-50 dark:text-white">
+            <p className="mb-4">
+              ¿Estás seguro de que deseas finalizar la compra?
+            </p>
+            <div className="space-x-4">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white  font-bold py-2 px-4 rounded mr-2"
+                onClick={handleMP}
+              >
+                Sí
+              </button>
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => setShowConfirmation(false)}
+              >
+                No
+              </button>
+            </div>
           </div>
         )}
       </div>

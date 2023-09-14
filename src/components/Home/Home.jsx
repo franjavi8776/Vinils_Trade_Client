@@ -22,6 +22,7 @@ import {
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
 import seedrandom from "seedrandom";
+import {carImage} from "../cloudinary/carouselImages"
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -69,7 +70,6 @@ const Home = () => {
       if (window.innerWidth < 862) {
         setPageSize(4);
       }
-
     };
 
     // Escuchar cambios en el tamaño de la pantalla
@@ -182,55 +182,15 @@ const Home = () => {
               modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel2.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px]"
-                  src="/carrusel3.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px]"
-                  src="/carrusel1.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel5.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px]"
-                  src="/carrusel2.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel3.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="w-[100%] h-[420px] "
-                  src="/carrusel5.jpg"
-                  alt="image"
-                />
-              </SwiperSlide>
+              {carImage.map((image) => (
+                <SwiperSlide key={image.id}>
+                  <img
+                    className="w-[100%] h-[420px]"
+                    src={`https://res.cloudinary.com/duclhjrri/image/upload/${image.cloudinaryName}.jpg`}
+                    alt={image.alt}
+                  />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
@@ -240,11 +200,8 @@ const Home = () => {
           </h1>
         </div>
         <div className="xl:w-[100%] xl:h-[70vh] xl:flex xl:flex-row lg:w-[100%] lg:flex-col">
-
           <div className="xl:w-[20%] xl:h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:h-[10vh]">
             <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row md:justify-between md:mb-20 md:mt-[-10px]">
-
-
               <select
                 onChange={handleFilter}
                 className="bg-black text-white p-2 rounded  dark:bg-slate-200 dark:text-black"
