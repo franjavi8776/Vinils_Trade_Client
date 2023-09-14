@@ -170,7 +170,7 @@ const Home = () => {
           <div className="lg:w-[40%] lg:h-[420px]">
             <VideoPlayer />
           </div>
-          <div className="lg:w-[60%] lg:h-[420px] lg:block sm:hidden">
+          <div className="lg:w-[60%] lg:h-[420px] lg:block hidden">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -240,9 +240,9 @@ const Home = () => {
           </h1>
         </div>
 
-        <div className="md:w-[100%] xl:h-[70vh] xl:flex xl:flex-row  md:flex-col md:h-[80vh]">
-          <div className="xl:w-[20%] xl:h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:h-[10vh]">
-            <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row md:justify-between md:mb-20 md:mt-[-10px]">
+        <div className="md:w-[100%] xl:flex xl:flex-row  md:flex-col md:min-h-[70vh]">
+          <div className="xl:w-[20%] xl:min-h-[70vh] xl:flex xl:items-center lg:w-[100%] lg:min-h-[12vh]">
+            <div className="xl:w-[70%] xl:m-auto xl:flex xl:flex-col xl:gap-20 md:w-[90%] md:m-auto md:flex md:flex-row  md:justify-between md:mb-20 md:mt-[-10px] w-[60%] m-auto flex flex-col gap-4 mb-4">
               <select
                 onChange={handleFilter}
                 className="bg-black text-white p-2 rounded  dark:bg-slate-200 dark:text-black"
@@ -287,8 +287,8 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <div className="xl:w-[78%] xl:h-[70vh] xl:flex items-center lg:w-[90%] lg:m-auto">
-            <div className="w-[100%] h-[70vh] flex items-center">
+          <div className="xl:w-[78%] xl:min-h-[70vh] xl:flex items-center lg:w-[90%] lg:min-h-[70vh] lg:m-auto">
+            <div className="w-[100%] min-h-[70vh] flex items-center ">
               <div className="w-[5%]">
                 {currentPage > 1 && (
                   <button onClick={handlePreviousPage}>
@@ -297,7 +297,7 @@ const Home = () => {
                 )}
               </div>
 
-              <div className="w-[90%] h-[70vh] flex flex-wrap justify-center gap-5">
+              <div className="w-[90%] min-h-[70vh] flex flex-wrap justify-center gap-5">
                 {VinylsToRender.map((vinyls) => (
                   <Card
                     key={vinyls.id}

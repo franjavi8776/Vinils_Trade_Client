@@ -63,6 +63,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allVinyls: [...state.allVinyls, action.payload],
+        vinyls: [...state.allVinyls, action.payload],
       };
 
     case FILTER_BY_DECADE:
@@ -216,7 +217,7 @@ const reducer = (state = initialState, action) => {
     case ORDER_FOR_GENRE:
       return {
         ...state,
-        allVinyls: state.vinyls.filter((vinyl) =>
+        allVinyls: state.allVinyls.filter((vinyl) =>
           vinyl.genre.includes(action.payload)
         ),
       };
