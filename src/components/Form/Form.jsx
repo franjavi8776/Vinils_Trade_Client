@@ -3,7 +3,7 @@ import { validateVinylsForm } from "./validate";
 import { useDispatch } from "react-redux";
 import { postVinyls } from "../../redux/actions";
 import { useLocalStorage } from "../LocalStorage/useLocalStorage";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 const Form = () => {
   const localStorageKey = "vinylsFormData";
@@ -80,17 +80,15 @@ const Form = () => {
 
     dispatch(postVinyls(vinyls));
 
-    toast('Se creo exitosamente',
-    {
-      icon: '👏',
+    toast("Se creo exitosamente", {
+      icon: "👏",
       style: {
-        borderRadius: '10px',
-        background: 'white',
-        color: 'red',
+        borderRadius: "10px",
+        background: "white",
+        color: "red",
       },
-    }
-  );
-    
+    });
+
     setVinyls({
       title: "",
       artists: [{ name: "" }],
@@ -110,9 +108,9 @@ const Form = () => {
   }, [vinyls]);
 
   return (
-    <div className="w-[100%] min-h-screen flex justify-center items-center">
+    <div className="w-[90%] m-auto lg:w-[100%] min-h-screen flex justify-center items-center">
       <div className="w-[500px] h-auto bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg text-white rounded-lg shadow-lg shadow-black overflow-hidden mt-8">
-        <form onSubmit={handlerSubmit} className="max-w-md mx-auto mt-4">
+        <form onSubmit={handlerSubmit} className="max-w-md mx-auto mt-4 p-2">
           <div className="mb-4 ">
             <label className="block mb-1">Titulo:</label>
             <input
@@ -252,7 +250,7 @@ const Form = () => {
               Guardar Vinilo
             </button>
           </div>
-          <Toaster/>
+          <Toaster />
         </form>
       </div>
     </div>

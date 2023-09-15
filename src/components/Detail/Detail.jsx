@@ -78,16 +78,16 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <div className="w-[100%] h-[85vh] flex justify-center items-center">
-      <div className="mr-[-90px] z-0">
+    <div className="w-[90%] ml-5 mt-5 pb-5 lg:mt-0 lg:pb-0 lg:ml-0 lg:w-[100%] min-h-[85vh] flex justify-center items-center">
+      <div className="hidden lg:flex lg:mr-[-90px] :z-0">
         <img
-          className={`rounded-full w-[400px] h-[400px] mt-[35%] ${style["animate-spin"]}`}
+          className={`lg:flex lg:rounded-full lg:w-[400px] lg:h-[400px] lg:mt-[35%] ${style["animate-spin"]}`}
           src="/disco2.jpg"
           alt="disco"
         />
       </div>
-      <div className="z-50">
-        <div className="w-[500px] h-[730px] bg-gradient-to-r from-red-700 to-red-950  animate-gradient-bg rounded-lg shadow-lg shadow-black overflow-hidden">
+      <div className="z-0">
+        <div className="w-[360px] h-[730px] sm:w-[500px] sm:h-[730px] bg-gradient-to-r from-red-700 to-red-950  animate-gradient-bg rounded-lg shadow-lg shadow-black overflow-hidden">
           <div className=" bg-black bg-opacity-90 p-4">
             <p className=" text-sm  text-white">ID: {detail.id}</p>
           </div>

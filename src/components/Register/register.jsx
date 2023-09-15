@@ -62,8 +62,8 @@ function RegistroUsuario() {
   };
 
   return (
-    <div className="h-[100vh] flex items-center justify-center">
-      <div className="bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg w-[650px] shadow-lg shadow-black">
+    <div className="w-[100%] min-h-[100vh] flex items-center justify-center">
+      <div className="w-[360px] bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg lg:w-[650px] shadow-lg shadow-black mt-5 mb-5 lg:mt-0 lg:mb-0">
         <h2 className="text-3xl font-extrabold text-white mb-8">
           ¡Regístrate Ahora!
         </h2>
@@ -177,21 +177,23 @@ function RegistroUsuario() {
               Teléfono
             </label>
             <PhoneInput
-             country={"ar"} // Establece el país predeterminado (puedes cambiarlo según tus necesidades)
-             value={usuario.phoneNumber} // Asigna el valor del teléfono desde el estado
-             onChange={(phoneNumber) => setUsuario({ ...usuario, phoneNumber })} // Actualiza el estado del teléfono cuando cambie
-             inputClass="bg-transparent  border-white rounded-none text-white focus:outline-none focus:border-black-300"
-             inputProps={{
-               name: "phoneNumber",
-               id: "phoneNumber",
-             }}
+              country={"ar"} // Establece el país predeterminado (puedes cambiarlo según tus necesidades)
+              value={usuario.phoneNumber} // Asigna el valor del teléfono desde el estado
+              onChange={(phoneNumber) =>
+                setUsuario({ ...usuario, phoneNumber })
+              } // Actualiza el estado del teléfono cuando cambie
+              inputClass="bg-transparent  border-white rounded-none text-white focus:outline-none focus:border-black-300"
+              inputProps={{
+                name: "phoneNumber",
+                id: "phoneNumber",
+              }}
               dropdownStyle={{
                 marginTop: "1rem",
                 border: "1px solid #ccc", // Borde de la lista de países
-                borderRadius: "0.25rem", 
-                backgroundColor: "black", 
-                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", 
-                zIndex: "9999", 
+                borderRadius: "0.25rem",
+                backgroundColor: "black",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                zIndex: "9999",
               }}
               inputStyle={{
                 width: "100%",
@@ -209,7 +211,7 @@ function RegistroUsuario() {
               }}
               containerStyle={{
                 marginBottom: "1.5rem", // Mayor espacio inferior para el contenedor
-              }}    
+              }}
             />
           </div>
 
