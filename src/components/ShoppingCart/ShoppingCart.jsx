@@ -19,7 +19,7 @@ const ShoppingCart = () => {
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
   // const stateMP = useSelector((state) => state.stateMP)
-  console.log(MP);
+  //console.log(MP);
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
     toast.success("Vinilo eliminado correctamente");
@@ -81,10 +81,10 @@ const ShoppingCart = () => {
 
   return (
     <div
-      className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center"
+      className="w-[100%]  h-[100vh] bg-black bg-opacity-70 flex justify-center items-center"
       style={{ zIndex: 2 }}
     >
-      <div className="w-[700px] h-[800px] bg-white  relative z-50 dark:bg-black ">
+      <div className="w-[360px] sm:w-[500px] h-[800px] md:w-[700px] md:h-[800px] bg-white  relative z-50 dark:bg-black ">
         <h1 className="text-center mt-4 font-bold">CARRITO DE COMPRAS</h1>
         <button
           onClick={handlerButtom}
@@ -92,7 +92,7 @@ const ShoppingCart = () => {
         >
           X
         </button>
-        <ul className="w-[700px] h-[630px] overflow-y-auto">
+        <ul className="w-[360px] sm:w-[500px] md:w-[700px] md:h-[630px] overflow-y-auto">
           {cart.length ? (
             cart.map((item) => (
               <div
@@ -134,7 +134,7 @@ const ShoppingCart = () => {
               </div>
             ))
           ) : (
-            <div className=" flex flex-col justify-center items-center w-[700px] h-[630px]">
+            <div className=" flex flex-col justify-center items-center w-[360px] sm:w-[500px] md:w-[700px] h-[630px]">
               <MdOutlineRemoveShoppingCart className="w-[150px] h-[150px] text-red-800" />
               <div className="font-bold text-xl">Carrito vacio</div>
             </div>
