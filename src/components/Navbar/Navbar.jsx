@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 import "./Navbar.css";
 
-
 const Navbar = ({ updateHtmlClass }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -95,6 +94,12 @@ const Navbar = ({ updateHtmlClass }) => {
               className="mt-20 lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
             >
               Publicar
+            </Link>
+            <Link
+              to="/dashboard"
+              className="mt-20 lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
+            >
+              Dashboard
             </Link>
             <Link
               to="/"
