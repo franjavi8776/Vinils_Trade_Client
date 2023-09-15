@@ -253,7 +253,7 @@ const Home = () => {
               <div className="w-[5%]">
                 {currentPage > 1 && (
                   <button onClick={handlePreviousPage}>
-                    <MdKeyboardDoubleArrowLeft className="text-[50px]" />
+                    <MdKeyboardDoubleArrowLeft className="hidden sm:flex text-[50px]" />
                   </button>
                 )}
               </div>
@@ -274,7 +274,7 @@ const Home = () => {
               <div className="w-[5%] flex justify-center">
                 {currentPage < totalPages && (
                   <button onClick={handleNextPage}>
-                    <MdKeyboardDoubleArrowRight className="text-[50px]" />
+                    <MdKeyboardDoubleArrowRight className="hidden sm:flex  text-[50px]" />
                   </button>
                 )}
               </div>
@@ -302,7 +302,7 @@ const Home = () => {
           </h1>
         </div>
         <div className="w-[100%] h-auto flex items-center">
-          <div className="w-[15%] h-auto flex justify-center items-center text-red-700 text-4xl font-bold transform -rotate-45">
+          <div className="w-[15%] ml-2 lg:ml-0 h-auto flex justify-center items-center text-red-700 text:lg sm:text-4xl font-bold transform -rotate-45">
             50% OFF
           </div>
           <div className="w-[70%] h-auto flex flex-wrap justify-center items-center gap-5">
@@ -318,7 +318,7 @@ const Home = () => {
               />
             ))}
           </div>
-          <div className="w-[15%] h-auto flex justify-center items-center text-red-700 text-4xl font-bold transform -rotate-45">
+          <div className="w-[15%] h-auto flex justify-center items-center text-red-700 text:lg sm:text-4xl  font-bold transform -rotate-45">
             50% OFF
           </div>
         </div>

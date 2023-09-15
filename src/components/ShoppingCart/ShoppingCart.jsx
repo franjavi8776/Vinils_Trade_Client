@@ -10,7 +10,7 @@ import {
   failureMP,
   clearCart,
 } from "../../redux/actions";
-import { MdOutlineRemoveShoppingCart } from "react-icons/md"
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import toast, { Toaster } from "react-hot-toast";
 
 const ShoppingCart = () => {
@@ -19,10 +19,10 @@ const ShoppingCart = () => {
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
   // const stateMP = useSelector((state) => state.stateMP)
-  console.log(MP)
+  console.log(MP);
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
-    toast.success("Vinilo eliminado correctamente")
+    toast.success("Vinilo eliminado correctamente");
   };
   //console.log(MP);
   //console.log(stateMP);
@@ -45,14 +45,6 @@ const ShoppingCart = () => {
   );
 
   const handleShowConfirmation = () => {
-    setShowConfirmation(true);
-  };
-
-  // const units = cart.length;
-
-  //console.log(datos);
-
-  const handleMP = () => {
     if (cart.length > 0) {
       const datos = {
         title: "Vinyls-Trade",
@@ -66,13 +58,15 @@ const ShoppingCart = () => {
       // });
       dispatch(postMP(datos));
       if (MP.length > 0) {
-        // Redirigir al usuario a Mercado Pago
-        window.location.href = MP;
-
-        // Restablecer el estado de showConfirmation
         setShowConfirmation(false);
       }
     }
+
+    setShowConfirmation(true);
+  };
+
+  const handleMP = () => {
+    window.location.href = MP;
   };
 
   // if(succesMP) {
@@ -163,7 +157,7 @@ const ShoppingCart = () => {
             </button>
           </div>
         </div>
-        <Toaster/>
+        <Toaster />
         {showConfirmation && (
           <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 h-[100px] w-[530px] -translate-y-1/2 flex flex-col items-center text-black from-red-700 to-red-950 p-4 border border-gray-300 shadow-lg z-50 dark:text-white">
             <p className="mb-4">
