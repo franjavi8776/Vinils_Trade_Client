@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Search from "../Search/Search";
 import { Link } from "react-router-dom";
 import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { GoX } from "react-icons/go";
 import "./Navbar.css";
 
 const Navbar = ({ updateHtmlClass }) => {
@@ -45,7 +47,7 @@ const Navbar = ({ updateHtmlClass }) => {
       <div
         className={`sticky top-0 ${navbarClass} text-white lg:w-[100%] h-[6vh] lg:flex z-10`}
       >
-        <div className="lg:hidden w-full flex justify-between pl-3">
+        <div className="lg:hidden w-full h-[6vh] flex justify-between items-center p-3">
           <button onClick={toggleDarkMode} className="lg:flex">
             {darkMode ? (
               <BsFillSunFill className="text-2xl text-yellow-500" />
@@ -56,24 +58,12 @@ const Navbar = ({ updateHtmlClass }) => {
           <div className="w-[80%] flex justify-center items-center ">
             <Search />
           </div>
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 focus:outline-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-9 w-9"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? (
+              <GoX className="w-8 h-8 font-bold" />
+            ) : (
+              <RxHamburgerMenu className="w-8 h-8 " />
+            )}
           </button>
         </div>
         <div
@@ -81,7 +71,7 @@ const Navbar = ({ updateHtmlClass }) => {
             mobileMenuOpen ? "block" : "hidden"
           }`}
         >
-          <div className="flex flex-col items-center lg:w-[40%] lg:flex lg:flex-row lg:justify-center lg:items-center xl:gap-20 lg:gap-10 ">
+          <div className="h-[96vh] flex flex-col items-center bg-black bg-opacity-80 lg:w-[40%] lg:h-[6vh] lg:flex lg:flex-row lg:justify-center lg:items-center xl:gap-20 lg:gap-10 lg:bg-transparent lg:text-md">
             <button onClick={toggleDarkMode} className="hidden lg:flex">
               {darkMode ? (
                 <BsFillSunFill className="text-2xl text-yellow-500" />
@@ -90,20 +80,22 @@ const Navbar = ({ updateHtmlClass }) => {
               )}
             </button>
             <Link
+              onClick={() => setMobileMenuOpen(false)}
               to="/form"
-              className="mt-20 lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
+              className="mt-40 lg:m-4  lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
             >
               Publicar
             </Link>
             <Link
               to="/dashboard"
-              className="mt-20 lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
+              className="mt-40 lg:m-4  lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md"
             >
               Dashboard
             </Link>
             <Link
+              onClick={() => setMobileMenuOpen(false)}
               to="/"
-              className="mt-20 text-green-500 lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
+              className="mt-40 k lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
               lg:text-md"
             >
               Home
