@@ -21,6 +21,8 @@ import {
   PENDIGN_MP,
   FAILURE_MP,
   CLEAR_CART,
+  USERS_SUCCESS,
+  DISABLE_USER,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -32,7 +34,7 @@ const initialState = {
   isAuthenticated: false,
   token: localStorage.getItem("token") || null,
   error: null,
-  user:null,
+  user: null,
   cartState: false,
   cartItems: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
@@ -46,6 +48,7 @@ const initialState = {
     failure: null,
     pending: null,
   },
+  users: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -86,31 +89,45 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
-
-      case ADD_TO_CART:
-        const addedItem = state.vinyls.find((vinyl) => vinyl.id === action.payload.id);
-        if (!addedItem) {
-          return state; // El vinilo no existe, no hacemos nada
-        }
-  
-        const updatedVinyls = state.vinyls.map((vinyl) => {
-          if (vinyl.id === action.payload.id) {
-            return {
-              ...vinyl,
-              stock: vinyl.stock - 1, // Reduce el stock
-            };
-          }
-          return vinyl;
-        });
-  
-        localStorage.setItem("cart", JSON.stringify([...state.cartItems, action.payload]));
-  
+      case USERS_SUCCESS:
         return {
           ...state,
-          cartItems: [...state.cartItems, action.payload],
-          vinyls: updatedVinyls,
+          users: action.payload,
         };
-  
+    case DISABLE_USER:
+      const userId = action.payload;
+      const updatedUsers = state.users.map((user) =>
+        user.id === userId ? { ...user, disabled: true } : user
+      );
+      return {
+        ...state,
+        users: updatedUsers,
+      };
+
+    case ADD_TO_CART:
+      const addedItem = state.vinyls.find((vinyl) => vinyl.id === action.payload.id);
+      if (!addedItem) {
+        return state; // El vinilo no existe, no hacemos nada
+      }
+
+      const updatedVinyls = state.vinyls.map((vinyl) => {
+        if (vinyl.id === action.payload.id) {
+          return {
+            ...vinyl,
+            stock: vinyl.stock - 1, // Reduce el stock
+          };
+        }
+        return vinyl;
+      });
+
+      localStorage.setItem("cart", JSON.stringify([...state.cartItems, action.payload]));
+
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload],
+        vinyls: updatedVinyls,
+      };
+
 
     case CLEAR_CART:
       localStorage.removeItem("cart");
@@ -170,71 +187,71 @@ const reducer = (state = initialState, action) => {
         stateMP: { ...state.stateMP, failure: action.payload },
       };
 
-      case REMOVE_FROM_CART:
-        const removeItemId = action.payload;
-        const removedItem = state.cartItems.find((item) => item.id === removeItemId);
-        if (!removedItem) {
-          return state; // El elemento no existe en el carrito, no hacemos nada
-        }
-  
-        const updatedVinylsAfterRemove = state.vinyls.map((vinyl) => {
-          if (vinyl.id === removedItem.id) {
-            return {
-              ...vinyl,
-              stock: vinyl.stock + removedItem.cartQuantity, // Restaura el stock
-            };
-          }
-          return vinyl;
-        });
-  
-        const updatedCartItemsAfterRemove = state.cartItems.filter(
-          (item) => item.id !== removeItemId
-        );
-  
-        localStorage.setItem("cart", JSON.stringify(updatedCartItemsAfterRemove));
-  
-        return {
-          ...state,
-          cartItems: updatedCartItemsAfterRemove,
-          vinyls: updatedVinylsAfterRemove,
-        };
+    case REMOVE_FROM_CART:
+      const removeItemId = action.payload;
+      const removedItem = state.cartItems.find((item) => item.id === removeItemId);
+      if (!removedItem) {
+        return state; // El elemento no existe en el carrito, no hacemos nada
+      }
 
-        case INCREASE_ITEM:
-          const increasedCartItems = state.cartItems.map((item) => {
-            if (item.id === action.payload.id) {
-              // Verifica que el stock no sea menor que la cantidad en el carrito
-              item.cartQuantity += 1;
-              item.stock -= 1; // Reduce el stock
-            }
-            return item;
-          });
-        
-          localStorage.setItem("cart", JSON.stringify(increasedCartItems));
-        
+      const updatedVinylsAfterRemove = state.vinyls.map((vinyl) => {
+        if (vinyl.id === removedItem.id) {
           return {
-            ...state,
-            cartItems: increasedCartItems,
+            ...vinyl,
+            stock: vinyl.stock + removedItem.cartQuantity, // Restaura el stock
           };
-        
-        case DECREASE_ITEM:
-          const decreasedCartItems = state.cartItems.map((item) => {
-            if (item.id === action.payload.id) {
-              // Verifica que la cantidad en el carrito sea mayor que 1 antes de disminuir
-              if (item.cartQuantity > 1) {
-                item.cartQuantity -= 1;
-                item.stock += 1; // Aumenta el stock
-              }
-            }
-            return item;
-          });
-        
-          localStorage.setItem("cart", JSON.stringify(decreasedCartItems));
-        
-          return {
-            ...state,
-            cartItems: decreasedCartItems,
-          };
-        
+        }
+        return vinyl;
+      });
+
+      const updatedCartItemsAfterRemove = state.cartItems.filter(
+        (item) => item.id !== removeItemId
+      );
+
+      localStorage.setItem("cart", JSON.stringify(updatedCartItemsAfterRemove));
+
+      return {
+        ...state,
+        cartItems: updatedCartItemsAfterRemove,
+        vinyls: updatedVinylsAfterRemove,
+      };
+
+    case INCREASE_ITEM:
+      const increasedCartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          // Verifica que el stock no sea menor que la cantidad en el carrito
+          item.cartQuantity += 1;
+          item.stock -= 1; // Reduce el stock
+        }
+        return item;
+      });
+
+      localStorage.setItem("cart", JSON.stringify(increasedCartItems));
+
+      return {
+        ...state,
+        cartItems: increasedCartItems,
+      };
+
+    case DECREASE_ITEM:
+      const decreasedCartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          // Verifica que la cantidad en el carrito sea mayor que 1 antes de disminuir
+          if (item.cartQuantity > 1) {
+            item.cartQuantity -= 1;
+            item.stock += 1; // Aumenta el stock
+          }
+        }
+        return item;
+      });
+
+      localStorage.setItem("cart", JSON.stringify(decreasedCartItems));
+
+      return {
+        ...state,
+        cartItems: decreasedCartItems,
+      };
+
     case ORDER_FOR_GENRE:
       return {
         ...state,

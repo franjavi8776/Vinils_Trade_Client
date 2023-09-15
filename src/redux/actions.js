@@ -26,7 +26,9 @@ export const PENDIGN_MP = "PENDIGN_MP";
 export const CLEAR_CART = "CLEAR_CART";
 export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
-export const UPDATE_VINYLS = "UPDATE_VINYLS"
+export const UPDATE_VINYLS = "UPDATE_VINYLS";
+export const USERS_SUCCESS = "USERS_SUCCESS";
+export const DISABLE_USER = "DISABLE_USER";
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -80,6 +82,27 @@ export const postRegisterUser = (x) => {
     }
   };
 };
+
+export const disableUser = (userId) => ({
+  type: DISABLE_USER,
+  payload: userId,
+});
+
+export const getUsersAndSuccess = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios("https://vinyls-trade-back-production.up.railway.app/users");
+      console.log(data)
+      dispatch({
+        type: USERS_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      console.error("Error al obtener la lista de usuarios: ", err);
+    }
+  };
+}
+
 export const getVinylsForName = (title) => {
   return async function (dispatch) {
     try {
