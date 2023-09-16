@@ -13,19 +13,21 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="w-full h-[95vh] flex justify-center items-center gap-48 ">
-        <div className="w-[200px] h-[200px] bg-slate-400 shadow-lg shadow-black text-3xl flex flex-col justify-center items-center cursor-pointer active:translate-x-1 active:scale-95 gap-1">
-          <h1>USUARIOS</h1>
-          <buttom>
-            <BiUserCircle className="w-24 h-24" />
-          </buttom>
-        </div>
+        <Link to="/usarios">
+          <div className="w-[200px] h-[200px] bg-slate-400 shadow-lg shadow-black text-3xl flex flex-col justify-center items-center cursor-pointer active:translate-x-1 active:scale-95 gap-1">
+            <h1>USUARIOS</h1>
+            <buttom>
+              <BiUserCircle className="w-24 h-24" />
+            </buttom>
+          </div>
+        </Link>
         <Link to="/vinylsDash">
-        <div className="w-[200px] h-[200px] bg-slate-400 shadow-lg shadow-black text-3xl flex flex-col justify-center gap-3 items-center cursor-pointer active:translate-x-1 active:scale-95">
-          <h1>VINILOS</h1>
-          <buttom>
-            <BsDiscFill className="w-20 h-20" />
-          </buttom>
-        </div>
+          <div className="w-[200px] h-[200px] bg-slate-400 shadow-lg shadow-black text-3xl flex flex-col justify-center gap-3 items-center cursor-pointer active:translate-x-1 active:scale-95">
+            <h1>VINILOS</h1>
+            <buttom>
+              <BsDiscFill className="w-20 h-20" />
+            </buttom>
+          </div>
         </Link>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 
 const VinylsDash = () => {
   const vinyls = useSelector((state) => state.vinyls);
+  console.log(vinyls)
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
 
@@ -116,6 +117,3 @@ const VinylsDash = () => {
 };
 
 export default VinylsDash;
-
-
-
