@@ -97,11 +97,11 @@ const VinylsDash = () => {
   const filteredVinyls = vinyls.filter((vinyl) =>
     vinyl.title.toLowerCase().includes(filterText.toLowerCase())
   );
-
+console.log(filterText)
   return (
-    <div className="flex flex-col w-full h-full md:flex-row">
-      <div className="md:w-full p-4">
-        <h1 className="mb-4 text-xl font-bold">Vinilos</h1>
+    <div className="flex flex-col w-full h-full justify-center items-center md:flex-row">
+      <div className="md:w-full p-4 justify-center text-center items-center">
+        <h1 className=" items-center text-center mb-4 text-xl font-bold">Vinilos</h1>
         <input
           type="text"
           placeholder="Buscar por nombre"
@@ -109,7 +109,8 @@ const VinylsDash = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        <DataTable columns={columns} data={filteredVinyls} pagination />
+   <DataTable columns={columns} data={filteredVinyls} pagination className="w-1/2 text-sm" />
+
       </div>
     </div>
   );

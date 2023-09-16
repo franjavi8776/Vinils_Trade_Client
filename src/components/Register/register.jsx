@@ -4,6 +4,7 @@ import validate from "./validate";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
+import toast, { Toaster } from 'react-hot-toast';
 import "react-phone-input-2/lib/style.css"; // Añade los estilos CSS
 
 function RegistroUsuario() {
@@ -54,7 +55,16 @@ function RegistroUsuario() {
     if (Object.keys(validate === 0)) {
       await dispatch(postRegisterUser(usuario));
       cleanForm();
-      alert("Usario creado");
+      tostada ( 'Bienvenido' ,
+      {
+        icono : '👏' , 
+        estilo : { 
+          radioborde : '10px' , 
+          fondo : 'white' , 
+          color : '#fff' , 
+        } ,
+      }
+    ) ;
     } else {
       console.log("ERROR");
     }
@@ -283,6 +293,7 @@ function RegistroUsuario() {
             </button>
           </div>
         </form>
+        <Toaster/>
       </div>
     </div>
   );
