@@ -23,6 +23,7 @@ import {
   CLEAR_CART,
   USERS_SUCCESS,
   DISABLE_USER,
+  ADMINS_SUCCESS,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -49,6 +50,7 @@ const initialState = {
     pending: null,
   },
   users: [],
+  admins: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -94,6 +96,12 @@ const reducer = (state = initialState, action) => {
           ...state,
           users: action.payload,
         };
+        case ADMINS_SUCCESS:
+          return{
+            ...state,
+            users: action.payload,
+            admins: action.payload,
+          }
     case DISABLE_USER:
       const userId = action.payload;
       const updatedUsers = state.users.map((user) =>

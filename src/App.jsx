@@ -25,21 +25,21 @@ function App() {
 
   return (
     <div className=" dark:text-white dark:bg-black dark:bg-opacity-80 duration-100">
-      {location.pathname !== "/dashboard" && (
-        <Navbar updateHtmlClass={updateHtmlClass} />
-      )}
+      {location.pathname !== "/dashboard" && !location.pathname.startsWith("/usarios") && !location.pathname.startsWith("/vinylsDash") && (<Navbar updateHtmlClass={updateHtmlClass} />)}
 
       <Routes>
+        // rutas de users
         <Route path="/register" element={<RegistroUsuario />} />
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/form" element={<Form />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        // Admins
+        <Route path="/form" element={<Form />} />
+        <Route path="/dashboard" element={<Dashboard />} /> 
         <Route path="/usarios" element={<Users/>} />
+        <Route path="/vinylsDash" element={<VinylsDash/>} />
         
         <Route path="*" element={<Error />} />
-        <Route path="/vinylsDash" element={<VinylsDash/>} />
       </Routes>
     </div>
   );

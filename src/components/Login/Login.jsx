@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserByEmail } from "../../redux/actions.js";
+import { loginUserByEmail, getAdmins, getUsersAndSuccess } from "../../redux/actions.js";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { initializeApp } from "firebase/app";
@@ -15,10 +15,16 @@ function Login() {
 
   const dispatch = useDispatch();
   const authe = useSelector((state) => state.isAuthenticated);
-
+  const user = useSelector((state) => state.users)
+  console.log()
   // const token = useSelector((state) => state.token);
   // console.log(token);
-
+  
+  
+  const filtro = user.filter((us) => {
+    return us.isAdmin === true && email === us.email
+  })
+  
   const navigate = useNavigate(); // Utilizamos useNavigate para la navegación
 
   const notify1 = (message, type) => {
@@ -44,6 +50,14 @@ function Login() {
 
   const handleEmailLogin = async () => {
     dispatch(loginUserByEmail({ email, password }));
+    dispatch(getUsersAndSuccess());
+    dispatch(getAdmins())
+    if(filtro.length === 1) {
+      navigate("/dashboard")
+    } else {
+      navigate("/")
+    }
+
     if (authe === false) {
       notify1("Complete el formulario", "error"); // Utilizamos notify1 en lugar de toast.error
     }
@@ -53,13 +67,14 @@ function Login() {
       toast.success("Inicio de sesión exitoso", {
         duration: 2000, // Duración en milisegundos (2 segundos)
       });
-
+      
       // Redirige a la página de inicio después del inicio de sesión exitoso
-      setTimeout(() => {
-        navigate("/");
-      }, 2000); // Redirige después de 2 segundos (igual que la duración de la notificación)
+      // setTimeout(() => {
+      //   navigate("/");
+      // }, 2000); // Redirige después de 2 segundos (igual que la duración de la notificación)
     }
   }, [authe, navigate]);
+
 
   const firebaseConfig = {
     apiKey: "AIzaSyC1-NuZIpLvp1OQvuEx2NJe5uYkbPzg_rk",
