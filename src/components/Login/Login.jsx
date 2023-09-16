@@ -73,7 +73,7 @@ function Login() {
       //   navigate("/");
       // }, 2000); // Redirige después de 2 segundos (igual que la duración de la notificación)
     }
-  }, [authe, navigate]);
+  }, [authe]);
 
 
   const firebaseConfig = {
