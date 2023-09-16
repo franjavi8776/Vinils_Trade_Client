@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import RegistroUsuario from "./components/Register/register";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Users from "./components/UserList/UserList"
+import VinylsDash from "./components/Dashboard/vinylsDash";
 
 function App() {
   const updateHtmlClass = (darkMode) => {
@@ -35,9 +36,10 @@ function App() {
         <Route path="/form" element={<Form />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/usarios" element={<Users/>} />
+        <Route path="/usarios" element={<Users/>} />
         
         <Route path="*" element={<Error />} />
+        <Route path="/vinylsDash" element={<VinylsDash/>} />
       </Routes>
     </div>
   );
