@@ -67,6 +67,7 @@ const UserList = () => {
     dispatch(getUsersAndSuccess());
   }, [dispatch]);
 
+  // tabla 
   const columns = [
     {
       name: "id",
