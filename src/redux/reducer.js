@@ -91,17 +91,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
-      case USERS_SUCCESS:
-        return {
-          ...state,
-          users: action.payload,
-        };
-        case ADMINS_SUCCESS:
-          return{
-            ...state,
-            users: action.payload,
-            admins: action.payload,
-          }
+    case USERS_SUCCESS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case ADMINS_SUCCESS:
+      return {
+        ...state,
+        users: action.payload,
+        admins: action.payload,
+      };
     case DISABLE_USER:
       const userId = action.payload;
       const updatedUsers = state.users.map((user) =>
@@ -113,7 +113,9 @@ const reducer = (state = initialState, action) => {
       };
 
     case ADD_TO_CART:
-      const addedItem = state.vinyls.find((vinyl) => vinyl.id === action.payload.id);
+      const addedItem = state.vinyls.find(
+        (vinyl) => vinyl.id === action.payload.id
+      );
       if (!addedItem) {
         return state; // El vinilo no existe, no hacemos nada
       }
@@ -128,14 +130,16 @@ const reducer = (state = initialState, action) => {
         return vinyl;
       });
 
-      localStorage.setItem("cart", JSON.stringify([...state.cartItems, action.payload]));
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...state.cartItems, action.payload])
+      );
 
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
         vinyls: updatedVinyls,
       };
-
 
     case CLEAR_CART:
       localStorage.removeItem("cart");
@@ -197,7 +201,9 @@ const reducer = (state = initialState, action) => {
 
     case REMOVE_FROM_CART:
       const removeItemId = action.payload;
-      const removedItem = state.cartItems.find((item) => item.id === removeItemId);
+      const removedItem = state.cartItems.find(
+        (item) => item.id === removeItemId
+      );
       if (!removedItem) {
         return state; // El elemento no existe en el carrito, no hacemos nada
       }

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserByEmail, getAdmins, getUsersAndSuccess } from "../../redux/actions.js";
+import {
+  loginUserByEmail,
+  getAdmins,
+  getUsersAndSuccess,
+} from "../../redux/actions.js";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { initializeApp } from "firebase/app";
@@ -14,17 +18,17 @@ function Login() {
   const [authy, setAuthy] = useState(false);
 
   const dispatch = useDispatch();
-  const authe = useSelector((state) => state.isAuthenticated);
-  const user = useSelector((state) => state.users)
-  console.log()
-  // const token = useSelector((state) => state.token);
-  // console.log(token);
-  
-  
+  const authe = useSelector((state) => state.token);
+  const user = useSelector((state) => state.users);
+  console.log(authe);
+  console.log(user);
+  console.log(email);
+
   const filtro = user.filter((us) => {
-    return us.isAdmin === true && email === us.email
-  })
-  
+    return us.isAdmin === true && email === us.email;
+  });
+  console.log(filtro);
+
   const navigate = useNavigate(); // Utilizamos useNavigate para la navegación
 
   const notify1 = (message, type) => {
@@ -48,33 +52,23 @@ function Login() {
     );
   };
 
-  const handleEmailLogin = async () => {
+  useEffect(() => {
+    dispatch(getAdmins());
+  }, [dispatch]);
+
+  const handleEmailLogin = () => {
     dispatch(loginUserByEmail({ email, password }));
     dispatch(getUsersAndSuccess());
-    dispatch(getAdmins())
-    if(filtro.length === 1) {
-      navigate("/dashboard")
-    } else {
-      navigate("/")
-    }
 
-    if (authe === false) {
-      notify1("Complete el formulario", "error"); // Utilizamos notify1 en lugar de toast.error
-    }
-  };
-  useEffect(() => {
-    if (authe === true) {
+    if (filtro.length === 1) {
+      navigate("/dashboard");
+    } else {
+      navigate("/");
       toast.success("Inicio de sesión exitoso", {
         duration: 2000, // Duración en milisegundos (2 segundos)
       });
-      
-      // Redirige a la página de inicio después del inicio de sesión exitoso
-      // setTimeout(() => {
-      //   navigate("/");
-      // }, 2000); // Redirige después de 2 segundos (igual que la duración de la notificación)
     }
-  }, [authe]);
-
+  };
 
   const firebaseConfig = {
     apiKey: "AIzaSyC1-NuZIpLvp1OQvuEx2NJe5uYkbPzg_rk",
