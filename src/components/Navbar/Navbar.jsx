@@ -50,9 +50,9 @@ const Navbar = ({ updateHtmlClass }) => {
         <div className="lg:hidden w-full h-[6vh] flex justify-between items-center p-3">
           <button onClick={toggleDarkMode} className="lg:flex">
             {darkMode ? (
-              <BsFillSunFill className="text-2xl text-yellow-500" />
-            ) : (
               <BsFillMoonStarsFill className="text-xl text-blue-500" />
+            ) : (
+              <BsFillSunFill className="text-2xl text-yellow-500" />
             )}
           </button>
           <div className="w-[80%] flex justify-center items-center ">
