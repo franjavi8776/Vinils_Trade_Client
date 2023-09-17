@@ -92,7 +92,9 @@ export const disableUser = (userId) => ({
 export const getUsersAndSuccess = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios("https://vinyls-trade-back-production.up.railway.app/get/users");
+      const { data } = await axios(
+        "https://vinyls-trade-back-production.up.railway.app/get/users"
+      );
       dispatch({
         type: USERS_SUCCESS,
         payload: data,
@@ -101,21 +103,23 @@ export const getUsersAndSuccess = () => {
       console.error("Error al obtener la lista de usuarios: ", err);
     }
   };
-}
+};
 
 export const getAdmins = () => {
   return async (dispatch) => {
     try {
-      const {data} = await axios("https://vinyls-trade-back-production.up.railway.app/get/admins")
+      const { data } = await axios(
+        "https://vinyls-trade-back-production.up.railway.app/get/admins"
+      );
       dispatch({
-        type : ADMINS_SUCCESS,
+        type: ADMINS_SUCCESS,
         payload: data,
-      })
+      });
     } catch (err) {
-      console.error("Error al obtener la lista de usarios", err)
+      console.error("Error al obtener la lista de usarios", err);
     }
-  }
-}
+  };
+};
 
 export const getVinylsForName = (title) => {
   return async function (dispatch) {
@@ -316,7 +320,7 @@ export const decreaseItem = (vinyl) => ({
 export const updateVinyls = (id, stockReduction) => async (dispatch) => {
   const newEndpoint = `https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`;
   const requestData = {
-    stockReduction: stockReduction, 
+    stockReduction: stockReduction,
   };
   try {
     const response = await axios.put(newEndpoint, requestData);

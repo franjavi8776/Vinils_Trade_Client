@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
-
 import {
   getAllVinyls,
   orderForGenre,
@@ -36,7 +35,7 @@ const Home = () => {
   const [pageSize, setPageSize] = useState(10);
   const [randomVinyls, setRandomVinyls] = useState([]);
   const [seed, setSeed] = useState("");
-  const [currentFilterTitle, setCurrentFilterTitle] = useState('');
+  const [currentFilterTitle, setCurrentFilterTitle] = useState("");
 
   const searchByName = useSelector((state) => state.search);
   const totalVinyls =
@@ -102,14 +101,14 @@ const Home = () => {
     setCurrentPage(1);
     setFilterGener(event.target.value);
     dispatch(orderForGenre(event.target.value));
-    setCurrentFilterTitle('Genero '+event.target.value);
+    setCurrentFilterTitle("Genero " + event.target.value);
   };
 
   const handleOrderByTitle = (e) => {
     setCurrentPage(1);
     setFilterAlf(e.target.value);
     dispatch(orderByTitle(e.target.value));
-    setCurrentFilterTitle('Filtro alfabetico '+e.target.value);
+    setCurrentFilterTitle("Filtro alfabetico " + e.target.value);
   };
 
   const handleFilter = (event) => {
@@ -125,7 +124,7 @@ const Home = () => {
       endYear = startYear + 9;
     }
     dispatch(filterVinylsByDecade(startYear, endYear));
-    setCurrentFilterTitle('Decada de los '+event.target.value);
+    setCurrentFilterTitle("Decada de los " + event.target.value);
   };
 
   const resetAllButton = () => {
@@ -133,7 +132,7 @@ const Home = () => {
     setFilterGener("");
     setFilterAlf("");
     setFilterDecad("");
-    setCurrentFilterTitle('');
+    setCurrentFilterTitle("");
     dispatch(reset());
     dispatch(getAllVinyls());
   };
@@ -200,7 +199,7 @@ const Home = () => {
             </Swiper>
           </div>
         </div>
-        <div className="w-full h-[15vh] flex justify-center items-center">
+        <div className="w-full h-[15vh] flex justify-center items-center xl:pl-[20%]">
           <h1 className="w-[450px] h-[50px] flex justify-center items-center bg-black text-slate-200 text-3xl font-bold dark:bg-slate-200 dark:text-black">
             LISTA DE VINILOS
           </h1>
@@ -287,7 +286,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-[10vh] flex justify-center items-center space-x-4">
+        <div className="w-[100%] h-[10vh] flex flex-wrap justify-center items-center space-x-4 xl:pl-[20%]">
           {pagesArray.map((pageNumber) => (
             <span
               key={pageNumber}
@@ -308,12 +307,12 @@ const Home = () => {
           </h1>
         </div>
         <div className="w-[100%] h-auto flex items-center">
-        <div className="w-[15%] ml-2 lg:ml-0 h-auto flex justify-center items-center text-white text-lg sm:text-2xl font-bold relative bg-red-700 transform rotate-45">
-         <div className="w-16 h-16 absolute -top-4 -left-4 text-white rounded-full flex justify-center items-center transform -rotate-45">
-         ★
-        </div>
-       <span className="relative z-10">50% OFF</span>
-        </div>
+          <div className="w-[15%] ml-2 lg:ml-0 h-auto flex justify-center items-center text-white text-lg sm:text-2xl font-bold relative bg-red-700 transform rotate-45">
+            <div className="w-16 h-16 absolute -top-4 -left-4 text-white rounded-full flex justify-center items-center transform -rotate-45">
+              ★
+            </div>
+            <span className="relative z-10">50% OFF</span>
+          </div>
 
           <div className="w-[70%] h-auto flex flex-wrap justify-center items-center gap-5">
             {randomVinyls.map((vinyls) => (
@@ -329,12 +328,11 @@ const Home = () => {
             ))}
           </div>
           <div className="w-[15%] ml-2 lg:ml-0 h-auto flex justify-center items-center text-white text-lg sm:text-2xl font-bold relative bg-red-700 transform -rotate-45">
-           <div className="w-16 h-16 absolute -top-4 -left-4 text-white rounded-full flex justify-center items-center transform rotate-45">
-           ★
-           </div>
-           <span className="relative z-10 transform -rotate-45 rotate-0">50% OFF</span>
+            <div className="w-16 h-16 absolute -top-4 -left-4 text-white rounded-full flex justify-center items-center transform rotate-45">
+              ★
+            </div>
+            <span className="relative z-10 transform -rotate-45">50% OFF</span>
           </div>
-
         </div>
 
         <div className="mt-20">
