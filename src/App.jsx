@@ -11,6 +11,8 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Users from "./components/UserList/UserList";
 import VinylsDash from "./components/Dashboard/vinylsDash";
 import About from "./components/About/About";
+import Sell from "./components/sellvinyls/Sell.jsx";
+import Garantia from "./components/Garantia/Garantia";
 
 function App() {
   const updateHtmlClass = (darkMode) => {
@@ -39,6 +41,8 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/login" element={<Login />} />
         <Route path="about" element={<About />} />
+        <Route path="/sellUser" element={<Sell />} />
+        <Route path="/garantia" element={<Garantia />} />
         // Admins
         <Route path="/form" element={<Form />} />
         <Route path="/dashboard" element={<Dashboard />} />

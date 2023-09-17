@@ -269,7 +269,7 @@ const reducer = (state = initialState, action) => {
     case ORDER_FOR_GENRE:
       return {
         ...state,
-        allVinyls: state.allVinyls.filter((vinyl) =>
+        allVinyls: state.vinyls.filter((vinyl) =>
           vinyl.genre.includes(action.payload)
         ),
       };
