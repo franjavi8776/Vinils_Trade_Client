@@ -59,6 +59,8 @@ const UserList = () => {
   const Users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
+  const [filterCountry,setFilterCountry]=useState("");
+  const [filterEmail,setFilterEmail]=useState("");
 
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
@@ -133,8 +135,23 @@ const UserList = () => {
 //     dispatch(deleteVinyl(row.id)); 
 //   };
 
+  // const filteredUsers = Users.filter((user) =>
+  //   user.name.toLowerCase().includes(filterText.toLowerCase())
+  // );
+  // const filteredCountry=Users.filter((user)=>
+  //   user.country.toLowerCase().includes(filterCountry.toLowerCase())
+  // );
+  // const filteredEmail=Users.filter((user)=>
+  //   user.email.toLowerCase().includes(filterEmail.toLowerCase())
+  // );
+  const filterByEmail = (userEmail, searchTerm) => {
+    const regex = new RegExp(`\\b${searchTerm}\\b`, 'i'); 
+    return regex.test(userEmail);
+  };
   const filteredUsers = Users.filter((user) =>
-    user.name.toLowerCase().includes(filterText.toLowerCase())
+    user.name.toLowerCase().includes(filterText.toLowerCase()) &&
+    user.country.toLowerCase().includes(filterCountry.toLowerCase()) &&
+    filterByEmail(user.email, filterEmail.toLowerCase())
   );
 
   return (
@@ -148,7 +165,21 @@ const UserList = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        <DataTable columns={columns} data={filteredUsers} pagination />
+        <input
+          type="text"
+          placeholder="Buscar por Pais"
+          value={filterCountry}
+          onChange={(e) => setFilterCountry(e.target.value)}
+          className="w-full border text-red-700 border-black p-2 rounded mb-4"
+        />
+         <input
+          type="text"
+          placeholder="Buscar por Email"
+          value={filterEmail}
+          onChange={(e) => setFilterEmail(e.target.value)}
+          className="w-full border text-red-700 border-black p-2 rounded mb-4"
+        />
+        <DataTable columns={columns} data={filteredUsers}  pagination />
       </div>
     </div>
   );
