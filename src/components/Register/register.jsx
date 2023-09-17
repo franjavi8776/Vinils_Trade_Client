@@ -20,7 +20,7 @@ function RegistroUsuario() {
     confirmarContraseña: "",
     codArea: "",
   });
-  console.log(usuario);
+  //console.log(usuario);
   const passwordd = () => {
     setShowPassword(!showPassword);
   };
@@ -46,7 +46,7 @@ function RegistroUsuario() {
     });
     const validationErrors = validate({ ...usuario, [name]: value });
     setErrors(validationErrors);
-    console.log(error);
+    //console.log(error);
   };
 
   const handleSubmit = async (e) => {
@@ -63,7 +63,7 @@ function RegistroUsuario() {
 
   return (
     <div className="w-[100%] min-h-[100vh] flex items-center justify-center">
-      <div className="w-[360px] bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg lg:w-[650px] shadow-lg shadow-black mt-5 mb-5 lg:mt-0 lg:mb-0">
+      <div className="w-[360px] bg-gradient-to-r from-red-700 to-red-900 animate-gradient-bg p-8 rounded-lg md:w-[650px] shadow-lg shadow-black mt-5 mb-5 lg:mt-0 lg:mb-0">
         <h2 className="text-3xl font-extrabold text-white mb-8">
           ¡Regístrate Ahora!
         </h2>

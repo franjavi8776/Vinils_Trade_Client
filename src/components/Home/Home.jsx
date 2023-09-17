@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
-
 import {
   getAllVinyls,
   orderForGenre,
@@ -195,8 +194,8 @@ const Home = () => {
             </Swiper>
           </div>
         </div>
-        <div className="w-full h-[15vh] flex justify-center items-center">
-          <h1 className="w-[450px] h-[50px] flex justify-center items-center bg-black text-slate-200 text-3xl font-bold dark:bg-slate-200 dark:text-black ">
+        <div className="w-full h-[15vh] flex justify-center items-center xl:pl-[20%]">
+          <h1 className="w-[450px] h-[50px] flex justify-center items-center bg-black text-slate-200 text-3xl font-bold dark:bg-slate-200 dark:text-black">
             LISTA DE VINILOS
           </h1>
         </div>
@@ -281,7 +280,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-[10vh] flex justify-center items-center space-x-4">
+        <div className="w-[100%] h-[10vh] flex flex-wrap justify-center items-center space-x-4 xl:pl-[20%]">
           {pagesArray.map((pageNumber) => (
             <span
               key={pageNumber}

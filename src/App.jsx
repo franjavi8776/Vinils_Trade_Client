@@ -8,8 +8,9 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import RegistroUsuario from "./components/Register/register";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Users from "./components/UserList/UserList"
+import Users from "./components/UserList/UserList";
 import VinylsDash from "./components/Dashboard/vinylsDash";
+import About from "./components/About/About";
 
 function App() {
   const updateHtmlClass = (darkMode) => {
@@ -25,7 +26,11 @@ function App() {
 
   return (
     <div className=" dark:text-white dark:bg-black dark:bg-opacity-80 duration-100">
-      {location.pathname !== "/dashboard" && !location.pathname.startsWith("/usarios") && !location.pathname.startsWith("/vinylsDash") && (<Navbar updateHtmlClass={updateHtmlClass} />)}
+      {location.pathname !== "/dashboard" &&
+        !location.pathname.startsWith("/usarios") &&
+        !location.pathname.startsWith("/vinylsDash") && (
+          <Navbar updateHtmlClass={updateHtmlClass} />
+        )}
 
       <Routes>
         // rutas de users
@@ -33,12 +38,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="about" element={<About />} />
         // Admins
         <Route path="/form" element={<Form />} />
-        <Route path="/dashboard" element={<Dashboard />} /> 
-        <Route path="/usarios" element={<Users/>} />
-        <Route path="/vinylsDash" element={<VinylsDash/>} />
-        
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/usarios" element={<Users />} />
+        <Route path="/vinylsDash" element={<VinylsDash />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
@@ -46,4 +51,3 @@ function App() {
 }
 
 export default App;
-

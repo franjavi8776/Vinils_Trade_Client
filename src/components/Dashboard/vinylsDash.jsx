@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
+// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
+import { getAllVinyls } from "../../redux/actions";
 import { AiOutlineDelete } from "react-icons/ai";
 import { AiOutlineEdit } from "react-icons/ai";
 
 const VinylsDash = () => {
   const vinyls = useSelector((state) => state.vinyls);
-  console.log(vinyls)
+  console.log(vinyls);
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
+  const [filterGenre, setFilterGenre] = useState("");
+  const [filterYear, setFilterYear] = useState("");
+
+  useEffect(() => {
+    dispatch(getAllVinyls());
+  }, [dispatch]);
 
   const columns = [
     {
@@ -67,36 +74,38 @@ const VinylsDash = () => {
             onClick={() => handleUpdate(row)}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-           <AiOutlineEdit/>
+            <AiOutlineEdit />
           </button>
           <button
             onClick={() => handleDelete(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-           <AiOutlineDelete/>
+            <AiOutlineDelete />
           </button>
         </div>
       ),
     },
   ];
 
-//   const handleUpdate = (row) => {
-//     // Lógica para actualizar el vinilo
-//     dispatch(updateVinyl(row.id)); 
-//   };
+  //   const handleUpdate = (row) => {
+  //     // Lógica para actualizar el vinilo
+  //     dispatch(updateVinyl(row.id));
+  //   };
 
-//   const handleDisable = (row) => {
-//     // Lógica para deshabilitar el vinilo
-//     dispatch(disableVinyl(row.id)); 
-//   };
+  //   const handleDisable = (row) => {
+  //     // Lógica para deshabilitar el vinilo
+  //     dispatch(disableVinyl(row.id));
+  //   };
 
-//   const handleDelete = (row) => {
-//     // Lógica para borrar el vinilo
-//     dispatch(deleteVinyl(row.id)); 
-//   };
+  //   const handleDelete = (row) => {
+  //     // Lógica para borrar el vinilo
+  //     dispatch(deleteVinyl(row.id));
+  //   };
 
-  const filteredVinyls = vinyls.filter((vinyl) =>
-    vinyl.title.toLowerCase().includes(filterText.toLowerCase())
+  const filteredVinyls = vinyls.filter(
+    (vinyl) =>
+      vinyl.title.toLowerCase().includes(filterText.toLowerCase()) &&
+      vinyl.genre.toLowerCase().includes(filterGenre.toLowerCase())
   );
 
   return (
@@ -110,6 +119,20 @@ const VinylsDash = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
+        <input
+          type="text"
+          placeholder="Buscar por genero"
+          value={filterGenre}
+          onChange={(e) => setFilterGenre(e.target.value)}
+          className="w-full border text-red-700 border-black p-2 rounded mb-4"
+        />
+        {/* <input
+          type="text"
+          placeholder="Buscar por año"
+          value={filterYear}
+          onChange={(e) => setFilterYear(e.target.value)}
+          className="w-full border text-red-700 border-black p-2 rounded mb-4"
+        /> */}
         <DataTable columns={columns} data={filteredVinyls} pagination />
       </div>
     </div>
