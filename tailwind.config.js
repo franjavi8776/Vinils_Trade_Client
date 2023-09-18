@@ -25,7 +25,7 @@ export default {
           background: {
             muted: "#f9fafb", // gray-50
             subtle: "#f3f4f6", // gray-100
-            DEFAULT: "#ffffff", // white
+            DEFAULT: "#000000", // white
             emphasis: "#374151", // gray-700
           },
           border: {
