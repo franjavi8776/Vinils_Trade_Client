@@ -50,7 +50,7 @@ const Search = () => {
   function handlerButton() {
     const shoppCart = document.getElementById("card");
     shoppCart.classList.remove("hidden");
-    document.body.style.overflowY = "hidden";
+    // document.body.style.overflowY = "hidden";
   }
 
   const handleLogout = () => {
