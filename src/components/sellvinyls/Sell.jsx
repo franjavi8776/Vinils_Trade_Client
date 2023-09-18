@@ -1,15 +1,12 @@
-import { validateVinylsForm } from './sell';
+import validateVinylsForm from "./sell";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postVinyls } from "../../redux/actions";
-import { useLocalStorage } from "../LocalStorage/useLocalStorage";
 import toast, { Toaster } from "react-hot-toast";
 
 const Sell = () => {
-    const localStorageKey = "vinylsFormData";
-
-  const [vinyls, setVinyls] = useLocalStorage(localStorageKey, {
-    title: "",
+  const [vinyls, setVinyls] = useState({
+    title: "usuario",
     artists: [{ name: "" }],
     year: "",
     cover_image: "",
@@ -20,26 +17,26 @@ const Sell = () => {
   });
 
   const [errors, setErrors] = useState({});
+
+  const user = useSelector((state) => state.users);
+
   const dispatch = useDispatch();
 
-  const clearFormData = () => {
-    localStorage.removeItem(localStorageKey);
-  };
+  useEffect(() => {
+    // Asignar el ID del usuario actual al campo "createdBy" del vinilo
+    if (user) {
+      setVinyls((prevVinyls) => ({
+        ...prevVinyls,
+        createdBy: user.id,
+        createdByName: user.name,
+      }));
+    }
+  }, [user]);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    // const newVinyls =
-    //   name === "artists"
-    //     ? { ...vinyls, artists: [{ name: value }] }
-    //     : { ...vinyls, [name]: value };
-
-    // setVinyls(newVinyls);
-
-    // const ErrorDetect = validateVinylsForm({ ...vinyls, [name]: value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
     if (name === "artists") {
-      // Si el campo es "artists", clonamos el arreglo y actualizamos el valor "name"
       const updatedArtists = [...vinyls.artists];
       updatedArtists[0].name = value;
 
@@ -67,16 +64,6 @@ const Sell = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    setErrors({
-      title: "",
-      artists: "",
-      year: "",
-      cover_image: "",
-      genre: "",
-      price: "",
-      stock: "",
-      style: "",
-    }); // , Description:"", , Condition:"",
 
     dispatch(postVinyls(vinyls));
 
@@ -88,30 +75,16 @@ const Sell = () => {
         color: "red",
       },
     });
-
-    setVinyls({
-      title: "",
-      artists: [{ name: "" }],
-      year: "",
-      cover_image: "",
-      genre: "",
-      price: "",
-      stock: "",
-      style: "",
-    });
-
-    clearFormData();
   };
 
-  useEffect(() => {
-    localStorage.setItem(localStorageKey, JSON.stringify(vinyls));
-  }, [vinyls]);
-
   return (
-    <div className="w-[90%] m-auto lg:w-[100%] min-h-screen flex flex-col justify-center items-center">
+    <div className="w-[90%] m-auto lg:w-[100%] min-h-[100vh] flex flex-col justify-center items-center pb-10">
       <div className="w-[500px] h-auto bg-gradient-to-r from-red-700 to-red-950 animate-gradient-bg text-white rounded-lg shadow-lg shadow-black overflow-hidden mt-8">
         <form onSubmit={handlerSubmit} className="max-w-md mx-auto mt-4 p-2">
-        <h1 className="text-2xl font-bold text-center text-white mb-8 retro-font">Bienvenido!!! Ingresa los datos de tu vinilo a vender</h1>
+          <h1 className="text-2xl font-bold text-center text-white mb-8 retro-font">
+            Bienvenido!!! Ingresa los datos de tu vinilo a vender
+          </h1>
+
           <div className="mb-4 ">
             <label className="block mb-1">Titulo:</label>
             <input
@@ -121,7 +94,7 @@ const Sell = () => {
               onChange={handleChange}
               className="border rounded w-full p-2 text-black"
               placeholder="Ingrese el titulo..."
-              required
+              readOnly
             />
             {errors.title && <p className="text-black">{errors.title}</p>}
           </div>
@@ -164,19 +137,6 @@ const Sell = () => {
             />
             {errors.genre && <p className="text-black">{errors.genre}</p>}
           </div>
-          {/* <div>
-          <label className="block font-bold mb-1">Descripción:</label>
-          <textarea
-            name="Description"
-            value={vinyls.Description}
-            onChange={handleChange}
-            className="border rounded w-full p-2"
-            placeholder="Ingrese la descripción..."
-            required
-          />
-
-          {errors.Description && <p className="text-red-500">{errors.Description}</p>}
-        </div> */}
           <div>
             <label className="block mb-1">Año:</label>
             <input
@@ -216,32 +176,17 @@ const Sell = () => {
             />
             {errors.stock && <p className="text-black">{errors.stock}</p>}
           </div>
-          {/* <div>
-          <label className="block font-bold mb-1">Condición:</label>
-          <input
-            type="text"
-            name="Condition"
-            value={vinyls.Condition}
-            onChange={handleChange}
-            className="border rounded w-full p-2"
-            placeholder="Ingrese la condicion..."
-            required
-          />
-          {errors.Condition && <p className="text-red-500">{errors.Condition}</p>}
-        </div> */}
           <div>
             <label className="block mb-1">Imagen:</label>
             <input
               type="text"
               name="cover_image"
+              value={vinyls.cover_image}
               onChange={handleChange}
               className="border rounded w-full p-2 text-black"
               placeholder="Ingrese una url..."
               required
             />
-            {/* {errors.cover_image && (
-              <p className="text-black">{errors.cover_image}</p>
-            )} */}
           </div>
           <div className="text-center">
             <button
@@ -255,7 +200,7 @@ const Sell = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sell
+export default Sell;

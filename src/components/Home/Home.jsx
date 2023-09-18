@@ -308,7 +308,7 @@ const Home = () => {
         </div>
         <div className="w-[100%] h-auto flex items-center">
           <div className="w-[15%] ml-2 lg:ml-0 h-auto flex justify-center items-center text-white text-lg sm:text-2xl font-bold relative bg-red-700 transform rotate-45">
-            <div className="w-16 h-16 absolute -top-4 -left-4 text-white rounded-full flex justify-center items-center transform -rotate-45">
+            <div className="hidden lg:absolute w-16 h-16 -top-4 -left-4 text-white rounded-full lg:flex justify-center items-center transform -rotate-45">
               ★
             </div>
             <span className="relative z-10">50% OFF</span>
@@ -328,10 +328,10 @@ const Home = () => {
             ))}
           </div>
           <div className="w-[15%] ml-2 lg:ml-0 h-auto flex justify-center items-center text-white text-lg sm:text-2xl font-bold relative bg-red-700 transform -rotate-45">
-            <div className="w-16 h-16 absolute -top-4 -left-4 text-white rounded-full flex justify-center items-center transform rotate-45">
+            <div className="hidden lg:absolute w-16 h-16 -top-4 -left-4 text-white rounded-full lg:flex justify-center items-center transform rotate-45">
               ★
             </div>
-            <span className="relative z-10 transform -rotate-45">50% OFF</span>
+            <span className="relative z-10 transform -rotate-60">50% OFF</span>
           </div>
         </div>
 
