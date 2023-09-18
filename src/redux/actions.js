@@ -85,10 +85,16 @@ export const postRegisterUser = (x) => {
   };
 };
 
-export const disableUser = (userId) => ({
-  type: DISABLE_USER,
-  payload: userId,
-});
+export const disableUser = (userId) => async (dispatch)=>{
+  try {
+    await axios.post('https://vinyls-trade-back-production.up.railway.app/inhabilityUser', { id: userId });
+    // Despacha una acción para actualizar el estado de Redux después de la eliminación
+    dispatch({ type: 'DISABLE_USER', payload: userId });
+  } catch (error) {
+    // Maneja errores aquí si es necesario
+    console.error('Error al eliminar el usuario', error);
+  }
+};
 
 export const getUsersAndSuccess = () => {
   return async (dispatch) => {

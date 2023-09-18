@@ -3,14 +3,18 @@ import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
 // import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
 import { AiOutlineDelete } from "react-icons/ai";
-import {getUsersAndSuccess, deleteUser } from "../../redux/actions";
+import {getUsersAndSuccess, deleteUser, disableUser } from "../../redux/actions";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  console.log(Users)
   const [filterText, setFilterText] = useState("");
-  const [filterCountry,setFilterCountry]=useState("");
+  // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail,setFilterEmail]=useState("");
+  // console.log(Users[0].country)
+  // console.log(filterCountry)
 
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
@@ -60,10 +64,10 @@ const UserList = () => {
            <AiOutlineDelete/>
           </button>
           <button
-            onClick={() => handleDelete(row)}
+            onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-           
+           Desactivar
           </button>
         </div>
       ),
@@ -74,16 +78,34 @@ const UserList = () => {
     dispatch(deleteUser(row.id)); 
   };
 
+  const handleDisable = (row) => {
+    // Lógica para deshabilitar el vinilo
+    dispatch(disableUser(row.id)); 
+  };
+
+//   const handleDelete = (row) => {
+//     // Lógica para borrar el vinilo
+//     dispatch(deleteVinyl(row.id)); 
+//   };
+
+  // const filteredUsers = Users.filter((user) =>
+  //   user.name.toLowerCase().includes(filterText.toLowerCase())
+  // );
+  // const filteredCountry=Users.filter((user)=>
+  //   user.country.toLowerCase().includes(filterCountry.toLowerCase())
+  // );
+  // const filteredEmail=Users.filter((user)=>
+  //   user.email.toLowerCase().includes(filterEmail.toLowerCase())
+  // );
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, 'i'); 
     return regex.test(userEmail);
   };
   const filteredUsers = Users.filter((user) =>
-  (user.name ? user.name.toLowerCase().includes(filterText.toLowerCase()) : false) &&
-  (user.country ? user.country.toLowerCase().includes(filterCountry.toLowerCase()) : false) &&
-  (user.email ? filterByEmail(user.email, filterEmail.toLowerCase()) : false)
-);
-
+    user.name.toLowerCase().includes(filterText.toLowerCase()) &&
+    // user.country.toLowerCase().includes(filterCountry.toLowerCase()) &&
+    filterByEmail(user.email, filterEmail.toLowerCase())
+  );
 
   return (
     <div className="flex flex-col w-full h-full md:flex-row">
@@ -96,13 +118,13 @@ const UserList = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        <input
+        {/* <input
           type="text"
           placeholder="Buscar por Pais"
           value={filterCountry}
           onChange={(e) => setFilterCountry(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
-        />
+        /> */}
          <input
           type="text"
           placeholder="Buscar por Email"

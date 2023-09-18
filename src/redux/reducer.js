@@ -104,9 +104,8 @@ const reducer = (state = initialState, action) => {
         admins: action.payload,
       };
     case DISABLE_USER:
-      const userId = action.payload;
-      const updatedUsers = state.users.map((user) =>
-        user.id === userId ? { ...user, disabled: true } : user
+      const updatedUsers = state.users.filter((user) =>
+        user.id !== action.payload 
       );
       return {
         ...state,
