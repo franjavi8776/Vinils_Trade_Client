@@ -30,6 +30,7 @@ export const UPDATE_VINYLS = "UPDATE_VINYLS";
 export const USERS_SUCCESS = "USERS_SUCCESS";
 export const DISABLE_USER = "DISABLE_USER";
 export const ADMINS_SUCCESS = "ADMINS_SUCCESS";
+
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
 export const getAllVinyls = () => async (dispatch) => {

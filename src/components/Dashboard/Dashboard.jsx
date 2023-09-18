@@ -88,7 +88,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="w-full h-[100vh] bg-slate-200">
+    <div className="w-full h-[100vh]">
       <div className="w-full h-[5vh] pt-5 pl-5">
         <div className="w-[150px] h-[50px] clip-path-custom bg-black flex items-center justify-end">
           <Link to="/">
