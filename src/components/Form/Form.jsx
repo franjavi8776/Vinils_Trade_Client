@@ -29,15 +29,6 @@ const Form = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    // const newVinyls =
-    //   name === "artists"
-    //     ? { ...vinyls, artists: [{ name: value }] }
-    //     : { ...vinyls, [name]: value };
-
-    // setVinyls(newVinyls);
-
-    // const ErrorDetect = validateVinylsForm({ ...vinyls, [name]: value });
-
     if (name === "artists") {
       // Si el campo es "artists", clonamos el arreglo y actualizamos el valor "name"
       const updatedArtists = [...vinyls.artists];
