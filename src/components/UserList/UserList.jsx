@@ -1,59 +1,9 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-
-
-// const UserList = () => {
-//     const dispatch = useDispatch();
-//     const users = useSelector((state) => state.users);
-  
-    
-  
-//     // const handleDisableUser = (userId) => {
-//     //   // Lógica para deshabilitar un usuario
-//     //   dispatch(disableUser(userId));
-//     // };
-  
-//     return (
-//       <div className="w-full min-h-[80vh]">
-//         <h2>Lista de Usuarios</h2>
-//         <table>
-//           <thead className="w-full h-[20px]">
-//             <tr>
-//               <th>Nombre</th>
-//               <th>Email</th>
-//               <th>Número</th>
-//               <th>Acciones</th>
-//             </tr>
-//           </thead>
-//           <tbody >
-//             {users.map((user) => (
-//               <tr key={user.id}>
-//                 <td>{user.name}</td>
-//                 <td>{user.email}</td>
-//                 <td>{user.phoneNumber}</td>
-//                 <td>
-//                   <button > 
-//                   {/* onClick={() => handleDisableUser(user.id)} */}
-//                     Deshabilitar
-//                   </button>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   };
-  
-  
-
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
 // import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
 import { AiOutlineDelete } from "react-icons/ai";
-import { AiOutlineEdit } from "react-icons/ai";
-import {getUsersAndSuccess } from "../../redux/actions";
+import {getUsersAndSuccess, deleteUser } from "../../redux/actions";
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
@@ -104,55 +54,36 @@ const UserList = () => {
       cell: (row) => (
         <div className="flex space-x-2">
           <button
-            onClick={() => handleUpdate(row)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => handleDelete(row)}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-           <AiOutlineEdit/>
+           <AiOutlineDelete/>
           </button>
           <button
             onClick={() => handleDelete(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-           <AiOutlineDelete/>
+           
           </button>
         </div>
       ),
     },
   ];
 
-//   const handleUpdate = (row) => {
-//     // Lógica para actualizar el vinilo
-//     dispatch(updateVinyl(row.id)); 
-//   };
+  const handleDelete = (row) => {
+    dispatch(deleteUser(row.id)); 
+  };
 
-//   const handleDisable = (row) => {
-//     // Lógica para deshabilitar el vinilo
-//     dispatch(disableVinyl(row.id)); 
-//   };
-
-//   const handleDelete = (row) => {
-//     // Lógica para borrar el vinilo
-//     dispatch(deleteVinyl(row.id)); 
-//   };
-
-  // const filteredUsers = Users.filter((user) =>
-  //   user.name.toLowerCase().includes(filterText.toLowerCase())
-  // );
-  // const filteredCountry=Users.filter((user)=>
-  //   user.country.toLowerCase().includes(filterCountry.toLowerCase())
-  // );
-  // const filteredEmail=Users.filter((user)=>
-  //   user.email.toLowerCase().includes(filterEmail.toLowerCase())
-  // );
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, 'i'); 
     return regex.test(userEmail);
   };
   const filteredUsers = Users.filter((user) =>
-    user.name.toLowerCase().includes(filterText.toLowerCase()) &&
-    user.country.toLowerCase().includes(filterCountry.toLowerCase()) &&
-    filterByEmail(user.email, filterEmail.toLowerCase())
-  );
+  (user.name ? user.name.toLowerCase().includes(filterText.toLowerCase()) : false) &&
+  (user.country ? user.country.toLowerCase().includes(filterCountry.toLowerCase()) : false) &&
+  (user.email ? filterByEmail(user.email, filterEmail.toLowerCase()) : false)
+);
+
 
   return (
     <div className="flex flex-col w-full h-full md:flex-row">

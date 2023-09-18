@@ -24,6 +24,7 @@ import {
   USERS_SUCCESS,
   DISABLE_USER,
   ADMINS_SUCCESS,
+  DELETE_USER,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -110,6 +111,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         users: updatedUsers,
+      };
+
+    case DELETE_USER:
+      const userIdToDelete = action.payload;
+      // Filtra los usuarios para eliminar el que coincide con el ID
+      const updatedUsersAfterDelete = state.users.filter((user) => user.id !== userIdToDelete);
+      return {
+        ...state,
+        users: updatedUsersAfterDelete,
       };
 
     case ADD_TO_CART:
