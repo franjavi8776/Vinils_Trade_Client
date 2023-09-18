@@ -1,62 +1,19 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-
-// const UserList = () => {
-//     const dispatch = useDispatch();
-//     const users = useSelector((state) => state.users);
-
-//     // const handleDisableUser = (userId) => {
-//     //   // Lógica para deshabilitar un usuario
-//     //   dispatch(disableUser(userId));
-//     // };
-
-//     return (
-//       <div className="w-full min-h-[80vh]">
-//         <h2>Lista de Usuarios</h2>
-//         <table>
-//           <thead className="w-full h-[20px]">
-//             <tr>
-//               <th>Nombre</th>
-//               <th>Email</th>
-//               <th>Número</th>
-//               <th>Acciones</th>
-//             </tr>
-//           </thead>
-//           <tbody >
-//             {users.map((user) => (
-//               <tr key={user.id}>
-//                 <td>{user.name}</td>
-//                 <td>{user.email}</td>
-//                 <td>{user.phoneNumber}</td>
-//                 <td>
-//                   <button >
-//                   {/* onClick={() => handleDisableUser(user.id)} */}
-//                     Deshabilitar
-//                   </button>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   };
-
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
 // import { updateVinyl, disableVinyl, deleteVinyl } from "./";
-import { AiOutlineDelete } from "react-icons/ai";
 import { AiOutlineEdit } from "react-icons/ai";
 import { getUsersAndSuccess } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import { disableUser } from "../../redux/actions";
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
-  const [filterCountry, setFilterCountry] = useState("");
+  // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
+  // console.log(Users[0].country)
+  // console.log(filterCountry)
 
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
@@ -106,10 +63,10 @@ const UserList = () => {
             <AiOutlineEdit />
           </button>
           <button
-            onClick={() => handleDelete(row)}
+            onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-            <AiOutlineDelete />
+            Desactivar
           </button>
         </div>
       ),
@@ -121,10 +78,10 @@ const UserList = () => {
   //     dispatch(updateVinyl(row.id));
   //   };
 
-  //   const handleDisable = (row) => {
-  //     // Lógica para deshabilitar el vinilo
-  //     dispatch(disableVinyl(row.id));
-  //   };
+  const handleDisable = (row) => {
+    // Lógica para deshabilitar el vinilo
+    dispatch(disableUser(row.id));
+  };
 
   //   const handleDelete = (row) => {
   //     // Lógica para borrar el vinilo
@@ -144,10 +101,11 @@ const UserList = () => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
     return regex.test(userEmail);
   };
+
   const filteredUsers = Users.filter(
     (user) =>
       user.name.toLowerCase().includes(filterText.toLowerCase()) &&
-      user.country.toLowerCase().includes(filterCountry.toLowerCase()) &&
+      // user.country.toLowerCase().includes(filterCountry.toLowerCase()) &&
       filterByEmail(user.email, filterEmail.toLowerCase())
   );
 
@@ -172,13 +130,17 @@ const UserList = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        <input
+        {/* <input
           type="text"
           placeholder="Buscar por Pais"
           value={filterCountry}
           onChange={(e) => setFilterCountry(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
+
         />
+        <input
+
+        /> */}
         <input
           type="text"
           placeholder="Buscar por Email"
