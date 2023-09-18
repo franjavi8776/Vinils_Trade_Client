@@ -331,7 +331,7 @@ const Home = () => {
             <div className="w-16 h-16 absolute -top-4 -left-4 text-white rounded-full flex justify-center items-center transform rotate-45">
               ★
             </div>
-            <span className="relative z-10 transform -rotate-45">50% OFF</span>
+            <span className="relative z-10 transform -rotate-60">50% OFF</span>
           </div>
         </div>
 
