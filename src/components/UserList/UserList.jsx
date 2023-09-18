@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
+// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
 import { AiOutlineEdit } from "react-icons/ai";
-import {getUsersAndSuccess } from "../../redux/actions";
+import { getUsersAndSuccess } from "../../redux/actions";
 import { disableUser } from "../../redux/actions";
 
 const UserList = () => {
@@ -11,7 +11,7 @@ const UserList = () => {
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
-  const [filterEmail,setFilterEmail]=useState("");
+  const [filterEmail, setFilterEmail] = useState("");
   // console.log(Users[0].country)
   // console.log(filterCountry)
 
@@ -20,7 +20,7 @@ const UserList = () => {
     dispatch(getUsersAndSuccess());
   }, [dispatch]);
 
-  // tabla 
+  // tabla
   const columns = [
     {
       name: "id",
@@ -60,33 +60,33 @@ const UserList = () => {
             onClick={() => handleUpdate(row)}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-           <AiOutlineEdit/>
+            <AiOutlineEdit />
           </button>
           <button
             onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-           Desactivar
+            Desactivar
           </button>
         </div>
       ),
     },
   ];
 
-//   const handleUpdate = (row) => {
-//     // Lógica para actualizar el vinilo
-//     dispatch(updateVinyl(row.id)); 
-//   };
+  //   const handleUpdate = (row) => {
+  //     // Lógica para actualizar el vinilo
+  //     dispatch(updateVinyl(row.id));
+  //   };
 
   const handleDisable = (row) => {
     // Lógica para deshabilitar el vinilo
-    dispatch(disableUser(row.id)); 
+    dispatch(disableUser(row.id));
   };
 
-//   const handleDelete = (row) => {
-//     // Lógica para borrar el vinilo
-//     dispatch(deleteVinyl(row.id)); 
-//   };
+  //   const handleDelete = (row) => {
+  //     // Lógica para borrar el vinilo
+  //     dispatch(deleteVinyl(row.id));
+  //   };
 
   // const filteredUsers = Users.filter((user) =>
   //   user.name.toLowerCase().includes(filterText.toLowerCase())
@@ -98,19 +98,31 @@ const UserList = () => {
   //   user.email.toLowerCase().includes(filterEmail.toLowerCase())
   // );
   const filterByEmail = (userEmail, searchTerm) => {
-    const regex = new RegExp(`\\b${searchTerm}\\b`, 'i'); 
+    const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
     return regex.test(userEmail);
   };
-  const filteredUsers = Users.filter((user) =>
-    user.name.toLowerCase().includes(filterText.toLowerCase()) &&
-    // user.country.toLowerCase().includes(filterCountry.toLowerCase()) &&
-    filterByEmail(user.email, filterEmail.toLowerCase())
+
+  const filteredUsers = Users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(filterText.toLowerCase()) &&
+      // user.country.toLowerCase().includes(filterCountry.toLowerCase()) &&
+      filterByEmail(user.email, filterEmail.toLowerCase())
   );
 
   return (
     <div className="flex flex-col w-full h-full md:flex-row">
-      <div className="md:w-full p-4">
-        <h1 className="mb-4 text-xl font-bold">Usuarios</h1>
+      <div className="md:w-full px-2">
+        <div className="flex h-[8vh]  items-center pl-5">
+          <div>
+            <div className="w-[150px] h-[50px] clip-path-custom bg-slate-900 flex items-center justify-end ">
+              <Link to="/dashboard">
+                <h1 className="text-white pr-2">Volver al Inicio</h1>
+              </Link>
+            </div>
+          </div>
+          <h1 className="ml-[35%] text-2xl font-bold">Lista de usuarios</h1>
+        </div>
+
         <input
           type="text"
           placeholder="Buscar por nombre"
@@ -124,15 +136,19 @@ const UserList = () => {
           value={filterCountry}
           onChange={(e) => setFilterCountry(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
+
+        />
+        <input
+
         /> */}
-         <input
+        <input
           type="text"
           placeholder="Buscar por Email"
           value={filterEmail}
           onChange={(e) => setFilterEmail(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        <DataTable columns={columns} data={filteredUsers}  pagination />
+        <DataTable columns={columns} data={filteredUsers} pagination />
       </div>
     </div>
   );

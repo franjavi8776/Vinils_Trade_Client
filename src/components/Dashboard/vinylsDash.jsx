@@ -3,16 +3,18 @@ import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
 // import { updateVinyl, disableVinyl, deleteVinyl } from "./";
 import { getAllVinyls } from "../../redux/actions";
-import { AiOutlineDelete } from "react-icons/ai";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { IoCreateOutline } from "react-icons/io5";
+import { useNavigate, Link } from "react-router-dom";
 
 const VinylsDash = () => {
   const vinyls = useSelector((state) => state.vinyls);
-  console.log(vinyls);
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
   const [filterYear, setFilterYear] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllVinyls());
@@ -71,6 +73,13 @@ const VinylsDash = () => {
       cell: (row) => (
         <div className="flex space-x-2">
           <button
+            onClick={() => handleCreate(row)}
+            className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            <IoCreateOutline />
+          </button>
+
+          <button
             onClick={() => handleUpdate(row)}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
@@ -87,6 +96,9 @@ const VinylsDash = () => {
     },
   ];
 
+  const handleCreate = () => {
+    navigate("/form");
+  };
   //   const handleUpdate = (row) => {
   //     // Lógica para actualizar el vinilo
   //     dispatch(updateVinyl(row.id));
@@ -110,8 +122,18 @@ const VinylsDash = () => {
 
   return (
     <div className="flex flex-col w-full h-full md:flex-row">
-      <div className="md:w-full p-4">
-        <h1 className="mb-4 text-xl font-bold">Vinilos</h1>
+      <div className="md:w-full px-2">
+        <div className="flex h-[8vh]  items-center pl-5">
+          <div>
+            <div className="w-[150px] h-[50px] clip-path-custom bg-slate-900 flex items-center justify-end ">
+              <Link to="/dashboard">
+                <h1 className="text-white pr-2">Volver al Inicio</h1>
+              </Link>
+            </div>
+          </div>
+          <h1 className="ml-[35%] text-2xl font-bold">Lista de vinilos</h1>
+        </div>
+
         <input
           type="text"
           placeholder="Buscar por nombre"
