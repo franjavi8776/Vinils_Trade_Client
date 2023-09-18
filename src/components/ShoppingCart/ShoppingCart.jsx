@@ -38,7 +38,7 @@ const ShoppingCart = () => {
   function handlerButtom() {
     const shoppCart = document.getElementById("card");
     shoppCart.classList.add("hidden");
-    document.body.style.overflowY = "auto";
+    // document.body.style.overflowY = "auto";
   }
 
   const totalValue = cart.reduce(
