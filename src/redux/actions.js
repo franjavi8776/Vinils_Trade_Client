@@ -272,7 +272,7 @@ export const clearCart = () => ({
 export const loginUserByEmail = (loginData) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "//https://vinyls-trade-back-production.up.railway.app/login",
+      "https://vinyls-trade-back-production.up.railway.app/login",
       loginData
     );
     console.log(response.data);
