@@ -106,6 +106,8 @@ const Form = () => {
   //     }
   //   }
   // };
+
+  //agregado de cloudinary
   const uploadImage = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
