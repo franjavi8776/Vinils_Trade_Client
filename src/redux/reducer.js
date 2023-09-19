@@ -75,17 +75,7 @@ const reducer = (state = initialState, action) => {
         vinyls: [...state.allVinyls, action.payload],
       };
 
-    case FILTER_BY_DECADE:
-      const { startYear, endYear } = action.payload;
-      const filteredVinyls = state.vinyls.filter((vinyl) => {
-        const vinylYear = parseInt(vinyl.year);
-        return vinylYear >= startYear && vinylYear <= endYear;
-      });
-
-      return {
-        ...state,
-        allVinyls: filteredVinyls,
-      };
+    
 
     case GET_DETAIL:
       return {
@@ -273,6 +263,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: decreasedCartItems,
+      };
+
+      case FILTER_BY_DECADE:
+      const { startYear, endYear } = action.payload;
+      const filteredVinyls = state.vinyls.filter((vinyl) => {
+        const vinylYear = parseInt(vinyl.year);
+        return vinylYear >= startYear && vinylYear <= endYear;
+      });
+
+      return {
+        ...state,
+        allVinyls: filteredVinyls,
       };
 
     case ORDER_FOR_GENRE:
