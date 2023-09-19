@@ -88,7 +88,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="w-full h-[100vh]">
+    <div className="w-full mi-h-[100vh]">
       <div className="w-full h-[5vh] pt-5 pl-5">
         <div className="w-[150px] h-[50px] clip-path-custom bg-black flex items-center justify-end">
           <Link to="/">
@@ -96,7 +96,7 @@ const Dashboard = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full h-[40vh] flex justify-center  items-center gap-48 ">
+      <div className="w-full h-[35vh] flex justify-center  items-center gap-48 ">
         <Link to="/usarios">
           <div className="w-[200px] h-[200px] bg-black shadow-lg text-white shadow-black text-3xl flex flex-col justify-center items-center cursor-pointer active:translate-x-1 active:scale-95 gap-1">
             <h1>USUARIOS</h1>
@@ -114,8 +114,8 @@ const Dashboard = () => {
           </div>
         </Link>
       </div>
-      <div className="w-full h-[50vh] flex justify-center items-center  ">
-        <div className="w-[80%] h-[40vh] m-auto flex justify-around items-center border-4 border-black">
+      <div className="w-full min-h-[60vh] flex justify-center items-center  ">
+        <div className="w-[80%] h-[55vh] m-auto flex justify-around items-center border-4 border-black">
           <div className="w-[230px] h-[300px]">
             <Card>
               <h1 className="text-white text-center">Géneros de Vinilos</h1>
@@ -136,7 +136,9 @@ const Dashboard = () => {
           </div>
           <div className="w-[230px] h-[300px]">
             <Card>
-              <h1 className="text-white text-center">Distribución por Décadas</h1>
+              <h1 className="text-white text-center">
+                Distribución por Décadas
+              </h1>
               <DonutChart
                 className="mt-6 w-[200px] h-[200px]"
                 data={decadeData}

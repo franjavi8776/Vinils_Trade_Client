@@ -46,8 +46,8 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full bg-black bg-opacity-90">
-      <div className="w-full h-[20vh] flex justify-between items-center mb-10">
+    <div className="w-full min-h-[80vh] bg-black bg-opacity-90">
+      <div className="w-full h-[35vh] flex justify-between items-center mb-10">
         <div
           onClick={handleOnClick}
           className="w-[30%] flex flex-col items-center text-white cursor-pointer"
@@ -86,7 +86,7 @@ const Footer = () => {
       </div>
       <div className="py-20 bg-transparent border-t border-white w-[85%] m-auto">
         <div className="container mx-auto flex flex-col items-center">
-          <h3 className="text-xl font-semibold mb-4">
+          <h3 className="text-xl text-white font-semibold mb-4">
             Tu opinión nos interesa
           </h3>
           <p className="text-white mb-4">
