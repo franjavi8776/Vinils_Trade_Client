@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
-import { AiOutlineEdit } from "react-icons/ai";
-import { getUsersAndSuccess } from "../../redux/actions";
-import { disableUser } from "../../redux/actions";
-import { Link } from "react-router-dom";
+// import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
+import { AiOutlineDelete } from "react-icons/ai";
+import {getUsersAndSuccess, deleteUser, disableUser } from "../../redux/actions";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
+
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  console.log(Users)
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
@@ -59,10 +60,10 @@ const UserList = () => {
       cell: (row) => (
         <div className="flex space-x-2">
           <button
-            onClick={() => handleUpdate(row)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => handleDelete(row)}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-            <AiOutlineEdit />
+           <AiOutlineDelete/>
           </button>
           <button
             onClick={() => handleDisable(row)}
@@ -81,6 +82,9 @@ const UserList = () => {
     },
   ];
 
+  const handleDelete = (row) => {
+    dispatch(deleteUser(row.id)); 
+  };
   //   const handleUpdate = (row) => {
   //     // Lógica para actualizar el vinilo
   //     dispatch(updateVinyl(row.id));
