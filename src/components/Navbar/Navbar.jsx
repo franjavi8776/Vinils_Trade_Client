@@ -5,11 +5,41 @@ import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GoX } from "react-icons/go";
 import "./Navbar.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getAdmins } from "../../redux/actions.js";
 
 const Navbar = ({ updateHtmlClass }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const admin = useSelector((state) => state.admins);
+  const email = useSelector((state) => state.email);
+  const token = useSelector((state) => state.token);
+  console.log(admin);
+  console.log(token);
+  console.log(email);
+
+  const filtro = admin.filter((us) => {
+    return email === us.email;
+  });
+  console.log(filtro);
+
+  useEffect(() => {
+    if (filtro.length > 0 && token) {
+      const panel = document.getElementById("panel");
+
+      panel.classList.remove("hidden");
+    } else if (!token) {
+      panel.classList.add("hidden");
+    }
+  }, [filtro]);
+
+  useEffect(() => {
+    dispatch(getAdmins());
+  }, [dispatch]);
 
   useEffect(() => {
     const storedDarkMode = localStorage.getItem("darkMode");
@@ -87,6 +117,16 @@ const Navbar = ({ updateHtmlClass }) => {
                 <BsFillMoonStarsFill className="text-xl text-blue-500" />
               )}
             </button>
+
+            <Link
+              onClick={() => setMobileMenuOpen(false)}
+              to="/dashboard"
+              id="panel"
+              className="hidden mt-40 k lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
+              lg:text-md"
+            >
+              Panel
+            </Link>
 
             <Link
               onClick={() => setMobileMenuOpen(false)}

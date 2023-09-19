@@ -8,7 +8,7 @@ import { IoCreateOutline } from "react-icons/io5";
 import { useNavigate, Link } from "react-router-dom";
 
 const VinylsDash = () => {
-  const vinyls = useSelector((state) => state.vinyls);
+  const vinyls = useSelector((state) => state.allVinyls);
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
   const [filterGenre, setFilterGenre] = useState("");

@@ -25,6 +25,7 @@ import {
   DISABLE_USER,
   ADMINS_SUCCESS,
   DELETE_USER,
+  LOGIN_SUCCESS_GOOGLE,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -52,6 +53,7 @@ const initialState = {
   },
   users: [],
   admins: [],
+  email: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -74,9 +76,6 @@ const reducer = (state = initialState, action) => {
         allVinyls: [...state.allVinyls, action.payload],
         vinyls: [...state.allVinyls, action.payload],
       };
-
-    
-
     case GET_DETAIL:
       return {
         ...state,
@@ -90,12 +89,12 @@ const reducer = (state = initialState, action) => {
     case ADMINS_SUCCESS:
       return {
         ...state,
-        users: action.payload,
+        // users: action.payload,
         admins: action.payload,
       };
     case DISABLE_USER:
-      const updatedUsers = state.users.filter((user) =>
-        user.id !== action.payload 
+      const updatedUsers = state.users.filter(
+        (user) => user.id !== action.payload
       );
       return {
         ...state,
@@ -265,13 +264,6 @@ const reducer = (state = initialState, action) => {
         cartItems: decreasedCartItems,
       };
 
-      case FILTER_BY_DECADE:
-      const { startYear, endYear } = action.payload;
-      const filteredVinyls = state.vinyls.filter((vinyl) => {
-        const vinylYear = parseInt(vinyl.year);
-        return vinylYear >= startYear && vinylYear <= endYear;
-      });
-
       return {
         ...state,
         allVinyls: filteredVinyls,
@@ -283,6 +275,17 @@ const reducer = (state = initialState, action) => {
         allVinyls: state.vinyls.filter((vinyl) =>
           vinyl.genre.includes(action.payload)
         ),
+      };
+    case FILTER_BY_DECADE:
+      const { startYear, endYear } = action.payload;
+      const filteredVinyls = state.vinyls.filter((vinyl) => {
+        const vinylYear = parseInt(vinyl.year);
+        return vinylYear >= startYear && vinylYear <= endYear;
+      });
+
+      return {
+        ...state,
+        allVinyls: filteredVinyls,
       };
 
     case RESET:
@@ -305,9 +308,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        token: action.payload.token, // Almacenar el token cuando la autenticación sea exitosa
+        token: action.payload.token,
+        email: action.payload.email, // Almacenar el token cuando la autenticación sea exitosa
         error: null, // Restablecer cualquier mensaje de error anterior
       };
+    case LOGIN_SUCCESS_GOOGLE:
+      localStorage.setItem("token", action.payload);
+      return {
+        ...state,
+        isAuthenticated: true,
+        token: action.payload, // Almacenar el token cuando la autenticación sea exitosa
+        error: null, // Restablecer cualquier mensaje de error anterior
+      };
+
     case LOGIN_FAILURE:
       return {
         ...state,
@@ -323,20 +336,7 @@ const reducer = (state = initialState, action) => {
         token: null, // Borrar el token cuando se cierre sesión
         error: null, // Restablecer cualquier mensaje de error anterior
       };
-    // case LOGIN_USER_WITH_GOOGLE_SUCCESS:
-    //     return {
-    //       ...state,
-    //       user: action.payload,
-    //       token: action.payload.token,
-    //       error: null,
-    //   };
-    // case LOGIN_USER_WITH_GOOGLE_FAILURE:
-    //     return {
-    //       ...state,
-    //       user:null,
-    //       token: null,
-    //       error: action.payload,
-    //   };
+
     default:
       return {
         ...state,
