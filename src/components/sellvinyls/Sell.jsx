@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Sell = () => {
   const [vinyls, setVinyls] = useState({
-    title: "usuario",
+    title: "",
     artists: [{ name: "" }],
     year: "",
     cover_image: "",
@@ -94,7 +94,7 @@ const Sell = () => {
               onChange={handleChange}
               className="border rounded w-full p-2 text-black"
               placeholder="Ingrese el titulo..."
-              readOnly
+              required
             />
             {errors.title && <p className="text-black">{errors.title}</p>}
           </div>

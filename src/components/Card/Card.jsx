@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions"; // Asegúrate de importar la acción correcta
 import { FaShoppingCart } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
+
 const Card = ({ id, title, cover_image, price, stock }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartItems);
