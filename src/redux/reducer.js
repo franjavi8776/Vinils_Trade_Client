@@ -264,11 +264,6 @@ const reducer = (state = initialState, action) => {
         cartItems: decreasedCartItems,
       };
 
-      return {
-        ...state,
-        allVinyls: filteredVinyls,
-      };
-
     case ORDER_FOR_GENRE:
       return {
         ...state,
