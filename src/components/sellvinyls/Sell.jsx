@@ -62,6 +62,50 @@ const Sell = () => {
     }));
   };
 
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "upload_vinyl_image"); // Set the upload preset here
+
+    try {
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/dxaj4cgeb/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      console.log(data.secure_url);
+      return data.secure_url; // Return the secure URL of the uploaded image
+    } catch (error) {
+      console.error("Error uploading image to Cloudinary", error);
+      throw error;
+    }
+  };
+
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0]; // Get the selected file from the input
+    if (!file) {
+      return;
+    }
+
+    try {
+      const imageUrl = await uploadImage(file);
+      console.log(imageUrl);
+      setVinyls((prevFormData) => ({
+        ...prevFormData,
+        cover_image: imageUrl,
+      }));
+      // setImagePreview(imageUrl);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+    // const errors = validateField(null, null, formData);
+    // setErrors(errors);
+  };
+
   const handlerSubmit = (e) => {
     e.preventDefault();
 

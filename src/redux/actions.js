@@ -30,6 +30,7 @@ export const UPDATE_VINYLS = "UPDATE_VINYLS";
 export const USERS_SUCCESS = "USERS_SUCCESS";
 export const DISABLE_USER = "DISABLE_USER";
 export const ADMINS_SUCCESS = "ADMINS_SUCCESS";
+export const DELETE_USER = "DELETE_USER";
 export const LOGIN_SUCCESS_GOOGLE = "LOGIN_SUCCESS_GOOGLE";
 
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
@@ -112,6 +113,23 @@ export const getUsersAndSuccess = () => {
       });
     } catch (err) {
       console.error("Error al obtener la lista de usuarios: ", err);
+    }
+  };
+};
+
+export const deleteUser = (userId) => {
+  return async (dispatch) => {
+    try {
+      // Realiza la petición para eliminar al usuario por ID
+      await axios.delete(`https://vinyls-trade-back-production.up.railway.app/deleteUser/${userId}`);
+
+      // Despacha la acción DELETE_USER con el ID del usuario eliminado
+      dispatch({
+        type: DELETE_USER,
+        payload: userId,
+      });
+    } catch (error) {
+      console.error("Error al eliminar el usuario: ", error);
     }
   };
 };
