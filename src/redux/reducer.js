@@ -52,7 +52,7 @@ const initialState = {
   },
   users: [],
   admins: [],
-  email: "",
+  email: localStorage.getItem("email") || "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -290,6 +290,7 @@ const reducer = (state = initialState, action) => {
 
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("email", action.payload.email);
       return {
         ...state,
         isAuthenticated: true,

@@ -11,6 +11,8 @@ const Dashboard = () => {
   const user = useSelector((state) => state.users);
   const vinyls = useSelector((state) => state.vinyls);
 
+  const email = useSelector((state) => state.email);
+
   useEffect(() => {
     dispatch(getAllVinyls());
     dispatch(getUsersAndSuccess());
@@ -89,12 +91,15 @@ const Dashboard = () => {
 
   return (
     <div className="w-full mi-h-[100vh]">
-      <div className="w-full h-[5vh] pt-5 pl-5">
+      <div className="w-full h-[10vh] pt-5 pl-5">
         <div className="w-[150px] h-[50px] clip-path-custom bg-black flex items-center justify-end">
           <Link to="/">
-            <h1 className="text-white pr-2">Volver al home</h1>
+            <h1 className="text-white pr-2">Volver al Inicio</h1>
           </Link>
         </div>
+      </div>
+      <div className="w-full h-[5vh]">
+        <h2 className="text-center text-2xl font-bold">Bienvenido {email}</h2>
       </div>
       <div className="w-full h-[35vh] flex justify-center  items-center gap-48 ">
         <Link to="/usarios">
