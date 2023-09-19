@@ -30,6 +30,7 @@ export const UPDATE_VINYLS = "UPDATE_VINYLS";
 export const USERS_SUCCESS = "USERS_SUCCESS";
 export const DISABLE_USER = "DISABLE_USER";
 export const ADMINS_SUCCESS = "ADMINS_SUCCESS";
+export const LOGIN_SUCCESS_GOOGLE = "LOGIN_SUCCESS_GOOGLE";
 
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
@@ -85,14 +86,17 @@ export const postRegisterUser = (x) => {
   };
 };
 
-export const disableUser = (userId) => async (dispatch)=>{
+export const disableUser = (userId) => async (dispatch) => {
   try {
-    await axios.post('https://vinyls-trade-back-production.up.railway.app/inhabilityUser', { id: userId });
+    await axios.post(
+      "https://vinyls-trade-back-production.up.railway.app/inhabilityUser",
+      { id: userId }
+    );
     // Despacha una acción para actualizar el estado de Redux después de la eliminación
-    dispatch({ type: 'DISABLE_USER', payload: userId });
+    dispatch({ type: "DISABLE_USER", payload: userId });
   } catch (error) {
     // Maneja errores aquí si es necesario
-    console.error('Error al eliminar el usuario', error);
+    console.error("Error al eliminar el usuario", error);
   }
 };
 
@@ -271,6 +275,7 @@ export const loginUserByEmail = (loginData) => async (dispatch) => {
       "https://vinyls-trade-back-production.up.railway.app/login",
       loginData
     );
+    console.log(response.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: response.data,
@@ -284,30 +289,25 @@ export const loginUserByEmail = (loginData) => async (dispatch) => {
   }
 };
 
-// export const loginUserWithGoogle = (token) => async (dispatch) => {
-//   // const auth = getAuth(); // Obtiene la instancia de autenticación de Firebase
-//   // const provider = new GoogleAuthProvider();
-
-//   try {
-//     // const result = await signInWithPopup(auth, provider);
-//     // const user = result.user;
-
-//     // const token = await user.getIdToken();
-//     response=await axios.post('http://localhost:3001/google', token);
-
-//     // Acción exitosa
-//     dispatch({
-//       type: LOGIN_USER_WITH_GOOGLE_SUCCESS,
-//       payload: response,
-//     });
-//   } catch (error) {
-//     // Acción con error
-//     dispatch({
-//       type: LOGIN_USER_WITH_GOOGLE_FAILURE,
-//       payload: error,
-//     });
-//   }
-// };
+export const loginUserByGoogle = (token) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      "https://vinyls-trade-back-production.up.railway.app/auth/google",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    console.log(response.data);
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const logoutUser = () => {
   // Eliminar el token de autenticación del estado de Redux al cerrar sesión

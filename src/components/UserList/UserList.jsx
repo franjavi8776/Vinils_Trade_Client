@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineEdit } from "react-icons/ai";
 import { getUsersAndSuccess } from "../../redux/actions";
 import { disableUser } from "../../redux/actions";
-import {Link} from "react-router-dom"
-import {RiDeleteBin6Line} from "react-icons/ri"
+import { Link } from "react-router-dom";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
@@ -74,7 +74,7 @@ const UserList = () => {
             onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-            <RiDeleteBin6Line/>
+            <RiDeleteBin6Line />
           </button>
         </div>
       ),
