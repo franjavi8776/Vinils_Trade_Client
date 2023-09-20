@@ -2,8 +2,8 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="w-full min-h-[100vh] flex ">
-      <div className="w-[50%] min-h-[100vh] py-20 xl:py-0">
+    <div className="w-full min-h-[100vh] flex flex-col md:flex md:flex-row">
+      <div className="w-[100%] md:w-[50%] min-h-[100vh] py-20 xl:py-0">
         <div className="w-[100%] min-h-[25vh] flex flex-col   lg:flex lg:flex-row justify-center items-center gap-2 lg:gap-20">
           <div className="relative w-48 h-48">
             <img
@@ -44,7 +44,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-[25vh] flex  justify-center items-center gap-20">
+        <div className="w-[100%] min-h-[25vh] flex flex-col lg:flex lg:flex-row  justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div className="relative w-48 h-48">
             <img
               src="/disco2.jpg"
@@ -64,7 +64,7 @@ const About = () => {
             <h2>santugomezt@gmail.com</h2>
           </div>
         </div>
-        <div className="w-[100%] h-[25vh] flex  justify-center items-center gap-20">
+        <div className="w-[100%] min-h-[25vh] flex flex-col-reverse lg:flex lg:flex-row justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div>
             <h2 className="text-2xl font-bold">Juan Ardila</h2>
             <h2>judaargu@hotmail.com</h2>
@@ -84,7 +84,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-[25vh] flex  justify-center items-center gap-20">
+        <div className="w-[100%] min-h-[25vh] flex flex-col lg:flex lg:flex-row  justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div className="relative w-48 h-48">
             <img
               src="/disco2.jpg"
@@ -104,7 +104,7 @@ const About = () => {
             <h2>jeremingolla03@gmail.com</h2>
           </div>
         </div>
-        <div className="w-[100%] h-[25vh] flex  justify-center items-center gap-20">
+        <div className="w-[100%] min-h-[25vh] flex flex-col-reverse lg:flex lg:flex-row justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div>
             <h2 className="text-2xl font-bold">Esteban Jiménez</h2>
             <h2>ejimenezcadena@gmail.com</h2>
@@ -124,7 +124,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-[25vh] flex  justify-center items-center gap-20">
+        <div className="w-[100%] min-h-[25vh] flex flex-col  lg:flex lg:flex-row justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div className="relative w-48 h-48">
             <img
               src="/disco2.jpg"
@@ -144,7 +144,7 @@ const About = () => {
             <h2>vocafran@gmail.com</h2>
           </div>
         </div>
-        <div className="w-[100%] h-[25vh] flex  justify-center items-center gap-20">
+        <div className="w-[100%] min-h-[25vh] flex flex-col-reverse lg:flex lg:flex-row justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div>
             <h2 className="text-2xl font-bold">Miguel Scaccia</h2>
             <h2>miguel.scaccia1@gmail.com</h2>
@@ -165,7 +165,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="w-[50%] min-h-[100vh]  flex flex-col  items-center py-20">
+      <div className="w-[100%] md:w-[50%] min-h-[100vh]  flex flex-col  items-center py-20">
         <h1 className="text-3xl font-bold pb-20">Quienes Somos?</h1>
         <div className="w-[60%] text-justify">
           <p className="pb-10 tracking-widest">

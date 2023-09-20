@@ -122,7 +122,7 @@ const Navbar = ({ updateHtmlClass }) => {
               onClick={() => setMobileMenuOpen(false)}
               to="/dashboard"
               id="panel"
-              className="hidden mt-40 k lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
+              className="hidden mt-40  lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
               lg:text-md"
             >
               Panel
