@@ -27,6 +27,9 @@ import { carImage } from "../cloudinary/carouselImages";
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls);
+  console.log(vinyls);
+  const vinil = useSelector((state) => state.vinyls);
+  console.log(vinil);
   const vinyl = useSelector((state) => state.vinilos);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterGener, setFilterGener] = useState("");

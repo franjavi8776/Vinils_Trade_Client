@@ -32,6 +32,7 @@ export const DISABLE_USER = "DISABLE_USER";
 export const ADMINS_SUCCESS = "ADMINS_SUCCESS";
 export const DELETE_USER = "DELETE_USER";
 export const LOGIN_SUCCESS_GOOGLE = "LOGIN_SUCCESS_GOOGLE";
+export const GET_REVIEWS = "GET_REVIEWS";
 
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
@@ -121,7 +122,9 @@ export const deleteUser = (userId) => {
   return async (dispatch) => {
     try {
       // Realiza la petición para eliminar al usuario por ID
-      await axios.delete(`https://vinyls-trade-back-production.up.railway.app/deleteUser/${userId}`);
+      await axios.delete(
+        `https://vinyls-trade-back-production.up.railway.app/deleteUser/${userId}`
+      );
 
       // Despacha la acción DELETE_USER con el ID del usuario eliminado
       dispatch({
@@ -354,6 +357,18 @@ export const updateVinyls = (id, stock) => async (dispatch) => {
     });
   } catch (error) {
     console.error("Error en la solicitud PUT:", error);
+  }
+};
+
+export const getReviews = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      "https://vinyls-trade-back-production.up.railway.app/get/allReviews"
+    );
+    console.log(response);
+    dispatch({ type: GET_REVIEWS, payload: response.data });
+  } catch (error) {
+    console.log(error);
   }
 };
 

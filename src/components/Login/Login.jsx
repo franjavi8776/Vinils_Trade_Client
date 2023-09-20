@@ -24,6 +24,7 @@ function Login() {
   console.log(authe);
   console.log(user);
   console.log(email);
+  console.log(admin);
 
   const filtro = admin.filter((us) => {
     return us.isAdmin === true && email === us.email;
