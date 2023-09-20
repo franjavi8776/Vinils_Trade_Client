@@ -10,6 +10,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
   const [isGreen, setIsGreen] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const isAuthenticated = useSelector((state) => state.token !== null);
+
   // Verifica si el producto ya está en el carrito
   const itemInCart = cartItems.find((item) => item.id === id);
 
@@ -90,6 +91,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
         toast.success("Producto agregado al carrito correctamente");
         setIsGreen(true);
       }
+      notify1("Item agregado", "success");
     } else {
       notify1("Debes iniciar sesión", "error"); // Notificación de "Debes iniciar sesión"
     }
@@ -98,7 +100,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
   return (
     <div className="w-60 h-[315px] text-md dark:bg-slate-200 dark:text-black rounded-md">
       <Link to={`/detail/${id}`}>
-        <img className="w-60 h-60" src={cover_image} alt={title} />
+        <img className="w-60 h-60 relative" src={cover_image} alt={title} />
       </Link>
       <h2 className=" h-10 truncate text-center mb-[-20px]">{title}</h2>
       <div className="w-full flex justify-between text-md">

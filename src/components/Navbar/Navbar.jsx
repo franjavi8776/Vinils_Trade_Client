@@ -12,6 +12,12 @@ const Navbar = ({ updateHtmlClass }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    const storedDarkMode = localStorage.getItem("darkMode");
+    if (storedDarkMode) {
+      setDarkMode(storedDarkMode === "true"); // Convierte el valor a booleano.
+      updateHtmlClass(storedDarkMode === "true");
+    }
+
     const handleScroll = () => {
       if (window.scrollY > 160) {
         setIsScrolled(true);
@@ -27,8 +33,10 @@ const Navbar = ({ updateHtmlClass }) => {
   }, []);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    updateHtmlClass(!darkMode);
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    updateHtmlClass(newDarkMode);
+    localStorage.setItem("darkMode", newDarkMode.toString());
   };
 
   const navbarClass = isScrolled
@@ -50,9 +58,9 @@ const Navbar = ({ updateHtmlClass }) => {
         <div className="lg:hidden w-full h-[6vh] flex justify-between items-center p-3">
           <button onClick={toggleDarkMode} className="lg:flex">
             {darkMode ? (
-              <BsFillSunFill className="text-2xl text-yellow-500" />
-            ) : (
               <BsFillMoonStarsFill className="text-xl text-blue-500" />
+            ) : (
+              <BsFillSunFill className="text-2xl text-yellow-500" />
             )}
           </button>
           <div className="w-[80%] flex justify-center items-center ">
@@ -79,26 +87,21 @@ const Navbar = ({ updateHtmlClass }) => {
                 <BsFillMoonStarsFill className="text-xl text-blue-500" />
               )}
             </button>
-            <Link
-              onClick={() => setMobileMenuOpen(false)}
-              to="/form"
-              className="mt-40 lg:m-4  lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
-            >
-              Publicar
-            </Link>
-            <Link
-              to="/dashboard"
-              className="mt-40 lg:m-4  lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md"
-            >
-              Dashboard
-            </Link>
+
             <Link
               onClick={() => setMobileMenuOpen(false)}
               to="/"
               className="mt-40 k lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
               lg:text-md"
             >
-              Home
+              Inicio
+            </Link>
+            <Link
+              onClick={() => setMobileMenuOpen(false)}
+              to="/about"
+              className="mt-40 lg:m-4  lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
+            >
+              Acerca de nosotros
             </Link>
           </div>
           <div className="lg:w-[60%] lg:flex lg:justify-center lg:items-center hidden">

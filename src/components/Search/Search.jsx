@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVinylsForName, logoutUser } from "../../redux/actions";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 const Search = () => {
   const [inputValue, setInputValue] = useState("");
@@ -20,27 +20,37 @@ const Search = () => {
 
   const contador = cart.length;
 
-  const notify1 = (message, type, duration = 1000) => {
-    toast.custom((t) => (
-      <div
-        className={`${
-          type === 'success'
-            ? 'bg-green-400'
-            : type === 'error'
-            ? 'bg-white'
-            : 'bg-green-400 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light'
-        } p-2 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light`}
-      >
-        <div className={`text-center justify-center text-lg ${type === 'success' ? 'text-white' : ''}`}>{message}</div>
-      </div>
-    ), {
-      duration: duration,
-    });
+  const notify1 = (message, type) => {
+    toast.custom(
+      (t) => (
+        <div
+          className={`${
+            type === "success"
+              ? "bg-green-400"
+              : type === "error"
+              ? "bg-white"
+              : "bg-green-400 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light"
+          } p-2 w-50 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light`}
+        >
+          <div
+            className={`text-center justify-center text-lg ${
+              type === "success" ? "text-white" : ""
+            }`}
+          >
+            {message}
+          </div>
+        </div>
+      ),
+      {
+        duration: 500,
+      }
+    );
   };
-  
+
   function handlerButton() {
     const shoppCart = document.getElementById("card");
     shoppCart.classList.remove("hidden");
+    document.body.style.overflowY = "hidden";
   }
 
   const handleLogout = () => {
@@ -55,7 +65,7 @@ const Search = () => {
     dispatch(logoutUser());
 
     // Muestra un Toast de éxito después de cerrar sesión
-    notify1("Cerro sesion exitosamente")
+    notify1("Cerro sesion exitosamente");
   };
 
   return (
@@ -109,28 +119,29 @@ const Search = () => {
       <Toaster />
 
       {showLogoutModal && (
-  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-    <div className="absolute w-full h-full bg-gray-900 opacity-70"></div>
-    <div className="modal bg-white p-4 rounded-lg z-10">
-      <h2 className="text-black text-2xl font-bold mb-4">¿Estás seguro de que quieres cerrar sesión?</h2>
-      <div className="flex items-center justify-center">
-        <button
-          onClick={confirmLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded-lg mr-2"
-        >
-          Sí
-        </button>
-        <button
-          onClick={() => setShowLogoutModal(false)}
-          className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg"
-        >
-          No
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+          <div className="absolute w-full h-full bg-gray-900 opacity-70"></div>
+          <div className="modal bg-white p-4 rounded-lg z-10">
+            <h2 className="text-black text-2xl font-bold mb-4">
+              ¿Estás seguro de que quieres cerrar sesión?
+            </h2>
+            <div className="flex items-center justify-center">
+              <button
+                onClick={confirmLogout}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg mr-2"
+              >
+                Sí
+              </button>
+              <button
+                onClick={() => setShowLogoutModal(false)}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

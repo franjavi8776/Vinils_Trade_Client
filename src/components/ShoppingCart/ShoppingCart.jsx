@@ -11,6 +11,7 @@ import {
   clearCart,
 } from "../../redux/actions";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { BsTrash3 } from "react-icons/bs";
 import toast, { Toaster } from "react-hot-toast";
 
 const ShoppingCart = () => {
@@ -19,7 +20,7 @@ const ShoppingCart = () => {
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
   // const stateMP = useSelector((state) => state.stateMP)
-  console.log(MP);
+  //console.log(MP);
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
     toast.success("Vinilo eliminado correctamente");
@@ -37,6 +38,7 @@ const ShoppingCart = () => {
   function handlerButtom() {
     const shoppCart = document.getElementById("card");
     shoppCart.classList.add("hidden");
+    document.body.style.overflowY = "auto";
   }
 
   const totalValue = cart.reduce(
@@ -81,10 +83,10 @@ const ShoppingCart = () => {
 
   return (
     <div
-      className="w-full h-[100vh] bg-black bg-opacity-70 flex justify-center items-center"
+      className="w-[100%]  h-[105vh] bg-black bg-opacity-70 flex justify-center items-center"
       style={{ zIndex: 2 }}
     >
-      <div className="w-[700px] h-[800px] bg-white  relative z-50 dark:bg-black ">
+      <div className="w-[360px] sm:w-[500px] sm:h-[800px] md:w-[700px] h-[800px] bg-white  relative z-50 dark:bg-black">
         <h1 className="text-center mt-4 font-bold">CARRITO DE COMPRAS</h1>
         <button
           onClick={handlerButtom}
@@ -92,7 +94,7 @@ const ShoppingCart = () => {
         >
           X
         </button>
-        <ul className="w-[700px] h-[630px] overflow-y-auto">
+        <ul className="w-[360px] sm:w-[500px] md:w-[700px] md:h-[630px] overflow-y-auto">
           {cart.length ? (
             cart.map((item) => (
               <div
@@ -126,15 +128,15 @@ const ShoppingCart = () => {
                   </button>
                   <button
                     onClick={() => handleRemoveFromCart(item.id)}
-                    className="bg-red-500 text-white px-2 rounded"
+                    className="bg-red-500 text-white px-2 rounded ml-3"
                   >
-                    Eliminar
+                    <BsTrash3 />
                   </button>
                 </div>
               </div>
             ))
           ) : (
-            <div className=" flex flex-col justify-center items-center w-[700px] h-[630px]">
+            <div className=" flex flex-col justify-center items-center w-[360px] sm:w-[500px] md:w-[700px] h-[630px]">
               <MdOutlineRemoveShoppingCart className="w-[150px] h-[150px] text-red-800" />
               <div className="font-bold text-xl">Carrito vacio</div>
             </div>
@@ -145,12 +147,12 @@ const ShoppingCart = () => {
           <div className=" flex justify-between">
             <button
               onClick={handlerButtom}
-              className="bg-red-800 text-white px-4 py-2 rounded mt-4"
+              className="bg-red-800 text-white px-2 py-2 sm:px-4 sm:py-2 rounded mt-4"
             >
               Seguir Comprando
             </button>
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+              className="bg-green-500 text-white px-2 py-2 sm:px-4 sm:py-2 rounded mt-4"
               onClick={handleShowConfirmation}
             >
               Finalizar Compra
@@ -159,7 +161,7 @@ const ShoppingCart = () => {
         </div>
         <Toaster />
         {showConfirmation && (
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 h-[100px] w-[530px] -translate-y-1/2 flex flex-col items-center text-black from-red-700 to-red-950 p-4 border border-gray-300 shadow-lg z-50 dark:text-white">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2  w-[340px] md:h-[120px] md:w-[530px] -translate-y-1/2 flex flex-col items-center text-white bg-black from-red-700 to-red-950 p-4 border border-gray-300 shadow-lg z-50 dark:text-black dark:bg-slate-200">
             <p className="mb-4">
               ¿Estás seguro de que deseas finalizar la compra?
             </p>

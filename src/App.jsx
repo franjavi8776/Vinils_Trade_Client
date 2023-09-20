@@ -8,7 +8,12 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import RegistroUsuario from "./components/Register/register";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Users from "./components/UserList/UserList";
 import VinylsDash from "./components/Dashboard/vinylsDash";
+import About from "./components/About/About";
+import Sell from "./components/sellvinyls/Sell.jsx";
+import Garantia from "./components/Garantia/Garantia";
+
 function App() {
   const updateHtmlClass = (darkMode) => {
     const htmlElement = document.documentElement;
@@ -23,19 +28,27 @@ function App() {
 
   return (
     <div className=" dark:text-white dark:bg-black dark:bg-opacity-80 duration-100">
-      {location.pathname !== "/dashboard" && (
-        <Navbar updateHtmlClass={updateHtmlClass} />
-      )}
+      {location.pathname !== "/dashboard" &&
+        !location.pathname.startsWith("/usarios") &&
+        !location.pathname.startsWith("/vinylsDash") && (
+          <Navbar updateHtmlClass={updateHtmlClass} />
+        )}
 
       <Routes>
+        // rutas de users
         <Route path="/register" element={<RegistroUsuario />} />
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/form" element={<Form />} />
         <Route path="/login" element={<Login />} />
+        <Route path="about" element={<About />} />
+        <Route path="/sellUser" element={<Sell />} />
+        <Route path="/garantia" element={<Garantia />} />
+        // Admins
+        <Route path="/form" element={<Form />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/usarios" element={<Users />} />
+        <Route path="/vinylsDash" element={<VinylsDash />} />
         <Route path="*" element={<Error />} />
-        <Route path="/vinylsDash" element={<VinylsDash/>} />
       </Routes>
     </div>
   );
