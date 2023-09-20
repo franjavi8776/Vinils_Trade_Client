@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { DonutChart, Card, Text, Metric } from "@tremor/react";
 import { getAllVinyls, getUsersAndSuccess } from "../../redux/actions";
+import { MdRateReview, MdOutlineRateReview } from "react-icons/md";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -115,6 +116,14 @@ const Dashboard = () => {
             <h1>VINILOS</h1>
             <button>
               <BsDiscFill className="w-20 h-20" />
+            </button>
+          </div>
+        </Link>
+        <Link to="/reviews">
+          <div className="w-[200px] h-[200px] bg-black shadow-lg text-white shadow-black text-3xl flex flex-col justify-center items-center cursor-pointer active:translate-x-1 active:scale-95 gap-1">
+            <h1>Reviews</h1>
+            <button>
+              <MdRateReview className="w-20 h-20" />
             </button>
           </div>
         </Link>

@@ -26,10 +26,12 @@ import {
   ADMINS_SUCCESS,
   DELETE_USER,
   LOGIN_SUCCESS_GOOGLE,
+  GET_REVIEWS,
 } from "./actions";
 const initialState = {
   allVinyls: [],
   vinyls: [],
+  allVin: [],
   vinilos: [],
   detail: {},
   search: [],
@@ -54,6 +56,7 @@ const initialState = {
   users: [],
   admins: [],
   email: localStorage.getItem("email") || "",
+  reviews: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -64,6 +67,7 @@ const reducer = (state = initialState, action) => {
         allVinyls: action.payload,
         vinyls: action.payload,
         vinilos: action.payload,
+        allVin: action.payload,
       };
     case GET_VINYLS_FOR_NAME:
       return {
@@ -104,7 +108,9 @@ const reducer = (state = initialState, action) => {
     case DELETE_USER:
       const userIdToDelete = action.payload;
       // Filtra los usuarios para eliminar el que coincide con el ID
-      const updatedUsersAfterDelete = state.users.filter((user) => user.id !== userIdToDelete);
+      const updatedUsersAfterDelete = state.users.filter(
+        (user) => user.id !== userIdToDelete
+      );
       return {
         ...state,
         users: updatedUsersAfterDelete,
@@ -265,11 +271,13 @@ const reducer = (state = initialState, action) => {
       };
 
     case ORDER_FOR_GENRE:
+      const vinilFilter = state.allVin.filter((vinyl) =>
+        vinyl.genre.includes(action.payload)
+      );
       return {
         ...state,
-        allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.includes(action.payload)
-        ),
+        allVinyls: vinilFilter,
+        vinyls: vinilFilter,
       };
     case FILTER_BY_DECADE:
       const { startYear, endYear } = action.payload;
@@ -280,6 +288,7 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
+        allVin: filteredVinyls,
         allVinyls: filteredVinyls,
       };
 
@@ -331,6 +340,11 @@ const reducer = (state = initialState, action) => {
         isAuthenticated: false,
         token: null, // Borrar el token cuando se cierre sesión
         error: null, // Restablecer cualquier mensaje de error anterior
+      };
+    case GET_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
       };
 
     default:
