@@ -13,6 +13,7 @@ import VinylsDash from "./components/Dashboard/vinylsDash";
 import About from "./components/About/About";
 import Sell from "./components/sellvinyls/Sell.jsx";
 import Garantia from "./components/Garantia/Garantia";
+import Reviews from "./components/Reviews/Reviews";
 
 function App() {
   const updateHtmlClass = (darkMode) => {
@@ -31,7 +32,8 @@ function App() {
       {location.pathname !== "/dashboard" &&
         !location.pathname.startsWith("/usarios") &&
         !location.pathname.startsWith("/form") &&
-        !location.pathname.startsWith("/vinylsDash") && (
+        !location.pathname.startsWith("/vinylsDash") &&
+        !location.pathname.startsWith("/reviews") && (
           <Navbar updateHtmlClass={updateHtmlClass} />
         )}
 
@@ -49,6 +51,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/usarios" element={<Users />} />
         <Route path="/vinylsDash" element={<VinylsDash />} />
+        <Route path="/reviews" element={<Reviews />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
