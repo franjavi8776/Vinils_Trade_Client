@@ -7,13 +7,13 @@ const About = () => {
         <div className="w-[100%] min-h-[25vh] flex flex-col   lg:flex lg:flex-row justify-center items-center gap-2 lg:gap-20">
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/ale.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222825/ale_mgbnwu.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />
@@ -31,13 +31,13 @@ const About = () => {
           </div>
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/yo.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222816/yo_ebwh79.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />
@@ -47,13 +47,13 @@ const About = () => {
         <div className="w-[100%] min-h-[25vh] flex flex-col lg:flex lg:flex-row  justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/santi.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222816/santi_x171xp.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />
@@ -71,13 +71,13 @@ const About = () => {
           </div>
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/juan.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222816/juan_w77gp8.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />
@@ -87,13 +87,13 @@ const About = () => {
         <div className="w-[100%] min-h-[25vh] flex flex-col lg:flex lg:flex-row  justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/jere.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222816/jere_li4ddu.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />
@@ -111,13 +111,13 @@ const About = () => {
           </div>
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/esteban.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222817/esteban_ansttx.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />
@@ -127,13 +127,13 @@ const About = () => {
         <div className="w-[100%] min-h-[25vh] flex flex-col  lg:flex lg:flex-row justify-center items-center lg:gap-20 pt-5 lg:pt-0">
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/franco.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222816/franco_haa6iw.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />
@@ -151,13 +151,13 @@ const About = () => {
           </div>
           <div className="relative w-48 h-48">
             <img
-              src="/disco2.jpg"
+              src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
               alt="aboutImg"
               className="w-48 h-48 rounded-full"
             />
             <div className="absolute w-20 h-20 top-14 left-14">
               <img
-                src="/miguel.jpg"
+                src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222816/miguel_bhprti.jpg"
                 alt="photo"
                 className="rounded-full w-20 h-20"
               />

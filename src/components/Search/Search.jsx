@@ -46,6 +46,32 @@ const Search = () => {
       }
     );
   };
+  const notify2 = (message, type) => {
+    toast.custom(
+      (t) => (
+        <div
+          className={`${
+            type === "success"
+              ? "bg-red-400"
+              : type === "error"
+              ? "bg-white"
+              : "bg-red-400 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light"
+          } p-2 w-50 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light`}
+        >
+          <div
+            className={`text-center justify-center text-lg ${
+              type === "success" ? "text-white" : ""
+            }`}
+          >
+            {message}
+          </div>
+        </div>
+      ),
+      {
+        duration: 500,
+      }
+    );
+  };
 
   function handlerButton() {
     const shoppCart = document.getElementById("card");
@@ -53,7 +79,7 @@ const Search = () => {
       shoppCart.classList.remove("hidden");
       document.body.style.overflowY = "hidden";
     } else {
-      alert("Debes iniciar sesion");
+     notify2("Debes iniciar sesion");
     }
   }
 

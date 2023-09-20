@@ -70,6 +70,7 @@ const Dashboard = () => {
 
   // Normaliza los géneros y agrupa los no mencionados en "Otros"
   function normalizeGenre(genre) {
+    // generos
     const normalizedGenres = [
       "Electronic",
       "Hip Hop",

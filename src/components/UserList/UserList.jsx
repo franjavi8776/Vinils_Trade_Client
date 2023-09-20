@@ -15,8 +15,6 @@ const UserList = () => {
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
-  // console.log(Users[0].country)
-  // console.log(filterCountry)
 
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte

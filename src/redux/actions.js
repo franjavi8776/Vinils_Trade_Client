@@ -345,21 +345,18 @@ export const decreaseItem = (vinyl) => ({
   payload: vinyl,
 });
 
-export const updateVinyls = (id, stockReduction) => async (dispatch) => {
-  const newEndpoint = `https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`;
-  const requestData = {
-    stockReduction: stockReduction,
-  };
-  try {
-    const response = await axios.put(newEndpoint, requestData);
-    const data = response.data;
 
+export const updateVinyls = (id, stock) => async (dispatch) => {
+  const newEndpoint = `https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`;
+  try {
+    const response = await axios.put(newEndpoint, { stock });
+    const data = response.data;
     dispatch({
       type: UPDATE_VINYLS,
-      payload: data,
+      payload: { id, stock: data.stock}, // Asegúrate de obtener el campo correcto de la respuesta de la API
     });
   } catch (error) {
-    console.log(error);
+    console.error("Error en la solicitud PUT:", error);
   }
 };
 
@@ -374,3 +371,4 @@ export const getReviews = () => async (dispatch) => {
     console.log(error);
   }
 };
+
