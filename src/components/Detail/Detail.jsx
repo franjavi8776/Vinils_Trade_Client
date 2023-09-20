@@ -82,7 +82,7 @@ const Detail = () => {
       <div className="hidden lg:flex lg:mr-[-90px] :z-0">
         <img
           className={`lg:flex lg:rounded-full lg:w-[400px] lg:h-[400px] lg:mt-[35%] ${style["animate-spin"]}`}
-          src="/disco2.jpg"
+          src="https://res.cloudinary.com/duclhjrri/image/upload/v1695222875/disco2_rqzk2e.jpg"
           alt="disco"
         />
       </div>
