@@ -49,8 +49,12 @@ const Search = () => {
 
   function handlerButton() {
     const shoppCart = document.getElementById("card");
-    shoppCart.classList.remove("hidden");
-    document.body.style.overflowY = "hidden";
+    if (token) {
+      shoppCart.classList.remove("hidden");
+      document.body.style.overflowY = "hidden";
+    } else {
+      alert("Debes iniciar sesion");
+    }
   }
 
   const handleLogout = () => {

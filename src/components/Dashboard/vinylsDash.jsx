@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllVinyls, updateVinyls } from "../../redux/actions";
-import { AiOutlineDelete } from "react-icons/ai";
-import { AiOutlineEdit } from "react-icons/ai";
-import { Link } from "react-router-dom";
+// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
+import { getAllVinyls,updateVinyls } from "../../redux/actions";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { IoCreateOutline } from "react-icons/io5";
+import { useNavigate, Link } from "react-router-dom";
 
 const VinylsDash = () => {
-  const vinyls = useSelector((state) => state.vinyls);
+  const vinyls = useSelector((state) => state.allVinyls);
+
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [viniloEditado, setViniloEditado] = useState(null);
   const [filterText, setFilterText] = useState("");
   const [filterGenre, setFilterGenre] = useState("");
   const [filterYear, setFilterYear] = useState("");
-console.log(viniloEditado)
-console.log(isEditing)
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getAllVinyls());
   }, [dispatch]);
@@ -83,6 +85,12 @@ console.log(isEditing)
           renderEditForm()
         ) : (
           <div className="flex space-x-2">
+              <button
+            onClick={() => handleCreate(row)}
+            className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            <IoCreateOutline />
+          </button>
             <button
               onClick={() => handleEdit(row)}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -140,20 +148,29 @@ console.log(isEditing)
       </div>
     );
   };
-
   const handleEdit = (row) => {
     setIsEditing(true);
     setViniloEditado(row);
   };
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
     const { id, stock } = viniloEditado;
+    console.log(id, stock);
     dispatch(updateVinyls(id, stock));
-
-  };
+  }
+  
+  // const handleCreate = () => {
+  //   navigate("/form");
+  // };
+  // //   const handleUpdate = (row) => {
+  // //     // Lógica para actualizar el vinilo
+  // //     dispatch(updateVinyl(row.id));
+  // //   };
+  // };
   
 
-  const handleCancel = () => {
-    // Simplemente restablece los estados para cancelar la edición.
+  const handleCancel = (e) => {
+  e.preventDefault()
     setIsEditing(false);
     setViniloEditado(null);
   };
@@ -163,16 +180,19 @@ console.log(isEditing)
       vinyl.title.toLowerCase().includes(filterText.toLowerCase()) &&
       vinyl.genre.toLowerCase().includes(filterGenre.toLowerCase())
   );
-  console.log(filterText);
   return (
-    <div className="flex flex-col w-full h-full justify-center items-center md:flex-row">
-    <div className="md:w-full p-4 justify-center text-center items-center">
-    <div className="flex items-start mb-4">
-      <Link to="/dashboard">
-      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">BACK</button>
-      </Link>
-    </div>
-      <h1 className="text-xl font-bold">Vinilos</h1>
+    <div className="flex flex-col w-full h-full md:flex-row">
+      <div className="md:w-full px-2">
+        <div className="flex h-[8vh]  items-center pl-5">
+          <div>
+            <div className="w-[150px] h-[50px] clip-path-custom bg-slate-900 flex items-center justify-end ">
+              <Link to="/dashboard">
+                <h1 className="text-white pr-2">Volver al Inicio</h1>
+              </Link>
+            </div>
+          </div>
+          <h1 className="ml-[35%] text-2xl font-bold">Lista de vinilos</h1>
+        </div>
         <input
           type="text"
           placeholder="Buscar por nombre"

@@ -30,6 +30,7 @@ function App() {
     <div className=" dark:text-white dark:bg-black dark:bg-opacity-80 duration-100">
       {location.pathname !== "/dashboard" &&
         !location.pathname.startsWith("/usarios") &&
+        !location.pathname.startsWith("/form") &&
         !location.pathname.startsWith("/vinylsDash") && (
           <Navbar updateHtmlClass={updateHtmlClass} />
         )}

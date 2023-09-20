@@ -4,12 +4,12 @@ import {
   loginUserByEmail,
   getAdmins,
   getUsersAndSuccess,
+  loginUserByGoogle,
 } from "../../redux/actions.js";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import ListOfTodo from "./ListOfTodos.jsx";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -20,14 +20,19 @@ function Login() {
   const dispatch = useDispatch();
   const authe = useSelector((state) => state.token);
   const user = useSelector((state) => state.users);
+  const admin = useSelector((state) => state.admins);
   console.log(authe);
   console.log(user);
   console.log(email);
 
-  const filtro = user.filter((us) => {
+  const filtro = admin.filter((us) => {
     return us.isAdmin === true && email === us.email;
   });
+  const filtro1 = user.filter((us) => {
+    return us.isAdmin === false && email === us.email;
+  });
   console.log(filtro);
+  console.log(filtro1);
 
   const navigate = useNavigate(); // Utilizamos useNavigate para la navegación
 
@@ -54,18 +59,24 @@ function Login() {
 
   useEffect(() => {
     dispatch(getAdmins());
+    dispatch(getUsersAndSuccess());
   }, [dispatch]);
 
   const handleEmailLogin = () => {
     dispatch(loginUserByEmail({ email, password }));
     dispatch(getUsersAndSuccess());
 
-    if (filtro.length === 1) {
+    if (filtro.length > 0) {
       navigate("/dashboard");
-    } else {
+    } else if (filtro1.length > 0) {
       navigate("/");
       toast.success("Inicio de sesión exitoso", {
-        duration: 2000, // Duración en milisegundos (2 segundos)
+        duration: 1000, // Duración en milisegundos (2 segundos)
+      });
+    } else {
+      navigate("/register");
+      toast.error("Necesitas registarte", {
+        duration: 2000,
       });
     }
   };
@@ -104,7 +115,12 @@ function Login() {
         // Puedes mostrar un mensaje de error al usuario aquí
       });
   };
-  ListOfTodo(token);
+  useEffect(() => {
+    dispatch(loginUserByGoogle(token));
+    if (token) {
+      navigate("/");
+    }
+  }, [token]);
 
   return (
     <div className="h-[81vh] flex items-center justify-center">
@@ -123,6 +139,7 @@ function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full text-black border border-gray-300 rounded p-2"
+              required
             />
           </div>
           <div className="mb-4">
@@ -135,6 +152,7 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full text-black border border-gray-300 rounded p-2"
+              required
             />
           </div>
         </form>
@@ -145,8 +163,8 @@ function Login() {
           {authe ? "¡Ya estás logueado!" : "Ingresa con email"}
         </button>
 
-        {authy ? (
-          <h1 className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black">
+        {authe ? (
+          <h1 className="w-full h-10 bg-black text-white px-4 py-2 mt-6 mb-6 rounded hover:bg-white hover:text-black text-center">
             Autentificado
           </h1>
         ) : (
