@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getVinylDetail, addToCart } from "../../redux/actions";
 import { FaShoppingCart } from "react-icons/fa";
-
+import toast, { Toaster } from 'react-hot-toast';
 import style from "./Detail.module.css";
 
 const Detail = () => {
@@ -45,7 +45,7 @@ const Detail = () => {
               })
             );
           } else {
-            alert("No hay suficiente stock disponible para este producto.");
+            toast.error("No hay suficiente stock disponible para este producto.");
           }
         } else {
           // Agrega el producto al carrito
@@ -60,15 +60,16 @@ const Detail = () => {
                 cartQuantity: 1,
               })
             );
+            toast.success("Se agrego correctamente")
           } else {
-            alert("No hay stock disponible para este producto.");
+            toast.error("No hay stock disponible para este producto.");
           }
         }
 
         setIsGreen(true);
       }
     } else {
-      alert("Para añadir al carrito debe iniciar sesion");
+      toast.error("Debe iniciar sesion");
     }
   };
   //codigo nuevo
@@ -155,6 +156,7 @@ const Detail = () => {
             </button>
           </div>
         </div>
+        <Toaster/>
       </div>
     </div>
   );
