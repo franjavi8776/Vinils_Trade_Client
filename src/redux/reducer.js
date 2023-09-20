@@ -330,8 +330,9 @@ const reducer = (state = initialState, action) => {
       );
       return {
         ...state,
-        allVinyls: vinilFilter,
-        vinyls: vinilFilter,
+        allVinyls: state.vinyls.filter((vinyl) =>
+          vinyl.genre.includes(action.payload)
+        ),
       };
     case FILTER_BY_DECADE:
       const { startYear, endYear } = action.payload;
@@ -352,10 +353,12 @@ const reducer = (state = initialState, action) => {
       
       case LOGIN_SUCCESS:
         localStorage.setItem("token", action.payload.token);
+        localStorage.setItem("email", action.payload.email);
       return {
         ...state,
         isAuthenticated: true,
         token: action.payload.token, // Almacenar el token cuando la autenticación sea exitosa
+        email: action.payload.email,
         error: null, // Restablecer cualquier mensaje de error anterior
       };
     case LOGIN_FAILURE:

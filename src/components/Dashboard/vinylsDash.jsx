@@ -159,9 +159,9 @@ const VinylsDash = () => {
     dispatch(updateVinyls(id, stock));
   }
   
-  // const handleCreate = () => {
-  //   navigate("/form");
-  // };
+  const handleCreate = () => {
+    navigate("/form");
+  };
   // //   const handleUpdate = (row) => {
   // //     // Lógica para actualizar el vinilo
   // //     dispatch(updateVinyl(row.id));
