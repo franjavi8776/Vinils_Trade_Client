@@ -275,15 +275,19 @@ const reducer = (state = initialState, action) => {
         cartItems: increasedCartItems,
       };
       case UPDATE_VINYLS:
-        const { stock } = action.payload;
-      
+        const { stock, id } = action.payload;
         return {
           ...state,
-          allVinyls: state.allVinyls.map((vinyl) => ({
-            ...vinyl,
-            stock: stock,
-          })),
+          allVinyls: state.allVinyls.map((el) => {
+            if (el.id === id) {
+              // Actualiza la propiedad 'stock' solo para el elemento con el ID correspondiente
+              return { ...el, stock };
+            } else {
+              return el; // Devuelve el elemento sin cambios para los demás casos
+            }
+          })
         };
+      
       
     case DECREASE_ITEM:
       const decreasedCartItems = state.cartItems.map((item) => {

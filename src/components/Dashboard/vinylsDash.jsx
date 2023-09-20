@@ -18,6 +18,7 @@ const VinylsDash = () => {
   const [filterYear, setFilterYear] = useState("");
   const navigate = useNavigate();
 
+  console.log(vinyls)
   useEffect(() => {
     dispatch(getAllVinyls());
   }, [dispatch]);
