@@ -18,14 +18,11 @@ const Navbar = ({ updateHtmlClass }) => {
   const admin = useSelector((state) => state.admins);
   const email = useSelector((state) => state.email);
   const token = useSelector((state) => state.token);
-  console.log(admin);
-  console.log(token);
-  console.log(email);
 
   const filtro = admin.filter((us) => {
     return email === us.email;
   });
-  console.log(filtro);
+
 
   useEffect(() => {
     if (filtro.length > 0 && token) {
@@ -131,15 +128,14 @@ const Navbar = ({ updateHtmlClass }) => {
             <Link
               onClick={() => setMobileMenuOpen(false)}
               to="/"
-              className="mt-40 k lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
-              lg:text-md"
+              className="text-white font-semibold link-with-hover-line ml-5"
             >
               Inicio
             </Link>
             <Link
               onClick={() => setMobileMenuOpen(false)}
               to="/about"
-              className="mt-40 lg:m-4  lg:text-white lg:font-semibold lg:link-with-hover-line lg:text-md "
+              className="text-white font-semibold link-with-hover-line ml-5"
             >
               Acerca de nosotros
             </Link>

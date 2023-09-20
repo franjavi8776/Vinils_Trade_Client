@@ -55,7 +55,7 @@ function RegistroUsuario() {
     if (Object.keys(validate === 0)) {
       await dispatch(postRegisterUser(usuario));
       cleanForm();
-      tostada ( 'Bienvenido' ,
+      toast( 'Bienvenido' ,
       {
         icono : '👏' , 
         estilo : { 
@@ -66,7 +66,7 @@ function RegistroUsuario() {
       }
     ) ;
     } else {
-      console.log("ERROR");
+      toast.error("Complete el formulario")
     }
     navigate("/login");
   };

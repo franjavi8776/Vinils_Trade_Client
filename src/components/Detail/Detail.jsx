@@ -69,7 +69,7 @@ const Detail = () => {
         setIsGreen(true);
       }
     } else {
-      toast.error("Para añadir al carrito debe iniciar sesion");
+      toast.error("Debe iniciar sesion");
     }
   };
   //codigo nuevo
