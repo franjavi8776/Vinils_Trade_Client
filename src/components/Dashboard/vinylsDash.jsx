@@ -35,7 +35,7 @@ const VinylsDash = () => {
     },
     {
       name: "Disponibles",
-      selector: (row) => row.stock || "No hay stock",
+      selector: (row) => row.stock || "Actualizado!",
       sortable: true,
     },
     {
@@ -156,7 +156,6 @@ const VinylsDash = () => {
   const handleSave = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     const { id, stock } = viniloEditado;
-    console.log(id, stock);
     dispatch(updateVinyls(id, stock));
   }
   
