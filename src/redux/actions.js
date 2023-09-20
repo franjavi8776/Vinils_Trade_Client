@@ -346,11 +346,11 @@ export const decreaseItem = (vinyl) => ({
 export const updateVinyls = (id, stock) => async (dispatch) => {
   const newEndpoint = `https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`;
   try {
-    const response = await axios.put(newEndpoint, stock );
+    const response = await axios.put(newEndpoint, { stock });
     const data = response.data;
     dispatch({
       type: UPDATE_VINYLS,
-      payload: { id, stock}, // Asegúrate de obtener el campo correcto de la respuesta de la API
+      payload: { id, stock: data.stock}, // Asegúrate de obtener el campo correcto de la respuesta de la API
     });
   } catch (error) {
     console.error("Error en la solicitud PUT:", error);

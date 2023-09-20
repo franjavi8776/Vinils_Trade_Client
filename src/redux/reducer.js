@@ -280,10 +280,9 @@ const reducer = (state = initialState, action) => {
           ...state,
           allVinyls: state.allVinyls.map((el) => {
             if (el.id === id) {
-              // Actualiza la propiedad 'stock' solo para el elemento con el ID correspondiente
               return { ...el, stock };
             } else {
-              return el; // Devuelve el elemento sin cambios para los demás casos
+              return el;
             }
           })
         };
