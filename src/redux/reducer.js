@@ -24,10 +24,12 @@ import {
   USERS_SUCCESS,
   DISABLE_USER,
   ADMINS_SUCCESS,
+  UPDATE_VINYLS,
   DELETE_USER,
   LOGIN_SUCCESS_GOOGLE,
   GET_REVIEWS,
 } from "./actions";
+
 const initialState = {
   allVinyls: [],
   vinyls: [],
@@ -35,7 +37,6 @@ const initialState = {
   vinilos: [],
   detail: {},
   search: [],
-  filteredVinyls: [],
   isAuthenticated: false,
   token: localStorage.getItem("token") || null,
   error: null,
@@ -56,9 +57,7 @@ const initialState = {
   users: [],
   admins: [],
   email: localStorage.getItem("email") || "",
-
-  reviews: [],
-
+ reviews: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -82,6 +81,44 @@ const reducer = (state = initialState, action) => {
         allVinyls: [...state.allVinyls, action.payload],
         vinyls: [...state.allVinyls, action.payload],
       };
+      case ORDER_BY_TITLE: {
+        const orderDirection = action.payload === "A" ? 1 : -1;
+        const sortedVinyls = [...state.allVinyls].sort((a, b) => {
+          return a.title.localeCompare(b.title) * orderDirection;
+        });
+      
+        return {
+          ...state,
+          allVinyls: sortedVinyls,
+        };
+      }
+      
+      case FILTER_BY_DECADE: {
+        const { startYear, endYear } = action.payload;
+        const filteredByDecade = [...state.allVinyls].filter((vinyl) => {
+          const vinylYear = parseInt(vinyl.year);
+          return vinylYear >= startYear && vinylYear <= endYear;
+        });
+      
+        return {
+          ...state,
+          allVinyls: filteredByDecade,
+        };
+      }
+      
+      case ORDER_FOR_GENRE: {
+        const selectedGenre = action.payload;
+        const filteredByGenre = [...state.allVinyls].filter((vinyl) =>
+          vinyl.genre.includes(selectedGenre)
+        );
+      
+        return {
+          ...state,
+          allVinyls: filteredByGenre,
+        };
+      }
+      
+      
     case GET_DETAIL:
       return {
         ...state,
@@ -95,12 +132,13 @@ const reducer = (state = initialState, action) => {
     case ADMINS_SUCCESS:
       return {
         ...state,
-        // users: action.payload,
+        users: action.payload,
         admins: action.payload,
       };
     case DISABLE_USER:
-      const updatedUsers = state.users.filter(
-        (user) => user.id !== action.payload
+      const userId = action.payload;
+      const updatedUsers = state.users.map((user) =>
+        user.id === userId ? { ...user, disabled: true } : user
       );
       return {
         ...state,
@@ -252,7 +290,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         cartItems: increasedCartItems,
       };
-
+      case UPDATE_VINYLS:
+        const { stock, id } = action.payload;
+        return {
+          ...state,
+          allVinyls: state.allVinyls.map((el) => {
+            if (el.id === id) {
+              return { ...el, stock };
+            } else {
+              return el;
+            }
+          })
+        };
+      
+      
     case DECREASE_ITEM:
       const decreasedCartItems = state.cartItems.map((item) => {
         if (item.id === action.payload.id) {
@@ -271,6 +322,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         cartItems: decreasedCartItems,
       };
+
 
     case ORDER_FOR_GENRE:
       const vinilFilter = state.allVin.filter((vinyl) =>
@@ -294,41 +346,19 @@ const reducer = (state = initialState, action) => {
         allVin: filteredVinyls,
         allVinyls: filteredVinyls,
       };
-
     case RESET:
       return {
         ...initialState,
       };
-
-    case ORDER_BY_TITLE: {
-      const orderDirection = action.payload === "A" ? 1 : -1; //ordenamiento por nombre  si recibo a es verdadero 1 y -1 es falso
-      return {
-        ...state,
-        allVinyls: state.allVinyls.slice().sort((a, b) => {
-          return a.title.localeCompare(b.title) * orderDirection; //slice para cortar cuando haga el sort y lo compare con el nombre de a y nombre de b para ascendente o descendente
-        }),
-      };
-    }
-
-    case LOGIN_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
-      localStorage.setItem("email", action.payload.email);
+      
+      case LOGIN_SUCCESS:
+        localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         isAuthenticated: true,
-        token: action.payload.token,
-        email: action.payload.email, // Almacenar el token cuando la autenticación sea exitosa
+        token: action.payload.token, // Almacenar el token cuando la autenticación sea exitosa
         error: null, // Restablecer cualquier mensaje de error anterior
       };
-    case LOGIN_SUCCESS_GOOGLE:
-      localStorage.setItem("token", action.payload);
-      return {
-        ...state,
-        isAuthenticated: true,
-        token: action.payload, // Almacenar el token cuando la autenticación sea exitosa
-        error: null, // Restablecer cualquier mensaje de error anterior
-      };
-
     case LOGIN_FAILURE:
       return {
         ...state,

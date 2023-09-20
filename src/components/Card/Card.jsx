@@ -65,6 +65,8 @@ const Card = ({ id, title, cover_image, price, stock }) => {
                 cartQuantity: itemInCart.cartQuantity + 1,
               })
             );
+            // Mueve la llamada a toast.success aquí para mostrar el mensaje de éxito
+            toast.success("Producto agregado al carrito correctamente");
           } else {
             notify1("No hay disponibles", "error"); // Notificación de falta de stock
           }
@@ -81,11 +83,13 @@ const Card = ({ id, title, cover_image, price, stock }) => {
                 cartQuantity: 1,
               })
             );
+            // Mueve la llamada a toast.success aquí para mostrar el mensaje de éxito
           } else {
             notify1("No hay disponibles", "error"); // Notificación de falta de stock
           }
         }
-
+        
+        toast.success("Producto agregado al carrito correctamente");
         setIsGreen(true);
       }
       notify1("Item agregado", "success");
