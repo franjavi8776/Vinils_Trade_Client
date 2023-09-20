@@ -56,7 +56,9 @@ const initialState = {
   users: [],
   admins: [],
   email: localStorage.getItem("email") || "",
+
   reviews: [],
+
 };
 
 const reducer = (state = initialState, action) => {
