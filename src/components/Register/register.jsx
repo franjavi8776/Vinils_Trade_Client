@@ -21,7 +21,6 @@ function RegistroUsuario() {
     confirmarContraseña: "",
     codArea: "",
   });
-  //console.log(usuario);
   const passwordd = () => {
     setShowPassword(!showPassword);
   };
@@ -47,7 +46,6 @@ function RegistroUsuario() {
     });
     const validationErrors = validate({ ...usuario, [name]: value });
     setErrors(validationErrors);
-    //console.log(error);
   };
 
   const handleSubmit = async (e) => {

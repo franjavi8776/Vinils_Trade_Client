@@ -9,8 +9,7 @@ import style from "./Detail.module.css";
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const detail = useSelector((state) => state.detail);
-  console.log(detail);
+  const detail = useSelector((state) => state.detail);;
   // codigo nuevo
   const cartItems = useSelector((state) => state.cartItems);
 

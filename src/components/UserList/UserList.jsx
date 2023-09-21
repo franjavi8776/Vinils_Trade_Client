@@ -2,38 +2,22 @@ import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineDelete } from "react-icons/ai";
-import {getUsersAndSuccess, deleteUser, restoreUser,disableUser } from "../../redux/actions";
+import { getUsersAndSuccess, deleteUser ,disableUser,restoreUser } from "../../redux/actions";
 import { Link } from "react-router-dom";
-
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
-  console.log(Users)
+  // const getDisabledUsers = useSelector((state) => state.getDisabledUsers);
   const dispatch = useDispatch();
+  console.log(Users);
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
   
-  // const usuarios = Users.map((user) => {
-  //   return user.isDeleted === true ? user : false;
-  // }).filter((user) => user !== false);
-  
-  // console.log(usuarios);
-
-  // const usuarios1 = Users.map((user) => {
-  //   return user.isDeleted === false ? user : true;
-  // }).filter((user) => user !== true);
-
-  // console.log(usuarios1);
-  
-  // const userCombinado = [...usuarios,...usuarios1]
-
-
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
     dispatch(getUsersAndSuccess());
   }, [dispatch]);
-
 
   // tabla
   const columns = [
@@ -77,23 +61,6 @@ const UserList = () => {
           >
            <AiOutlineDelete/>
           </button>
-          {/* {usuarios.length > 0 ? (
-
-            <button
-              onClick={() => handleRestore(row)}
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            >
-             Activar
-            </button>
-
-          ):(
-            <button
-            onClick={() => handleDisable(row)}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Desactivar
-          </button>
-          )} */}
            <button
             onClick={() => handleAction(row)}
             className={`bg-${row.isDeleted ? 'green' : 'red'}-500 hover:bg-${row.isDeleted ? 'green' : 'red'}-700 text-white font-bold py-2 px-4 rounded`}
@@ -105,20 +72,9 @@ const UserList = () => {
     },
   ];
 
-
-
   const handleDelete = (row) => {
-    dispatch(deleteUser(row.id)); 
+    dispatch(deleteUser(row.id));
   };
-  //   const handleRestore = (row) => {
-  //     // Lógica para actualizar el vinilo
-  //     dispatch(restoreUser(row.id));
-  //   };
-
-  // const handleDisable = (row) => {
-  //   // Lógica para deshabilitar el vinilo
-  //   dispatch(disableUser(row.id));
-  // };
 
   const handleAction = (row) => {
     if (row.isDeleted) {
@@ -129,7 +85,6 @@ const UserList = () => {
     }
   };
   
-
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
     return regex.test(userEmail);
@@ -163,17 +118,6 @@ const UserList = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        {/* <input
-          type="text"
-          placeholder="Buscar por Pais"
-          value={filterCountry}
-          onChange={(e) => setFilterCountry(e.target.value)}
-          className="w-full border text-red-700 border-black p-2 rounded mb-4"
-
-        />
-        <input
-
-        /> */}
         <input
           type="text"
           placeholder="Buscar por Email"

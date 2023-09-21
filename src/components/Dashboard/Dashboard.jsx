@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { DonutChart, Card, Text, Metric } from "@tremor/react";
 import { getAllVinyls, getUsersAndSuccess } from "../../redux/actions";
-import { MdRateReview, MdOutlineRateReview } from "react-icons/md";
+import { MdRateReview } from "react-icons/md";
 
 const Dashboard = () => {
   const dispatch = useDispatch();

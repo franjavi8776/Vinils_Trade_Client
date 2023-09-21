@@ -54,25 +54,6 @@ const Reviews = () => {
           </div>
           <h1 className="ml-[35%] text-2xl font-bold">Lista de reviews</h1>
         </div>
-
-        {/* <input
-          type="text"
-          placeholder="Buscar por nombre"
-          //value={filterText}
-          //onChange={(e) => setFilterText(e.target.value)}
-          className="w-full border text-red-700 border-black p-2 rounded mb-4"
-        /> */}
-        {/* <input
-          type="text"
-          placeholder="Buscar por Pais"
-          value={filterCountry}
-          onChange={(e) => setFilterCountry(e.target.value)}
-          className="w-full border text-red-700 border-black p-2 rounded mb-4"
-
-        />
-        <input
-
-        /> */}
         <input
           type="text"
           placeholder="Buscar por Email"

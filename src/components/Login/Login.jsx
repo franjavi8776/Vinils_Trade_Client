@@ -21,10 +21,6 @@ function Login() {
   const authe = useSelector((state) => state.token);
   const user = useSelector((state) => state.users);
   const admin = useSelector((state) => state.admins);
-  console.log(authe);
-  console.log(user);
-  console.log(email);
-  console.log(admin);
 
   const filtro = admin.filter((us) => {
     return us.isAdmin === true && email === us.email;
@@ -32,31 +28,7 @@ function Login() {
   const filtro1 = user.filter((us) => {
     return us.isAdmin === false && email === us.email;
   });
-  console.log(filtro);
-  console.log(filtro1);
-
   const navigate = useNavigate(); // Utilizamos useNavigate para la navegación
-
-  const notify1 = (message, type) => {
-    toast.custom(
-      (t) => (
-        <div
-          className={`${
-            type === "success"
-              ? "bg-green-500 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light"
-              : type === "error"
-              ? "bg-red-700 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light"
-              : "bg-blue-500 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light"
-          } p-2 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light`}
-        >
-          <div className="text-center justify-center text-lg">{message}</div>
-        </div>
-      ),
-      {
-        duration: 1000,
-      }
-    );
-  };
 
   useEffect(() => {
     dispatch(getAdmins());
