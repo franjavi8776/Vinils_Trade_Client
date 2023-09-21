@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
+// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
 import { AiOutlineDelete } from "react-icons/ai";
-import {getUsersAndSuccess, deleteUser } from "../../redux/actions";
+import { getUsersAndSuccess, deleteUser } from "../../redux/actions";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
-
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
@@ -14,7 +13,7 @@ const UserList = () => {
   // console.log(getDisabledUsers);
   // console.log(Users[0].deletedAt);
   const dispatch = useDispatch();
-  console.log(Users)
+  console.log(Users);
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
@@ -26,7 +25,6 @@ const UserList = () => {
     // Cargar la lista de usuarios cuando el componente se monte
     dispatch(getUsersAndSuccess());
   }, [dispatch]);
-
 
   // tabla
   const columns = [
@@ -94,10 +92,8 @@ const UserList = () => {
     },
   ];
 
-
-
   const handleDelete = (row) => {
-    dispatch(deleteUser(row.id)); 
+    dispatch(deleteUser(row.id));
   };
   //   const handleUpdate = (row) => {
   //     // Lógica para actualizar el vinilo

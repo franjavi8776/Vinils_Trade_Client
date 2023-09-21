@@ -44,7 +44,7 @@ const ShoppingCart = () => {
   };
 
   const handlerNot = () => {
-    // dispatch(deleteOrderDeteil());
+    dispatch(deleteOrderDeteil());
     setShowConfirmation(false);
   };
 
@@ -96,10 +96,7 @@ const ShoppingCart = () => {
   };
 
   const handleMP = () => {
-    if (cart.length > 0) {
-      dispatch(clearCart());
-      dispatch(deleteOrderDeteil());
-    }
+    dispatch(clearCart());
 
     window.location.href = MP;
   };
