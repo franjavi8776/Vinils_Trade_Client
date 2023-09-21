@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
+// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
 import { AiOutlineDelete } from "react-icons/ai";
-import {getUsersAndSuccess, deleteUser } from "../../redux/actions";
+import { getUsersAndSuccess, deleteUser } from "../../redux/actions";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
-
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
   // const getDisabledUsers = useSelector((state) => state.getDisabledUsers);
-  // console.log(getDisabledUsers);
-  // console.log(Users[0].deletedAt);
   const dispatch = useDispatch();
-  console.log(Users)
+  console.log(Users);
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
-
-  // const combinedData = [...Users, ...getDisabledUsers];
-  // console.log(combinedData)
 
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
     dispatch(getUsersAndSuccess());
   }, [dispatch]);
-
 
   // tabla
   const columns = [
@@ -94,25 +87,15 @@ const UserList = () => {
     },
   ];
 
-
-
   const handleDelete = (row) => {
-    dispatch(deleteUser(row.id)); 
+    dispatch(deleteUser(row.id));
   };
-  //   const handleUpdate = (row) => {
-  //     // Lógica para actualizar el vinilo
-  //     dispatch(updateVinyl(row.id));
-  //   };
 
   // const handleDisable = (row) => {
   //   // Lógica para deshabilitar el vinilo
   //   dispatch(disableUser(row.id));
   // };
 
-  //   const handleDelete = (row) => {
-  //     // Lógica para borrar el vinilo
-  //     dispatch(deleteVinyl(row.id));
-  //   };
 
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
@@ -147,17 +130,6 @@ const UserList = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        {/* <input
-          type="text"
-          placeholder="Buscar por Pais"
-          value={filterCountry}
-          onChange={(e) => setFilterCountry(e.target.value)}
-          className="w-full border text-red-700 border-black p-2 rounded mb-4"
-
-        />
-        <input
-
-        /> */}
         <input
           type="text"
           placeholder="Buscar por Email"

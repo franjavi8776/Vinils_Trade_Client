@@ -15,9 +15,6 @@ import {
   INCREASE_ITEM,
   DECREASE_ITEM,
   CREATE_ORDER,
-  SUCCESS_MP,
-  PENDIGN_MP,
-  FAILURE_MP,
   CLEAR_CART,
   USERS_SUCCESS,
   // DISABLE_USER,
@@ -52,11 +49,6 @@ const initialState = {
   cartTotalQuantity: 0,
   stock: {},
   dataMP: {},
-  stateMP: {
-    success: null,
-    failure: null,
-    pending: null,
-  },
   users: [],
   admins: [],
   email: localStorage.getItem("email") || "",
@@ -185,22 +177,6 @@ const reducer = (state = initialState, action) => {
         dataMP: action.payload,
       };
 
-    case SUCCESS_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, success: action.payload },
-      };
-    case PENDIGN_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, pending: action.payload },
-      };
-    case FAILURE_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, failure: action.payload },
-      };
-
     case CLEAR_CART:
       localStorage.removeItem("cart");
       return {
@@ -212,22 +188,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         dataMP: action.payload,
-      };
-
-    case SUCCESS_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, success: action.payload },
-      };
-    case PENDIGN_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, pending: action.payload },
-      };
-    case FAILURE_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, failure: action.payload },
       };
 
     case REMOVE_FROM_CART:
@@ -333,7 +293,10 @@ const reducer = (state = initialState, action) => {
 
     case RESET:
       return {
-        ...initialState,
+        ...state,
+        allVinyls: state.allVin, // Restablecer la lista de vinilos a su estado original
+        vinyls: state.allVin,
+        // Restablecer la lista de vinilos filtrados a su estado original
       };
 
     case LOGIN_SUCCESS:
@@ -378,7 +341,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         orderDetail: action.payload,
       };
-    case STOCK_REDUC:
     case STOCK_REDUC:
       const id1 = action.payload.id;
       const stock1 = action.payload.stock;

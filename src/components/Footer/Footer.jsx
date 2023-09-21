@@ -17,7 +17,6 @@ const Footer = () => {
     rating: null,
   });
   const dispatch = useDispatch();
-  console.log(comment.rating);
 
   const notify1 = (message, type) => {
     toast.custom(
@@ -79,6 +78,7 @@ const Footer = () => {
       setComment({ ...comment, [name]: value });
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postReview(comment));

@@ -8,7 +8,7 @@ import {
   clearCart,
   postOrdernDetial,
   StockReduc,
-  deleteOrderDeteil,
+  deleteOrderDeteil
 } from "../../redux/actions";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { BsTrash3 } from "react-icons/bs";
@@ -16,7 +16,6 @@ import toast, { Toaster } from "react-hot-toast";
 
 const ShoppingCart = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
@@ -34,7 +33,7 @@ const ShoppingCart = () => {
   };
 
   const handlerNot = () => {
-    // dispatch(deleteOrderDeteil());
+    dispatch(deleteOrderDeteil())
     setShowConfirmation(false);
   };
 
@@ -50,15 +49,13 @@ const ShoppingCart = () => {
   );
 
   const del = cart.map((item) => ({
-    name: item.title,
-    vinylId: item.id,
-    units: item.cartQuantity,
-    amount: item.price,
-    taxAmount: 0,
-    totalAmount: item.cartQuantity * item.price,
-  }));
-
-
+      name: item.title,
+      vinylId: item.id,
+      units: item.cartQuantity,
+      amount: item.price,
+      taxAmount: 0,
+      totalAmount: item.cartQuantity * item.price,
+  }) )
 
   const handleShowConfirmation = () => {
     if (cart.length > 0) {
@@ -67,26 +64,22 @@ const ShoppingCart = () => {
         price: totalValue,
         units: cart.length,
       };
+
       cart.forEach((item) => {
         const cambio = item.stock;
         dispatch(StockReduc(item.id, cambio)); // Esto disminuirá el stock en Redux
       });
+      
       dispatch(postMP(datos));
-      dispatch(postOrdernDetial(del));
+      dispatch(postOrdernDetial(del))
     }
-
     setShowConfirmation(true);
   };
 
   const handleMP = () => {
-    if (cart.length > 0) {
-      dispatch(clearCart());
-      dispatch(deleteOrderDeteil());
-    }
-
+    dispatch(clearCart());
     window.location.href = MP;
   };
-
 
   return (
     <div

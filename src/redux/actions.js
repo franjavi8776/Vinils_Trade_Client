@@ -66,7 +66,6 @@ export const getVinylDetail = (id) => async (dispatch) => {
     if (Array.isArray(data) && data.length > 0) {
       // Verificamos si data es un array y si contiene al menos un elemento
       const vinylDetail = data[0];
-      console.log(vinylDetail);
       dispatch({ type: GET_DETAIL, payload: vinylDetail });
     }
   } catch (error) {
@@ -215,22 +214,6 @@ export const getVinylsForName = (title) => {
   };
 };
 
-// export const getVinylCart = (id) => {
-//   return async function (dispatch) {
-//     console.log(id);
-//     try {
-//       const { data } = await axios.get(endpoint + id);
-//       dispatch({
-//         type: ADD_TO_CART,
-//         payload: data,
-//       });
-//       console.log(data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
-
 export const orderByTitle = (order) => {
   return {
     type: ORDER_BY_TITLE,
@@ -256,39 +239,8 @@ export const postMP = (dato) => async (dispatch) => {
     "https://vinyls-trade-back-production.up.railway.app/create_order",
     dato
   );
-  console.log(data);
   dispatch({
     type: CREATE_ORDER,
-    payload: data,
-  });
-};
-
-export const succesMP = () => async (dispatch) => {
-  const { data } = await axios(
-    "https://vinyls-trade-back-production.up.railway.app/success"
-  );
-  dispatch({
-    type: SUCCESS_MP,
-    payload: data,
-  });
-};
-
-export const pendingMP = () => async (dispatch) => {
-  const { data } = await axios(
-    "https://vinyls-trade-back-production.up.railway.app/pending"
-  );
-  dispatch({
-    type: PENDIGN_MP,
-    payload: data,
-  });
-};
-
-export const failureMP = () => async (dispatch) => {
-  const { data } = await axios(
-    "https://vinyls-trade-back-production.up.railway.app/failure"
-  );
-  dispatch({
-    type: FAILURE_MP,
     payload: data,
   });
 };
@@ -333,17 +285,12 @@ export const loginUserByEmail = (loginData) => async (dispatch) => {
       "https://vinyls-trade-back-production.up.railway.app/login",
       loginData
     );
-    console.log(response.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: response.data,
     });
   } catch (error) {
     console.error(error);
-    // dispatch({
-    //   type: "LOGIN_FAILURE",
-    //   payload: response.data,
-    // });
   }
 };
 
@@ -357,7 +304,6 @@ export const loginUserByGoogle = (token) => async (dispatch) => {
         },
       }
     );
-    console.log(response.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: response.data,
@@ -404,7 +350,6 @@ export const getReviews = () => async (dispatch) => {
     const response = await axios.get(
       "https://vinyls-trade-back-production.up.railway.app/get/allReviews"
     );
-    console.log(response);
     dispatch({ type: GET_REVIEWS, payload: response.data });
   } catch (error) {
     console.log(error);
@@ -417,7 +362,6 @@ export const postReview=(datos)=> async (dispatch)=>{
       "https://vinyls-trade-back-production.up.railway.app/reviews",
        datos
     );
-    console.log(response.data);
     dispatch({
       type:POST_REVIEW,
       payload:response.data
