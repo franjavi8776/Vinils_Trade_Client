@@ -11,8 +11,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
-  LOGIN_USER_WITH_GOOGLE_SUCCESS,
-  LOGIN_USER_WITH_GOOGLE_FAILURE,
   POST_VINYL,
   INCREASE_ITEM,
   DECREASE_ITEM,
@@ -22,9 +20,11 @@ import {
   FAILURE_MP,
   CLEAR_CART,
   USERS_SUCCESS,
-  DISABLE_USER,
+  // DISABLE_USER,
   ADMINS_SUCCESS,
   LOGIN_SUCCESS_GOOGLE,
+  POST_REVIEW,
+  // RESTORE_USER,
 } from "./actions";
 const initialState = {
   allVinyls: [],
@@ -52,7 +52,10 @@ const initialState = {
   },
   users: [],
   admins: [],
-  email: "",
+  email: localStorage.getItem("email") || "",
+  review:[],
+  error:null,
+  // getDisabledUsers:[],
 };
 
 const reducer = (state = initialState, action) => {
@@ -91,15 +94,23 @@ const reducer = (state = initialState, action) => {
         // users: action.payload,
         admins: action.payload,
       };
-    case DISABLE_USER:
-      const updatedUsers = state.users.filter(
-        (user) => user.id !== action.payload
-      );
-      return {
-        ...state,
-        users: updatedUsers,
-      };
-
+    // case DISABLE_USER:
+    //   console.log(action.payload)
+      
+    //   return {
+    //     ...state,
+    //     getDisabledUsers:[...state.getDisabledUsers, action.payload]
+    //   };
+    //   case RESTORE_USER:
+    //     const restoredUser = action.payload; // el servidor devuelve los datos del usuario restaurado
+    //     const updatedDisabledUsers = state.getDisabledUsers.filter(
+    //       (user) => user.id === restoredUser.id
+    //     );
+    //     return {
+    //       ...state,
+    //       users: [...state.users, restoredUser],
+    //       getDisabledUsers: updatedDisabledUsers,
+    //     };
     case ADD_TO_CART:
       const addedItem = state.vinyls.find(
         (vinyl) => vinyl.id === action.payload.id
@@ -254,24 +265,7 @@ const reducer = (state = initialState, action) => {
         cartItems: decreasedCartItems,
       };
 
-    case ORDER_FOR_GENRE:
-      return {
-        ...state,
-        allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.includes(action.payload)
-        ),
-      };
-    case FILTER_BY_DECADE:
-      const { startYear, endYear } = action.payload;
-      const filteredVinyls = state.vinyls.filter((vinyl) => {
-        const vinylYear = parseInt(vinyl.year);
-        return vinylYear >= startYear && vinylYear <= endYear;
-      });
 
-      return {
-        ...state,
-        allVinyls: filteredVinyls,
-      };
 
     case RESET:
       return {
@@ -290,6 +284,7 @@ const reducer = (state = initialState, action) => {
 
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("email", action.payload.email);
       return {
         ...state,
         isAuthenticated: true,
@@ -321,7 +316,12 @@ const reducer = (state = initialState, action) => {
         token: null, // Borrar el token cuando se cierre sesión
         error: null, // Restablecer cualquier mensaje de error anterior
       };
-
+    case POST_REVIEW:
+        return{
+          ...state,
+          review:[...state.review,action.payload],
+          error:null
+        }
     default:
       return {
         ...state,

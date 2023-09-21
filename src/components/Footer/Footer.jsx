@@ -4,11 +4,16 @@ import { PiArrowsCounterClockwiseDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { useState } from "react";
+import { postReview } from "../../redux/actions";
 
 const Footer = () => {
   const isAuthenticated = useSelector((state) => state.token !== null);
   const navigate = useNavigate();
+  const [comment,setComment]=useState({email:"",comment:"",rating:null});
+  const dispatch=useDispatch();
+  console.log(comment.rating);
 
   const notify1 = (message, type) => {
     toast.custom(
@@ -44,6 +49,22 @@ const Footer = () => {
       notify1("Debes iniciar sesión", "error");
     }
   };
+
+  const handleOnChange=(e)=>{
+    const {name,value}=e.target
+    if (name === "rating") {
+      const ratingValue = parseInt(value);
+      setComment({ ...comment, rating: ratingValue });
+    } else {
+      // Para otros campos como "email" o "comment", actualiza el estado correspondiente.
+      setComment({ ...comment, [name]: value });
+    }
+  };
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    dispatch(postReview(comment))
+  }
 
   return (
     <div className="w-full min-h-[80vh] bg-black bg-opacity-90">
@@ -94,14 +115,15 @@ const Footer = () => {
             página:
           </p>
 
-          <form className="w-full max-w-md">
+          <form onSubmit={handleSubmit} className="w-full max-w-md">
             <div className="mb-4">
               <label htmlFor="email" className="block text-white text-sm mb-2">
                 Email:
               </label>
               <input
+                onChange={handleOnChange}
+                value={comment.email}
                 type="email"
-                id="email"
                 name="email"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                 placeholder="Ingresa tu email"
@@ -117,9 +139,10 @@ const Footer = () => {
                 Comentario:
               </label>
               <textarea
-                id="comment"
+                onChange={handleOnChange}
+                value={comment.comment}
                 name="comment"
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                className="text-black w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                 placeholder="Escribe tu comentario"
                 required
               ></textarea>
@@ -128,38 +151,23 @@ const Footer = () => {
             <div className="mb-4">
               <p className="text-white text-sm mb-2">Calificación:</p>
               <div className="flex">
-                <div className="mr-2">
-                  <input type="radio" id="star1" name="rating" value="1" />
-                  <label htmlFor="star1" className="text-red-600">
-                    &#9733;
-                  </label>
-                </div>
-                <div className="mr-2">
-                  <input type="radio" id="star2" name="rating" value="2" />
-                  <label htmlFor="star2" className="text-red-600">
-                    &#9733;
-                  </label>
-                </div>
-                <div className="mr-2">
-                  <input type="radio" id="star3" name="rating" value="3" />
-                  <label htmlFor="star3" className="text-red-600">
-                    &#9733;
-                  </label>
-                </div>
-                <div className="mr-2">
-                  <input type="radio" id="star4" name="rating" value="4" />
-                  <label htmlFor="star4" className="text-red-600">
-                    &#9733;
-                  </label>
-                </div>
-                <div>
-                  <input type="radio" id="star5" name="rating" value="5" />
-                  <label htmlFor="star5" className="text-red-600">
-                    &#9733;
-                  </label>
-                </div>
-              </div>
-            </div>
+                {[1, 2, 3, 4, 5].map((value) => (
+                <div className="mr-2" key={value}>
+                  <input
+                    onChange={handleOnChange}
+                    type="radio"
+                    name="rating"
+                    value={value}
+                    checked={value === comment.rating}
+                    required
+                  />
+                    <label htmlFor={`star${value}`} className="text-red-600">
+                     &#9733;
+                    </label>
+          </div>
+            ))}
+         </div>
+             </div>
 
             <button
               type="submit"

@@ -4,12 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 // import { updateVinyl, disableVinyl, deleteVinyl } from "./";
 import { AiOutlineEdit } from "react-icons/ai";
 import { getUsersAndSuccess } from "../../redux/actions";
-import { disableUser } from "../../redux/actions";
+// import { disableUser } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
+  // const getDisabledUsers = useSelector((state) => state.getDisabledUsers);
+  // console.log(getDisabledUsers);
+  // console.log(Users[0].deletedAt);
   const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
@@ -17,10 +20,14 @@ const UserList = () => {
   // console.log(Users[0].country)
   // console.log(filterCountry)
 
+  // const combinedData = [...Users, ...getDisabledUsers];
+  // console.log(combinedData)
+
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
     dispatch(getUsersAndSuccess());
   }, [dispatch]);
+
 
   // tabla
   const columns = [
@@ -58,53 +65,43 @@ const UserList = () => {
       name: "Acciones",
       cell: (row) => (
         <div className="flex space-x-2">
-          <button
-            onClick={() => handleUpdate(row)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            <AiOutlineEdit />
-          </button>
-          <button
+          {/* <button
             onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
             Desactivar
           </button>
           <button
+            onClick={() => handleActive(row)}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Activar
+          </button> */}
+          {/* <button
             onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
             <RiDeleteBin6Line />
-          </button>
+          </button> */}
         </div>
       ),
     },
   ];
 
-  //   const handleUpdate = (row) => {
-  //     // Lógica para actualizar el vinilo
-  //     dispatch(updateVinyl(row.id));
-  //   };
-
-  const handleDisable = (row) => {
-    // Lógica para deshabilitar el vinilo
-    dispatch(disableUser(row.id));
-  };
-
+  // const handleDisable = (row) => {
+  //   // Lógica para deshabilitar el usuario
+  //   dispatch(disableUser(row.id));
+  // };
+  // const handleActive = (row) => {
+  //   // Lógica para deshabilitar el usuario
+  //   dispatch(restoreUser(row.id));
+  // };
+  
   //   const handleDelete = (row) => {
   //     // Lógica para borrar el vinilo
   //     dispatch(deleteVinyl(row.id));
   //   };
 
-  // const filteredUsers = Users.filter((user) =>
-  //   user.name.toLowerCase().includes(filterText.toLowerCase())
-  // );
-  // const filteredCountry=Users.filter((user)=>
-  //   user.country.toLowerCase().includes(filterCountry.toLowerCase())
-  // );
-  // const filteredEmail=Users.filter((user)=>
-  //   user.email.toLowerCase().includes(filterEmail.toLowerCase())
-  // );
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
     return regex.test(userEmail);
