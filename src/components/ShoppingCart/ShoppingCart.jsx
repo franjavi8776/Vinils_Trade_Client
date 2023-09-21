@@ -9,6 +9,9 @@ import {
   pendingMP,
   failureMP,
   clearCart,
+  postOrdernDetial,
+  StockReduc,
+  deleteOrderDeteil,
 } from "../../redux/actions";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { BsTrash3 } from "react-icons/bs";
@@ -20,6 +23,9 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
+  const OrderDet = useSelector((state) => state.orderDetail);
+  console.log(OrderDet);
+  console.log(cart);
 
   // const stateMP = useSelector((state) => state.stateMP)
   //console.log(MP);
@@ -37,6 +43,11 @@ const ShoppingCart = () => {
     dispatch(decreaseItem(vinyl));
   };
 
+  const handlerNot = () => {
+    // dispatch(deleteOrderDeteil());
+    setShowConfirmation(false);
+  };
+
   function handlerButtom() {
     const shoppCart = document.getElementById("card");
     shoppCart.classList.add("hidden");
@@ -48,6 +59,17 @@ const ShoppingCart = () => {
     0
   );
 
+  const del = cart.map((item) => ({
+    name: item.title,
+    vinylId: item.id,
+    units: item.cartQuantity,
+    amount: item.price,
+    taxAmount: 0,
+    totalAmount: item.cartQuantity * item.price,
+  }));
+
+  //console.log(del)
+
   const handleShowConfirmation = () => {
     if (cart.length > 0) {
       const datos = {
@@ -55,21 +77,30 @@ const ShoppingCart = () => {
         price: totalValue,
         units: cart.length,
       };
+
       // cart.forEach((item) => {
       //   const vinylId = item.id; // ID del vinilo
       //   const stockReduction = item.cartQuantity; // Cantidad a reducir del stock
       //   dispatch(updateVinyls(vinylId, stockReduction));
       // });
+      cart.forEach((item) => {
+        const cambio = item.stock;
+        console.log(cambio);
+        dispatch(StockReduc(item.id, cambio)); // Esto disminuirá el stock en Redux
+      });
       dispatch(postMP(datos));
-      if (MP.length > 0) {
-        setShowConfirmation(false);
-      }
+      dispatch(postOrdernDetial(del));
     }
 
     setShowConfirmation(true);
   };
 
   const handleMP = () => {
+    if (cart.length > 0) {
+      dispatch(clearCart());
+      dispatch(deleteOrderDeteil());
+    }
+
     window.location.href = MP;
   };
 
@@ -176,7 +207,7 @@ const ShoppingCart = () => {
               </button>
               <button
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => setShowConfirmation(false)}
+                onClick={handlerNot}
               >
                 No
               </button>

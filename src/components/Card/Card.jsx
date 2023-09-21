@@ -14,7 +14,7 @@ const Card = ({ id, title, cover_image, price, stock }) => {
 
   // Verifica si el producto ya está en el carrito
   const itemInCart = cartItems.find((item) => item.id === id);
-
+  console.log(itemInCart)
   useEffect(() => {
     // Verifica si el producto ya está en el carrito
     const itemInCart = cartItems.find((item) => item.id === id);

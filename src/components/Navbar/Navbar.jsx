@@ -18,14 +18,13 @@ const Navbar = ({ updateHtmlClass }) => {
   const admin = useSelector((state) => state.admins);
   const email = useSelector((state) => state.email);
   const token = useSelector((state) => state.token);
-  console.log(admin)
-  console.log(token)
-  console.log(email)
+  // console.log(admin)
+  // console.log(token)
+  // console.log(email)
 
   const filtro = admin.filter((us) => {
     return email === us.email;
   });
-
 
   useEffect(() => {
     if (filtro.length > 0 && token) {
@@ -122,7 +121,7 @@ const Navbar = ({ updateHtmlClass }) => {
               onClick={() => setMobileMenuOpen(false)}
               to="/dashboard"
               id="panel"
-              className="hidden mt-40  lg:m-4 lg:text-white lg:font-semibold lg:link-with-hover-line
+              className="hidden mt-40  lg:m-4 lg:text-white font-semibold lg:link-with-hover-line
               lg:text-md"
             >
               Panel
@@ -131,16 +130,16 @@ const Navbar = ({ updateHtmlClass }) => {
             <Link
               onClick={() => setMobileMenuOpen(false)}
               to="/"
-              className="text-white font-semibold link-with-hover-line ml-5"
+              className="text-white mt-40 lg:mt-0 font-semibold link-with-hover-line ml-5"
             >
               Inicio
             </Link>
             <Link
               onClick={() => setMobileMenuOpen(false)}
               to="/about"
-              className="text-white font-semibold link-with-hover-line ml-5"
+              className="text-white mt-40 lg:mt-0  font-semibold link-with-hover-line ml-5"
             >
-              Acerca de nosotros
+              Acerca
             </Link>
           </div>
           <div className="lg:w-[60%] lg:flex lg:justify-center lg:items-center hidden">

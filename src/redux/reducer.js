@@ -11,8 +11,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
-  LOGIN_USER_WITH_GOOGLE_SUCCESS,
-  LOGIN_USER_WITH_GOOGLE_FAILURE,
   POST_VINYL,
   INCREASE_ITEM,
   DECREASE_ITEM,
@@ -28,6 +26,9 @@ import {
   DELETE_USER,
   LOGIN_SUCCESS_GOOGLE,
   GET_REVIEWS,
+  POST_ORDERDETAIL,
+  STOCK_REDUC,
+  DELETE_ORDERDETAIL,
 } from "./actions";
 
 const initialState = {
@@ -58,6 +59,8 @@ const initialState = {
   admins: [],
   email: localStorage.getItem("email") || "",
   reviews: [],
+
+  OrdenDetal: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -81,6 +84,7 @@ const reducer = (state = initialState, action) => {
         allVinyls: [...state.allVinyls, action.payload],
         vinyls: [...state.allVinyls, action.payload],
       };
+
     case ORDER_BY_TITLE: {
       const orderDirection = action.payload === "A" ? 1 : -1;
       const sortedVinyls = [...state.allVinyls].sort((a, b) => {
@@ -317,6 +321,7 @@ const reducer = (state = initialState, action) => {
         allVin: filteredVinyls,
         allVinyls: filteredVinyls,
       };
+
     case RESET:
       return {
         ...initialState,
@@ -351,6 +356,43 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         reviews: action.payload,
+      };
+
+    case POST_ORDERDETAIL:
+      return {
+        ...state,
+        orderDetail: action.payload,
+      };
+    case STOCK_REDUC:
+    case STOCK_REDUC:
+      const id1 = action.payload.id;
+      const stock1 = action.payload.stock;
+
+      // Resto de tu lógica aquí
+
+      const updatedVinylsStock = state.allVinyls.map((vinyl) => {
+        if (vinyl.id === id1) {
+          // Encuentra el vinilo con el ID que coincida
+          const cartItem = state.cartItems.find((item) => item.id === id1);
+          if (cartItem) {
+            // Si el vinilo está en el carrito, resta su cantidad al stock
+            return {
+              ...vinyl,
+              stock: stock1,
+            };
+          }
+        }
+        return vinyl;
+      });
+
+      return {
+        ...state,
+        allVinyls: updatedVinylsStock,
+      };
+
+    case DELETE_ORDERDETAIL:
+      return {
+        ...state,
       };
 
     default:
