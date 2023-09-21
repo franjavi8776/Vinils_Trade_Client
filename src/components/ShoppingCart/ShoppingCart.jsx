@@ -11,7 +11,7 @@ import {
   clearCart,
   postOrdernDetial,
   StockReduc,
-  deleteOrderDeteil
+  deleteOrderDeteil,
 } from "../../redux/actions";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { BsTrash3 } from "react-icons/bs";
@@ -23,9 +23,9 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
-  const OrderDet = useSelector((state) => state.orderDetail)
-  console.log(OrderDet)
-  console.log(cart)
+  const OrderDet = useSelector((state) => state.orderDetail);
+  console.log(OrderDet);
+  console.log(cart);
 
   // const stateMP = useSelector((state) => state.stateMP)
   //console.log(MP);
@@ -44,9 +44,9 @@ const ShoppingCart = () => {
   };
 
   const handlerNot = () => {
-    dispatch(deleteOrderDeteil())
-    setShowConfirmation(false)
-  }
+    // dispatch(deleteOrderDeteil());
+    setShowConfirmation(false);
+  };
 
   function handlerButtom() {
     const shoppCart = document.getElementById("card");
@@ -60,18 +60,15 @@ const ShoppingCart = () => {
   );
 
   const del = cart.map((item) => ({
-      
-      name: item.title,
-      vinylId: item.id,
-      units: item.cartQuantity,
-      amount: item.price,
-      taxAmount: 0,
-      totalAmount: item.cartQuantity * item.price,
-  }) )
+    name: item.title,
+    vinylId: item.id,
+    units: item.cartQuantity,
+    amount: item.price,
+    taxAmount: 0,
+    totalAmount: item.cartQuantity * item.price,
+  }));
 
-  console.log(del)
-  
-
+  //console.log(del)
 
   const handleShowConfirmation = () => {
     if (cart.length > 0) {
@@ -80,8 +77,6 @@ const ShoppingCart = () => {
         price: totalValue,
         units: cart.length,
       };
-      
-      
 
       // cart.forEach((item) => {
       //   const vinylId = item.id; // ID del vinilo
@@ -89,19 +84,23 @@ const ShoppingCart = () => {
       //   dispatch(updateVinyls(vinylId, stockReduction));
       // });
       cart.forEach((item) => {
-        const cambio = item.stock 
-        console.log(cambio)
-        dispatch(StockReduc(item.id, cambio )); // Esto disminuirá el stock en Redux
+        const cambio = item.stock;
+        console.log(cambio);
+        dispatch(StockReduc(item.id, cambio)); // Esto disminuirá el stock en Redux
       });
       dispatch(postMP(datos));
-      dispatch(postOrdernDetial(del))
-
+      dispatch(postOrdernDetial(del));
     }
 
     setShowConfirmation(true);
   };
 
   const handleMP = () => {
+    if (cart.length > 0) {
+      dispatch(clearCart());
+      dispatch(deleteOrderDeteil());
+    }
+
     window.location.href = MP;
   };
 
