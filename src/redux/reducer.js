@@ -11,8 +11,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
-  LOGIN_USER_WITH_GOOGLE_SUCCESS,
-  LOGIN_USER_WITH_GOOGLE_FAILURE,
   POST_VINYL,
   INCREASE_ITEM,
   DECREASE_ITEM,
@@ -22,11 +20,13 @@ import {
   FAILURE_MP,
   CLEAR_CART,
   USERS_SUCCESS,
-  DISABLE_USER,
+  // DISABLE_USER,
   ADMINS_SUCCESS,
   UPDATE_VINYLS,
   DELETE_USER,
   LOGIN_SUCCESS_GOOGLE,
+  POST_REVIEW,
+  // RESTORE_USER,
   GET_REVIEWS,
   POST_ORDERDETAIL,
   STOCK_REDUC,
@@ -60,8 +60,10 @@ const initialState = {
   users: [],
   admins: [],
   email: localStorage.getItem("email") || "",
-  reviews: [],
+  review:[],
+  error:null,
   OrdenDetal: null,
+  // getDisabledUsers:[],
 };
 
 const reducer = (state = initialState, action) => {
@@ -136,16 +138,23 @@ const reducer = (state = initialState, action) => {
         users: action.payload,
         admins: action.payload,
       };
-    case DISABLE_USER:
-      const userId = action.payload;
-      const updatedUsers = state.users.map((user) =>
-        user.id === userId ? { ...user, disabled: true } : user
-      );
-      return {
-        ...state,
-        users: updatedUsers,
-      };
-
+    // case DISABLE_USER:
+    //   console.log(action.payload)
+      
+    //   return {
+    //     ...state,
+    //     getDisabledUsers:[...state.getDisabledUsers, action.payload]
+    //   };
+    //   case RESTORE_USER:
+    //     const restoredUser = action.payload; // el servidor devuelve los datos del usuario restaurado
+    //     const updatedDisabledUsers = state.getDisabledUsers.filter(
+    //       (user) => user.id === restoredUser.id
+    //     );
+    //     return {
+    //       ...state,
+    //       users: [...state.users, restoredUser],
+    //       getDisabledUsers: updatedDisabledUsers,
+    //     };
     case DELETE_USER:
       const userIdToDelete = action.payload;
       // Filtra los usuarios para eliminar el que coincide con el ID
@@ -156,7 +165,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: updatedUsersAfterDelete,
       };
-
     case ADD_TO_CART:
       const addedItem = state.vinyls.find(
         (vinyl) => vinyl.id === action.payload.id
@@ -302,9 +310,7 @@ const reducer = (state = initialState, action) => {
               return el;
             }
           })
-        };
-      
-      
+        };    
     case DECREASE_ITEM:
       const decreasedCartItems = state.cartItems.map((item) => {
         if (item.id === action.payload.id) {
@@ -353,6 +359,12 @@ const reducer = (state = initialState, action) => {
         token: null, // Borrar el token cuando se cierre sesión
         error: null, // Restablecer cualquier mensaje de error anterior
       };
+    case POST_REVIEW:
+        return{
+          ...state,
+          review:[...state.review,action.payload],
+          error:null
+        }
     case GET_REVIEWS:
       return {
         ...state,

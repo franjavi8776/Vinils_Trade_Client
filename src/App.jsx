@@ -15,6 +15,7 @@ import Sell from "./components/sellvinyls/Sell.jsx";
 import Garantia from "./components/Garantia/Garantia";
 import Reviews from "./components/Reviews/Reviews";
 
+
 function App() {
   const updateHtmlClass = (darkMode) => {
     const htmlElement = document.documentElement;
