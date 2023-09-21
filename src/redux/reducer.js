@@ -293,7 +293,10 @@ const reducer = (state = initialState, action) => {
 
     case RESET:
       return {
-        ...initialState,
+        ...state,
+        allVinyls: state.allVin, // Restablecer la lista de vinilos a su estado original
+        vinyls: state.allVin,
+        // Restablecer la lista de vinilos filtrados a su estado original
       };
 
     case LOGIN_SUCCESS:

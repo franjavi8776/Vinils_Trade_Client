@@ -79,7 +79,7 @@ const Search = () => {
       shoppCart.classList.remove("hidden");
       document.body.style.overflowY = "hidden";
     } else {
-     notify2("Debes iniciar sesion");
+      notify2("Debes iniciar sesion");
     }
   }
 

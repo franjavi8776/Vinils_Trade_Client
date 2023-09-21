@@ -20,6 +20,7 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
+
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
     toast.success("Vinilo eliminado correctamente");
