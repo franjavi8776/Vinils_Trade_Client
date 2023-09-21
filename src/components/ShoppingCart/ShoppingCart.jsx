@@ -34,8 +34,8 @@ const ShoppingCart = () => {
 
   const handlerNot = () => {
     dispatch(deleteOrderDeteil())
-    setShowConfirmation(false)
-  }
+    setShowConfirmation(false);
+  };
 
   function handlerButtom() {
     const shoppCart = document.getElementById("card");

@@ -28,10 +28,14 @@ export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
 export const UPDATE_VINYLS = "UPDATE_VINYLS";
 export const USERS_SUCCESS = "USERS_SUCCESS";
-export const DISABLE_USER = "DISABLE_USER";
+// export const DISABLE_USER = "DISABLE_USER";
+// export const RESTORE_USER="RESTORE_USER";
+export const USER_RESTORE_SUCCESS="USER_RESTORE_SUCCESS";
+export const USER_RESTORE_FAILURE="USER_RESTORE_FAILURE";
 export const ADMINS_SUCCESS = "ADMINS_SUCCESS";
 export const DELETE_USER = "DELETE_USER";
 export const LOGIN_SUCCESS_GOOGLE = "LOGIN_SUCCESS_GOOGLE";
+export const POST_REVIEW="POST_REVIEW";
 export const GET_REVIEWS = "GET_REVIEWS";
 export const POST_ORDERDETAIL = "POST_ORDERDETAIL";
 export const STOCK_REDUC = "STOCK_REDUC";
@@ -62,7 +66,6 @@ export const getVinylDetail = (id) => async (dispatch) => {
     if (Array.isArray(data) && data.length > 0) {
       // Verificamos si data es un array y si contiene al menos un elemento
       const vinylDetail = data[0];
-      console.log(vinylDetail);
       dispatch({ type: GET_DETAIL, payload: vinylDetail });
     }
   } catch (error) {
@@ -91,19 +94,49 @@ export const postRegisterUser = (x) => {
   };
 };
 
-export const disableUser = (userId) => async (dispatch) => {
-  try {
-    await axios.post(
-      "https://vinyls-trade-back-production.up.railway.app/inhabilityUser",
-      { id: userId }
-    );
-    // Despacha una acción para actualizar el estado de Redux después de la eliminación
-    dispatch({ type: "DISABLE_USER", payload: userId });
-  } catch (error) {
-    // Maneja errores aquí si es necesario
-    console.error("Error al eliminar el usuario", error);
-  }
-};
+// export const disableUser = (userId) => async (dispatch) => {
+//   try {
+//     await axios.post(
+//       "https://vinyls-trade-back-production.up.railway.app/inhabilityUser",
+//       { id: userId }
+//     );
+//     // Despacha una acción para actualizar el estado de Redux después de la eliminación
+//     dispatch({ type: "DISABLE_USER", payload: userId });
+//   } catch (error) {
+//     // Maneja errores aquí si es necesario
+//     console.error("Error al eliminar el usuario", error);
+//   }
+// };
+
+// export const disableUser = (id) => async (dispatch) => {
+//   try {
+//     // Envía el userId como parte de la URL en lugar del cuerpo de la solicitud
+//     const response= await  axios.delete(
+//       `https://vinyls-trade-back-production.up.railway.app/inhabilityUser/${id}`
+//     );
+//     console.log(response.data);
+//     // Despacha una acción para actualizar el estado de Redux después de la eliminación
+//     dispatch({ type: "DISABLE_USER", payload: response.data });
+//   } catch (error) {
+//     // Maneja errores aquí si es necesario
+//     console.error("Error al eliminar el usuario", error);
+//   }
+// };
+
+// export const restoreUser = (id) => async (dispatch) => {
+//   try {
+//     // Envía el userId como parte de la URL en lugar del cuerpo de la solicitud
+//     const response = await axios.put(
+//       `https://vinyls-trade-back-production.up.railway.app/restoreUser/${id}`
+//     );
+//     console.log(response.data);
+//     // Despacha una acción para actualizar el estado de Redux después de restaurar al usuario
+//     dispatch({ type: "RESTORE_USER", payload: response.data });
+//   } catch (error) {
+//     // Maneja errores aquí si es necesario
+//     console.error("Error al restaurar el usuario", error);
+//   }
+// };
 
 export const getUsersAndSuccess = () => {
   return async (dispatch) => {
@@ -181,22 +214,6 @@ export const getVinylsForName = (title) => {
   };
 };
 
-// export const getVinylCart = (id) => {
-//   return async function (dispatch) {
-//     console.log(id);
-//     try {
-//       const { data } = await axios.get(endpoint + id);
-//       dispatch({
-//         type: ADD_TO_CART,
-//         payload: data,
-//       });
-//       console.log(data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
-
 export const orderByTitle = (order) => {
   return {
     type: ORDER_BY_TITLE,
@@ -222,39 +239,8 @@ export const postMP = (dato) => async (dispatch) => {
     "https://vinyls-trade-back-production.up.railway.app/create_order",
     dato
   );
-  console.log(data);
   dispatch({
     type: CREATE_ORDER,
-    payload: data,
-  });
-};
-
-export const succesMP = () => async (dispatch) => {
-  const { data } = await axios(
-    "https://vinyls-trade-back-production.up.railway.app/success"
-  );
-  dispatch({
-    type: SUCCESS_MP,
-    payload: data,
-  });
-};
-
-export const pendingMP = () => async (dispatch) => {
-  const { data } = await axios(
-    "https://vinyls-trade-back-production.up.railway.app/pending"
-  );
-  dispatch({
-    type: PENDIGN_MP,
-    payload: data,
-  });
-};
-
-export const failureMP = () => async (dispatch) => {
-  const { data } = await axios(
-    "https://vinyls-trade-back-production.up.railway.app/failure"
-  );
-  dispatch({
-    type: FAILURE_MP,
     payload: data,
   });
 };
@@ -299,17 +285,12 @@ export const loginUserByEmail = (loginData) => async (dispatch) => {
       "https://vinyls-trade-back-production.up.railway.app/login",
       loginData
     );
-    console.log(response.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: response.data,
     });
   } catch (error) {
     console.error(error);
-    // dispatch({
-    //   type: "LOGIN_FAILURE",
-    //   payload: response.data,
-    // });
   }
 };
 
@@ -323,7 +304,6 @@ export const loginUserByGoogle = (token) => async (dispatch) => {
         },
       }
     );
-    console.log(response.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: response.data,
@@ -370,13 +350,27 @@ export const getReviews = () => async (dispatch) => {
     const response = await axios.get(
       "https://vinyls-trade-back-production.up.railway.app/get/allReviews"
     );
-    console.log(response);
     dispatch({ type: GET_REVIEWS, payload: response.data });
   } catch (error) {
     console.log(error);
   }
 };
 
+export const postReview=(datos)=> async (dispatch)=>{
+  try {
+    const response = await axios.post(
+      "https://vinyls-trade-back-production.up.railway.app/reviews",
+       datos
+    );
+    dispatch({
+      type:POST_REVIEW,
+      payload:response.data
+    })
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const postOrdernDetial = (info) => async (dispatch) => {
   try {

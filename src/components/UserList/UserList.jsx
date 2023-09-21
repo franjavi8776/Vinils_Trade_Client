@@ -3,23 +3,30 @@ import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
 // import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
 import { AiOutlineDelete } from "react-icons/ai";
-import {getUsersAndSuccess, deleteUser, disableUser } from "../../redux/actions";
+import {getUsersAndSuccess, deleteUser } from "../../redux/actions";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
+  // const getDisabledUsers = useSelector((state) => state.getDisabledUsers);
+  // console.log(getDisabledUsers);
+  // console.log(Users[0].deletedAt);
   const dispatch = useDispatch();
   console.log(Users)
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
 
+  // const combinedData = [...Users, ...getDisabledUsers];
+  // console.log(combinedData)
+
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
     dispatch(getUsersAndSuccess());
   }, [dispatch]);
+
 
   // tabla
   const columns = [
@@ -57,6 +64,7 @@ const UserList = () => {
       name: "Acciones",
       cell: (row) => (
         <div className="flex space-x-2">
+          {/* <button
           <button
             onClick={() => handleDelete(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
@@ -70,7 +78,13 @@ const UserList = () => {
             Desactivar
           </button>
           <button
-            onClick={() => handleDisable(row)}
+            onClick={() => handleActive(row)}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Activar
+          </button> */}
+          <button
+            onClick={() => handleDelete(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
             <RiDeleteBin6Line />
@@ -80,25 +94,18 @@ const UserList = () => {
     },
   ];
 
+
+
   const handleDelete = (row) => {
     dispatch(deleteUser(row.id)); 
   };
 
-  const handleDisable = (row) => {
-    // Lógica para deshabilitar el vinilo
-    dispatch(disableUser(row.id));
-  };
+  // const handleDisable = (row) => {
+  //   // Lógica para deshabilitar el vinilo
+  //   dispatch(disableUser(row.id));
+  // };
 
 
-  // const filteredUsers = Users.filter((user) =>
-  //   user.name.toLowerCase().includes(filterText.toLowerCase())
-  // );
-  // const filteredCountry=Users.filter((user)=>
-  //   user.country.toLowerCase().includes(filterCountry.toLowerCase())
-  // );
-  // const filteredEmail=Users.filter((user)=>
-  //   user.email.toLowerCase().includes(filterEmail.toLowerCase())
-  // );
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
     return regex.test(userEmail);
