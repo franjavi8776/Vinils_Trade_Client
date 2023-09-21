@@ -42,13 +42,13 @@ const Form = () => {
     } else {
       setVinyls({
         ...vinyls,
-        [name]: value.trim(),
+        [name]: value,
       });
     }
 
     const ErrorDetect = validateVinylsForm({
       ...vinyls,
-      [name]: name === "artists" ? value : value.trim(), // Aplica trim() aquí también si es necesario
+      [name]: name === "artists" ? value : value, // Aplica trim() aquí también si es necesario
     });
 
     setErrors((err) => ({
