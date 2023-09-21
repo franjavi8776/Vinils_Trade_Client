@@ -3,16 +3,20 @@ import { AiOutlineLock } from "react-icons/ai";
 import { PiArrowsCounterClockwiseDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-import { useSelector,useDispatch } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { postReview } from "../../redux/actions";
 
 const Footer = () => {
   const isAuthenticated = useSelector((state) => state.token !== null);
   const navigate = useNavigate();
-  const [comment,setComment]=useState({email:"",comment:"",rating:null});
-  const dispatch=useDispatch();
+  const [comment, setComment] = useState({
+    email: "",
+    comment: "",
+    rating: null,
+  });
+  const dispatch = useDispatch();
   console.log(comment.rating);
 
   const notify1 = (message, type) => {
@@ -24,7 +28,7 @@ const Footer = () => {
               ? "bg-green-500"
               : type === "error"
               ? "bg-white"
-              : "bg-blue-500 p-1"
+              : "bg-white p-1"
           } p-2 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light`}
         >
           <div className="text-center justify-center text-lg">{message}</div>
@@ -41,6 +45,21 @@ const Footer = () => {
       }
     );
   };
+  const notify2 = (message, type) => {
+    toast.custom(
+      (t) => (
+        <div className="custom-toast">
+          <div className="bg-green-500 p-1 w-80 flex justify-center items-center rounded-2xl mt-14 relative text-black font-light">
+            <div className="text-center justify-center text-lg">{message}</div>
+          </div>
+        </div>
+      ),
+      {
+        duration: 1000,
+        toastId: "custom-toast", // Usa el mismo toastId que en la configuración del Toaster específico
+      }
+    );
+  };
 
   const handleOnClick = () => {
     if (isAuthenticated) {
@@ -50,8 +69,8 @@ const Footer = () => {
     }
   };
 
-  const handleOnChange=(e)=>{
-    const {name,value}=e.target
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
     if (name === "rating") {
       const ratingValue = parseInt(value);
       setComment({ ...comment, rating: ratingValue });
@@ -60,11 +79,16 @@ const Footer = () => {
       setComment({ ...comment, [name]: value });
     }
   };
-
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    dispatch(postReview(comment))
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postReview(comment));
+    setComment({
+      email: "",
+      comment: "",
+      rating: null,
+    });
+    notify2("Gracias por tu comentario");
+  };
 
   return (
     <div className="w-full min-h-[80vh] bg-black bg-opacity-90">
@@ -151,35 +175,46 @@ const Footer = () => {
             </div>
 
             <div className="mb-4">
-              <p className="text-white text-sm mb-2">Calificación:</p>
+              <p className="text-white text-sm  text-center mb-2">
+                Calificación:
+              </p>
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((value) => (
-                <div className="mr-2" key={value}>
-                  <input
-                    onChange={handleOnChange}
-                    type="radio"
-                    name="rating"
-                    value={value}
-                    checked={value === comment.rating}
-                    required
-                  />
-                    <label htmlFor={`star${value}`} className="text-red-600">
-                     &#9733;
+                  <div className="mr-2" key={value}>
+                    <input
+                      onChange={handleOnChange}
+                      type="radio"
+                      id={`star${value}`}
+                      name="rating"
+                      value={value}
+                      checked={value === comment.rating}
+                      style={{ display: "none" }}
+                    />
+                    <label
+                      htmlFor={`star${value}`}
+                      className={`text-red-600 p-8 cursor-pointer ${
+                        value <= comment.rating ? "text-red-600" : "text-white"
+                      }`}
+                      onClick={() => setComment({ ...comment, rating: value })}
+                    >
+                      &#9733;
                     </label>
-          </div>
-            ))}
-         </div>
-             </div>
-
-            <button
-              type="submit"
-              className="bg-red-600 hover:bg-white hover:text-black text-white py-2 px-4 rounded"
-            >
-              Enviar
-            </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-center text-center">
+              <button
+                type="submit"
+                className="bg-red-600 hover:bg-white hover:text-black text-white mt-4  py-2 px-4 rounded"
+              >
+                Enviar
+              </button>
+            </div>
           </form>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
