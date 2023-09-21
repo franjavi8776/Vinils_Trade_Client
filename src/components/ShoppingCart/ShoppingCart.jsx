@@ -16,15 +16,14 @@ import toast, { Toaster } from "react-hot-toast";
 
 const ShoppingCart = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
-
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
     toast.success("Vinilo eliminado correctamente");
   };
+
   const handleIncreaseQty = (vinyl) => {
     dispatch(increaseItem(vinyl));
   };
@@ -50,7 +49,6 @@ const ShoppingCart = () => {
   );
 
   const del = cart.map((item) => ({
-      
       name: item.title,
       vinylId: item.id,
       units: item.cartQuantity,
@@ -66,10 +64,10 @@ const ShoppingCart = () => {
         price: totalValue,
         units: cart.length,
       };
-      
+
       cart.forEach((item) => {
-        const cambio = item.stock 
-        dispatch(StockReduc(item.id, cambio )); // Esto disminuirá el stock en Redux
+        const cambio = item.stock;
+        dispatch(StockReduc(item.id, cambio)); // Esto disminuirá el stock en Redux
       });
       
       dispatch(postMP(datos));
