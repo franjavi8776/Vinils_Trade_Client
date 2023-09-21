@@ -10,16 +10,11 @@ import { Link } from "react-router-dom";
 const UserList = () => {
   const Users = useSelector((state) => state.users);
   // const getDisabledUsers = useSelector((state) => state.getDisabledUsers);
-  // console.log(getDisabledUsers);
-  // console.log(Users[0].deletedAt);
   const dispatch = useDispatch();
   console.log(Users);
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
-
-  // const combinedData = [...Users, ...getDisabledUsers];
-  // console.log(combinedData)
 
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
@@ -95,10 +90,6 @@ const UserList = () => {
   const handleDelete = (row) => {
     dispatch(deleteUser(row.id));
   };
-  //   const handleUpdate = (row) => {
-  //     // Lógica para actualizar el vinilo
-  //     dispatch(updateVinyl(row.id));
-  //   };
 
   // const handleDisable = (row) => {
   //   // Lógica para deshabilitar el vinilo
@@ -143,17 +134,6 @@ const UserList = () => {
           onChange={(e) => setFilterText(e.target.value)}
           className="w-full border text-red-700 border-black p-2 rounded mb-4"
         />
-        {/* <input
-          type="text"
-          placeholder="Buscar por Pais"
-          value={filterCountry}
-          onChange={(e) => setFilterCountry(e.target.value)}
-          className="w-full border text-red-700 border-black p-2 rounded mb-4"
-
-        />
-        <input
-
-        /> */}
         <input
           type="text"
           placeholder="Buscar por Email"

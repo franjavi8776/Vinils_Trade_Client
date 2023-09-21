@@ -15,9 +15,6 @@ import {
   INCREASE_ITEM,
   DECREASE_ITEM,
   CREATE_ORDER,
-  SUCCESS_MP,
-  PENDIGN_MP,
-  FAILURE_MP,
   CLEAR_CART,
   USERS_SUCCESS,
   // DISABLE_USER,
@@ -185,22 +182,6 @@ const reducer = (state = initialState, action) => {
         dataMP: action.payload,
       };
 
-    case SUCCESS_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, success: action.payload },
-      };
-    case PENDIGN_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, pending: action.payload },
-      };
-    case FAILURE_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, failure: action.payload },
-      };
-
     case CLEAR_CART:
       localStorage.removeItem("cart");
       return {
@@ -212,22 +193,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         dataMP: action.payload,
-      };
-
-    case SUCCESS_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, success: action.payload },
-      };
-    case PENDIGN_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, pending: action.payload },
-      };
-    case FAILURE_MP:
-      return {
-        ...state,
-        stateMP: { ...state.stateMP, failure: action.payload },
       };
 
     case REMOVE_FROM_CART:

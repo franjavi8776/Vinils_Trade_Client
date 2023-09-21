@@ -5,9 +5,6 @@ import {
   increaseItem,
   decreaseItem,
   postMP,
-  succesMP,
-  pendingMP,
-  failureMP,
   clearCart,
   postOrdernDetial,
   StockReduc,
@@ -27,14 +24,10 @@ const ShoppingCart = () => {
   console.log(OrderDet);
   console.log(cart);
 
-  // const stateMP = useSelector((state) => state.stateMP)
-  //console.log(MP);
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
     toast.success("Vinilo eliminado correctamente");
   };
-  //console.log(MP);
-  //console.log(stateMP);
   const handleIncreaseQty = (vinyl) => {
     dispatch(increaseItem(vinyl));
   };
@@ -77,12 +70,6 @@ const ShoppingCart = () => {
         price: totalValue,
         units: cart.length,
       };
-
-      // cart.forEach((item) => {
-      //   const vinylId = item.id; // ID del vinilo
-      //   const stockReduction = item.cartQuantity; // Cantidad a reducir del stock
-      //   dispatch(updateVinyls(vinylId, stockReduction));
-      // });
       cart.forEach((item) => {
         const cambio = item.stock;
         console.log(cambio);
@@ -100,16 +87,6 @@ const ShoppingCart = () => {
 
     window.location.href = MP;
   };
-
-  // if(succesMP) {
-  //   dispatch(clearCart())
-  // }
-  // if(pendingMP) {
-  //   return "pendign"
-  // }
-  // if(failureMP) {
-  //   return "fallo"
-  // }
 
   return (
     <div
