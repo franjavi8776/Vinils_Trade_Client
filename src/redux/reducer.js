@@ -28,6 +28,9 @@ import {
   DELETE_USER,
   LOGIN_SUCCESS_GOOGLE,
   GET_REVIEWS,
+  POST_ORDERDETAIL,
+  STOCK_REDUC,
+  DELETE_ORDERDETAIL
 } from "./actions";
 
 const initialState = {
@@ -57,7 +60,8 @@ const initialState = {
   users: [],
   admins: [],
   email: localStorage.getItem("email") || "",
- reviews: [],
+  reviews: [],
+  OrdenDetal: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -92,31 +96,28 @@ const reducer = (state = initialState, action) => {
           allVinyls: sortedVinyls,
         };
       }
-      
-      case FILTER_BY_DECADE: {
-        const { startYear, endYear } = action.payload;
-        const filteredByDecade = [...state.allVinyls].filter((vinyl) => {
-          const vinylYear = parseInt(vinyl.year);
-          return vinylYear >= startYear && vinylYear <= endYear;
-        });
-      
-        return {
-          ...state,
-          allVinyls: filteredByDecade,
-        };
-      }
-      
-      case ORDER_FOR_GENRE: {
-        const selectedGenre = action.payload;
-        const filteredByGenre = [...state.allVinyls].filter((vinyl) =>
-          vinyl.genre.includes(selectedGenre)
-        );
-      
-        return {
-          ...state,
-          allVinyls: filteredByGenre,
-        };
-      }
+
+      case ORDER_FOR_GENRE:
+      const vinilFilter = state.allVin.filter((vinyl) =>
+        vinyl.genre.includes(action.payload)
+      );
+      return {
+        ...state,
+        allVinyls: vinilFilter,
+        vinyls: vinilFilter,
+      };
+    case FILTER_BY_DECADE:
+      const { startYear, endYear } = action.payload;
+      const filteredVinyls = state.vinyls.filter((vinyl) => {
+        const vinylYear = parseInt(vinyl.year);
+        return vinylYear >= startYear && vinylYear <= endYear;
+      });
+
+      return {
+        ...state,
+        allVin: filteredVinyls,
+        allVinyls: filteredVinyls,
+      };
       
       
     case GET_DETAIL:
@@ -322,30 +323,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         cartItems: decreasedCartItems,
       };
-
-
-    case ORDER_FOR_GENRE:
-      const vinilFilter = state.allVin.filter((vinyl) =>
-        vinyl.genre.includes(action.payload)
-      );
-      return {
-        ...state,
-        allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.includes(action.payload)
-        ),
-      };
-    case FILTER_BY_DECADE:
-      const { startYear, endYear } = action.payload;
-      const filteredVinyls = state.vinyls.filter((vinyl) => {
-        const vinylYear = parseInt(vinyl.year);
-        return vinylYear >= startYear && vinylYear <= endYear;
-      });
-
-      return {
-        ...state,
-        allVin: filteredVinyls,
-        allVinyls: filteredVinyls,
-      };
     case RESET:
       return {
         ...initialState,
@@ -381,6 +358,45 @@ const reducer = (state = initialState, action) => {
         ...state,
         reviews: action.payload,
       };
+
+    case POST_ORDERDETAIL: 
+    return {
+      ...state,
+      orderDetail: action.payload,
+    }
+    case STOCK_REDUC:
+      case STOCK_REDUC:
+      const id1 = action.payload.id;
+      const stock1 = action.payload.stock;
+
+  // Resto de tu lógica aquí
+
+      const updatedVinylsStock = state.allVinyls.map((vinyl) => {
+        if (vinyl.id === id1) {
+          // Encuentra el vinilo con el ID que coincida
+          const cartItem = state.cartItems.find((item) => item.id === id1);
+          if (cartItem) {
+            // Si el vinilo está en el carrito, resta su cantidad al stock
+            return {
+              ...vinyl,
+              stock: stock1,
+            };
+          }
+        }
+        return vinyl;
+      });
+
+      return {
+        ...state,
+        allVinyls: updatedVinylsStock,
+      };
+
+
+
+  case DELETE_ORDERDETAIL:
+    return { 
+      ...state,
+    }
 
     default:
       return {
