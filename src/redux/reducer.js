@@ -57,7 +57,7 @@ const initialState = {
   users: [],
   admins: [],
   email: localStorage.getItem("email") || "",
- reviews: [],
+  reviews: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -81,44 +81,18 @@ const reducer = (state = initialState, action) => {
         allVinyls: [...state.allVinyls, action.payload],
         vinyls: [...state.allVinyls, action.payload],
       };
-      case ORDER_BY_TITLE: {
-        const orderDirection = action.payload === "A" ? 1 : -1;
-        const sortedVinyls = [...state.allVinyls].sort((a, b) => {
-          return a.title.localeCompare(b.title) * orderDirection;
-        });
-      
-        return {
-          ...state,
-          allVinyls: sortedVinyls,
-        };
-      }
-      
-      case FILTER_BY_DECADE: {
-        const { startYear, endYear } = action.payload;
-        const filteredByDecade = [...state.allVinyls].filter((vinyl) => {
-          const vinylYear = parseInt(vinyl.year);
-          return vinylYear >= startYear && vinylYear <= endYear;
-        });
-      
-        return {
-          ...state,
-          allVinyls: filteredByDecade,
-        };
-      }
-      
-      case ORDER_FOR_GENRE: {
-        const selectedGenre = action.payload;
-        const filteredByGenre = [...state.allVinyls].filter((vinyl) =>
-          vinyl.genre.includes(selectedGenre)
-        );
-      
-        return {
-          ...state,
-          allVinyls: filteredByGenre,
-        };
-      }
-      
-      
+    case ORDER_BY_TITLE: {
+      const orderDirection = action.payload === "A" ? 1 : -1;
+      const sortedVinyls = [...state.allVinyls].sort((a, b) => {
+        return a.title.localeCompare(b.title) * orderDirection;
+      });
+
+      return {
+        ...state,
+        allVinyls: sortedVinyls,
+      };
+    }
+
     case GET_DETAIL:
       return {
         ...state,
@@ -290,20 +264,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         cartItems: increasedCartItems,
       };
-      case UPDATE_VINYLS:
-        const { stock, id } = action.payload;
-        return {
-          ...state,
-          allVinyls: state.allVinyls.map((el) => {
-            if (el.id === id) {
-              return { ...el, stock };
-            } else {
-              return el;
-            }
-          })
-        };
-      
-      
+    case UPDATE_VINYLS:
+      const { stock, id } = action.payload;
+      return {
+        ...state,
+        allVinyls: state.allVinyls.map((el) => {
+          if (el.id === id) {
+            return { ...el, stock };
+          } else {
+            return el;
+          }
+        }),
+      };
+
     case DECREASE_ITEM:
       const decreasedCartItems = state.cartItems.map((item) => {
         if (item.id === action.payload.id) {
@@ -323,16 +296,14 @@ const reducer = (state = initialState, action) => {
         cartItems: decreasedCartItems,
       };
 
-
     case ORDER_FOR_GENRE:
       const vinilFilter = state.allVin.filter((vinyl) =>
         vinyl.genre.includes(action.payload)
       );
       return {
         ...state,
-        allVinyls: state.vinyls.filter((vinyl) =>
-          vinyl.genre.includes(action.payload)
-        ),
+        allVinyls: vinilFilter,
+        vinyls: vinilFilter,
       };
     case FILTER_BY_DECADE:
       const { startYear, endYear } = action.payload;
@@ -350,10 +321,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...initialState,
       };
-      
-      case LOGIN_SUCCESS:
-        localStorage.setItem("token", action.payload.token);
-        localStorage.setItem("email", action.payload.email);
+
+    case LOGIN_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("email", action.payload.email);
       return {
         ...state,
         isAuthenticated: true,
