@@ -13,7 +13,6 @@ const Footer = () => {
   const navigate = useNavigate();
   const [comment,setComment]=useState({email:"",comment:"",rating:null});
   const dispatch=useDispatch();
-  console.log(comment.rating);
 
   const notify1 = (message, type) => {
     toast.custom(
@@ -61,10 +60,15 @@ const Footer = () => {
     }
   };
 
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    dispatch(postReview(comment))
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postReview(comment));
+    setComment({
+      email: "",
+      comment: "",
+      rating: null,
+    });
+  };
 
   return (
     <div className="w-full min-h-[80vh] bg-black bg-opacity-90">
