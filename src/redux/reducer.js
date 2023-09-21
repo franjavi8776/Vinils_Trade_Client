@@ -22,17 +22,24 @@ import {
   USERS_SUCCESS,
   // DISABLE_USER,
   ADMINS_SUCCESS,
+  UPDATE_VINYLS,
+  DELETE_USER,
   LOGIN_SUCCESS_GOOGLE,
   POST_REVIEW,
   // RESTORE_USER,
+  GET_REVIEWS,
+  POST_ORDERDETAIL,
+  STOCK_REDUC,
+  DELETE_ORDERDETAIL
 } from "./actions";
+
 const initialState = {
   allVinyls: [],
   vinyls: [],
+  allVin: [],
   vinilos: [],
   detail: {},
   search: [],
-  filteredVinyls: [],
   isAuthenticated: false,
   token: localStorage.getItem("token") || null,
   error: null,
@@ -55,6 +62,7 @@ const initialState = {
   email: localStorage.getItem("email") || "",
   review:[],
   error:null,
+  OrdenDetal: null,
   // getDisabledUsers:[],
 };
 
@@ -66,6 +74,7 @@ const reducer = (state = initialState, action) => {
         allVinyls: action.payload,
         vinyls: action.payload,
         vinilos: action.payload,
+        allVin: action.payload,
       };
     case GET_VINYLS_FOR_NAME:
       return {
@@ -78,6 +87,41 @@ const reducer = (state = initialState, action) => {
         allVinyls: [...state.allVinyls, action.payload],
         vinyls: [...state.allVinyls, action.payload],
       };
+      case ORDER_BY_TITLE: {
+        const orderDirection = action.payload === "A" ? 1 : -1;
+        const sortedVinyls = [...state.allVinyls].sort((a, b) => {
+          return a.title.localeCompare(b.title) * orderDirection;
+        });
+      
+        return {
+          ...state,
+          allVinyls: sortedVinyls,
+        };
+      }
+
+      case ORDER_FOR_GENRE:
+      const vinilFilter = state.allVin.filter((vinyl) =>
+        vinyl.genre.includes(action.payload)
+      );
+      return {
+        ...state,
+        allVinyls: vinilFilter,
+        vinyls: vinilFilter,
+      };
+    case FILTER_BY_DECADE:
+      const { startYear, endYear } = action.payload;
+      const filteredVinyls = state.vinyls.filter((vinyl) => {
+        const vinylYear = parseInt(vinyl.year);
+        return vinylYear >= startYear && vinylYear <= endYear;
+      });
+
+      return {
+        ...state,
+        allVin: filteredVinyls,
+        allVinyls: filteredVinyls,
+      };
+      
+      
     case GET_DETAIL:
       return {
         ...state,
@@ -91,7 +135,7 @@ const reducer = (state = initialState, action) => {
     case ADMINS_SUCCESS:
       return {
         ...state,
-        // users: action.payload,
+        users: action.payload,
         admins: action.payload,
       };
     // case DISABLE_USER:
@@ -111,6 +155,16 @@ const reducer = (state = initialState, action) => {
     //       users: [...state.users, restoredUser],
     //       getDisabledUsers: updatedDisabledUsers,
     //     };
+    case DELETE_USER:
+      const userIdToDelete = action.payload;
+      // Filtra los usuarios para eliminar el que coincide con el ID
+      const updatedUsersAfterDelete = state.users.filter(
+        (user) => user.id !== userIdToDelete
+      );
+      return {
+        ...state,
+        users: updatedUsersAfterDelete,
+      };
     case ADD_TO_CART:
       const addedItem = state.vinyls.find(
         (vinyl) => vinyl.id === action.payload.id
@@ -245,7 +299,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         cartItems: increasedCartItems,
       };
-
+      case UPDATE_VINYLS:
+        const { stock, id } = action.payload;
+        return {
+          ...state,
+          allVinyls: state.allVinyls.map((el) => {
+            if (el.id === id) {
+              return { ...el, stock };
+            } else {
+              return el;
+            }
+          })
+        };    
     case DECREASE_ITEM:
       const decreasedCartItems = state.cartItems.map((item) => {
         if (item.id === action.payload.id) {
@@ -264,43 +329,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         cartItems: decreasedCartItems,
       };
-
-
-
     case RESET:
       return {
         ...initialState,
       };
-
-    case ORDER_BY_TITLE: {
-      const orderDirection = action.payload === "A" ? 1 : -1; //ordenamiento por nombre  si recibo a es verdadero 1 y -1 es falso
-      return {
-        ...state,
-        allVinyls: state.allVinyls.slice().sort((a, b) => {
-          return a.title.localeCompare(b.title) * orderDirection; //slice para cortar cuando haga el sort y lo compare con el nombre de a y nombre de b para ascendente o descendente
-        }),
-      };
-    }
-
-    case LOGIN_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
-      localStorage.setItem("email", action.payload.email);
+      
+      case LOGIN_SUCCESS:
+        localStorage.setItem("token", action.payload.token);
+        localStorage.setItem("email", action.payload.email);
       return {
         ...state,
         isAuthenticated: true,
-        token: action.payload.token,
-        email: action.payload.email, // Almacenar el token cuando la autenticación sea exitosa
+        token: action.payload.token, // Almacenar el token cuando la autenticación sea exitosa
+        email: action.payload.email,
         error: null, // Restablecer cualquier mensaje de error anterior
       };
-    case LOGIN_SUCCESS_GOOGLE:
-      localStorage.setItem("token", action.payload);
-      return {
-        ...state,
-        isAuthenticated: true,
-        token: action.payload, // Almacenar el token cuando la autenticación sea exitosa
-        error: null, // Restablecer cualquier mensaje de error anterior
-      };
-
     case LOGIN_FAILURE:
       return {
         ...state,
@@ -322,6 +365,51 @@ const reducer = (state = initialState, action) => {
           review:[...state.review,action.payload],
           error:null
         }
+    case GET_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+
+    case POST_ORDERDETAIL: 
+    return {
+      ...state,
+      orderDetail: action.payload,
+    }
+    case STOCK_REDUC:
+      case STOCK_REDUC:
+      const id1 = action.payload.id;
+      const stock1 = action.payload.stock;
+
+  // Resto de tu lógica aquí
+
+      const updatedVinylsStock = state.allVinyls.map((vinyl) => {
+        if (vinyl.id === id1) {
+          // Encuentra el vinilo con el ID que coincida
+          const cartItem = state.cartItems.find((item) => item.id === id1);
+          if (cartItem) {
+            // Si el vinilo está en el carrito, resta su cantidad al stock
+            return {
+              ...vinyl,
+              stock: stock1,
+            };
+          }
+        }
+        return vinyl;
+      });
+
+      return {
+        ...state,
+        allVinyls: updatedVinylsStock,
+      };
+
+
+
+  case DELETE_ORDERDETAIL:
+    return { 
+      ...state,
+    }
+
     default:
       return {
         ...state,

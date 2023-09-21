@@ -5,6 +5,7 @@ import { postVinyls } from "../../redux/actions";
 import { useLocalStorage } from "../LocalStorage/useLocalStorage";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
+// import cloudinary from "cloudinary";
 
 const Form = () => {
   const localStorageKey = "vinylsFormData";
@@ -29,15 +30,6 @@ const Form = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    // const newVinyls =
-    //   name === "artists"
-    //     ? { ...vinyls, artists: [{ name: value }] }
-    //     : { ...vinyls, [name]: value };
-
-    // setVinyls(newVinyls);
-
-    // const ErrorDetect = validateVinylsForm({ ...vinyls, [name]: value });
 
     if (name === "artists") {
       // Si el campo es "artists", clonamos el arreglo y actualizamos el valor "name"
@@ -64,6 +56,100 @@ const Form = () => {
       ...err,
       [name]: ErrorDetect[name],
     }));
+  };
+
+  // const handleImageUpload = async (event) => {
+  //   const file = event.target.files[0]; // Obtiene el archivo seleccionado por el usuario
+
+  //   // Verifica si se seleccionó un archivo
+  //   if (file) {
+  //     try {
+  //       // Define la carpeta donde deseas almacenar la imagen en Cloudinary
+  //       const folder = "images";
+
+  //       // Genera un nombre de archivo público único (puedes personalizarlo)
+  //       const publicId = `${folder}/${Date.now()}_${file.name}`;
+
+  //       // Sube la imagen a Cloudinary en la carpeta especificada
+  //       const response = await cloudinary.uploader.upload(file, {
+  //         public_id: publicId,
+  //       });
+
+  //       // Obtiene la URL de la imagen cargada desde Cloudinary
+  //       const imageUrl = response.secure_url;
+
+  //       // Actualiza el estado con la URL de la imagen
+  //       setVinyls({
+  //         ...vinyls,
+  //         cover_image: imageUrl,
+  //       });
+
+  //       // Opcional: muestra un mensaje de éxito o realiza otras acciones
+  //       toast("Imagen cargada exitosamente", {
+  //         icon: "👍",
+  //         style: {
+  //           borderRadius: "10px",
+  //           background: "white",
+  //           color: "green",
+  //         },
+  //       });
+  //     } catch (error) {
+  //       console.error("Error al cargar la imagen: ", error);
+  //       // Opcional: muestra un mensaje de error o realiza otras acciones
+  //       toast.error("Error al cargar la imagen", {
+  //         style: {
+  //           borderRadius: "10px",
+  //           background: "white",
+  //           color: "red",
+  //         },
+  //       });
+  //     }
+  //   }
+  // };
+
+  //agregado de cloudinary
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "upload_vinyl_image"); // Set the upload preset here
+
+    try {
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/dxaj4cgeb/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      console.log(data.secure_url);
+      return data.secure_url; // Return the secure URL of the uploaded image
+    } catch (error) {
+      console.error("Error uploading image to Cloudinary", error);
+      throw error;
+    }
+  };
+
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0]; // Get the selected file from the input
+    if (!file) {
+      return;
+    }
+
+    try {
+      const imageUrl = await uploadImage(file);
+      console.log(imageUrl);
+      setVinyls((prevFormData) => ({
+        ...prevFormData,
+        cover_image: imageUrl,
+      }));
+      // setImagePreview(imageUrl);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+    // const errors = validateField(null, null, formData);
+    // setErrors(errors);
   };
 
   const handlerSubmit = (e) => {
@@ -109,7 +195,7 @@ const Form = () => {
   }, [vinyls]);
 
   return (
-    <div className="w-full h-[100vh]">
+    <div className="w-full min-h-[100vh]">
       <div className="w-full h-[10vh] flex items-center pl-5 ">
         <div className="w-[150px] h-[50px] clip-path-custom bg-slate-900 flex items-center justify-end ">
           <Link to="/dashboard">
@@ -118,7 +204,7 @@ const Form = () => {
         </div>
       </div>
 
-      <div className="w-full h-[90vh] lg:w-[100%] flex flex-col justify-center items-center ">
+      <div className="w-full min-h-[90vh] lg:w-[100%] flex flex-col justify-center items-center mb-8">
         <h1 className="text-3xl font-bold">Añade nuevos vinilos</h1>
         <div className="w-[500px] h-auto bg-black bg-opacity-80  text-white rounded-lg shadow-lg shadow-black overflow-hidden mt-8 dark:bg-slate-200">
           <form onSubmit={handlerSubmit} className="max-w-md mx-auto mt-4 p-2">
@@ -242,9 +328,10 @@ const Form = () => {
             <div>
               <label className="block mb-1">Imagen:</label>
               <input
-                type="text"
+                type="file"
                 name="cover_image"
-                onChange={handleChange}
+                accept="image/*"
+                onChange={handleImageChange}
                 className="border rounded w-full p-2 text-black"
                 placeholder="Ingrese una url..."
                 required

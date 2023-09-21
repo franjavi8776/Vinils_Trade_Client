@@ -84,6 +84,8 @@ const Footer = () => {
           <Link
             to="https://www.mercadopago.com.ar/cuenta#s-insurtech"
             className="w-[30%] flex flex-col items-center "
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <AiOutlineLock className="text-red-600 text-4xl mb-2 mt-1" />
             <h1 className="text-xl font-semibold">Pago seguro</h1>

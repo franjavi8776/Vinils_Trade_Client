@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { DonutChart, Card, Text, Metric } from "@tremor/react";
 import { getAllVinyls, getUsersAndSuccess } from "../../redux/actions";
+import { MdRateReview, MdOutlineRateReview } from "react-icons/md";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users);
   const vinyls = useSelector((state) => state.vinyls);
+
+  const email = useSelector((state) => state.email);
 
   useEffect(() => {
     dispatch(getAllVinyls());
@@ -67,6 +70,7 @@ const Dashboard = () => {
 
   // Normaliza los géneros y agrupa los no mencionados en "Otros"
   function normalizeGenre(genre) {
+    // generos
     const normalizedGenres = [
       "Electronic",
       "Hip Hop",
@@ -89,12 +93,15 @@ const Dashboard = () => {
 
   return (
     <div className="w-full mi-h-[100vh]">
-      <div className="w-full h-[5vh] pt-5 pl-5">
+      <div className="w-full h-[10vh] pt-5 pl-5">
         <div className="w-[150px] h-[50px] clip-path-custom bg-black flex items-center justify-end">
           <Link to="/">
-            <h1 className="text-white pr-2">Volver al home</h1>
+            <h1 className="text-white pr-2">Volver al Inicio</h1>
           </Link>
         </div>
+      </div>
+      <div className="w-full h-[5vh]">
+        <h2 className="text-center text-2xl font-bold">Bienvenido {email}</h2>
       </div>
       <div className="w-full h-[35vh] flex justify-center  items-center gap-48 ">
         <Link to="/usarios">
@@ -110,6 +117,14 @@ const Dashboard = () => {
             <h1>VINILOS</h1>
             <button>
               <BsDiscFill className="w-20 h-20" />
+            </button>
+          </div>
+        </Link>
+        <Link to="/reviews">
+          <div className="w-[200px] h-[200px] bg-black shadow-lg text-white shadow-black text-3xl flex flex-col justify-center items-center cursor-pointer active:translate-x-1 active:scale-95 gap-1">
+            <h1>Reviews</h1>
+            <button>
+              <MdRateReview className="w-20 h-20" />
             </button>
           </div>
         </Link>

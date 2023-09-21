@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
-import { AiOutlineEdit } from "react-icons/ai";
-import { getUsersAndSuccess } from "../../redux/actions";
-// import { disableUser } from "../../redux/actions";
-import { Link } from "react-router-dom";
+// import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
+import { AiOutlineDelete } from "react-icons/ai";
+import {getUsersAndSuccess, deleteUser } from "../../redux/actions";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
+
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
@@ -14,11 +14,10 @@ const UserList = () => {
   // console.log(getDisabledUsers);
   // console.log(Users[0].deletedAt);
   const dispatch = useDispatch();
+  console.log(Users)
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
-  // console.log(Users[0].country)
-  // console.log(filterCountry)
 
   // const combinedData = [...Users, ...getDisabledUsers];
   // console.log(combinedData)
@@ -66,6 +65,13 @@ const UserList = () => {
       cell: (row) => (
         <div className="flex space-x-2">
           {/* <button
+          <button
+            onClick={() => handleDelete(row)}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+           <AiOutlineDelete/>
+          </button>
+          <button
             onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
@@ -77,26 +83,32 @@ const UserList = () => {
           >
             Activar
           </button> */}
-          {/* <button
-            onClick={() => handleDisable(row)}
+          <button
+            onClick={() => handleDelete(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
             <RiDeleteBin6Line />
-          </button> */}
+          </button>
         </div>
       ),
     },
   ];
 
+
+
+  const handleDelete = (row) => {
+    dispatch(deleteUser(row.id)); 
+  };
+  //   const handleUpdate = (row) => {
+  //     // Lógica para actualizar el vinilo
+  //     dispatch(updateVinyl(row.id));
+  //   };
+
   // const handleDisable = (row) => {
-  //   // Lógica para deshabilitar el usuario
+  //   // Lógica para deshabilitar el vinilo
   //   dispatch(disableUser(row.id));
   // };
-  // const handleActive = (row) => {
-  //   // Lógica para deshabilitar el usuario
-  //   dispatch(restoreUser(row.id));
-  // };
-  
+
   //   const handleDelete = (row) => {
   //     // Lógica para borrar el vinilo
   //     dispatch(deleteVinyl(row.id));

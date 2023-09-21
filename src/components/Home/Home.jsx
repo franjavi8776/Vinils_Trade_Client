@@ -27,6 +27,9 @@ import { carImage } from "../cloudinary/carouselImages";
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls);
+  console.log(vinyls);
+  const vinil = useSelector((state) => state.vinyls);
+  console.log(vinil);
   const vinyl = useSelector((state) => state.vinilos);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterGener, setFilterGener] = useState("");
@@ -201,8 +204,8 @@ const Home = () => {
             </Swiper>
           </div>
         </div>
-        <div className="w-full h-[15vh] flex justify-center items-center xl:pl-[20%]">
-          <h1 className="w-[450px] h-[50px] flex justify-center items-center bg-black text-slate-200 text-3xl font-bold dark:bg-slate-200 dark:text-black">
+        <div className="w-full h-[15vh] flex text-center justify-center items-center">
+          <h1 className="w-[450px] h-[50px] flex justify-center items-center bg-black  text-slate-200 text-3xl font-bold dark:bg-slate-200 dark:text-black ">
             LISTA DE VINILOS
           </h1>
         </div>
@@ -257,10 +260,10 @@ const Home = () => {
           </div>
           <div className="xl:w-[78%] xl:min-h-[70vh] xl:flex items-center lg:w-[90%] lg:min-h-[70vh] lg:m-auto">
             <div className="w-[100%] min-h-[70vh] flex items-center ">
-              <div className="w-[5%]">
+              <div className="w-[5%] ">
                 {currentPage > 1 && (
                   <button onClick={handlePreviousPage}>
-                    <MdKeyboardDoubleArrowLeft className="hidden sm:flex text-[50px]" />
+                    <MdKeyboardDoubleArrowLeft className="hidden sm:flex text-[50px] " />
                   </button>
                 )}
               </div>
@@ -288,7 +291,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-[10vh] flex flex-wrap justify-center items-center space-x-4 xl:pl-[20%]">
+        <div className="w-[100%] h-[10vh] flex justify-center items-center space-x-4 ">
           {pagesArray.map((pageNumber) => (
             <span
               key={pageNumber}

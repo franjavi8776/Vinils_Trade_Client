@@ -33,9 +33,13 @@ export const USERS_SUCCESS = "USERS_SUCCESS";
 export const USER_RESTORE_SUCCESS="USER_RESTORE_SUCCESS";
 export const USER_RESTORE_FAILURE="USER_RESTORE_FAILURE";
 export const ADMINS_SUCCESS = "ADMINS_SUCCESS";
+export const DELETE_USER = "DELETE_USER";
 export const LOGIN_SUCCESS_GOOGLE = "LOGIN_SUCCESS_GOOGLE";
 export const POST_REVIEW="POST_REVIEW";
-
+export const GET_REVIEWS = "GET_REVIEWS";
+export const POST_ORDERDETAIL = "POST_ORDERDETAIL";
+export const STOCK_REDUC = "STOCK_REDUC";
+export const DELETE_ORDERDETAIL = "DELETE_ORDERDETAIL"
 
 const endpoint = "https://vinyls-trade-back-production.up.railway.app/";
 
@@ -147,6 +151,25 @@ export const getUsersAndSuccess = () => {
       });
     } catch (err) {
       console.error("Error al obtener la lista de usuarios: ", err);
+    }
+  };
+};
+
+export const deleteUser = (userId) => {
+  return async (dispatch) => {
+    try {
+      // Realiza la petición para eliminar al usuario por ID
+      await axios.delete(
+        `https://vinyls-trade-back-production.up.railway.app/deleteUser/${userId}`
+      );
+
+      // Despacha la acción DELETE_USER con el ID del usuario eliminado
+      dispatch({
+        type: DELETE_USER,
+        payload: userId,
+      });
+    } catch (error) {
+      console.error("Error al eliminar el usuario: ", error);
     }
   };
 };
@@ -359,19 +382,30 @@ export const decreaseItem = (vinyl) => ({
   payload: vinyl,
 });
 
-export const updateVinyls = (id, stockReduction) => async (dispatch) => {
-  const newEndpoint = `https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`;
-  const requestData = {
-    stockReduction: stockReduction,
-  };
-  try {
-    const response = await axios.put(newEndpoint, requestData);
-    const data = response.data;
 
+export const updateVinyls = (id, stock) => async (dispatch) => {
+  const newEndpoint = `https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`;
+  try {
+    const response = await axios.put(newEndpoint, { stock });
+    const data = response.data;
     dispatch({
       type: UPDATE_VINYLS,
-      payload: data,
+      payload: { id, stock: data.stock}, // Asegúrate de obtener el campo correcto de la respuesta de la API
     });
+  } catch (error) {
+    console.error("Error en la solicitud PUT:", error);
+  }
+};
+
+
+
+export const getReviews = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      "https://vinyls-trade-back-production.up.railway.app/get/allReviews"
+    );
+    console.log(response);
+    dispatch({ type: GET_REVIEWS, payload: response.data });
   } catch (error) {
     console.log(error);
   }
@@ -393,3 +427,33 @@ export const postReview=(datos)=> async (dispatch)=>{
     console.log(error);
   }
 }
+
+export const postOrdernDetial = (info) => async (dispatch) => {
+  try {
+    const {data} = await axios.post("https://vinyls-trade-back-production.up.railway.app/createOrderDetail", info);
+    dispatch({
+      type: POST_ORDERDETAIL,
+      payload: data,
+    })
+  } catch (err) {
+    
+  }
+}
+
+export const deleteOrderDeteil = () => async (dispatch) => {
+  const {data} = await axios.delete("https://vinyls-trade-back-production.up.railway.app/delete/deleteOrderDetail")
+  dispatch({
+    type:DELETE_ORDERDETAIL,
+    payload: data
+  })
+}
+
+export const StockReduc = (id, stock) => async (dispatch) => {
+  const { data } = await axios.put(`https://vinyls-trade-back-production.up.railway.app/upgrade_vinyls/${id}`, { stock });
+  dispatch({
+    type: STOCK_REDUC,
+    payload: { id, stock: data.stock }, // Envía tanto el id como el stock
+  });
+};
+
+
