@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./"; 
 import { AiOutlineDelete } from "react-icons/ai";
-import {getUsersAndSuccess, deleteUser } from "../../redux/actions";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import {getUsersAndSuccess, deleteUser, restoreUser,disableUser } from "../../redux/actions";
 import { Link } from "react-router-dom";
 
 
 const UserList = () => {
   const Users = useSelector((state) => state.users);
-  // const getDisabledUsers = useSelector((state) => state.getDisabledUsers);
-  // console.log(getDisabledUsers);
-  // console.log(Users[0].deletedAt);
-  const dispatch = useDispatch();
   console.log(Users)
+  const dispatch = useDispatch();
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
+  
+  // const usuarios = Users.map((user) => {
+  //   return user.isDeleted === true ? user : false;
+  // }).filter((user) => user !== false);
+  
+  // console.log(usuarios);
 
-  // const combinedData = [...Users, ...getDisabledUsers];
-  // console.log(combinedData)
+  // const usuarios1 = Users.map((user) => {
+  //   return user.isDeleted === false ? user : true;
+  // }).filter((user) => user !== true);
+
+  // console.log(usuarios1);
+  
+  // const userCombinado = [...usuarios,...usuarios1]
+
 
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
@@ -64,30 +71,34 @@ const UserList = () => {
       name: "Acciones",
       cell: (row) => (
         <div className="flex space-x-2">
-          {/* <button
           <button
             onClick={() => handleDelete(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
            <AiOutlineDelete/>
           </button>
-          <button
+          {/* {usuarios.length > 0 ? (
+
+            <button
+              onClick={() => handleRestore(row)}
+              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            >
+             Activar
+            </button>
+
+          ):(
+            <button
             onClick={() => handleDisable(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
             Desactivar
           </button>
-          <button
-            onClick={() => handleActive(row)}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          )} */}
+           <button
+            onClick={() => handleAction(row)}
+            className={`bg-${row.isDeleted ? 'green' : 'red'}-500 hover:bg-${row.isDeleted ? 'green' : 'red'}-700 text-white font-bold py-2 px-4 rounded`}
           >
-            Activar
-          </button> */}
-          <button
-            onClick={() => handleDelete(row)}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
-            <RiDeleteBin6Line />
+            {row.isDeleted ? 'Activar' : 'Desactivar'}
           </button>
         </div>
       ),
@@ -99,9 +110,9 @@ const UserList = () => {
   const handleDelete = (row) => {
     dispatch(deleteUser(row.id)); 
   };
-  //   const handleUpdate = (row) => {
+  //   const handleRestore = (row) => {
   //     // Lógica para actualizar el vinilo
-  //     dispatch(updateVinyl(row.id));
+  //     dispatch(restoreUser(row.id));
   //   };
 
   // const handleDisable = (row) => {
@@ -109,10 +120,15 @@ const UserList = () => {
   //   dispatch(disableUser(row.id));
   // };
 
-  //   const handleDelete = (row) => {
-  //     // Lógica para borrar el vinilo
-  //     dispatch(deleteVinyl(row.id));
-  //   };
+  const handleAction = (row) => {
+    if (row.isDeleted) {
+      dispatch(restoreUser(row.id));
+      console.log(row.isDeleted)
+    } else {
+      dispatch(disableUser(row.id));
+    }
+  };
+  
 
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
