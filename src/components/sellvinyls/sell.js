@@ -23,13 +23,6 @@ export default function validateVinylsForm(input) {
     errors.gender = "El genero no puede tener más de 20 caracteres";
   }
 
-  // Validación del campo Descripción
-  // if (!input.Description) {
-  //     errors.Description = "Debes ingresar una descripción";
-  // } else if (input.Description.length >= 120) {
-  //     errors.Description = "La descripción no puede tener más de 200 caracteres";
-  // }
-
   // Validación del campo Año
   if (!input.year) {
     errors.year = "Debes ingresar un año";
@@ -67,11 +60,6 @@ export default function validateVinylsForm(input) {
   if (input.price >= 70) {
     errors.price = "El precio no puede ser mayor a 70";
   }
-
-  // Validación del campo Condición
-  // if (!input.Condition) {
-  //     errors.Condition = "Debes seleccionar una condición";
-  // }
 
   // Validación del campo Imagen
   if (!input.cover_image) {

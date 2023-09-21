@@ -18,9 +18,6 @@ const Navbar = ({ updateHtmlClass }) => {
   const admin = useSelector((state) => state.admins);
   const email = useSelector((state) => state.email);
   const token = useSelector((state) => state.token);
-  console.log(admin)
-  console.log(token)
-  console.log(email)
 
   const filtro = admin.filter((us) => {
     return email === us.email;

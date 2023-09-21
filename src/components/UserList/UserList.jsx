@@ -83,20 +83,12 @@ const UserList = () => {
   const handleDelete = (row) => {
     dispatch(deleteUser(row.id)); 
   };
-  //   const handleUpdate = (row) => {
-  //     // Lógica para actualizar el vinilo
-  //     dispatch(updateVinyl(row.id));
-  //   };
 
   const handleDisable = (row) => {
     // Lógica para deshabilitar el vinilo
     dispatch(disableUser(row.id));
   };
 
-  //   const handleDelete = (row) => {
-  //     // Lógica para borrar el vinilo
-  //     dispatch(deleteVinyl(row.id));
-  //   };
 
   // const filteredUsers = Users.filter((user) =>
   //   user.name.toLowerCase().includes(filterText.toLowerCase())

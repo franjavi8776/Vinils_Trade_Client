@@ -27,9 +27,7 @@ import { carImage } from "../cloudinary/carouselImages";
 const Home = () => {
   const dispatch = useDispatch();
   const vinyls = useSelector((state) => state.allVinyls);
-  console.log(vinyls);
   const vinil = useSelector((state) => state.vinyls);
-  console.log(vinil);
   const vinyl = useSelector((state) => state.vinilos);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterGener, setFilterGener] = useState("");
@@ -53,8 +51,6 @@ const Home = () => {
   for (let i = 1; i <= totalPages; i++) {
     pagesArray.push(i);
   }
-
-  console.log(vinyls);
 
   useEffect(() => {
     dispatch(getAllVinyls());
@@ -150,7 +146,6 @@ const Home = () => {
     const weeksElapsed = Math.floor(
       (currentDate - startDate) / (7 * 24 * 60 * 60 * 10000)
     );
-    // const weeksElapsed = Math.floor((currentDate - startDate) / 5000);
 
     const newSeed = `$seed-${weeksElapsed}`;
     setSeed(newSeed);

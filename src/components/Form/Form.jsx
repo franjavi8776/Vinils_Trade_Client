@@ -5,7 +5,6 @@ import { postVinyls } from "../../redux/actions";
 import { useLocalStorage } from "../LocalStorage/useLocalStorage";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
-// import cloudinary from "cloudinary";
 
 const Form = () => {
   const localStorageKey = "vinylsFormData";
@@ -58,55 +57,6 @@ const Form = () => {
     }));
   };
 
-  // const handleImageUpload = async (event) => {
-  //   const file = event.target.files[0]; // Obtiene el archivo seleccionado por el usuario
-
-  //   // Verifica si se seleccionó un archivo
-  //   if (file) {
-  //     try {
-  //       // Define la carpeta donde deseas almacenar la imagen en Cloudinary
-  //       const folder = "images";
-
-  //       // Genera un nombre de archivo público único (puedes personalizarlo)
-  //       const publicId = `${folder}/${Date.now()}_${file.name}`;
-
-  //       // Sube la imagen a Cloudinary en la carpeta especificada
-  //       const response = await cloudinary.uploader.upload(file, {
-  //         public_id: publicId,
-  //       });
-
-  //       // Obtiene la URL de la imagen cargada desde Cloudinary
-  //       const imageUrl = response.secure_url;
-
-  //       // Actualiza el estado con la URL de la imagen
-  //       setVinyls({
-  //         ...vinyls,
-  //         cover_image: imageUrl,
-  //       });
-
-  //       // Opcional: muestra un mensaje de éxito o realiza otras acciones
-  //       toast("Imagen cargada exitosamente", {
-  //         icon: "👍",
-  //         style: {
-  //           borderRadius: "10px",
-  //           background: "white",
-  //           color: "green",
-  //         },
-  //       });
-  //     } catch (error) {
-  //       console.error("Error al cargar la imagen: ", error);
-  //       // Opcional: muestra un mensaje de error o realiza otras acciones
-  //       toast.error("Error al cargar la imagen", {
-  //         style: {
-  //           borderRadius: "10px",
-  //           background: "white",
-  //           color: "red",
-  //         },
-  //       });
-  //     }
-  //   }
-  // };
-
   //agregado de cloudinary
   const uploadImage = async (file) => {
     const formData = new FormData();
@@ -144,12 +94,9 @@ const Form = () => {
         ...prevFormData,
         cover_image: imageUrl,
       }));
-      // setImagePreview(imageUrl);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
-    // const errors = validateField(null, null, formData);
-    // setErrors(errors);
   };
 
   const handlerSubmit = (e) => {
@@ -163,7 +110,7 @@ const Form = () => {
       price: "",
       stock: "",
       style: "",
-    }); // , Description:"", , Condition:"",
+    }); 
 
     dispatch(postVinyls(vinyls));
 
@@ -260,19 +207,6 @@ const Form = () => {
               />
               {errors.genre && <p className="text-black">{errors.genre}</p>}
             </div>
-            {/* <div>
-          <label className="block font-bold mb-1">Descripción:</label>
-          <textarea
-            name="Description"
-            value={vinyls.Description}
-            onChange={handleChange}
-            className="border rounded w-full p-2"
-            placeholder="Ingrese la descripción..."
-            required
-          />
-
-          {errors.Description && <p className="text-red-500">{errors.Description}</p>}
-        </div> */}
             <div>
               <label className="block mb-1">Año:</label>
               <input
@@ -312,19 +246,6 @@ const Form = () => {
               />
               {errors.stock && <p className="text-black">{errors.stock}</p>}
             </div>
-            {/* <div>
-          <label className="block font-bold mb-1">Condición:</label>
-          <input
-            type="text"
-            name="Condition"
-            value={vinyls.Condition}
-            onChange={handleChange}
-            className="border rounded w-full p-2"
-            placeholder="Ingrese la condicion..."
-            required
-          />
-          {errors.Condition && <p className="text-red-500">{errors.Condition}</p>}
-        </div> */}
             <div>
               <label className="block mb-1">Imagen:</label>
               <input
@@ -336,9 +257,6 @@ const Form = () => {
                 placeholder="Ingrese una url..."
                 required
               />
-              {/* {errors.cover_image && (
-              <p className="text-black">{errors.cover_image}</p>
-            )} */}
             </div>
             <div className="text-center">
               <button

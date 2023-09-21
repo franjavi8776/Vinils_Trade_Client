@@ -5,9 +5,6 @@ import {
   increaseItem,
   decreaseItem,
   postMP,
-  succesMP,
-  pendingMP,
-  failureMP,
   clearCart,
   postOrdernDetial,
   StockReduc,
@@ -23,18 +20,10 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartItems);
   const MP = useSelector((state) => state.dataMP);
-  const OrderDet = useSelector((state) => state.orderDetail)
-  console.log(OrderDet)
-  console.log(cart)
-
-  // const stateMP = useSelector((state) => state.stateMP)
-  //console.log(MP);
   const handleRemoveFromCart = (vinylId) => {
     dispatch(removeFromCart(vinylId));
     toast.success("Vinilo eliminado correctamente");
   };
-  //console.log(MP);
-  //console.log(stateMP);
   const handleIncreaseQty = (vinyl) => {
     dispatch(increaseItem(vinyl));
   };
@@ -69,10 +58,6 @@ const ShoppingCart = () => {
       totalAmount: item.cartQuantity * item.price,
   }) )
 
-  console.log(del)
-  
-
-
   const handleShowConfirmation = () => {
     if (cart.length > 0) {
       const datos = {
@@ -81,39 +66,21 @@ const ShoppingCart = () => {
         units: cart.length,
       };
       
-      
-
-      // cart.forEach((item) => {
-      //   const vinylId = item.id; // ID del vinilo
-      //   const stockReduction = item.cartQuantity; // Cantidad a reducir del stock
-      //   dispatch(updateVinyls(vinylId, stockReduction));
-      // });
       cart.forEach((item) => {
         const cambio = item.stock 
-        console.log(cambio)
         dispatch(StockReduc(item.id, cambio )); // Esto disminuirá el stock en Redux
       });
+      
       dispatch(postMP(datos));
       dispatch(postOrdernDetial(del))
-
     }
-
     setShowConfirmation(true);
   };
 
   const handleMP = () => {
+    dispatch(clearCart());
     window.location.href = MP;
   };
-
-  // if(succesMP) {
-  //   dispatch(clearCart())
-  // }
-  // if(pendingMP) {
-  //   return "pendign"
-  // }
-  // if(failureMP) {
-  //   return "fallo"
-  // }
 
   return (
     <div
