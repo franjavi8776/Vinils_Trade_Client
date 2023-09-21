@@ -28,8 +28,8 @@ export const FAIL_REGISTER_USER = "FAIL_REGISTER_USER";
 export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
 export const UPDATE_VINYLS = "UPDATE_VINYLS";
 export const USERS_SUCCESS = "USERS_SUCCESS";
-// export const DISABLE_USER = "DISABLE_USER";
-// export const RESTORE_USER="RESTORE_USER";
+export const DISABLE_USER = "DISABLE_USER";
+export const RESTORE_USER="RESTORE_USER";
 export const USER_RESTORE_SUCCESS="USER_RESTORE_SUCCESS";
 export const USER_RESTORE_FAILURE="USER_RESTORE_FAILURE";
 export const ADMINS_SUCCESS = "ADMINS_SUCCESS";
@@ -94,49 +94,33 @@ export const postRegisterUser = (x) => {
   };
 };
 
-// export const disableUser = (userId) => async (dispatch) => {
-//   try {
-//     await axios.post(
-//       "https://vinyls-trade-back-production.up.railway.app/inhabilityUser",
-//       { id: userId }
-//     );
-//     // Despacha una acción para actualizar el estado de Redux después de la eliminación
-//     dispatch({ type: "DISABLE_USER", payload: userId });
-//   } catch (error) {
-//     // Maneja errores aquí si es necesario
-//     console.error("Error al eliminar el usuario", error);
-//   }
-// };
+export const disableUser = (id) => async (dispatch) => {
+  try {
+    // Envía el userId como parte de la URL en lugar del cuerpo de la solicitud
+    await  axios.put(
+      `https://vinyls-trade-back-production.up.railway.app/inhabilityUser/${id}`
+    );
+    // Despacha una acción para actualizar el estado de Redux después de la eliminación
+    dispatch({ type: "DISABLE_USER"});
+  } catch (error) {
+    // Maneja errores aquí si es necesario
+    console.error("Error al eliminar el usuario", error);
+  }
+};
 
-// export const disableUser = (id) => async (dispatch) => {
-//   try {
-//     // Envía el userId como parte de la URL en lugar del cuerpo de la solicitud
-//     const response= await  axios.delete(
-//       `https://vinyls-trade-back-production.up.railway.app/inhabilityUser/${id}`
-//     );
-//     console.log(response.data);
-//     // Despacha una acción para actualizar el estado de Redux después de la eliminación
-//     dispatch({ type: "DISABLE_USER", payload: response.data });
-//   } catch (error) {
-//     // Maneja errores aquí si es necesario
-//     console.error("Error al eliminar el usuario", error);
-//   }
-// };
-
-// export const restoreUser = (id) => async (dispatch) => {
-//   try {
-//     // Envía el userId como parte de la URL en lugar del cuerpo de la solicitud
-//     const response = await axios.put(
-//       `https://vinyls-trade-back-production.up.railway.app/restoreUser/${id}`
-//     );
-//     console.log(response.data);
-//     // Despacha una acción para actualizar el estado de Redux después de restaurar al usuario
-//     dispatch({ type: "RESTORE_USER", payload: response.data });
-//   } catch (error) {
-//     // Maneja errores aquí si es necesario
-//     console.error("Error al restaurar el usuario", error);
-//   }
-// };
+export const restoreUser = (id) => async (dispatch) => {
+  try {
+    // Envía el userId como parte de la URL en lugar del cuerpo de la solicitud
+    await axios.put(
+      `https://vinyls-trade-back-production.up.railway.app/restoreUser/${id}`
+    );
+    // Despacha una acción para actualizar el estado de Redux después de restaurar al usuario
+    dispatch({ type: "RESTORE_USER"});
+  } catch (error) {
+    // Maneja errores aquí si es necesario
+    console.error("Error al restaurar el usuario", error);
+  }
+};
 
 export const getUsersAndSuccess = () => {
   return async (dispatch) => {

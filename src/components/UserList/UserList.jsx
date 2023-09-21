@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateVinyl, disableVinyl, deleteVinyl } from "./";
 import { AiOutlineDelete } from "react-icons/ai";
-import { getUsersAndSuccess, deleteUser } from "../../redux/actions";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { getUsersAndSuccess, deleteUser ,disableUser,restoreUser } from "../../redux/actions";
 import { Link } from "react-router-dom";
 
 const UserList = () => {
@@ -15,7 +13,7 @@ const UserList = () => {
   const [filterText, setFilterText] = useState("");
   // const [filterCountry,setFilterCountry]=useState("");
   const [filterEmail, setFilterEmail] = useState("");
-
+  
   useEffect(() => {
     // Cargar la lista de usuarios cuando el componente se monte
     dispatch(getUsersAndSuccess());
@@ -57,30 +55,17 @@ const UserList = () => {
       name: "Acciones",
       cell: (row) => (
         <div className="flex space-x-2">
-          {/* <button
           <button
             onClick={() => handleDelete(row)}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
            <AiOutlineDelete/>
           </button>
-          <button
-            onClick={() => handleDisable(row)}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+           <button
+            onClick={() => handleAction(row)}
+            className={`bg-${row.isDeleted ? 'green' : 'red'}-500 hover:bg-${row.isDeleted ? 'green' : 'red'}-700 text-white font-bold py-2 px-4 rounded`}
           >
-            Desactivar
-          </button>
-          <button
-            onClick={() => handleActive(row)}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Activar
-          </button> */}
-          <button
-            onClick={() => handleDelete(row)}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
-            <RiDeleteBin6Line />
+            {row.isDeleted ? 'Activar' : 'Desactivar'}
           </button>
         </div>
       ),
@@ -91,12 +76,15 @@ const UserList = () => {
     dispatch(deleteUser(row.id));
   };
 
-  // const handleDisable = (row) => {
-  //   // Lógica para deshabilitar el vinilo
-  //   dispatch(disableUser(row.id));
-  // };
-
-
+  const handleAction = (row) => {
+    if (row.isDeleted) {
+      dispatch(restoreUser(row.id));
+      console.log(row.isDeleted)
+    } else {
+      dispatch(disableUser(row.id));
+    }
+  };
+  
   const filterByEmail = (userEmail, searchTerm) => {
     const regex = new RegExp(`\\b${searchTerm}\\b`, "i");
     return regex.test(userEmail);
@@ -144,3 +132,4 @@ const UserList = () => {
 };
 
 export default UserList;
+

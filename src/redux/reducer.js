@@ -17,13 +17,13 @@ import {
   CREATE_ORDER,
   CLEAR_CART,
   USERS_SUCCESS,
-  // DISABLE_USER,
   ADMINS_SUCCESS,
   UPDATE_VINYLS,
   DELETE_USER,
   LOGIN_SUCCESS_GOOGLE,
   POST_REVIEW,
-  // RESTORE_USER,
+  RESTORE_USER,
+  DISABLE_USER,
   GET_REVIEWS,
   POST_ORDERDETAIL,
   STOCK_REDUC,
@@ -53,9 +53,7 @@ const initialState = {
   admins: [],
   email: localStorage.getItem("email") || "",
   reviews: [],
-
   OrdenDetal: null,
-  // getDisabledUsers:[],
 };
 
 const reducer = (state = initialState, action) => {
@@ -108,23 +106,14 @@ const reducer = (state = initialState, action) => {
         users: action.payload,
         admins: action.payload,
       };
-    // case DISABLE_USER:
-    //   console.log(action.payload)
-
-    //   return {
-    //     ...state,
-    //     getDisabledUsers:[...state.getDisabledUsers, action.payload]
-    //   };
-    //   case RESTORE_USER:
-    //     const restoredUser = action.payload; // el servidor devuelve los datos del usuario restaurado
-    //     const updatedDisabledUsers = state.getDisabledUsers.filter(
-    //       (user) => user.id === restoredUser.id
-    //     );
-    //     return {
-    //       ...state,
-    //       users: [...state.users, restoredUser],
-    //       getDisabledUsers: updatedDisabledUsers,
-    //     };
+    case DISABLE_USER:
+      return {
+        ...state,
+      };
+    case RESTORE_USER:
+      return {
+        ...state,
+      };
     case DELETE_USER:
       const userIdToDelete = action.payload;
       // Filtra los usuarios para eliminar el que coincide con el ID
